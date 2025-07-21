@@ -112,15 +112,15 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 <script>
   let heroSlideIndex = 1;
 
-  function changeHeroSlide(n) {
+  function changeHeroSlide(n: number) {
     showHeroSlide(heroSlideIndex += n);
   }
 
-  function currentHeroSlide(n) {
+  function currentHeroSlide(n: number) {
     showHeroSlide(heroSlideIndex = n);
   }
 
-  function showHeroSlide(n) {
+  function showHeroSlide(n: number) {
     const slides = document.querySelectorAll('#hero-slider .slide');
     const dots = document.querySelectorAll('#hero-slider ~ .dots-container .dot');
     
@@ -139,13 +139,18 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   }
 
   // Auto-slide every 5 seconds
-  setInterval(() => {
+  const autoSlideInterval = setInterval(() => {
     changeHeroSlide(1);
   }, 5000);
 
   // Initialize slider
   document.addEventListener('DOMContentLoaded', function() {
     showHeroSlide(heroSlideIndex);
+  });
+
+  // Clean up interval when page unloads
+  window.addEventListener('beforeunload', () => {
+    clearInterval(autoSlideInterval);
   });
 </script>
 

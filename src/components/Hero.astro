@@ -61,12 +61,30 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
             <div class="slider" id="hero-slider">
               <div class="slide active">
                 <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Equipo de Consultores Profesionales" class="rounded-2xl shadow-2xl w-full h-auto" />
+                <div class="slide-overlay">
+                  <div class="slide-content">
+                    <h2 class="slide-title">Equipo de Consultores Expertos</h2>
+                    <p class="slide-description">Más de 25 años transformando organizaciones a través de la excelencia operacional</p>
+                  </div>
+                </div>
               </div>
               <div class="slide">
                 <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Reunión de Negocios Corporativa" class="rounded-2xl shadow-2xl w-full h-auto" />
+                <div class="slide-overlay">
+                  <div class="slide-content">
+                    <h2 class="slide-title">Consultoría Estratégica</h2>
+                    <p class="slide-description">Implementamos sistemas de gestión de calidad que impulsan el crecimiento sostenible</p>
+                  </div>
+                </div>
               </div>
               <div class="slide">
                 <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Consultores Analizando Datos" class="rounded-2xl shadow-2xl w-full h-auto" />
+                <div class="slide-overlay">
+                  <div class="slide-content">
+                    <h2 class="slide-title">Certificaciones ISO</h2>
+                    <p class="slide-description">Acompañamos a tu empresa hacia la certificación ISO y la mejora continua</p>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -223,5 +241,81 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 
 .slide.active {
   opacity: 1;
+}
+
+/* Slide overlay and text */
+.slide {
+  position: relative;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(139, 69, 19, 0.8) 0%,
+    rgba(160, 82, 45, 0.6) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+.slide-content {
+  text-align: center;
+  padding: 2rem;
+  max-width: 90%;
+}
+
+.slide-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+.slide-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 1.4rem;
+  }
+  
+  .slide-description {
+    font-size: 0.9rem;
+  }
+  
+  .slide-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 1.2rem;
+  }
+  
+  .slide-description {
+    font-size: 0.8rem;
+  }
+  
+  .slide-content {
+    padding: 1rem;
+  }
 }
 </style>

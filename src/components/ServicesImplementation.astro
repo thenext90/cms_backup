@@ -1,0 +1,73 @@
+---
+import { Settings, FileText, Users, Trophy } from 'lucide-astro';
+
+const services = [
+  {
+    icon: FileText,
+    title: "Diagnóstico Inicial",
+    description: "Evaluación completa de la situación actual de su organización y identificación de brechas respecto a los requisitos normativos."
+  },
+  {
+    icon: Settings,
+    title: "Diseño del Sistema",
+    description: "Desarrollo e implementación de procesos, procedimientos y documentación necesaria para cumplir con los estándares de calidad."
+  },
+  {
+    icon: Users,
+    title: "Capacitación del Personal",
+    description: "Formación integral del equipo en los nuevos procesos y metodologías, asegurando la comprensión y adopción del sistema."
+  },
+  {
+    icon: Trophy,
+    title: "Certificación",
+    description: "Acompañamiento durante el proceso de auditoría y certificación, garantizando el cumplimiento de todos los requisitos."
+  }
+];
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">
+        Servicio de Implementación de Normas
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Nuestro servicio se basa en una metodología probada de 4 etapas que garantiza 
+        la implementación exitosa de sistemas de gestión de calidad en su organización, 
+        asegurando el cumplimiento normativo y la mejora continua.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.map((service, index) => (
+        <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+          <div class="flex items-center justify-center w-16 h-16 bg-primary-100 rounded-xl mb-6 mx-auto">
+            <service.icon size="32" class="text-primary-600" />
+          </div>
+          
+          <div class="text-center space-y-4">
+            <div class="flex items-center justify-center space-x-2 mb-2">
+              <span class="bg-primary-600 text-white text-sm font-bold px-3 py-1 rounded-full">
+                {index + 1}
+              </span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-gray-800">
+              {service.title}
+            </h3>
+            
+            <p class="text-gray-600 leading-relaxed text-sm">
+              {service.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/servicios" class="inline-flex items-center space-x-2 bg-primary-600 text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition-colors font-semibold">
+        <span>Ver Todos los Servicios</span>
+      </a>
+    </div>
+  </div>
+</section>

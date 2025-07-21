@@ -1,0 +1,142 @@
+---
+import { Menu, ChevronDown, MessageCircle } from 'lucide-astro';
+---
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-container mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="w-12 h-12 bg-primary-700 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-xl">CMS</span>
+          </div>
+          <div class="hidden md:block">
+            <h1 class="text-xl font-bold text-gray-800">CMS Consultores</h1>
+            <p class="text-sm text-gray-600">Calidad & Gestión</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-6">
+        <a href="/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+          Inicio
+        </a>
+        
+        <!-- Quienes Somos Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            <span>Quienes Somos</span>
+            <ChevronDown size="16" />
+          </button>
+          <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <div class="py-2">
+              <a href="/organizacion" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Organización</a>
+              <a href="/curriculum" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Currículum 1995-2006</a>
+              <a href="/certificacion" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Certificación NCh 2728</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicios Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            <span>Servicios</span>
+            <ChevronDown size="16" />
+          </button>
+          <div class="absolute left-0 mt-2 w-72 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <div class="py-2">
+              <a href="/capacitacion" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Capacitación</a>
+              <a href="/condiciones-generales" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Condiciones Generales del Servicio</a>
+              <a href="/derechos-deberes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Derechos y Deberes de los Alumnos</a>
+              <a href="/tecnicas-calidad" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Técnicas de Calidad Institucional</a>
+              <a href="/riesgos-psicosociales" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Riesgos Psicosociales en el Trabajo</a>
+              <a href="/editorial" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Editorial</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/correo" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+          Correo
+        </a>
+        
+        <a href="/contacto" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+          Contacto
+        </a>
+        
+        <a href="/certificados" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+          Certificados
+        </a>
+
+        <!-- Norma ISO Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1 text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            <span>Norma ISO</span>
+            <ChevronDown size="16" />
+          </button>
+          <div class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <div class="py-2">
+              <a href="/demo-iso-9001" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Demo ISO 9001:2015</a>
+              <a href="/demo-iso-45001" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Demo ISO 45001</a>
+              <a href="/demo-iso-14001" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Demo ISO 14001:2015</a>
+              <a href="/demo-iso-22000" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Demo ISO 22000</a>
+              <a href="/demo-iso-27001-2013" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Demo ISO 27001:2013</a>
+              <a href="/demo-iso-27001-2022" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600">Demo ISO 27001:2022</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/efemerides" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+          Efemérides
+        </a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="/mensaje" class="flex items-center space-x-2 bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">
+          <MessageCircle size="18" />
+          <span>Dejar Un Mensaje</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="lg:hidden p-2" id="mobile-menu-button">
+        <Menu size="24" class="text-gray-700" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="lg:hidden hidden bg-white border-t" id="mobile-menu">
+    <div class="px-4 py-6 space-y-4">
+      <a href="/" class="block text-gray-700 font-medium">Inicio</a>
+      <div>
+        <p class="font-medium text-gray-800 mb-2">Quienes Somos</p>
+        <div class="pl-4 space-y-2">
+          <a href="/organizacion" class="block text-sm text-gray-600">Organización</a>
+          <a href="/curriculum" class="block text-sm text-gray-600">Currículum 1995-2006</a>
+          <a href="/certificacion" class="block text-sm text-gray-600">Certificación NCh 2728</a>
+        </div>
+      </div>
+      <a href="/contacto" class="block text-gray-700 font-medium">Contacto</a>
+      <a href="/mensaje" class="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg w-fit">
+        <MessageCircle size="18" />
+        <span>Dejar Un Mensaje</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>

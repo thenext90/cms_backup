@@ -1,0 +1,101 @@
+---
+import { MapPin, Phone, Mail, ExternalLink } from 'lucide-astro';
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-container mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Company Info -->
+      <div class="space-y-6">
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">CMS</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">CMS Consultores</h3>
+            <p class="text-gray-400 text-sm">Calidad & Gestión</p>
+          </div>
+        </div>
+        
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Más de 25 años de experiencia en consultoría de sistemas de gestión, 
+          certificaciones ISO y capacitación empresarial especializada.
+        </p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="space-y-6">
+        <h4 class="text-lg font-semibold">Contacto</h4>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <MapPin size="18" class="text-primary-400 mt-1 flex-shrink-0" />
+            <div class="text-sm text-gray-300">
+              <p>Santiago, Chile</p>
+              <p>Región Metropolitana</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center space-x-3">
+            <Phone size="18" class="text-primary-400 flex-shrink-0" />
+            <a href="tel:+56123456789" class="text-sm text-gray-300 hover:text-white transition-colors">
+              +56 (2) 1234 5678
+            </a>
+          </div>
+          
+          <div class="flex items-center space-x-3">
+            <Mail size="18" class="text-primary-400 flex-shrink-0" />
+            <a href="mailto:info@cmsconsultores.cl" class="text-sm text-gray-300 hover:text-white transition-colors">
+              info@cmsconsultores.cl
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="space-y-6">
+        <h4 class="text-lg font-semibold">Servicios</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/servicios/iso-9001" class="text-gray-300 hover:text-white transition-colors">ISO 9001:2015</a></li>
+          <li><a href="/servicios/iso-14001" class="text-gray-300 hover:text-white transition-colors">ISO 14001:2015</a></li>
+          <li><a href="/servicios/iso-45001" class="text-gray-300 hover:text-white transition-colors">ISO 45001</a></li>
+          <li><a href="/servicios/iso-27001" class="text-gray-300 hover:text-white transition-colors">ISO 27001</a></li>
+          <li><a href="/capacitacion" class="text-gray-300 hover:text-white transition-colors">Capacitación</a></li>
+          <li><a href="/consultoria" class="text-gray-300 hover:text-white transition-colors">Consultoría</a></li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-6">
+        <h4 class="text-lg font-semibold">Enlaces Útiles</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/quienes-somos" class="text-gray-300 hover:text-white transition-colors">Quienes Somos</a></li>
+          <li><a href="/certificados" class="text-gray-300 hover:text-white transition-colors">Certificados</a></li>
+          <li><a href="/noticias" class="text-gray-300 hover:text-white transition-colors">Noticias</a></li>
+          <li><a href="/efemerides" class="text-gray-300 hover:text-white transition-colors">Efemérides</a></li>
+          <li><a href="/politica-privacidad" class="text-gray-300 hover:text-white transition-colors">Política de Privacidad</a></li>
+          <li><a href="/terminos" class="text-gray-300 hover:text-white transition-colors">Términos de Servicio</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-800">
+    <div class="max-w-container mx-auto px-4 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p class="text-sm text-gray-400">
+          © 2025 CMS Consultores. Todos los derechos reservados.
+        </p>
+        
+        <div class="flex items-center space-x-6">
+          <a href="/politica-privacidad" class="text-sm text-gray-400 hover:text-white transition-colors">
+            Política de Privacidad
+          </a>
+          <a href="/terminos" class="text-sm text-gray-400 hover:text-white transition-colors">
+            Términos de Uso
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

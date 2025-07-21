@@ -1,0 +1,72 @@
+---
+import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
+---
+
+<section class="bg-gradient-to-r from-primary-900 via-primary-800 to-primary-700 text-white py-20">
+  <div class="max-w-container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div class="space-y-4">
+          <div class="flex items-center space-x-2 text-primary-200">
+            <Star size="20" class="fill-current" />
+            <span class="text-sm font-medium">Más de 25 años de experiencia</span>
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            CMS Consultores
+            <span class="block text-primary-200">Tu Socio Estratégico</span>
+            <span class="block text-2xl md:text-3xl lg:text-4xl font-normal">
+              en Calidad y Gestión
+            </span>
+          </h1>
+          
+          <p class="text-xl text-primary-100 leading-relaxed">
+            Especialistas en implementación de sistemas de gestión de calidad, 
+            certificaciones ISO y capacitación empresarial. Transformamos organizaciones 
+            a través de la excelencia operacional y el mejoramiento continuo.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/servicios" class="flex items-center space-x-2 bg-white text-primary-800 px-8 py-3 rounded-lg hover:bg-primary-50 transition-colors font-semibold">
+            <span>Conocer Servicios</span>
+            <ArrowRight size="18" />
+          </a>
+          
+          <a href="/contacto" class="flex items-center space-x-2 border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-primary-800 transition-colors font-semibold">
+            <span>Contactar Ahora</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+          <div class="flex items-center space-x-3">
+            <CheckCircle size="24" class="text-green-400 flex-shrink-0" />
+            <span class="text-sm">Certificaciones ISO</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <CheckCircle size="24" class="text-green-400 flex-shrink-0" />
+            <span class="text-sm">Capacitación Especializada</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <CheckCircle size="24" class="text-green-400 flex-shrink-0" />
+            <span class="text-sm">Consultoría Integral</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="relative z-10">
+          <img 
+            src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800" 
+            alt="Equipo profesional de consultores"
+            class="rounded-2xl shadow-2xl w-full h-auto"
+          />
+        </div>
+        
+        <!-- Elementos decorativos -->
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-500 rounded-full opacity-20"></div>
+        <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-primary-300 rounded-full opacity-10"></div>
+      </div>
+    </div>
+  </div>
+</section>

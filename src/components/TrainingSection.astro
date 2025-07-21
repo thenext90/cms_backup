@@ -1,0 +1,107 @@
+---
+import { BookOpen, Lightbulb, Target, TrendingUp } from 'lucide-astro';
+
+const features = [
+  {
+    icon: BookOpen,
+    title: "Conocimiento Especializado",
+    description: "Programas de capacitación basados en las mejores prácticas internacionales"
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovación Continua",
+    description: "Metodologías actualizadas que incorporan las últimas tendencias del sector"
+  },
+  {
+    icon: Target,
+    title: "Soluciones Integradas",
+    description: "Enfoque holístico que abarca todos los aspectos de la gestión empresarial"
+  },
+  {
+    icon: TrendingUp,
+    title: "Macrotendencias",
+    description: "Anticipación y adaptación a los cambios del entorno empresarial global"
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8">
+        <div class="space-y-6">
+          <h2 class="text-4xl font-bold text-gray-800">
+            Capacitación
+          </h2>
+          
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Nuestro enfoque en capacitación se centra en entregar <strong>conocimiento</strong>, 
+            promover la <strong>innovación</strong> y desarrollar <strong>soluciones</strong> 
+            asociadas a Sistemas Integrados de Gestión y Macrotendencias.
+          </p>
+          
+          <p class="text-lg text-gray-600 leading-relaxed">
+            No ofrecemos capacitación "commodity". Cada programa está diseñado 
+            específicamente para las necesidades de su organización, incorporando 
+            las últimas tendencias y metodologías del mercado internacional.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((feature) => (
+            <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+              <div class="flex items-center justify-center w-12 h-12 bg-primary-100 rounded-lg flex-shrink-0">
+                <feature.icon size="24" class="text-primary-600" />
+              </div>
+              <div class="space-y-2">
+                <h4 class="font-semibold text-gray-800">
+                  {feature.title}
+                </h4>
+                <p class="text-sm text-gray-600">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/capacitacion" class="inline-flex items-center space-x-2 bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-semibold">
+            <span>Ver Programas</span>
+          </a>
+          <a href="/contacto" class="inline-flex items-center space-x-2 border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-lg hover:bg-primary-600 hover:text-white transition-colors font-semibold">
+            <span>Solicitar Información</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="grid grid-cols-2 gap-4">
+          <img 
+            src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            alt="Capacitación empresarial"
+            class="rounded-lg shadow-lg w-full h-48 object-cover"
+          />
+          <img 
+            src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            alt="Formación profesional"
+            class="rounded-lg shadow-lg w-full h-48 object-cover mt-8"
+          />
+          <img 
+            src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            alt="Sistemas de gestión"
+            class="rounded-lg shadow-lg w-full h-48 object-cover -mt-8"
+          />
+          <img 
+            src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400" 
+            alt="Consultoría especializada"
+            class="rounded-lg shadow-lg w-full h-48 object-cover"
+          />
+        </div>
+        
+        <!-- Elemento decorativo -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-600/10 to-transparent rounded-lg"></div>
+      </div>
+    </div>
+  </div>
+</section>

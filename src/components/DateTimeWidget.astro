@@ -1,0 +1,50 @@
+---
+// Widget de fecha y hora para Chile
+---
+
+<div class="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-200">
+  <div class="text-center space-y-2">
+    <div class="text-xs text-gray-500 font-medium">Chile</div>
+    <div id="current-time" class="text-lg font-bold text-gray-800"></div>
+    <div id="current-date" class="text-sm text-gray-600"></div>
+  </div>
+</div>
+
+<script>
+  function updateDateTime() {
+    const now = new Date();
+    
+    // Configurar para zona horaria de Chile
+    const options = {
+      timeZone: 'America/Santiago',
+      hour12: false
+    };
+    
+    const timeOptions = {
+      ...options,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    };
+    
+    const dateOptions = {
+      ...options,
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    
+    const timeElement = document.getElementById('current-time');
+    const dateElement = document.getElementById('current-date');
+    
+    if (timeElement && dateElement) {
+      timeElement.textContent = now.toLocaleTimeString('es-CL', timeOptions);
+      dateElement.textContent = now.toLocaleDateString('es-CL', dateOptions);
+    }
+  }
+  
+  // Actualizar inmediatamente y luego cada segundo
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+</script>

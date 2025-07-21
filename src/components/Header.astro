@@ -1,19 +1,35 @@
 ---
 import { Menu, ChevronDown, MessageCircle } from 'lucide-astro';
+import DateTimeWidget from './DateTimeWidget.astro';
 ---
 
 <header class="bg-white shadow-md sticky top-0 z-50">
+  <!-- Top bar with date/time -->
+  <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white py-2">
+    <div class="max-w-container mx-auto px-4">
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center space-x-4">
+          <span class="hidden md:block">📧 info@cmsconsultores.cl</span>
+          <span class="hidden md:block">📞 +56 (2) 1234 5678</span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <DateTimeWidget />
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="max-w-container mx-auto px-4">
-    <div class="flex items-center justify-between h-20">
+    <div class="flex items-center justify-between h-24">
       <!-- Logo -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-2">
-          <div class="w-12 h-12 bg-accent-800 rounded-lg flex items-center justify-center">
-            <span class="text-white font-bold text-xl">CMS</span>
+          <div class="w-16 h-16 bg-gradient-to-br from-accent-600 to-accent-800 rounded-xl flex items-center justify-center shadow-lg">
+            <span class="text-white font-bold text-2xl">CMS</span>
           </div>
           <div class="hidden md:block">
-            <h1 class="text-xl font-bold text-gray-800">CMS Consultores</h1>
-            <p class="text-sm text-gray-600">Calidad & Gestión</p>
+            <h1 class="text-2xl font-bold text-gray-800">CMS Consultores</h1>
+            <p class="text-sm text-accent-700 font-medium">Calidad & Gestión</p>
           </div>
         </a>
       </div>

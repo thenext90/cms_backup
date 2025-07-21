@@ -5,33 +5,42 @@ const services = [
   {
     icon: FileText,
     title: "Diagnóstico Inicial",
-    description: "Evaluación completa de la situación actual de su organización y identificación de brechas respecto a los requisitos normativos."
+    description: "Evaluación completa de la situación actual de su organización y identificación de brechas respecto a los requisitos normativos.",
+    color: "from-blue-500 to-blue-700"
   },
   {
     icon: Settings,
     title: "Diseño del Sistema",
-    description: "Desarrollo e implementación de procesos, procedimientos y documentación necesaria para cumplir con los estándares de calidad."
+    description: "Desarrollo e implementación de procesos, procedimientos y documentación necesaria para cumplir con los estándares de calidad.",
+    color: "from-purple-500 to-purple-700"
   },
   {
     icon: Users,
     title: "Capacitación del Personal",
-    description: "Formación integral del equipo en los nuevos procesos y metodologías, asegurando la comprensión y adopción del sistema."
+    description: "Formación integral del equipo en los nuevos procesos y metodologías, asegurando la comprensión y adopción del sistema.",
+    color: "from-green-500 to-green-700"
   },
   {
     icon: Trophy,
     title: "Certificación",
-    description: "Acompañamiento durante el proceso de auditoría y certificación, garantizando el cumplimiento de todos los requisitos."
+    description: "Acompañamiento durante el proceso de auditoría y certificación, garantizando el cumplimiento de todos los requisitos.",
+    color: "from-orange-500 to-orange-700"
   }
 ];
 ---
 
-<section class="py-20 bg-gray-50">
+<section class="py-24 bg-gradient-to-b from-white to-gray-50">
   <div class="max-w-container mx-auto px-4">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-gray-800 mb-4">
+      <div class="inline-flex items-center space-x-2 bg-accent-100 text-accent-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+        <Settings size="16" />
+        <span>Metodología Probada</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
         Servicio de Implementación de Normas
       </h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+      <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
         Nuestro servicio se basa en una metodología probada de 4 etapas que garantiza 
         la implementación exitosa de sistemas de gestión de calidad en su organización, 
         asegurando el cumplimiento normativo y la mejora continua.
@@ -40,32 +49,39 @@ const services = [
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       {services.map((service, index) => (
-        <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-          <div class="flex items-center justify-center w-16 h-16 bg-red-100 rounded-xl mb-6 mx-auto">
-            <service.icon size="32" class="text-accent-800" />
+        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-accent-200 hover:-translate-y-2 relative overflow-hidden">
+          <!-- Elemento decorativo de fondo -->
+          <div class={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+          
+          <div class={`flex items-center justify-center w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl mb-6 mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+            <service.icon size="32" class="text-white" />
           </div>
           
           <div class="text-center space-y-4">
             <div class="flex items-center justify-center space-x-2 mb-2">
-              <span class="bg-accent-800 text-white text-sm font-bold px-3 py-1 rounded-full">
+              <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-sm font-bold px-4 py-2 rounded-full shadow-md">
                 {index + 1}
               </span>
             </div>
             
-            <h3 class="text-xl font-bold text-gray-800">
+            <h3 class="text-xl font-bold text-gray-800 group-hover:text-accent-800 transition-colors">
               {service.title}
             </h3>
             
-            <p class="text-gray-600 leading-relaxed text-sm">
+            <p class="text-gray-600 leading-relaxed text-sm relative z-10">
               {service.description}
             </p>
+            
+            <div class="pt-4 border-t border-gray-100">
+              <div class={`w-full h-1 bg-gradient-to-r ${service.color} rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-300`}></div>
+            </div>
           </div>
         </div>
       ))}
     </div>
 
     <div class="text-center mt-12">
-      <a href="/servicios" class="inline-flex items-center space-x-2 bg-accent-800 text-white px-8 py-3 rounded-lg hover:bg-accent-900 transition-colors font-semibold">
+      <a href="/servicios" class="inline-flex items-center space-x-2 bg-gradient-to-r from-accent-800 to-accent-900 text-white px-10 py-4 rounded-xl hover:from-accent-900 hover:to-accent-800 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105">
         <span>Ver Todos los Servicios</span>
       </a>
     </div>

@@ -56,11 +56,31 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 
       <div class="relative">
         <div class="relative z-10">
-          <img 
-            src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800" 
-            alt="Equipo profesional de consultores"
-            class="rounded-2xl shadow-2xl w-full h-auto"
-          />
+          <!-- Slider Container -->
+          <div class="slider-container">
+            <div class="slider" id="hero-slider">
+              <div class="slide active">
+                <img src="/slider1.jpg" alt="Servicios de Consultoría CMS" class="rounded-2xl shadow-2xl w-full h-auto" />
+              </div>
+              <div class="slide">
+                <img src="/slider2.jpg" alt="Capacitación Profesional" class="rounded-2xl shadow-2xl w-full h-auto" />
+              </div>
+              <div class="slide">
+                <img src="/slider3.jpg" alt="Certificaciones ISO" class="rounded-2xl shadow-2xl w-full h-auto" />
+              </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <button class="nav-btn prev-btn" onclick="changeHeroSlide(-1)">&#10094;</button>
+            <button class="nav-btn next-btn" onclick="changeHeroSlide(1)">&#10095;</button>
+            
+            <!-- Dots indicator -->
+            <div class="dots-container">
+              <span class="dot active" onclick="currentHeroSlide(1)"></span>
+              <span class="dot" onclick="currentHeroSlide(2)"></span>
+              <span class="dot" onclick="currentHeroSlide(3)"></span>
+            </div>
+          </div>
         </div>
         
         <!-- Elementos decorativos -->
@@ -70,3 +90,138 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
     </div>
   </div>
 </section>
+
+<script>
+  let heroSlideIndex = 1;
+
+  function changeHeroSlide(n) {
+    showHeroSlide(heroSlideIndex += n);
+  }
+
+  function currentHeroSlide(n) {
+    showHeroSlide(heroSlideIndex = n);
+  }
+
+  function showHeroSlide(n) {
+    const slides = document.querySelectorAll('#hero-slider .slide');
+    const dots = document.querySelectorAll('#hero-slider ~ .dots-container .dot');
+    
+    if (n > slides.length) { heroSlideIndex = 1; }
+    if (n < 1) { heroSlideIndex = slides.length; }
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    if (slides[heroSlideIndex - 1]) {
+      slides[heroSlideIndex - 1].classList.add('active');
+    }
+    if (dots[heroSlideIndex - 1]) {
+      dots[heroSlideIndex - 1].classList.add('active');
+    }
+  }
+
+  // Auto-slide every 5 seconds
+  setInterval(() => {
+    changeHeroSlide(1);
+  }, 5000);
+
+  // Initialize slider
+  document.addEventListener('DOMContentLoaded', function() {
+    showHeroSlide(heroSlideIndex);
+  });
+</script>
+
+<style>
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  z-index: 20;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+  left: 10px;
+  border-radius: 0 3px 3px 0;
+}
+
+.next-btn {
+  right: 10px;
+  border-radius: 3px 0 0 3px;
+}
+
+.dots-container {
+  text-align: center;
+  margin-top: 15px;
+  position: relative;
+  z-index: 20;
+}
+
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Fade animation */
+.slide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+</style>

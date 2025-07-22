@@ -10,37 +10,38 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
     <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-400/5 rounded-full blur-lg"></div>
   </div>
   
-  <div class="max-w-container mx-auto px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Layout balanceado: contenido compacto, slider prominente -->
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
-      <div class="lg:w-96 lg:flex-shrink-0 space-y-3 sm:space-y-4 relative z-10 w-full">
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-16 items-center lg:items-start">
+      <div class="lg:w-[420px] xl:w-[480px] lg:flex-shrink-0 space-y-3 sm:space-y-4 lg:space-y-6 relative z-10 w-full lg:pt-8">
         <div class="space-y-2 text-center lg:text-left">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
             <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-center lg:text-left">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-center lg:text-left">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Tu Socio Estratégico</span>
-            <span class="block text-base sm:text-lg md:text-xl font-normal text-orange-100">
+            <span class="block text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-normal text-orange-100">
               en Calidad y Gestión
             </span>
           </h1>
           
-          <p class="text-sm sm:text-base md:text-lg text-orange-100 leading-relaxed max-w-sm text-center lg:text-left">
+          <p class="text-sm sm:text-base md:text-lg lg:text-xl text-orange-100 leading-relaxed max-w-md lg:max-w-lg text-center lg:text-left">
             Especialistas en sistemas de gestión de calidad, certificaciones ISO 
-            y capacitación empresarial. Más de 25 años transformando organizaciones.
+            y capacitación empresarial. Más de 25 años transformando organizaciones 
+            hacia la excelencia operacional.
           </p>
         </div>
 
-                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
-          <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
+                <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start pt-2">
+          <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm lg:text-base">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
           </a>
           
-          <a href="/contacto" class="flex items-center justify-center space-x-2 border-2 border-white text-white px-4 sm:px-6 py-3 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm">
+          <a href="/contacto" class="flex items-center justify-center space-x-2 border-2 border-white text-white px-4 sm:px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm lg:text-base">
             <span>Contactar Ahora</span>
           </a>
         </div>
@@ -225,6 +226,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   width: 100%;
   height: auto;
   overflow: hidden;
+  border-radius: 16px;
 }
 
 .slide {
@@ -248,53 +250,56 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  padding: 12px 16px;
+  padding: 14px 18px;
   cursor: pointer;
-  font-size: 16px;
-  border-radius: 0 3px 3px 0;
+  font-size: 18px;
+  border-radius: 6px;
   user-select: none;
   z-index: 20;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
 .nav-btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .prev-btn {
-  left: 10px;
-  border-radius: 0 3px 3px 0;
+  left: 15px;
 }
 
 .next-btn {
-  right: 10px;
-  border-radius: 3px 0 0 3px;
+  right: 15px;
 }
 
 .dots-container {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
   position: relative;
   z-index: 20;
 }
 
 .dot {
   cursor: pointer;
-  height: 12px;
-  width: 12px;
-  margin: 0 4px;
+  height: 14px;
+  width: 14px;
+  margin: 0 6px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   display: inline-block;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .dot.active,
 .dot:hover {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
+  transform: scale(1.2);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 /* Fade animation */
@@ -333,25 +338,27 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 
 .slide-content {
   text-align: center;
-  padding: 2rem;
-  max-width: 90%;
+  padding: 2.5rem 2rem;
+  max-width: 85%;
 }
 
 .slide-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   line-height: 1.2;
 }
 
 .slide-description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  line-height: 1.4;
+  line-height: 1.5;
   font-weight: 400;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 /* Responsive text sizing - Layout más simétrico */
@@ -359,25 +366,50 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   .slider-container {
     max-width: none;
     width: 100%;
-    min-width: 500px; /* Ancho mínimo para el slider */
+    min-width: 600px; /* Ancho mínimo mayor para aprovechar espacio */
   }
   
   .slide img {
-    height: 450px; /* Más alto para mejor proporción */
+    height: 500px; /* Altura mayor para better aprovechamiento */
     object-fit: cover;
     width: 100%;
   }
   
   .slide-title {
-    font-size: 2rem; /* Texto más grande */
+    font-size: 2.5rem; /* Texto más prominente */
   }
   
   .slide-description {
-    font-size: 1.2rem; /* Descripción más legible */
+    font-size: 1.3rem; /* Descripción más visible */
   }
   
   .slide-content {
-    padding: 3rem; /* Más espacioso */
+    padding: 4rem 3rem; /* Más espacioso */
+    max-width: 80%;
+  }
+}
+
+/* Optimización para pantallas extra grandes */
+@media (min-width: 1280px) {
+  .slider-container {
+    min-width: 700px;
+  }
+  
+  .slide img {
+    height: 550px;
+  }
+  
+  .slide-title {
+    font-size: 3rem;
+  }
+  
+  .slide-description {
+    font-size: 1.4rem;
+    max-width: 600px;
+  }
+  
+  .slide-content {
+    padding: 5rem 4rem;
   }
 }
 

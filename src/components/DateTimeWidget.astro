@@ -2,17 +2,15 @@
 // Widget de fecha y hora horizontal para Chile
 ---
 
-<div class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 border border-white/20">
-  <div class="flex items-center space-x-2">
-    <span class="text-orange-200 text-xs">🕐</span>
-    <div class="flex flex-col">
-      <div id="current-time" class="text-xs font-bold text-white leading-tight"></div>
-      <div class="text-[10px] text-orange-200">Chile</div>
-    </div>
+<div class="flex items-center space-x-4 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-1.5 border border-white/20">
+  <div class="flex flex-col">
+    <div id="current-time" class="text-sm font-bold text-white leading-tight"></div>
+    <div class="text-[10px] text-orange-200">Chile</div>
   </div>
-  <div class="hidden md:flex items-center space-x-2">
-    <span class="text-orange-200 text-xs">📅</span>
-    <div id="current-date" class="text-xs text-white font-medium"></div>
+  <div class="hidden md:block w-px h-6 bg-white/30"></div>
+  <div class="hidden md:flex flex-col">
+    <div id="current-date" class="text-sm text-white font-medium leading-tight"></div>
+    <div id="current-day" class="text-[10px] text-orange-200"></div>
   </div>
 </div>
 
@@ -34,21 +32,28 @@
     
     const dateOptions = {
       ...options,
-      weekday: 'short',
       day: 'numeric',
-      month: 'short'
+      month: 'long',
+      year: 'numeric'
+    };
+    
+    const dayOptions = {
+      ...options,
+      weekday: 'long'
     };
     
     const timeElement = document.getElementById('current-time');
     const dateElement = document.getElementById('current-date');
+    const dayElement = document.getElementById('current-day');
     
-    if (timeElement && dateElement) {
+    if (timeElement && dateElement && dayElement) {
       timeElement.textContent = now.toLocaleTimeString('es-CL', timeOptions);
       dateElement.textContent = now.toLocaleDateString('es-CL', dateOptions);
+      dayElement.textContent = now.toLocaleDateString('es-CL', dayOptions);
     }
   }
   
-  // Actualizar inmediatamente y luego cada minuto (menos frecuente)
+  // Actualizar inmediatamente y luego cada minuto
   updateDateTime();
   setInterval(updateDateTime, 60000);
 </script>

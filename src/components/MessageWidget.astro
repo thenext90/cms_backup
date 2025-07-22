@@ -9,8 +9,8 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
   </button>
   
-  <!-- Panel expandido -->
-  <div id="message-panel" class="hidden absolute right-0 top-full mt-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+  <!-- Panel expandido - ahora se abre hacia arriba -->
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-80 max-w-[90vw] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden max-h-[80vh] overflow-y-auto">
     <!-- Header -->
     <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-4 relative">
       <h3 class="font-bold text-lg flex items-center space-x-2">

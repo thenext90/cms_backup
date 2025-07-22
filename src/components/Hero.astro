@@ -364,12 +364,13 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 @media (min-width: 1024px) {
   .slider-container {
     max-width: none;
-    width: 100%;
-    min-width: 550px;
+    width: calc(100% + 240px); /* Aumentar 120px por cada lado = 240px total */
+    min-width: 670px; /* 550px + 120px */
+    margin-left: -120px; /* Centrar el contenido expandido */
   }
   
   .slide img {
-    height: 300px; /* Altura muy reducida para subir contenido */
+    height: 420px; /* 300px + 120px de altura adicional */
     object-fit: cover;
     width: 100%;
   }
@@ -391,11 +392,13 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 /* Optimización para pantallas extra grandes */
 @media (min-width: 1280px) {
   .slider-container {
-    min-width: 600px;
+    min-width: 720px; /* 600px + 120px */
+    width: calc(100% + 240px); /* Mantener el aumento de 120px por lado */
+    margin-left: -120px;
   }
   
   .slide img {
-    height: 320px; /* Altura reducida para XL */
+    height: 440px; /* 320px + 120px de altura adicional */
   }
   
   .slide-title {
@@ -415,11 +418,13 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 /* Mejoras para tablet */
 @media (max-width: 1023px) and (min-width: 769px) {
   .slider-container {
-    max-width: 450px;
+    max-width: 570px; /* 450px + 120px */
+    width: calc(100% + 120px); /* Aumento proporcional para tablets */
+    margin-left: -60px; /* Centrar el contenido expandido */
   }
   
   .slide img {
-    height: 300px;
+    height: 360px; /* 300px + 60px para tablets */
     object-fit: cover;
   }
   

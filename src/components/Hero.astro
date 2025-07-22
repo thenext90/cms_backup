@@ -11,9 +11,9 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   </div>
   
   <div class="max-w-container mx-auto px-4 sm:px-6">
-    <!-- Layout responsive: columna en móvil, fila en desktop -->
+    <!-- Layout responsive: slider toma todo el espacio restante en desktop -->
     <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
-      <div class="lg:flex-1 lg:max-w-lg space-y-4 sm:space-y-6 relative z-10 w-full">
+      <div class="lg:w-auto lg:max-w-md space-y-4 sm:space-y-6 relative z-10 w-full">
         <div class="space-y-3 text-center lg:text-left">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
@@ -61,8 +61,8 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
       </div>
 
-      <!-- Slider responsive: más ancho en desktop -->
-      <div class="w-full max-w-sm sm:max-w-md lg:w-[800px] lg:flex-shrink-0 relative z-10">
+      <!-- Slider que toma todo el espacio restante en desktop -->
+      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:w-auto relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -357,24 +357,26 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 /* Responsive text sizing */
 @media (min-width: 1024px) {
   .slider-container {
-    max-width: 800px;
+    max-width: none; /* Sin restricción de ancho máximo */
+    width: 100%; /* Toma todo el ancho disponible */
   }
   
   .slide img {
-    height: 500px;
+    height: 400px;
     object-fit: cover;
+    width: 100%;
   }
   
   .slide-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .slide-description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .slide-content {
-    padding: 3rem;
+    padding: 2.5rem;
   }
 }
 

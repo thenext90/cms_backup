@@ -1,5 +1,5 @@
 ---
-import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
+import { MessageCircle, X } from 'lucide-astro';
 ---
 
 <!-- Widget flotante "Dejar un Mensaje" -->
@@ -9,8 +9,8 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
   </button>
   
-  <!-- Panel expandido - más ancho en desktop -->
-  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-96 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden max-h-[60vh] overflow-y-auto">
+  <!-- Panel expandido - más ancho y compacto -->
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-96 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden max-h-[50vh] overflow-y-auto">
     <!-- Header más compacto -->
     <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-3 relative">
       <h3 class="font-bold text-base flex items-center space-x-2">
@@ -44,21 +44,6 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
           Enviar Mensaje
         </button>
       </form>
-      
-      <!-- Quick contact options más compactos -->
-      <div class="mt-4 pt-3 border-t border-gray-200">
-        <p class="text-xs text-gray-600 mb-2">También puedes contactarnos:</p>
-        <div class="space-y-1">
-          <a href="tel:+56123456789" class="flex items-center space-x-2 text-xs text-gray-700 hover:text-accent-800 transition-colors">
-            <Phone size="12" />
-            <span>+56 (2) 1234 5678</span>
-          </a>
-          <a href="mailto:info@cmsconsultores.cl" class="flex items-center space-x-2 text-xs text-gray-700 hover:text-accent-800 transition-colors">
-            <Mail size="12" />
-            <span>info@cmsconsultores.cl</span>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -97,13 +82,13 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
         // Verificar el espacio disponible y ajustar posición si es necesario
         const rect = messageButton.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        const panelHeight = 300; // Altura aproximada del panel reducido
+        const panelHeight = 220; // Altura aproximada del panel más compacto
         
         // Si no hay suficiente espacio arriba, mantener el panel hacia arriba pero ajustar
         if (rect.top < panelHeight) {
-          messagePanel.style.maxHeight = Math.min(rect.top - 20, 250) + 'px';
+          messagePanel.style.maxHeight = Math.min(rect.top - 20, 200) + 'px';
         } else {
-          messagePanel.style.maxHeight = '300px';
+          messagePanel.style.maxHeight = '220px';
         }
         
         messagePanel.classList.remove('hidden');

@@ -2,7 +2,7 @@
 import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 ---
 
-<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-12 overflow-hidden">
+<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-8 sm:py-12 overflow-hidden">
   <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0">
     <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
@@ -10,59 +10,59 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
     <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-400/5 rounded-full blur-lg"></div>
   </div>
   
-  <div class="max-w-container mx-auto px-4">
-    <!-- Layout balanceado: contenido compacto a la izquierda, slider prominente a la derecha -->
-    <div class="flex flex-col lg:flex-row gap-8 items-center">
-      <div class="lg:flex-1 lg:max-w-lg space-y-6 relative z-10">
-        <div class="space-y-3">
-          <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-4 py-2">
-            <Star size="20" class="fill-current text-yellow-300" />
-            <span class="text-sm font-bold tracking-wide text-white">Excelencia desde 1995 • Más de 25 años transformando empresas</span>
+  <div class="max-w-container mx-auto px-4 sm:px-6">
+    <!-- Layout responsive: columna en móvil, fila en desktop -->
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
+      <div class="lg:flex-1 lg:max-w-lg space-y-4 sm:space-y-6 relative z-10 w-full">
+        <div class="space-y-3 text-center lg:text-left">
+          <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
+            <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
+            <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-center lg:text-left">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Tu Socio Estratégico</span>
-            <span class="block text-xl md:text-2xl lg:text-3xl font-normal text-orange-100">
+            <span class="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-orange-100">
               en Calidad y Gestión
             </span>
           </h1>
           
-          <p class="text-base md:text-lg text-orange-100 leading-relaxed max-w-xl">
+          <p class="text-sm sm:text-base md:text-lg text-orange-100 leading-relaxed max-w-xl text-center lg:text-left">
             Especialistas en sistemas de gestión de calidad, certificaciones ISO 
             y capacitación empresarial. Más de 25 años transformando organizaciones.
           </p>
         </div>
 
-        <div class="flex flex-wrap gap-3">
-          <a href="/servicios" class="flex items-center space-x-2 bg-white text-accent-800 px-6 py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
+        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+          <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
           </a>
           
-          <a href="/contacto" class="flex items-center space-x-2 border-2 border-white text-white px-6 py-3 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm">
+          <a href="/contacto" class="flex items-center justify-center space-x-2 border-2 border-white text-white px-4 sm:px-6 py-3 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm">
             <span>Contactar Ahora</span>
           </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-white/20">
-          <div class="flex items-center space-x-2">
-            <CheckCircle size="18" class="text-green-300 flex-shrink-0" />
-            <span class="text-xs font-medium">Certificaciones ISO</span>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-white/20">
+          <div class="flex items-center justify-center lg:justify-start space-x-2">
+            <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
+            <span class="text-xs sm:text-xs font-medium">Certificaciones ISO</span>
           </div>
-          <div class="flex items-center space-x-2">
-            <CheckCircle size="18" class="text-green-300 flex-shrink-0" />
-            <span class="text-xs font-medium">Capacitación Especializada</span>
+          <div class="flex items-center justify-center lg:justify-start space-x-2">
+            <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
+            <span class="text-xs sm:text-xs font-medium">Capacitación</span>
           </div>
-          <div class="flex items-center space-x-2">
-            <CheckCircle size="18" class="text-green-300 flex-shrink-0" />
-            <span class="text-xs font-medium">Consultoría Integral</span>
+          <div class="flex items-center justify-center lg:justify-start space-x-2">
+            <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
+            <span class="text-xs sm:text-xs font-medium">Consultoría Integral</span>
           </div>
         </div>
       </div>
 
-      <!-- Slider mucho más grande y prominente para desktop -->
-      <div class="lg:w-[600px] lg:flex-shrink-0 w-full relative z-10">
+      <!-- Slider responsive: más pequeño en móvil, grande en desktop -->
+      <div class="w-full max-w-sm sm:max-w-md lg:w-[600px] lg:flex-shrink-0 relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -378,9 +378,43 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   }
 }
 
-@media (max-width: 768px) {
+/* Mejoras para tablet */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .slider-container {
+    max-width: 450px;
+  }
+  
+  .slide img {
+    height: 300px;
+    object-fit: cover;
+  }
+  
   .slide-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+  
+  .slide-description {
+    font-size: 1rem;
+  }
+  
+  .slide-content {
+    padding: 2rem;
+  }
+}
+
+/* Mejoras para móvil */
+@media (max-width: 768px) {
+  .slider-container {
+    max-width: 100%;
+  }
+  
+  .slide img {
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .slide-title {
+    font-size: 1.3rem;
   }
   
   .slide-description {
@@ -390,11 +424,30 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   .slide-content {
     padding: 1.5rem;
   }
+  
+  /* Botones de navegación más pequeños en móvil */
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  /* Dots más pequeños en móvil */
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 3px;
+  }
 }
 
+/* Mejoras para móviles pequeños */
 @media (max-width: 480px) {
+  .slide img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
   .slide-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .slide-description {
@@ -403,6 +456,17 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   
   .slide-content {
     padding: 1rem;
+  }
+  
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .dot {
+    height: 8px;
+    width: 8px;
+    margin: 0 2px;
   }
 }
 </style>

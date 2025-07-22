@@ -3,44 +3,44 @@ import { MessageCircle, X } from 'lucide-astro';
 ---
 
 <!-- Widget flotante "Dejar un Mensaje" -->
-<div id="message-widget" class="fixed right-4 bottom-4 z-50">
+<div id="message-widget" class="fixed right-3 bottom-3 sm:right-4 sm:bottom-4 z-50">
   <!-- Botón flotante -->
-  <button id="message-button" type="button" class="bg-accent-800 hover:bg-accent-900 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-accent-600">
-    <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
+  <button id="message-button" type="button" class="bg-accent-800 hover:bg-accent-900 text-white p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-accent-600">
+    <MessageCircle size="20" class="sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
   </button>
   
-  <!-- Panel expandido - más estrecho y alto, sin scroll -->
-  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-80 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
+  <!-- Panel expandido - responsive width -->
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-3 sm:mb-4 w-72 sm:w-80 max-w-[90vw] sm:max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
     <!-- Header más compacto -->
-    <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-3 relative">
-      <h3 class="font-bold text-base flex items-center space-x-2">
-        <MessageCircle size="18" />
+    <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-2.5 sm:p-3 relative">
+      <h3 class="font-bold text-sm sm:text-base flex items-center space-x-2">
+        <MessageCircle size="16" class="sm:w-[18px] sm:h-[18px]" />
         <span>Déjanos un Mensaje</span>
       </h3>
-      <button id="close-panel" type="button" class="absolute top-3 right-3 text-white hover:text-orange-200 transition-colors focus:outline-none">
-        <X size="16" />
+      <button id="close-panel" type="button" class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 text-white hover:text-orange-200 transition-colors focus:outline-none">
+        <X size="14" class="sm:w-4 sm:h-4" />
       </button>
     </div>
     
-    <!-- Content más espacioso -->
-    <div class="p-5">
-      <form id="message-form" class="space-y-4">
+    <!-- Content más compacto en móvil -->
+    <div class="p-4 sm:p-5">
+      <form id="message-form" class="space-y-3 sm:space-y-4">
         <div>
-          <label for="msg-name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
-          <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-name" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Nombre</label>
+          <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-xs sm:text-sm">
         </div>
         
         <div>
-          <label for="msg-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-          <input type="email" id="msg-email" name="email" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-email" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email</label>
+          <input type="email" id="msg-email" name="email" required class="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-xs sm:text-sm">
         </div>
         
         <div>
-          <label for="msg-message" class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
-          <textarea id="msg-message" name="message" rows="4" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
+          <label for="msg-message" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Mensaje</label>
+          <textarea id="msg-message" name="message" rows="3" class="sm:rows-4" required class="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-xs sm:text-sm"></textarea>
         </div>
         
-        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-3 px-4 rounded-lg transition-colors font-semibold text-sm mt-6">
+        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-2.5 sm:py-3 px-4 rounded-lg transition-colors font-semibold text-xs sm:text-sm mt-4 sm:mt-6">
           Enviar Mensaje
         </button>
       </form>
@@ -209,14 +209,27 @@ import { MessageCircle, X } from 'lucide-astro';
     }
   }
   
-  /* Ajustes responsive mejorados para formulario más estrecho y alto */
+  /* Ajustes responsive mejorados */
   @media (min-width: 1024px) {
     #message-panel {
-      width: 320px !important; /* Más estrecho en desktop */
+      width: 320px !important;
     }
   }
   
   @media (max-width: 768px) {
+    #message-widget {
+      right: 12px !important;
+      bottom: 12px !important;
+    }
+    
+    #message-panel {
+      width: calc(100vw - 24px) !important;
+      max-width: 300px !important;
+      right: -8px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
     #message-widget {
       right: 8px !important;
       bottom: 8px !important;
@@ -225,14 +238,12 @@ import { MessageCircle, X } from 'lucide-astro';
     #message-panel {
       width: calc(100vw - 16px) !important;
       max-width: 280px !important;
-      right: -8px !important;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    #message-panel {
-      width: calc(100vw - 12px) !important;
       right: -4px !important;
+    }
+    
+    /* Botón más pequeño en móviles muy pequeños */
+    #message-button {
+      padding: 12px !important;
     }
   }
   

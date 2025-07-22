@@ -1,13 +1,13 @@
 ---
-import { MessageCircle, X } from 'lucide-astro';
+import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
 ---
 
 <!-- Widget flotante "Dejar un Mensaje" -->
 <div id="message-widget" class="fixed right-4 bottom-20 z-50">
   <!-- Botón flotante -->
-  <div id="message-button" class="bg-accent-800 hover:bg-accent-900 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+  <button id="message-button" type="button" class="bg-accent-800 hover:bg-accent-900 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-accent-600">
     <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
-  </div>
+  </button>
   
   <!-- Panel expandido -->
   <div id="message-panel" class="hidden absolute right-0 top-full mt-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
@@ -18,7 +18,7 @@ import { MessageCircle, X } from 'lucide-astro';
         <span>Déjanos un Mensaje</span>
       </h3>
       <p class="text-sm text-orange-100 mt-1">Estamos aquí para ayudarte</p>
-      <button id="close-panel" class="absolute top-4 right-4 text-white hover:text-orange-200 transition-colors">
+      <button id="close-panel" type="button" class="absolute top-4 right-4 text-white hover:text-orange-200 transition-colors focus:outline-none">
         <X size="18" />
       </button>
     </div>
@@ -27,18 +27,18 @@ import { MessageCircle, X } from 'lucide-astro';
     <div class="p-6">
       <form id="message-form" class="space-y-4">
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-          <input type="text" id="name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+          <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
         </div>
         
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="msg-email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
         </div>
         
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
-          <textarea id="message" name="message" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
+          <label for="msg-message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+          <textarea id="msg-message" name="message" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
         </div>
         
         <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-2 px-4 rounded-lg transition-colors font-semibold text-sm">
@@ -51,11 +51,11 @@ import { MessageCircle, X } from 'lucide-astro';
         <p class="text-xs text-gray-600 mb-3">También puedes contactarnos:</p>
         <div class="space-y-2">
           <a href="tel:+56123456789" class="flex items-center space-x-2 text-sm text-gray-700 hover:text-accent-800 transition-colors">
-            <span>📞</span>
+            <Phone size="16" />
             <span>+56 (2) 1234 5678</span>
           </a>
           <a href="mailto:info@cmsconsultores.cl" class="flex items-center space-x-2 text-sm text-gray-700 hover:text-accent-800 transition-colors">
-            <span>📧</span>
+            <Mail size="16" />
             <span>info@cmsconsultores.cl</span>
           </a>
         </div>
@@ -65,110 +65,171 @@ import { MessageCircle, X } from 'lucide-astro';
 </div>
 
 <script>
-  function initMessageWidget() {
+(function() {
+  'use strict';
+  
+  // Esperar a que el DOM esté completamente cargado
+  function initWidget() {
     const messageButton = document.getElementById('message-button');
     const messagePanel = document.getElementById('message-panel');
     const closePanel = document.getElementById('close-panel');
     const messageForm = document.getElementById('message-form');
 
-    if (!messageButton || !messagePanel) return;
-
-    // Toggle panel
-    messageButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('Button clicked'); // Debug
-      messagePanel.classList.toggle('hidden');
+    console.log('Inicializando widget...', {
+      messageButton: !!messageButton,
+      messagePanel: !!messagePanel,
+      closePanel: !!closePanel,
+      messageForm: !!messageForm
     });
 
-    // Close panel
-    if (closePanel) {
-      closePanel.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
+    if (!messageButton || !messagePanel) {
+      console.error('Elementos del widget no encontrados');
+      return;
+    }
+
+    // Función para mostrar/ocultar el panel
+    function togglePanel() {
+      console.log('Toggle panel clicked');
+      const isHidden = messagePanel.classList.contains('hidden');
+      
+      if (isHidden) {
+        messagePanel.classList.remove('hidden');
+        console.log('Panel mostrado');
+      } else {
         messagePanel.classList.add('hidden');
+        console.log('Panel oculto');
+      }
+    }
+
+    // Función para ocultar el panel
+    function hidePanel() {
+      console.log('Ocultando panel');
+      messagePanel.classList.add('hidden');
+    }
+
+    // Event listeners
+    messageButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('Botón clickeado');
+      togglePanel();
+    });
+
+    if (closePanel) {
+      closePanel.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('Botón cerrar clickeado');
+        hidePanel();
       });
     }
 
-    // Close panel when clicking outside
+    // Cerrar al hacer click fuera
     document.addEventListener('click', function(event) {
       const widget = document.getElementById('message-widget');
-      if (widget && !widget.contains(event.target as Node)) {
-        messagePanel.classList.add('hidden');
+      if (widget && !widget.contains(event.target)) {
+        hidePanel();
       }
     });
 
-    // Handle form submission
+    // Manejar envío del formulario
     if (messageForm) {
-      messageForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+      messageForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Formulario enviado');
         
-        // Get form data
-        const formData = new FormData(messageForm as HTMLFormElement);
+        const formData = new FormData(messageForm);
         const name = formData.get('name');
         const email = formData.get('email');
         const message = formData.get('message');
         
-        // Here you would typically send the data to your backend
+        console.log('Datos del formulario:', { name, email, message });
+        
         alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
         
-        // Reset form and close panel
-        (messageForm as HTMLFormElement).reset();
-        messagePanel.classList.add('hidden');
+        messageForm.reset();
+        hidePanel();
       });
     }
   }
 
-  // Initialize when DOM is ready
+  // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMessageWidget);
+    document.addEventListener('DOMContentLoaded', initWidget);
   } else {
-    initMessageWidget();
+    initWidget();
   }
+})();
 </script>
 
 <style>
-  /* Ensure the widget stays above other elements */
+  /* Asegurar que el widget esté por encima de otros elementos */
   #message-widget {
-    z-index: 9999;
+    z-index: 9999 !important;
   }
   
-  /* Smooth animations */
+  /* Botón flotante */
+  #message-button {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  #message-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Panel del formulario */
   #message-panel {
-    animation: slideInDown 0.3s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transform-origin: bottom right;
   }
   
   #message-panel.hidden {
     display: none !important;
+    opacity: 0;
   }
   
-  @keyframes slideInDown {
+  #message-panel:not(.hidden) {
+    display: block !important;
+    opacity: 1;
+    animation: slideInUp 0.3s ease-out;
+  }
+  
+  /* Animaciones */
+  @keyframes slideInUp {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY(10px) scale(0.95);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
   
-  /* Hover effects for the floating button */
-  #message-button:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Responsive adjustments */
+  /* Ajustes responsive */
   @media (max-width: 768px) {
     #message-widget {
-      right: 16px;
-      bottom: 16px;
+      right: 16px !important;
+      bottom: 16px !important;
     }
     
     #message-panel {
-      width: calc(100vw - 32px);
-      max-width: 320px;
-      right: -16px;
+      width: calc(100vw - 32px) !important;
+      max-width: 320px !important;
+      right: -16px !important;
     }
+  }
+  
+  /* Asegurar que los elementos sean clickeables */
+  #message-button {
+    pointer-events: all;
+    user-select: none;
+  }
+  
+  /* Estilos para el formulario */
+  #message-form input:focus,
+  #message-form textarea:focus {
+    ring-offset-width: 2px;
   }
 </style>

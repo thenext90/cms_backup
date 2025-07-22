@@ -10,7 +10,7 @@
   <div class="hidden md:block w-px h-6 bg-white/30"></div>
   <div class="hidden md:flex flex-col">
     <div id="current-date" class="text-sm text-white font-medium leading-tight"></div>
-    <div id="current-day" class="text-[10px] text-orange-200"></div>
+    <div id="current-day" class="text-xs text-orange-200 font-medium"></div>
   </div>
 </div>
 
@@ -19,26 +19,22 @@
     const now = new Date();
     
     // Configurar para zona horaria de Chile
-    const options = {
-      timeZone: 'America/Santiago',
-      hour12: false
-    };
-    
     const timeOptions = {
-      ...options,
+      timeZone: 'America/Santiago',
+      hour12: false,
       hour: '2-digit',
       minute: '2-digit'
     };
     
     const dateOptions = {
-      ...options,
+      timeZone: 'America/Santiago',
       day: 'numeric',
       month: 'long',
       year: 'numeric'
     };
     
     const dayOptions = {
-      ...options,
+      timeZone: 'America/Santiago',
       weekday: 'long'
     };
     
@@ -47,9 +43,12 @@
     const dayElement = document.getElementById('current-day');
     
     if (timeElement && dateElement && dayElement) {
-      timeElement.textContent = now.toLocaleTimeString('es-CL', timeOptions);
-      dateElement.textContent = now.toLocaleDateString('es-CL', dateOptions);
-      dayElement.textContent = now.toLocaleDateString('es-CL', dayOptions);
+      timeElement.textContent = now.toLocaleTimeString('es-CL', timeOptions as any);
+      dateElement.textContent = now.toLocaleDateString('es-CL', dateOptions as any);
+      
+      // Obtener el día y capitalizar la primera letra
+      const dayText = now.toLocaleDateString('es-CL', dayOptions as any);
+      dayElement.textContent = dayText.charAt(0).toUpperCase() + dayText.slice(1);
     }
   }
   

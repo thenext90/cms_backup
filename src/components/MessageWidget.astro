@@ -9,8 +9,8 @@ import { MessageCircle, X } from 'lucide-astro';
     <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
   </button>
   
-  <!-- Panel expandido - más ancho y compacto -->
-  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-96 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden max-h-[50vh] overflow-y-auto">
+  <!-- Panel expandido - más estrecho y alto, sin scroll -->
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-80 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
     <!-- Header más compacto -->
     <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-3 relative">
       <h3 class="font-bold text-base flex items-center space-x-2">
@@ -22,25 +22,25 @@ import { MessageCircle, X } from 'lucide-astro';
       </button>
     </div>
     
-    <!-- Content más compacto -->
-    <div class="p-4">
-      <form id="message-form" class="space-y-3">
+    <!-- Content más espacioso -->
+    <div class="p-5">
+      <form id="message-form" class="space-y-4">
         <div>
-          <label for="msg-name" class="block text-xs font-medium text-gray-700 mb-1">Nombre</label>
-          <input type="text" id="msg-name" name="name" required class="w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+          <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
         </div>
         
         <div>
-          <label for="msg-email" class="block text-xs font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" id="msg-email" name="email" required class="w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+          <input type="email" id="msg-email" name="email" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
         </div>
         
         <div>
-          <label for="msg-message" class="block text-xs font-medium text-gray-700 mb-1">Mensaje</label>
-          <textarea id="msg-message" name="message" rows="2" required class="w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
+          <label for="msg-message" class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+          <textarea id="msg-message" name="message" rows="4" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
         </div>
         
-        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-2 px-4 rounded-md transition-colors font-semibold text-sm">
+        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-3 px-4 rounded-lg transition-colors font-semibold text-sm mt-6">
           Enviar Mensaje
         </button>
       </form>
@@ -79,17 +79,9 @@ import { MessageCircle, X } from 'lucide-astro';
       const isHidden = messagePanel.classList.contains('hidden');
       
       if (isHidden) {
-        // Verificar el espacio disponible y ajustar posición si es necesario
+        // Verificar el espacio disponible - formulario más alto sin scroll
         const rect = messageButton.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        const panelHeight = 220; // Altura aproximada del panel más compacto
-        
-        // Si no hay suficiente espacio arriba, mantener el panel hacia arriba pero ajustar
-        if (rect.top < panelHeight) {
-          messagePanel.style.maxHeight = Math.min(rect.top - 20, 200) + 'px';
-        } else {
-          messagePanel.style.maxHeight = '220px';
-        }
         
         messagePanel.classList.remove('hidden');
         console.log('Panel mostrado');
@@ -217,10 +209,10 @@ import { MessageCircle, X } from 'lucide-astro';
     }
   }
   
-  /* Ajustes responsive mejorados para formulario con mejor ancho */
+  /* Ajustes responsive mejorados para formulario más estrecho y alto */
   @media (min-width: 1024px) {
     #message-panel {
-      width: 384px !important; /* Aproximadamente 4cm más ancho que el original en desktop */
+      width: 320px !important; /* Más estrecho en desktop */
     }
   }
   
@@ -234,7 +226,6 @@ import { MessageCircle, X } from 'lucide-astro';
       width: calc(100vw - 16px) !important;
       max-width: 280px !important;
       right: -8px !important;
-      max-height: 50vh !important;
     }
   }
   
@@ -242,24 +233,6 @@ import { MessageCircle, X } from 'lucide-astro';
     #message-panel {
       width: calc(100vw - 12px) !important;
       right: -4px !important;
-      max-height: 45vh !important;
-    }
-  }
-  
-  /* Ajuste para pantallas muy pequeñas en altura */
-  @media (max-height: 600px) {
-    #message-widget {
-      bottom: 4px !important;
-    }
-    
-    #message-panel {
-      max-height: 40vh !important;
-    }
-  }
-  
-  @media (max-height: 500px) {
-    #message-panel {
-      max-height: 35vh !important;
     }
   }
   
@@ -273,24 +246,5 @@ import { MessageCircle, X } from 'lucide-astro';
   #message-form input:focus,
   #message-form textarea:focus {
     ring-offset-width: 2px;
-  }
-  
-  /* Asegurar scroll suave en el panel */
-  #message-panel {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
-  }
-  
-  #message-panel::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  #message-panel::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  #message-panel::-webkit-scrollbar-thumb {
-    background-color: rgba(156, 163, 175, 0.5);
-    border-radius: 3px;
   }
 </style>

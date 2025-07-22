@@ -93,8 +93,25 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
       const isHidden = messagePanel.classList.contains('hidden');
       
       if (isHidden) {
+        // Verificar el espacio disponible y ajustar posición si es necesario
+        const rect = messageButton.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const panelHeight = 400; // Altura aproximada del panel
+        
+        // Si no hay suficiente espacio arriba, mantener el panel hacia arriba pero ajustar
+        if (rect.top < panelHeight) {
+          messagePanel.style.maxHeight = Math.min(rect.top - 20, 300) + 'px';
+        } else {
+          messagePanel.style.maxHeight = '400px';
+        }
+        
         messagePanel.classList.remove('hidden');
         console.log('Panel mostrado');
+        
+        // Scroll al top del panel si es necesario
+        setTimeout(() => {
+          messagePanel.scrollTop = 0;
+        }, 50);
       } else {
         messagePanel.classList.add('hidden');
         console.log('Panel oculto');
@@ -104,7 +121,9 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     // Función para ocultar el panel
     function hidePanel() {
       console.log('Ocultando panel');
-      messagePanel.classList.add('hidden');
+      if (messagePanel) {
+        messagePanel.classList.add('hidden');
+      }
     }
 
     // Event listeners
@@ -127,7 +146,8 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     // Cerrar al hacer click fuera
     document.addEventListener('click', function(event) {
       const widget = document.getElementById('message-widget');
-      if (widget && !widget.contains(event.target)) {
+      const target = event.target as Node;
+      if (widget && target && !widget.contains(target)) {
         hidePanel();
       }
     });
@@ -138,7 +158,8 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
         event.preventDefault();
         console.log('Formulario enviado');
         
-        const formData = new FormData(messageForm);
+        const form = messageForm as HTMLFormElement;
+        const formData = new FormData(form);
         const name = formData.get('name');
         const email = formData.get('email');
         const message = formData.get('message');
@@ -147,7 +168,7 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
         
         alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
         
-        messageForm.reset();
+        form.reset();
         hidePanel();
       });
     }
@@ -195,7 +216,7 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     animation: slideInUp 0.3s ease-out;
   }
   
-  /* Animaciones */
+  /* Animaciones - ahora desde abajo hacia arriba */
   @keyframes slideInUp {
     from {
       opacity: 0;
@@ -207,17 +228,37 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     }
   }
   
-  /* Ajustes responsive */
+  /* Ajustes responsive mejorados */
   @media (max-width: 768px) {
     #message-widget {
-      right: 16px !important;
-      bottom: 16px !important;
+      right: 12px !important;
+      bottom: 12px !important;
     }
     
     #message-panel {
-      width: calc(100vw - 32px) !important;
-      max-width: 320px !important;
-      right: -16px !important;
+      width: calc(100vw - 24px) !important;
+      max-width: 350px !important;
+      right: -12px !important;
+      max-height: 70vh !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #message-panel {
+      width: calc(100vw - 16px) !important;
+      right: -8px !important;
+      max-height: 65vh !important;
+    }
+  }
+  
+  /* Ajuste para pantallas muy pequeñas en altura */
+  @media (max-height: 600px) {
+    #message-widget {
+      bottom: 8px !important;
+    }
+    
+    #message-panel {
+      max-height: 50vh !important;
     }
   }
   
@@ -231,5 +272,24 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
   #message-form input:focus,
   #message-form textarea:focus {
     ring-offset-width: 2px;
+  }
+  
+  /* Asegurar scroll suave en el panel */
+  #message-panel {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+  
+  #message-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  #message-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  #message-panel::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
   }
 </style>

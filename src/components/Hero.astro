@@ -11,11 +11,13 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   </div>
   
   <div class="max-w-container mx-auto px-4">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-8 relative z-10">
-          <div class="flex items-center space-x-2 text-orange-200 animate-pulse">
-            <Star size="20" class="fill-current" />
-            <span class="text-sm font-semibold tracking-wide">Más de 25 años de experiencia</span>
+    <!-- Layout para desktop: contenido a la izquierda, slider pequeño a la derecha -->
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+      <div class="flex-1 space-y-8 relative z-10">
+        <div class="space-y-4">
+          <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-4 py-2">
+            <Star size="20" class="fill-current text-yellow-300" />
+            <span class="text-sm font-bold tracking-wide text-white">Excelencia desde 1995 • Más de 25 años transformando empresas</span>
           </div>
           
           <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
@@ -60,7 +62,8 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
       </div>
 
-      <div class="relative z-10">
+      <!-- Slider más pequeño para desktop -->
+      <div class="lg:w-96 lg:flex-shrink-0 w-full relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -302,6 +305,24 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 }
 
 /* Responsive text sizing */
+@media (min-width: 1024px) {
+  .slider-container {
+    max-width: 400px;
+  }
+  
+  .slide-title {
+    font-size: 1.4rem;
+  }
+  
+  .slide-description {
+    font-size: 0.9rem;
+  }
+  
+  .slide-content {
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .slide-title {
     font-size: 1.4rem;

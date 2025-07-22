@@ -97,14 +97,14 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
             </div>
             
             <!-- Navigation buttons -->
-            <button class="nav-btn prev-btn" onclick="changeHeroSlide(-1)">&#10094;</button>
-            <button class="nav-btn next-btn" onclick="changeHeroSlide(1)">&#10095;</button>
+            <button class="nav-btn prev-btn" id="hero-prev-btn">&#10094;</button>
+            <button class="nav-btn next-btn" id="hero-next-btn">&#10095;</button>
             
             <!-- Dots indicator -->
             <div class="dots-container">
-              <span class="dot active" onclick="currentHeroSlide(1)"></span>
-              <span class="dot" onclick="currentHeroSlide(2)"></span>
-              <span class="dot" onclick="currentHeroSlide(3)"></span>
+              <span class="dot active" data-slide="1"></span>
+              <span class="dot" data-slide="2"></span>
+              <span class="dot" data-slide="3"></span>
             </div>
           </div>
         </div>
@@ -118,7 +118,11 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 </section>
 
 <script>
+(function() {
+  'use strict';
+  
   let heroSlideIndex = 1;
+  let autoSlideInterval: number;
 
   function changeHeroSlide(n: number) {
     showHeroSlide(heroSlideIndex += n);
@@ -129,37 +133,84 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   }
 
   function showHeroSlide(n: number) {
-    const slides = document.querySelectorAll('#hero-slider .slide');
-    const dots = document.querySelectorAll('#hero-slider ~ .dots-container .dot');
+    const slides = document.querySelectorAll('#hero-slider .slide') as NodeListOf<HTMLElement>;
+    const dots = document.querySelectorAll('.dots-container .dot') as NodeListOf<HTMLElement>;
     
     if (n > slides.length) { heroSlideIndex = 1; }
     if (n < 1) { heroSlideIndex = slides.length; }
     
+    // Remove active class from all slides and dots
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
     
+    // Add active class to current slide and dot
     if (slides[heroSlideIndex - 1]) {
       slides[heroSlideIndex - 1].classList.add('active');
     }
     if (dots[heroSlideIndex - 1]) {
       dots[heroSlideIndex - 1].classList.add('active');
     }
+    
+    console.log('Showing slide:', heroSlideIndex);
   }
 
-  // Auto-slide every 5 seconds
-  const autoSlideInterval = setInterval(() => {
-    changeHeroSlide(1);
-  }, 5000);
-
-  // Initialize slider
-  document.addEventListener('DOMContentLoaded', function() {
+  function initSlider() {
+    // Navigation buttons
+    const prevBtn = document.getElementById('hero-prev-btn');
+    const nextBtn = document.getElementById('hero-next-btn');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        changeHeroSlide(-1);
+        console.log('Previous button clicked');
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        changeHeroSlide(1);
+        console.log('Next button clicked');
+      });
+    }
+    
+    // Dot indicators
+    const dots = document.querySelectorAll('.dots-container .dot');
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const slideNumber = parseInt((dot as HTMLElement).getAttribute('data-slide') || '1');
+        currentHeroSlide(slideNumber);
+        console.log('Dot clicked:', slideNumber);
+      });
+    });
+    
+    // Initialize first slide
     showHeroSlide(heroSlideIndex);
-  });
+    
+    // Auto-slide every 5 seconds
+    autoSlideInterval = setInterval(() => {
+      changeHeroSlide(1);
+    }, 5000) as unknown as number;
+    
+    console.log('Hero slider initialized');
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlider);
+  } else {
+    initSlider();
+  }
 
   // Clean up interval when page unloads
   window.addEventListener('beforeunload', () => {
-    clearInterval(autoSlideInterval);
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+    }
   });
+})();
 </script>
 
 <style>

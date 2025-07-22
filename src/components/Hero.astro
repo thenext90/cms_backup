@@ -3,49 +3,24 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 ---
 
 <section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-8 sm:py-12 overflow-hidden">
-  <!-- Imagen de fondo para móvil -->
-  <div class="absolute inset-0 lg:hidden">
-    <img 
-      src="https://images.unsplash.com/photo-1594736797933-d0701ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80&crop=face"
-      alt="Profesional mujer oficinista"
-      class="w-full h-full object-cover object-center"
-    />
-  </div>
-
-  <!-- Elementos decorativos de fondo para desktop -->
-  <div class="absolute inset-0 hidden lg:block">
+  <!-- Elementos decorativos de fondo -->
+  <div class="absolute inset-0">
     <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
     <div class="absolute bottom-10 right-10 w-48 h-48 bg-orange-400/10 rounded-full blur-2xl"></div>
     <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-400/5 rounded-full blur-lg"></div>
   </div>
   
-  <!-- Titular móvil -->
-  <div class="absolute top-8 left-0 right-0 z-20 lg:hidden">
-    <div class="text-center px-4">
-      <div class="bg-white/90 backdrop-blur-sm rounded-2xl py-4 px-6 inline-block">
-        <h1 class="text-4xl font-bold text-accent-800 mb-1">
-          Calidad y Gestión
-        </h1>
-        <p class="text-lg text-accent-600 font-medium">
-          Tu socio estratégico empresarial
-        </p>
-      </div>
-    </div>
-  </div>
-  
   <div class="max-w-container mx-auto px-4 sm:px-6">
-    <!-- Layout responsive: columna en móvil con imagen de fondo, fila en desktop -->
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center pt-16 lg:pt-0">
+    <!-- Layout responsive: columna en móvil, fila en desktop -->
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
       <div class="lg:flex-1 lg:max-w-lg space-y-4 sm:space-y-6 relative z-10 w-full">
         <div class="space-y-3 text-center lg:text-left">
-          <!-- Badge oculto en móvil, visible en desktop -->
-          <div class="hidden lg:inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
+          <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
             <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <!-- Título principal oculto en móvil, visible en desktop -->
-          <h1 class="hidden lg:block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-center lg:text-left">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-center lg:text-left">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Tu Socio Estratégico</span>
             <span class="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-orange-100">
@@ -86,8 +61,8 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
       </div>
 
-      <!-- Slider oculto en móvil, visible en desktop -->
-      <div class="hidden lg:block w-full max-w-sm sm:max-w-md lg:w-[600px] lg:flex-shrink-0 relative z-10">
+      <!-- Slider responsive: más pequeño en móvil, grande en desktop -->
+      <div class="w-full max-w-sm sm:max-w-md lg:w-[600px] lg:flex-shrink-0 relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">

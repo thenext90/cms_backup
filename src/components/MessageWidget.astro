@@ -10,7 +10,7 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
   </button>
   
   <!-- Panel expandido - más ancho en desktop -->
-  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-84 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden max-h-[60vh] overflow-y-auto">
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-96 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden max-h-[60vh] overflow-y-auto">
     <!-- Header más compacto -->
     <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-3 relative">
       <h3 class="font-bold text-base flex items-center space-x-2">
@@ -235,7 +235,7 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
   /* Ajustes responsive mejorados para formulario con mejor ancho */
   @media (min-width: 1024px) {
     #message-panel {
-      width: 336px !important; /* Aproximadamente 2cm más ancho en desktop */
+      width: 384px !important; /* Aproximadamente 4cm más ancho que el original en desktop */
     }
   }
   

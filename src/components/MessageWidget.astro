@@ -1,0 +1,150 @@
+---
+import { MessageCircle, X } from 'lucide-astro';
+---
+
+<!-- Widget flotante "Dejar un Mensaje" -->
+<div id="message-widget" class="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+  <!-- Botón flotante -->
+  <div id="message-button" class="bg-accent-800 hover:bg-accent-900 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group">
+    <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
+  </div>
+  
+  <!-- Panel expandido -->
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-4 relative">
+      <h3 class="font-bold text-lg flex items-center space-x-2">
+        <MessageCircle size="20" />
+        <span>Déjanos un Mensaje</span>
+      </h3>
+      <p class="text-sm text-orange-100 mt-1">Estamos aquí para ayudarte</p>
+      <button id="close-panel" class="absolute top-4 right-4 text-white hover:text-orange-200 transition-colors">
+        <X size="18" />
+      </button>
+    </div>
+    
+    <!-- Content -->
+    <div class="p-6">
+      <form id="message-form" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+          <input type="text" id="name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+        </div>
+        
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+        </div>
+        
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+          <textarea id="message" name="message" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
+        </div>
+        
+        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-2 px-4 rounded-lg transition-colors font-semibold text-sm">
+          Enviar Mensaje
+        </button>
+      </form>
+      
+      <!-- Quick contact options -->
+      <div class="mt-6 pt-4 border-t border-gray-200">
+        <p class="text-xs text-gray-600 mb-3">También puedes contactarnos:</p>
+        <div class="space-y-2">
+          <a href="tel:+56123456789" class="flex items-center space-x-2 text-sm text-gray-700 hover:text-accent-800 transition-colors">
+            <span>📞</span>
+            <span>+56 (2) 1234 5678</span>
+          </a>
+          <a href="mailto:info@cmsconsultores.cl" class="flex items-center space-x-2 text-sm text-gray-700 hover:text-accent-800 transition-colors">
+            <span>📧</span>
+            <span>info@cmsconsultores.cl</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const messageButton = document.getElementById('message-button');
+    const messagePanel = document.getElementById('message-panel');
+    const closePanel = document.getElementById('close-panel');
+    const messageForm = document.getElementById('message-form');
+
+    // Toggle panel
+    messageButton?.addEventListener('click', function() {
+      messagePanel?.classList.toggle('hidden');
+    });
+
+    // Close panel
+    closePanel?.addEventListener('click', function() {
+      messagePanel?.classList.add('hidden');
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener('click', function(event) {
+      const widget = document.getElementById('message-widget');
+      if (widget && !widget.contains(event.target as Node)) {
+        messagePanel?.classList.add('hidden');
+      }
+    });
+
+    // Handle form submission
+    messageForm?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(messageForm as HTMLFormElement);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Here you would typically send the data to your backend
+      alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+      
+      // Reset form and close panel
+      (messageForm as HTMLFormElement).reset();
+      messagePanel?.classList.add('hidden');
+    });
+  });
+</script>
+
+<style>
+  /* Ensure the widget stays above other elements */
+  #message-widget {
+    z-index: 9999;
+  }
+  
+  /* Smooth animations */
+  #message-panel {
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Hover effects for the floating button */
+  #message-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #message-widget {
+      right: 16px;
+    }
+    
+    #message-panel {
+      width: calc(100vw - 32px);
+      max-width: 320px;
+    }
+  }
+</style>

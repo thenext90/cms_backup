@@ -11,30 +11,30 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   </div>
   
   <div class="max-w-container mx-auto px-4 sm:px-6">
-    <!-- Layout responsive: slider toma todo el espacio restante en desktop -->
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
-      <div class="lg:w-auto lg:max-w-md space-y-4 sm:space-y-6 relative z-10 w-full">
-        <div class="space-y-3 text-center lg:text-left">
+    <!-- Layout balanceado: contenido compacto, slider prominente -->
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
+      <div class="lg:w-96 lg:flex-shrink-0 space-y-3 sm:space-y-4 relative z-10 w-full">
+        <div class="space-y-2 text-center lg:text-left">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
             <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-center lg:text-left">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-center lg:text-left">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Tu Socio Estratégico</span>
-            <span class="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-orange-100">
+            <span class="block text-base sm:text-lg md:text-xl font-normal text-orange-100">
               en Calidad y Gestión
             </span>
           </h1>
           
-          <p class="text-sm sm:text-base md:text-lg text-orange-100 leading-relaxed max-w-xl text-center lg:text-left">
+          <p class="text-sm sm:text-base md:text-lg text-orange-100 leading-relaxed max-w-sm text-center lg:text-left">
             Especialistas en sistemas de gestión de calidad, certificaciones ISO 
             y capacitación empresarial. Más de 25 años transformando organizaciones.
           </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
           <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
@@ -45,7 +45,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
           </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-white/20">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 pt-4 border-t border-white/20">
           <div class="flex items-center justify-center lg:justify-start space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Certificaciones ISO</span>
@@ -61,8 +61,8 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
       </div>
 
-      <!-- Slider que toma todo el espacio restante en desktop -->
-      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:w-auto relative z-10">
+      <!-- Slider más largo y prominente -->
+      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:min-w-0 relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -354,29 +354,30 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   font-weight: 400;
 }
 
-/* Responsive text sizing */
+/* Responsive text sizing - Layout más simétrico */
 @media (min-width: 1024px) {
   .slider-container {
-    max-width: none; /* Sin restricción de ancho máximo */
-    width: 100%; /* Toma todo el ancho disponible */
+    max-width: none;
+    width: 100%;
+    min-width: 500px; /* Ancho mínimo para el slider */
   }
   
   .slide img {
-    height: 400px;
+    height: 450px; /* Más alto para mejor proporción */
     object-fit: cover;
     width: 100%;
   }
   
   .slide-title {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Texto más grande */
   }
   
   .slide-description {
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Descripción más legible */
   }
   
   .slide-content {
-    padding: 2.5rem;
+    padding: 3rem; /* Más espacioso */
   }
 }
 

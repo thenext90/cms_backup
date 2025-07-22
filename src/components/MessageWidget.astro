@@ -168,7 +168,8 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
         
         alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
         
-        form.reset();
+        // Reset form usando el casting correcto
+        (messageForm as HTMLFormElement).reset();
         hidePanel();
       });
     }

@@ -65,48 +65,66 @@ import { MessageCircle, X } from 'lucide-astro';
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  function initMessageWidget() {
     const messageButton = document.getElementById('message-button');
     const messagePanel = document.getElementById('message-panel');
     const closePanel = document.getElementById('close-panel');
     const messageForm = document.getElementById('message-form');
 
+    if (!messageButton || !messagePanel) return;
+
     // Toggle panel
-    messageButton?.addEventListener('click', function() {
-      messagePanel?.classList.toggle('hidden');
+    messageButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Button clicked'); // Debug
+      messagePanel.classList.toggle('hidden');
     });
 
     // Close panel
-    closePanel?.addEventListener('click', function() {
-      messagePanel?.classList.add('hidden');
-    });
+    if (closePanel) {
+      closePanel.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        messagePanel.classList.add('hidden');
+      });
+    }
 
     // Close panel when clicking outside
     document.addEventListener('click', function(event) {
       const widget = document.getElementById('message-widget');
       if (widget && !widget.contains(event.target as Node)) {
-        messagePanel?.classList.add('hidden');
+        messagePanel.classList.add('hidden');
       }
     });
 
     // Handle form submission
-    messageForm?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Get form data
-      const formData = new FormData(messageForm as HTMLFormElement);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const message = formData.get('message');
-      
-      // Here you would typically send the data to your backend
-      alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-      
-      // Reset form and close panel
-      (messageForm as HTMLFormElement).reset();
-      messagePanel?.classList.add('hidden');
-    });
-  });
+    if (messageForm) {
+      messageForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(messageForm as HTMLFormElement);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
+        
+        // Here you would typically send the data to your backend
+        alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+        
+        // Reset form and close panel
+        (messageForm as HTMLFormElement).reset();
+        messagePanel.classList.add('hidden');
+      });
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMessageWidget);
+  } else {
+    initMessageWidget();
+  }
 </script>
 
 <style>

@@ -3,14 +3,14 @@ import { MessageCircle, X } from 'lucide-astro';
 ---
 
 <!-- Widget flotante "Dejar un Mensaje" -->
-<div id="message-widget" class="fixed right-4 top-1/2 transform -translate-y-1/2 z-50">
+<div id="message-widget" class="fixed right-4 bottom-20 z-50">
   <!-- Botón flotante -->
   <div id="message-button" class="bg-accent-800 hover:bg-accent-900 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group">
     <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
   </div>
   
   <!-- Panel expandido -->
-  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+  <div id="message-panel" class="hidden absolute right-0 top-full mt-4 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
     <!-- Header -->
     <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-4 relative">
       <h3 class="font-bold text-lg flex items-center space-x-2">
@@ -117,17 +117,17 @@ import { MessageCircle, X } from 'lucide-astro';
   
   /* Smooth animations */
   #message-panel {
-    animation: slideInRight 0.3s ease-out;
+    animation: slideInDown 0.3s ease-out;
   }
   
-  @keyframes slideInRight {
+  @keyframes slideInDown {
     from {
       opacity: 0;
-      transform: translateX(20px);
+      transform: translateY(-10px);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
   
@@ -140,11 +140,13 @@ import { MessageCircle, X } from 'lucide-astro';
   @media (max-width: 768px) {
     #message-widget {
       right: 16px;
+      bottom: 16px;
     }
     
     #message-panel {
       width: calc(100vw - 32px);
       max-width: 320px;
+      right: -16px;
     }
   }
 </style>

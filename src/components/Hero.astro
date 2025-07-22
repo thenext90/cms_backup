@@ -2,7 +2,7 @@
 import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 ---
 
-<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-6 sm:py-8 lg:py-12 overflow-hidden min-h-screen">
+<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-2 sm:py-4 lg:py-6 overflow-hidden">
   <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0">
     <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
@@ -12,9 +12,9 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
     <!-- Layout balanceado: contenido compacto, slider prominente -->
-    <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-start min-h-[40vh] lg:min-h-[35vh] pt-12 lg:pt-16">
-      <div class="lg:w-[420px] xl:w-[480px] lg:flex-shrink-0 space-y-3 sm:space-y-4 lg:space-y-5 relative z-10 w-full">
-        <div class="space-y-3 lg:space-y-4 text-center lg:text-left">
+    <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-start pt-4 lg:pt-6">
+      <div class="lg:w-[420px] xl:w-[480px] lg:flex-shrink-0 space-y-2 sm:space-y-3 relative z-10 w-full">
+        <div class="space-y-2 text-center lg:text-left">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
             <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
@@ -34,7 +34,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
           </p>
         </div>
 
-                <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start pt-3">
+                <div class="flex flex-col sm:flex-row gap-2 lg:gap-3 justify-center lg:justify-start pt-1">
           <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 lg:px-6 py-2.5 lg:py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
@@ -45,7 +45,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
           </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4 pt-5 lg:pt-6 border-t border-white/20">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 border-t border-white/20">
           <div class="flex items-center justify-center lg:justify-start space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Certificaciones ISO</span>
@@ -369,7 +369,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   }
   
   .slide img {
-    height: 350px; /* Altura reducida para desktop estándar */
+    height: 300px; /* Altura muy reducida para subir contenido */
     object-fit: cover;
     width: 100%;
   }
@@ -395,7 +395,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   }
   
   .slide img {
-    height: 380px; /* Altura moderada para XL */
+    height: 320px; /* Altura reducida para XL */
   }
   
   .slide-title {

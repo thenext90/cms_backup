@@ -6,11 +6,10 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   <!-- Imagen de fondo para móvil -->
   <div class="absolute inset-0 lg:hidden">
     <img 
-      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      src="https://images.unsplash.com/photo-1594736797933-d0701ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80&crop=face"
       alt="Profesional mujer oficinista"
-      class="w-full h-full object-cover opacity-30"
+      class="w-full h-full object-cover object-center"
     />
-    <div class="absolute inset-0 bg-gradient-to-br from-accent-900/80 via-accent-800/70 to-accent-700/80"></div>
   </div>
 
   <!-- Elementos decorativos de fondo para desktop -->
@@ -22,13 +21,15 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   
   <!-- Titular móvil -->
   <div class="absolute top-8 left-0 right-0 z-20 lg:hidden">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold text-white drop-shadow-lg">
-        Calidad y Gestión
-      </h1>
-      <p class="text-lg text-orange-100 mt-2 drop-shadow-md">
-        Tu socio estratégico empresarial
-      </p>
+    <div class="text-center px-4">
+      <div class="bg-white/90 backdrop-blur-sm rounded-2xl py-4 px-6 inline-block">
+        <h1 class="text-4xl font-bold text-accent-800 mb-1">
+          Calidad y Gestión
+        </h1>
+        <p class="text-lg text-accent-600 font-medium">
+          Tu socio estratégico empresarial
+        </p>
+      </div>
     </div>
   </div>
   

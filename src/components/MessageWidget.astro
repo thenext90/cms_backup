@@ -3,59 +3,58 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
 ---
 
 <!-- Widget flotante "Dejar un Mensaje" -->
-<div id="message-widget" class="fixed right-4 bottom-20 z-50">
+<div id="message-widget" class="fixed right-4 bottom-4 z-50">
   <!-- Botón flotante -->
   <button id="message-button" type="button" class="bg-accent-800 hover:bg-accent-900 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-accent-600">
     <MessageCircle size="24" class="group-hover:scale-110 transition-transform" />
   </button>
   
-  <!-- Panel expandido - ahora se abre hacia arriba -->
-  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-80 max-w-[90vw] bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden max-h-[80vh] overflow-y-auto">
-    <!-- Header -->
-    <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-4 relative">
-      <h3 class="font-bold text-lg flex items-center space-x-2">
-        <MessageCircle size="20" />
+  <!-- Panel expandido - más compacto -->
+  <div id="message-panel" class="hidden absolute right-0 bottom-full mb-4 w-72 max-w-[85vw] bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden max-h-[60vh] overflow-y-auto">
+    <!-- Header más compacto -->
+    <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white p-3 relative">
+      <h3 class="font-bold text-base flex items-center space-x-2">
+        <MessageCircle size="18" />
         <span>Déjanos un Mensaje</span>
       </h3>
-      <p class="text-sm text-orange-100 mt-1">Estamos aquí para ayudarte</p>
-      <button id="close-panel" type="button" class="absolute top-4 right-4 text-white hover:text-orange-200 transition-colors focus:outline-none">
-        <X size="18" />
+      <button id="close-panel" type="button" class="absolute top-3 right-3 text-white hover:text-orange-200 transition-colors focus:outline-none">
+        <X size="16" />
       </button>
     </div>
     
-    <!-- Content -->
-    <div class="p-6">
-      <form id="message-form" class="space-y-4">
+    <!-- Content más compacto -->
+    <div class="p-4">
+      <form id="message-form" class="space-y-3">
         <div>
-          <label for="msg-name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-          <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-name" class="block text-xs font-medium text-gray-700 mb-1">Nombre</label>
+          <input type="text" id="msg-name" name="name" required class="w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
         </div>
         
         <div>
-          <label for="msg-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" id="msg-email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
+          <label for="msg-email" class="block text-xs font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" id="msg-email" name="email" required class="w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-sm">
         </div>
         
         <div>
-          <label for="msg-message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
-          <textarea id="msg-message" name="message" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
+          <label for="msg-message" class="block text-xs font-medium text-gray-700 mb-1">Mensaje</label>
+          <textarea id="msg-message" name="message" rows="2" required class="w-full px-2 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none text-sm"></textarea>
         </div>
         
-        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-2 px-4 rounded-lg transition-colors font-semibold text-sm">
+        <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-2 px-4 rounded-md transition-colors font-semibold text-sm">
           Enviar Mensaje
         </button>
       </form>
       
-      <!-- Quick contact options -->
-      <div class="mt-6 pt-4 border-t border-gray-200">
-        <p class="text-xs text-gray-600 mb-3">También puedes contactarnos:</p>
-        <div class="space-y-2">
-          <a href="tel:+56123456789" class="flex items-center space-x-2 text-sm text-gray-700 hover:text-accent-800 transition-colors">
-            <Phone size="16" />
+      <!-- Quick contact options más compactos -->
+      <div class="mt-4 pt-3 border-t border-gray-200">
+        <p class="text-xs text-gray-600 mb-2">También puedes contactarnos:</p>
+        <div class="space-y-1">
+          <a href="tel:+56123456789" class="flex items-center space-x-2 text-xs text-gray-700 hover:text-accent-800 transition-colors">
+            <Phone size="12" />
             <span>+56 (2) 1234 5678</span>
           </a>
-          <a href="mailto:info@cmsconsultores.cl" class="flex items-center space-x-2 text-sm text-gray-700 hover:text-accent-800 transition-colors">
-            <Mail size="16" />
+          <a href="mailto:info@cmsconsultores.cl" class="flex items-center space-x-2 text-xs text-gray-700 hover:text-accent-800 transition-colors">
+            <Mail size="12" />
             <span>info@cmsconsultores.cl</span>
           </a>
         </div>
@@ -90,19 +89,21 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     // Función para mostrar/ocultar el panel
     function togglePanel() {
       console.log('Toggle panel clicked');
+      if (!messagePanel || !messageButton) return;
+      
       const isHidden = messagePanel.classList.contains('hidden');
       
       if (isHidden) {
         // Verificar el espacio disponible y ajustar posición si es necesario
         const rect = messageButton.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        const panelHeight = 400; // Altura aproximada del panel
+        const panelHeight = 300; // Altura aproximada del panel reducido
         
         // Si no hay suficiente espacio arriba, mantener el panel hacia arriba pero ajustar
         if (rect.top < panelHeight) {
-          messagePanel.style.maxHeight = Math.min(rect.top - 20, 300) + 'px';
+          messagePanel.style.maxHeight = Math.min(rect.top - 20, 250) + 'px';
         } else {
-          messagePanel.style.maxHeight = '400px';
+          messagePanel.style.maxHeight = '300px';
         }
         
         messagePanel.classList.remove('hidden');
@@ -110,7 +111,9 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
         
         // Scroll al top del panel si es necesario
         setTimeout(() => {
-          messagePanel.scrollTop = 0;
+          if (messagePanel) {
+            messagePanel.scrollTop = 0;
+          }
         }, 50);
       } else {
         messagePanel.classList.add('hidden');
@@ -229,37 +232,43 @@ import { MessageCircle, X, Phone, Mail } from 'lucide-astro';
     }
   }
   
-  /* Ajustes responsive mejorados */
+  /* Ajustes responsive mejorados para formulario compacto */
   @media (max-width: 768px) {
     #message-widget {
-      right: 12px !important;
-      bottom: 12px !important;
+      right: 8px !important;
+      bottom: 8px !important;
     }
     
     #message-panel {
-      width: calc(100vw - 24px) !important;
-      max-width: 350px !important;
-      right: -12px !important;
-      max-height: 70vh !important;
+      width: calc(100vw - 16px) !important;
+      max-width: 280px !important;
+      right: -8px !important;
+      max-height: 50vh !important;
     }
   }
   
   @media (max-width: 480px) {
     #message-panel {
-      width: calc(100vw - 16px) !important;
-      right: -8px !important;
-      max-height: 65vh !important;
+      width: calc(100vw - 12px) !important;
+      right: -4px !important;
+      max-height: 45vh !important;
     }
   }
   
   /* Ajuste para pantallas muy pequeñas en altura */
   @media (max-height: 600px) {
     #message-widget {
-      bottom: 8px !important;
+      bottom: 4px !important;
     }
     
     #message-panel {
-      max-height: 50vh !important;
+      max-height: 40vh !important;
+    }
+  }
+  
+  @media (max-height: 500px) {
+    #message-panel {
+      max-height: 35vh !important;
     }
   }
   

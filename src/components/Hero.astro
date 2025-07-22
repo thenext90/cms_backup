@@ -11,59 +11,58 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   </div>
   
   <div class="max-w-container mx-auto px-4">
-    <!-- Layout para desktop: contenido a la izquierda, slider pequeño a la derecha -->
-    <div class="flex flex-col lg:flex-row gap-12 items-center">
-      <div class="flex-1 space-y-8 relative z-10">
-        <div class="space-y-4">
+    <!-- Layout balanceado: contenido compacto a la izquierda, slider prominente a la derecha -->
+    <div class="flex flex-col lg:flex-row gap-8 items-center">
+      <div class="lg:flex-1 lg:max-w-lg space-y-6 relative z-10">
+        <div class="space-y-3">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-4 py-2">
             <Star size="20" class="fill-current text-yellow-300" />
             <span class="text-sm font-bold tracking-wide text-white">Excelencia desde 1995 • Más de 25 años transformando empresas</span>
           </div>
           
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Tu Socio Estratégico</span>
-            <span class="block text-2xl md:text-3xl lg:text-4xl font-normal text-orange-100">
+            <span class="block text-xl md:text-2xl lg:text-3xl font-normal text-orange-100">
               en Calidad y Gestión
             </span>
           </h1>
           
-          <p class="text-lg md:text-xl text-orange-100 leading-relaxed max-w-2xl">
-            Especialistas en implementación de sistemas de gestión de calidad, 
-            certificaciones ISO y capacitación empresarial. Transformamos organizaciones 
-            a través de la excelencia operacional y el mejoramiento continuo.
+          <p class="text-base md:text-lg text-orange-100 leading-relaxed max-w-xl">
+            Especialistas en sistemas de gestión de calidad, certificaciones ISO 
+            y capacitación empresarial. Más de 25 años transformando organizaciones.
           </p>
         </div>
 
-        <div class="flex flex-wrap gap-4">
-          <a href="/servicios" class="flex items-center space-x-2 bg-white text-accent-800 px-8 py-4 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105">
+        <div class="flex flex-wrap gap-3">
+          <a href="/servicios" class="flex items-center space-x-2 bg-white text-accent-800 px-6 py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
-            <ArrowRight size="18" />
+            <ArrowRight size="16" />
           </a>
           
-          <a href="/contacto" class="flex items-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm">
+          <a href="/contacto" class="flex items-center space-x-2 border-2 border-white text-white px-6 py-3 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm">
             <span>Contactar Ahora</span>
           </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-white/20">
-          <div class="flex items-center space-x-3">
-            <CheckCircle size="24" class="text-green-300 flex-shrink-0" />
-            <span class="text-sm font-medium">Certificaciones ISO</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-white/20">
+          <div class="flex items-center space-x-2">
+            <CheckCircle size="18" class="text-green-300 flex-shrink-0" />
+            <span class="text-xs font-medium">Certificaciones ISO</span>
           </div>
-          <div class="flex items-center space-x-3">
-            <CheckCircle size="24" class="text-green-300 flex-shrink-0" />
-            <span class="text-sm font-medium">Capacitación Especializada</span>
+          <div class="flex items-center space-x-2">
+            <CheckCircle size="18" class="text-green-300 flex-shrink-0" />
+            <span class="text-xs font-medium">Capacitación Especializada</span>
           </div>
-          <div class="flex items-center space-x-3">
-            <CheckCircle size="24" class="text-green-300 flex-shrink-0" />
-            <span class="text-sm font-medium">Consultoría Integral</span>
+          <div class="flex items-center space-x-2">
+            <CheckCircle size="18" class="text-green-300 flex-shrink-0" />
+            <span class="text-xs font-medium">Consultoría Integral</span>
           </div>
         </div>
       </div>
 
-      <!-- Slider más grande para desktop -->
-      <div class="lg:w-[500px] lg:flex-shrink-0 w-full relative z-10">
+      <!-- Slider mucho más grande y prominente para desktop -->
+      <div class="lg:w-[600px] lg:flex-shrink-0 w-full relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -307,24 +306,24 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 /* Responsive text sizing */
 @media (min-width: 1024px) {
   .slider-container {
-    max-width: 500px;
+    max-width: 600px;
   }
   
   .slide img {
-    height: 350px;
+    height: 400px;
     object-fit: cover;
   }
   
   .slide-title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   
   .slide-description {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .slide-content {
-    padding: 2rem;
+    padding: 2.5rem;
   }
 }
 

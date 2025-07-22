@@ -4,20 +4,16 @@ import DateTimeWidget from './DateTimeWidget.astro';
 ---
 
 <header class="bg-white shadow-md sticky top-0 z-50">
-  <!-- Top bar with date/time - Horizontal layout -->
-  <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white py-1 sm:py-1.5">
+  <!-- Top bar with date/time - Solo visible en desktop -->
+  <div class="hidden sm:block bg-gradient-to-r from-accent-800 to-accent-900 text-white py-1.5">
     <div class="max-w-container mx-auto px-4">
       <div class="flex items-center justify-between text-xs">
-        <div class="flex items-center space-x-3 sm:space-x-6">
-          <span class="hidden sm:flex items-center space-x-1">
+        <div class="flex items-center space-x-6">
+          <span class="flex items-center space-x-1">
             <span>📧</span>
             <span class="hidden md:inline">info@cmsconsultores.cl</span>
           </span>
-          <span class="flex sm:hidden items-center space-x-1">
-            <span>📞</span>
-            <span>+56 (2) 1234</span>
-          </span>
-          <span class="hidden sm:flex items-center space-x-1">
+          <span class="flex items-center space-x-1">
             <span>📞</span>
             <span class="hidden md:inline">+56 (2) 1234 5678</span>
             <span class="md:hidden">+56 (2) 1234</span>

@@ -2,7 +2,7 @@
 import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 ---
 
-<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-4 sm:py-6 lg:py-12 xl:py-16 overflow-hidden min-h-screen flex items-center">
+<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-4 sm:py-6 lg:py-8 overflow-hidden min-h-screen flex items-center">
   <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0">
     <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
@@ -10,42 +10,42 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
     <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-400/5 rounded-full blur-lg"></div>
   </div>
   
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 w-full">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <!-- Layout balanceado: contenido compacto, slider prominente -->
-    <div class="flex flex-col lg:flex-row gap-4 lg:gap-16 xl:gap-20 items-center lg:items-center min-h-[75vh] lg:min-h-[70vh]">
-      <div class="lg:w-[400px] xl:w-[450px] 2xl:w-[500px] lg:flex-shrink-0 space-y-2 sm:space-y-3 lg:space-y-5 relative z-10 w-full lg:max-w-none">
-        <div class="space-y-3 lg:space-y-4 text-center lg:text-left">
+    <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center lg:items-center min-h-[75vh] lg:min-h-[70vh]">
+      <div class="lg:w-[420px] xl:w-[480px] lg:flex-shrink-0 space-y-2 sm:space-y-3 lg:space-y-4 relative z-10 w-full">
+        <div class="space-y-2 text-center lg:text-left">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
             <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-tight text-center lg:text-left">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight text-center lg:text-left">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Tu Socio Estratégico</span>
-            <span class="block text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-normal text-orange-100">
+            <span class="block text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-normal text-orange-100">
               en Calidad y Gestión
             </span>
           </h1>
           
-          <p class="text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-orange-100 leading-relaxed max-w-md lg:max-w-lg xl:max-w-xl text-center lg:text-left">
+          <p class="text-sm sm:text-base lg:text-lg text-orange-100 leading-relaxed max-w-md text-center lg:text-left">
             Especialistas en sistemas de gestión de calidad y certificaciones ISO. 
-            Más de 25 años transformando organizaciones hacia la excelencia operacional y mejora continua.
+            25+ años transformando organizaciones hacia la excelencia.
           </p>
         </div>
 
-                <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 xl:gap-5 justify-center lg:justify-start pt-2 lg:pt-4">
-          <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-5 sm:px-6 lg:px-8 xl:px-10 py-3 lg:py-4 xl:py-5 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm lg:text-base xl:text-lg">
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-1">
+          <a href="/servicios" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 lg:px-6 py-2.5 lg:py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
           </a>
           
-          <a href="/contacto" class="flex items-center justify-center space-x-2 border-2 border-white text-white px-5 sm:px-6 lg:px-8 xl:px-10 py-3 lg:py-4 xl:py-5 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm lg:text-base xl:text-lg">
+          <a href="/contacto" class="flex items-center justify-center space-x-2 border-2 border-white text-white px-4 sm:px-6 lg:px-6 py-2.5 lg:py-3 rounded-xl hover:bg-white hover:text-accent-800 transition-all duration-300 font-semibold backdrop-blur-sm text-sm">
             <span>Contactar Ahora</span>
           </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4 pt-4 lg:pt-6 border-t border-white/20">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-3 border-t border-white/20">
           <div class="flex items-center justify-center lg:justify-start space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Certificaciones ISO</span>
@@ -61,8 +61,8 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
       </div>
 
-      <!-- Slider optimizado para mejor distribución -->
-      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:min-w-0 lg:max-w-none xl:min-w-[600px] 2xl:min-w-[700px] relative z-10">
+      <!-- Slider más largo y prominente -->
+      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:min-w-0 relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -109,9 +109,9 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
           </div>
         </div>
         
-        <!-- Elementos decorativos optimizados -->
-        <div class="absolute -top-8 -right-8 w-36 h-36 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full opacity-20 blur-xl lg:-top-10 lg:-right-10 lg:w-48 lg:h-48"></div>
-        <div class="absolute -bottom-12 -left-12 w-44 h-44 bg-gradient-to-br from-orange-300 to-red-300 rounded-full opacity-15 blur-2xl lg:-bottom-16 lg:-left-16 lg:w-56 lg:h-56"></div>
+        <!-- Elementos decorativos -->
+        <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full opacity-20 blur-xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-orange-300 to-red-300 rounded-full opacity-15 blur-2xl"></div>
       </div>
     </div>
   </div>
@@ -365,74 +365,50 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   .slider-container {
     max-width: none;
     width: 100%;
-    min-width: 600px;
+    min-width: 550px;
   }
   
   .slide img {
-    height: 400px; /* Altura optimizada para desktop */
+    height: 350px; /* Altura reducida para desktop estándar */
     object-fit: cover;
     width: 100%;
   }
   
   .slide-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   
   .slide-description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .slide-content {
-    padding: 3rem 2.5rem;
-    max-width: 85%;
+    padding: 2rem 1.5rem;
+    max-width: 80%;
   }
 }
 
 /* Optimización para pantallas extra grandes */
 @media (min-width: 1280px) {
   .slider-container {
-    min-width: 700px;
+    min-width: 600px;
   }
   
   .slide img {
-    height: 450px; /* Altura mayor para XL */
+    height: 380px; /* Altura moderada para XL */
   }
   
   .slide-title {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
   
   .slide-description {
-    font-size: 1.3rem;
-    max-width: 550px;
+    font-size: 1.2rem;
+    max-width: 520px;
   }
   
   .slide-content {
-    padding: 3.5rem 3rem;
-  }
-}
-
-/* Optimización para pantallas 2XL */
-@media (min-width: 1536px) {
-  .slider-container {
-    min-width: 800px;
-  }
-  
-  .slide img {
-    height: 500px; /* Altura premium para 2XL */
-  }
-  
-  .slide-title {
-    font-size: 3rem;
-  }
-  
-  .slide-description {
-    font-size: 1.5rem;
-    max-width: 600px;
-  }
-  
-  .slide-content {
-    padding: 4rem 3.5rem;
+    padding: 2.5rem 2rem;
   }
 }
 

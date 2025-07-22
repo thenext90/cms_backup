@@ -1,12 +1,18 @@
 ---
-// Widget de fecha y hora para Chile
+// Widget de fecha y hora horizontal para Chile
 ---
 
-<div class="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-gray-200">
-  <div class="text-center space-y-2">
-    <div class="text-xs text-gray-500 font-medium">Chile</div>
-    <div id="current-time" class="text-lg font-bold text-gray-800"></div>
-    <div id="current-date" class="text-sm text-gray-600"></div>
+<div class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1 border border-white/20">
+  <div class="flex items-center space-x-2">
+    <span class="text-orange-200 text-xs">🕐</span>
+    <div class="flex flex-col">
+      <div id="current-time" class="text-xs font-bold text-white leading-tight"></div>
+      <div class="text-[10px] text-orange-200">Chile</div>
+    </div>
+  </div>
+  <div class="hidden md:flex items-center space-x-2">
+    <span class="text-orange-200 text-xs">📅</span>
+    <div id="current-date" class="text-xs text-white font-medium"></div>
   </div>
 </div>
 
@@ -23,16 +29,14 @@
     const timeOptions = {
       ...options,
       hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
+      minute: '2-digit'
     };
     
     const dateOptions = {
       ...options,
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short'
     };
     
     const timeElement = document.getElementById('current-time');
@@ -44,7 +48,7 @@
     }
   }
   
-  // Actualizar inmediatamente y luego cada segundo
+  // Actualizar inmediatamente y luego cada minuto (menos frecuente)
   updateDateTime();
-  setInterval(updateDateTime, 1000);
+  setInterval(updateDateTime, 60000);
 </script>

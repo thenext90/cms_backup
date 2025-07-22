@@ -4,15 +4,25 @@ import DateTimeWidget from './DateTimeWidget.astro';
 ---
 
 <header class="bg-white shadow-md sticky top-0 z-50">
-  <!-- Top bar with date/time -->
-  <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white py-2">
+  <!-- Top bar with date/time - Horizontal layout -->
+  <div class="bg-gradient-to-r from-accent-800 to-accent-900 text-white py-1.5">
     <div class="max-w-container mx-auto px-4">
-      <div class="flex items-center justify-between text-sm">
-        <div class="flex items-center space-x-4">
-          <span class="hidden md:block">📧 info@cmsconsultores.cl</span>
-          <span class="hidden md:block">📞 +56 (2) 1234 5678</span>
+      <div class="flex items-center justify-between text-xs">
+        <div class="flex items-center space-x-6">
+          <span class="hidden sm:flex items-center space-x-1">
+            <span>📧</span>
+            <span>info@cmsconsultores.cl</span>
+          </span>
+          <span class="hidden sm:flex items-center space-x-1">
+            <span>📞</span>
+            <span>+56 (2) 1234 5678</span>
+          </span>
+          <span class="hidden md:flex items-center space-x-1">
+            <span>📍</span>
+            <span>Santiago, Chile</span>
+          </span>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
           <DateTimeWidget />
         </div>
       </div>
@@ -20,16 +30,16 @@ import DateTimeWidget from './DateTimeWidget.astro';
   </div>
   
   <div class="max-w-container mx-auto px-4">
-    <div class="flex items-center justify-between h-24">
+    <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-2">
-          <div class="w-16 h-16 bg-gradient-to-br from-accent-600 to-accent-800 rounded-xl flex items-center justify-center shadow-lg">
-            <span class="text-white font-bold text-2xl">CMS</span>
+        <a href="/" class="flex items-center space-x-3">
+          <div class="w-12 h-12 bg-gradient-to-br from-accent-600 to-accent-800 rounded-lg flex items-center justify-center shadow-lg">
+            <span class="text-white font-bold text-lg">CMS</span>
           </div>
           <div class="hidden md:block">
-            <h1 class="text-2xl font-bold text-gray-800">CMS Consultores</h1>
-            <p class="text-sm text-accent-700 font-medium">Calidad & Gestión</p>
+            <h1 class="text-xl font-bold text-gray-800">CMS Consultores</h1>
+            <p class="text-xs text-accent-700 font-medium">Calidad & Gestión</p>
           </div>
         </a>
       </div>

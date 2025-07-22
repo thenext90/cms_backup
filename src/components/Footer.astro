@@ -1,5 +1,5 @@
 ---
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-astro';
+import { MapPin, Phone, Mail, ExternalLink, Star } from 'lucide-astro';
 ---
 
 <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
@@ -30,7 +30,10 @@ import { MapPin, Phone, Mail, ExternalLink } from 'lucide-astro';
         
         <div class="flex items-center space-x-4 pt-4">
           <div class="w-12 h-1 bg-gradient-to-r from-accent-500 to-accent-700 rounded-full"></div>
-          <span class="text-xs text-gray-400 font-medium">Excelencia desde 1995</span>
+          <div class="flex items-center space-x-2">
+            <Star size="16" class="fill-current text-yellow-500" />
+            <span class="text-sm font-semibold text-gray-200 tracking-wide">Excelencia desde 1995</span>
+          </div>
         </div>
       </div>
 

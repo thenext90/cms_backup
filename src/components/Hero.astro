@@ -61,8 +61,8 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
       </div>
 
-      <!-- Slider responsive: más pequeño en móvil, grande en desktop -->
-      <div class="w-full max-w-sm sm:max-w-md lg:w-[600px] lg:flex-shrink-0 relative z-10">
+      <!-- Slider responsive: más ancho en desktop -->
+      <div class="w-full max-w-sm sm:max-w-md lg:w-[800px] lg:flex-shrink-0 relative z-10">
         <div class="relative z-10">
           <!-- Slider Container -->
           <div class="slider-container">
@@ -357,24 +357,24 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 /* Responsive text sizing */
 @media (min-width: 1024px) {
   .slider-container {
-    max-width: 600px;
+    max-width: 800px;
   }
   
   .slide img {
-    height: 400px;
+    height: 500px;
     object-fit: cover;
   }
   
   .slide-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   .slide-description {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .slide-content {
-    padding: 2.5rem;
+    padding: 3rem;
   }
 }
 

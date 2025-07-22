@@ -1,0 +1,249 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { FileText, Calendar, Award, Building } from 'lucide-astro';
+---
+
+<Layout title="Currículum 1995-2006 - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <FileText size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Currículum 1995-2006</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Nuestra trayectoria y experiencia durante los primeros años de operación
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumen Ejecutivo -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Resumen Ejecutivo 1995-2006</h2>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Durante esta primera década, CMS Consultores estableció las bases sólidas de su operación, 
+            desarrollando expertise en sistemas de gestión de calidad y construyendo una cartera de 
+            clientes diversificada en múltiples sectores industriales.
+          </p>
+        </div>
+
+        <!-- Estadísticas del período -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="text-3xl font-bold text-accent-800 mb-2">50+</div>
+            <div class="text-gray-600">Empresas Asesoradas</div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="text-3xl font-bold text-accent-800 mb-2">25+</div>
+            <div class="text-gray-600">Certificaciones ISO</div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="text-3xl font-bold text-accent-800 mb-2">150+</div>
+            <div class="text-gray-600">Profesionales Capacitados</div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div class="text-3xl font-bold text-accent-800 mb-2">15</div>
+            <div class="text-gray-600">Sectores Industriales</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos Destacados -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Proyectos Destacados</h2>
+          <p class="text-xl text-gray-600">Casos de éxito que marcaron nuestra trayectoria</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Proyecto 1 -->
+          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+            <Calendar size="32" class="text-accent-800 mb-4" />
+            <h3 class="text-xl font-bold text-gray-800 mb-3">1996 - Sector Alimentario</h3>
+            <p class="text-gray-600 mb-4">
+              Implementación del primer sistema de gestión de calidad en empresa procesadora de alimentos.
+            </p>
+            <div class="text-sm text-gray-500">
+              <p><strong>Resultado:</strong> Certificación ISO 9001:1994</p>
+              <p><strong>Duración:</strong> 8 meses</p>
+            </div>
+          </div>
+
+          <!-- Proyecto 2 -->
+          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+            <Building size="32" class="text-accent-800 mb-4" />
+            <h3 class="text-xl font-bold text-gray-800 mb-3">1998 - Sector Manufacturero</h3>
+            <p class="text-gray-600 mb-4">
+              Desarrollo de sistema integrado de gestión para empresa metalmecánica.
+            </p>
+            <div class="text-sm text-gray-500">
+              <p><strong>Resultado:</strong> Mejora 40% en eficiencia</p>
+              <p><strong>Duración:</strong> 12 meses</p>
+            </div>
+          </div>
+
+          <!-- Proyecto 3 -->
+          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+            <Award size="32" class="text-accent-800 mb-4" />
+            <h3 class="text-xl font-bold text-gray-800 mb-3">2001 - Sector Servicios</h3>
+            <p class="text-gray-600 mb-4">
+              Implementación de sistema de gestión en empresa de servicios financieros.
+            </p>
+            <div class="text-sm text-gray-500">
+              <p><strong>Resultado:</strong> Premio Nacional Calidad</p>
+              <p><strong>Duración:</strong> 10 meses</p>
+            </div>
+          </div>
+
+          <!-- Proyecto 4 -->
+          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+            <Calendar size="32" class="text-accent-800 mb-4" />
+            <h3 class="text-xl font-bold text-gray-800 mb-3">2003 - Sector Químico</h3>
+            <p class="text-gray-600 mb-4">
+              Desarrollo de sistema de gestión ambiental integrado con calidad.
+            </p>
+            <div class="text-sm text-gray-500">
+              <p><strong>Resultado:</strong> ISO 9001 + ISO 14001</p>
+              <p><strong>Duración:</strong> 14 meses</p>
+            </div>
+          </div>
+
+          <!-- Proyecto 5 -->
+          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+            <Building size="32" class="text-accent-800 mb-4" />
+            <h3 class="text-xl font-bold text-gray-800 mb-3">2005 - Sector Construcción</h3>
+            <p class="text-gray-600 mb-4">
+              Implementación de gestión de calidad en empresa constructora.
+            </p>
+            <div class="text-sm text-gray-500">
+              <p><strong>Resultado:</strong> Reducción 30% reclamos</p>
+              <p><strong>Duración:</strong> 9 meses</p>
+            </div>
+          </div>
+
+          <!-- Proyecto 6 -->
+          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
+            <Award size="32" class="text-accent-800 mb-4" />
+            <h3 class="text-xl font-bold text-gray-800 mb-3">2006 - Sector Minero</h3>
+            <p class="text-gray-600 mb-4">
+              Sistema integrado de gestión de calidad y seguridad minera.
+            </p>
+            <div class="text-sm text-gray-500">
+              <p><strong>Resultado:</strong> Cero accidentes año 1</p>
+              <p><strong>Duración:</strong> 16 meses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evolución Metodológica -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Evolución Metodológica</h2>
+          <p class="text-xl text-gray-600">Desarrollo de nuestro enfoque consultivo</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-8">
+            <!-- Fase 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">1995-1997: Establecimiento</h3>
+                  <p class="text-gray-600 mb-4">
+                    Desarrollo de metodología básica de implementación ISO 9001. Enfoque en documentación y procedimientos.
+                  </p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Metodología de diagnóstico inicial</li>
+                    <li>• Desarrollo de manuales de calidad</li>
+                    <li>• Capacitación en normas ISO</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fase 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">1998-2001: Consolidación</h3>
+                  <p class="text-gray-600 mb-4">
+                    Incorporación de herramientas de mejora continua y enfoque por procesos. Especialización sectorial.
+                  </p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Mapeo de procesos organizacionales</li>
+                    <li>• Indicadores de gestión y seguimiento</li>
+                    <li>• Auditorías internas especializadas</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fase 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">2002-2006: Innovación</h3>
+                  <p class="text-gray-600 mb-4">
+                    Desarrollo de sistemas integrados de gestión. Incorporación de tecnología y automatización.
+                  </p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>• Sistemas integrados (Calidad + Ambiente + Seguridad)</li>
+                    <li>• Software de gestión documentaria</li>
+                    <li>• Metodología de implementación acelerada</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reconocimientos -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Reconocimientos</h2>
+          <p class="text-xl text-gray-600">Logros obtenidos durante el período</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 text-center">
+            <Award size="48" class="mx-auto mb-4 text-yellow-600" />
+            <h3 class="text-lg font-bold text-gray-800 mb-2">2002</h3>
+            <p class="text-gray-600">Reconocimiento como "Consultora del Año" por Asociación de Consultores</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
+            <Award size="48" class="mx-auto mb-4 text-blue-600" />
+            <h3 class="text-lg font-bold text-gray-800 mb-2">2004</h3>
+            <p class="text-gray-600">Premio "Excelencia en Implementación ISO" por organismo certificador</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
+            <Award size="48" class="mx-auto mb-4 text-green-600" />
+            <h3 class="text-lg font-bold text-gray-800 mb-2">2005</h3>
+            <p class="text-gray-600">Certificación NCh 2728 como organismo técnico de capacitación</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center">
+            <Award size="48" class="mx-auto mb-4 text-purple-600" />
+            <h3 class="text-lg font-bold text-gray-800 mb-2">2006</h3>
+            <p class="text-gray-600">Reconocimiento por "Contribución al Desarrollo Industrial Nacional"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

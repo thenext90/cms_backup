@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Certificate, CheckCircle, Award, Book } from 'lucide-astro';
+---
+
+<Layout title="Certificación NCh 2728 - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Certificate size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Certificación NCh 2728</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Organismo Técnico de Capacitación certificado bajo la norma chilena NCh 2728
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿Qué es NCh 2728? -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">¿Qué es la Norma NCh 2728?</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-8">
+            La norma NCh 2728 establece los requisitos que deben cumplir los organismos técnicos de capacitación 
+            para garantizar la calidad y efectividad de sus procesos formativos. Esta certificación asegura que 
+            nuestros programas de capacitación cumplen con los más altos estándares de calidad.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Alcance -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Award size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Alcance de Certificación</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Capacitación en sistemas de gestión de calidad, normas ISO, auditorías internas 
+              y mejora continua de procesos organizacionales.
+            </p>
+          </div>
+
+          <!-- Vigencia -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <CheckCircle size="48" class="mx-auto mb-4 text-green-600" />
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Vigencia y Renovación</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Certificación vigente con renovaciones periódicas que garantizan el mantenimiento 
+              continuo de nuestros estándares de calidad educativa.
+            </p>
+          </div>
+
+          <!-- Beneficios -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Book size="48" class="mx-auto mb-4 text-blue-600" />
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Beneficios para Clientes</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Acceso a capacitaciones de calidad certificada, reconocimiento oficial 
+              de competencias y garantía de metodologías probadas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requisitos de la Norma -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Requisitos de la Norma NCh 2728</h2>
+          <p class="text-xl text-gray-600">Estándares que cumplimos para mantener la certificación</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Gestión Administrativa -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-4">Gestión Administrativa</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Sistema de gestión documentado y controlado</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Procedimientos de inscripción y seguimiento</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Control de registros académicos</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Gestión de recursos y equipamiento</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Gestión Técnico-Pedagógica -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-4">Gestión Técnico-Pedagógica</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Diseño curricular basado en competencias</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Metodologías de enseñanza apropiadas</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Evaluación y seguimiento del aprendizaje</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Material didáctico actualizado</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Recursos Humanos -->
+          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-yellow-800 mb-4">Recursos Humanos</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Instructores con competencias certificadas</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Programas de desarrollo profesional</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Evaluación de desempeño docente</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Capacitación continua del equipo</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Infraestructura -->
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-purple-800 mb-4">Infraestructura</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Instalaciones adecuadas para capacitación</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Equipamiento tecnológico actualizado</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Biblioteca y recursos de consulta</span>
+              </li>
+              <li class="flex items-start space-x-3">
+                <CheckCircle size="20" class="text-green-600 mt-0.5 flex-shrink-0" />
+                <span>Plataforma virtual de aprendizaje</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso de Certificación -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Proceso de Certificación</h2>
+          <p class="text-xl text-gray-600">Etapas del proceso de obtención y mantenimiento</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-8">
+            <!-- Etapa 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Solicitud y Documentación</h3>
+                  <p class="text-gray-600 mb-4">
+                    Presentación de solicitud formal con toda la documentación requerida del sistema de gestión.
+                  </p>
+                  <div class="text-sm text-gray-500">
+                    <p><strong>Duración:</strong> 2-4 semanas</p>
+                    <p><strong>Requisitos:</strong> Manual de calidad, procedimientos, registros</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Auditoría de Certificación</h3>
+                  <p class="text-gray-600 mb-4">
+                    Auditoría in-situ realizada por organismo certificador acreditado para verificar cumplimiento.
+                  </p>
+                  <div class="text-sm text-gray-500">
+                    <p><strong>Duración:</strong> 2-3 días</p>
+                    <p><strong>Alcance:</strong> Revisión completa del sistema de gestión</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Emisión del Certificado</h3>
+                  <p class="text-gray-600 mb-4">
+                    Una vez aprobada la auditoría, se emite el certificado con validez de 3 años.
+                  </p>
+                  <div class="text-sm text-gray-500">
+                    <p><strong>Vigencia:</strong> 3 años</p>
+                    <p><strong>Seguimiento:</strong> Auditorías anuales de mantenimiento</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etapa 4 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">4</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Mantenimiento y Renovación</h3>
+                  <p class="text-gray-600 mb-4">
+                    Auditorías de seguimiento anuales y proceso de renovación cada 3 años.
+                  </p>
+                  <div class="text-sm text-gray-500">
+                    <p><strong>Frecuencia:</strong> Anual</p>
+                    <p><strong>Objetivo:</strong> Verificar mantenimiento de estándares</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ventajas Competitivas -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Ventajas de Nuestra Certificación</h2>
+          <p class="text-xl text-gray-600">Por qué elegir CMS Consultores</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Certificate size="32" class="text-accent-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Certificación Oficial</h3>
+            <p class="text-gray-600 text-sm">Reconocimiento formal de competencias adquiridas</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle size="32" class="text-green-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Calidad Garantizada</h3>
+            <p class="text-gray-600 text-sm">Estándares internacionales de formación</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Award size="32" class="text-blue-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Reconocimiento</h3>
+            <p class="text-gray-600 text-sm">Validez en el mercado laboral y académico</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Book size="32" class="text-purple-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Metodología Probada</h3>
+            <p class="text-gray-600 text-sm">Enfoques pedagógicos validados y efectivos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Phone, Mail, MapPin, Clock, Send } from 'lucide-astro';
+---
+
+<Layout title="Contacto - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Phone size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Contáctanos</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Estamos aquí para ayudarte con tus proyectos de consultoría y capacitación
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Información de Contacto -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Formulario de Contacto -->
+          <div class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Envíanos un Mensaje</h2>
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="nombre" class="block text-sm font-medium text-gray-700 mb-2">Nombre *</label>
+                  <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+                </div>
+                <div>
+                  <label for="apellido" class="block text-sm font-medium text-gray-700 mb-2">Apellido *</label>
+                  <input type="text" id="apellido" name="apellido" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                  <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+                </div>
+                <div>
+                  <label for="telefono" class="block text-sm font-medium text-gray-700 mb-2">Teléfono</label>
+                  <input type="tel" id="telefono" name="telefono" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+                </div>
+              </div>
+
+              <div>
+                <label for="empresa" class="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+                <input type="text" id="empresa" name="empresa" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+              </div>
+
+              <div>
+                <label for="servicio" class="block text-sm font-medium text-gray-700 mb-2">Servicio de Interés</label>
+                <select id="servicio" name="servicio" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+                  <option value="">Seleccionar servicio</option>
+                  <option value="consultoria">Consultoría ISO</option>
+                  <option value="capacitacion">Capacitación</option>
+                  <option value="auditoria">Auditoría Interna</option>
+                  <option value="implementacion">Implementación de Sistemas</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="mensaje" class="block text-sm font-medium text-gray-700 mb-2">Mensaje *</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-accent-800 hover:bg-accent-900 text-white py-3 px-6 rounded-lg transition-colors font-semibold flex items-center justify-center space-x-2">
+                <Send size="20" />
+                <span>Enviar Mensaje</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Información de Contacto -->
+          <div class="space-y-8">
+            <!-- Datos de Contacto -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <h3 class="text-xl font-bold text-gray-800 mb-6">Información de Contacto</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start space-x-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                    <Phone size="24" class="text-accent-800" />
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Teléfono</h4>
+                    <p class="text-gray-600">+56 (2) 1234 5678</p>
+                    <p class="text-gray-600">+56 (2) 8765 4321</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                    <Mail size="24" class="text-accent-800" />
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Email</h4>
+                    <p class="text-gray-600">info@cmsconsultores.cl</p>
+                    <p class="text-gray-600">capacitacion@cmsconsultores.cl</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                    <MapPin size="24" class="text-accent-800" />
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Dirección</h4>
+                    <p class="text-gray-600">Av. Providencia 1234, Oficina 567</p>
+                    <p class="text-gray-600">Providencia, Santiago, Chile</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                  <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                    <Clock size="24" class="text-accent-800" />
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800">Horarios</h4>
+                    <p class="text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
+                    <p class="text-gray-600">Sábados: 9:00 - 13:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mapa -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+              <h3 class="text-xl font-bold text-gray-800 mb-6">Ubicación</h3>
+              <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                <p class="text-gray-500">Mapa de Google Maps</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Preguntas Frecuentes</h2>
+          <p class="text-xl text-gray-600">Respuestas a las consultas más comunes</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">¿Cuánto tiempo toma implementar ISO 9001?</h3>
+            <p class="text-gray-600">El tiempo de implementación varía según el tamaño y complejidad de la organización, generalmente entre 6 a 12 meses.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">¿Ofrecen capacitación online?</h3>
+            <p class="text-gray-600">Sí, tenemos una amplia oferta de cursos online con acceso 24/7 y certificación oficial.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">¿Realizan consultoría a nivel nacional?</h3>
+            <p class="text-gray-600">Sí, brindamos servicios de consultoría en todo Chile, adaptándonos a las necesidades de cada región.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-2">¿Qué incluye el servicio de consultoría?</h3>
+            <p class="text-gray-600">Incluye diagnóstico inicial, diseño del sistema, implementación, capacitación del personal y acompañamiento hasta la certificación.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Manejar envío del formulario
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.');
+      this.reset();
+    });
+  </script>
+</Layout>

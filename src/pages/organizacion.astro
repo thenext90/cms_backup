@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Building2, Users, Award, Target } from 'lucide-astro';
+---
+
+<Layout title="Organización - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Building2 size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Nuestra Organización</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Conoce la estructura, valores y principios que guían a CMS Consultores desde 1995
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Misión, Visión y Valores -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Misión -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Target size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Misión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Brindar servicios de consultoría y capacitación en sistemas de gestión de calidad, 
+              ayudando a las organizaciones a alcanzar la excelencia operacional y el cumplimiento 
+              de estándares internacionales.
+            </p>
+          </div>
+
+          <!-- Visión -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Award size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Visión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ser la consultora líder en Chile en sistemas de gestión de calidad, reconocida por 
+              nuestra excelencia técnica, compromiso con los clientes y contribución al desarrollo 
+              empresarial del país.
+            </p>
+          </div>
+
+          <!-- Valores -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Users size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Valores</h3>
+            <ul class="text-gray-600 text-left space-y-2">
+              <li>• <strong>Excelencia:</strong> Compromiso con la calidad</li>
+              <li>• <strong>Integridad:</strong> Transparencia y ética</li>
+              <li>• <strong>Profesionalismo:</strong> Expertise y experiencia</li>
+              <li>• <strong>Innovación:</strong> Mejora continua</li>
+              <li>• <strong>Compromiso:</strong> Con nuestros clientes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estructura Organizacional -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Estructura Organizacional</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Nuestro equipo de profesionales especializados en sistemas de gestión
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Dirección General -->
+          <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-accent-800 mb-3">Dirección General</h3>
+            <p class="text-gray-700 mb-4">
+              Liderazgo estratégico y supervisión de todas las operaciones de la consultora.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Planificación estratégica</li>
+              <li>• Supervisión de proyectos</li>
+              <li>• Relaciones institucionales</li>
+            </ul>
+          </div>
+
+          <!-- Área Técnica -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-blue-800 mb-3">Área Técnica</h3>
+            <p class="text-gray-700 mb-4">
+              Consultores especializados en implementación de sistemas de gestión.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Implementación ISO</li>
+              <li>• Auditorías internas</li>
+              <li>• Mejora de procesos</li>
+            </ul>
+          </div>
+
+          <!-- Área de Capacitación -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+            <h3 class="text-xl font-bold text-green-800 mb-3">Área de Capacitación</h3>
+            <p class="text-gray-700 mb-4">
+              Formación especializada en normas y sistemas de gestión de calidad.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-1">
+              <li>• Cursos especializados</li>
+              <li>• Talleres prácticos</li>
+              <li>• Formación in-company</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia y Trayectoria -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestra Trayectoria</h2>
+          <p class="text-xl text-gray-600">Más de 25 años de experiencia en consultoría</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="relative">
+            <!-- Timeline line -->
+            <div class="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-accent-200"></div>
+            
+            <!-- Timeline items -->
+            <div class="space-y-12">
+              <div class="relative flex items-center md:justify-between">
+                <div class="flex items-center md:w-1/2">
+                  <div class="flex-shrink-0 w-8 h-8 bg-accent-800 rounded-full border-4 border-white shadow"></div>
+                  <div class="ml-4 md:ml-0 md:mr-4 md:text-right">
+                    <h3 class="text-lg font-bold text-gray-800">1995</h3>
+                    <p class="text-gray-600">Fundación de CMS Consultores</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="relative flex items-center md:justify-between">
+                <div class="flex items-center md:w-1/2 md:ml-auto">
+                  <div class="flex-shrink-0 w-8 h-8 bg-accent-800 rounded-full border-4 border-white shadow md:order-2"></div>
+                  <div class="ml-4 md:mr-4 md:order-1">
+                    <h3 class="text-lg font-bold text-gray-800">2000</h3>
+                    <p class="text-gray-600">Certificación como consultora especializada</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="relative flex items-center md:justify-between">
+                <div class="flex items-center md:w-1/2">
+                  <div class="flex-shrink-0 w-8 h-8 bg-accent-800 rounded-full border-4 border-white shadow"></div>
+                  <div class="ml-4 md:ml-0 md:mr-4 md:text-right">
+                    <h3 class="text-lg font-bold text-gray-800">2010</h3>
+                    <p class="text-gray-600">Expansión de servicios a nuevas normas ISO</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="relative flex items-center md:justify-between">
+                <div class="flex items-center md:w-1/2 md:ml-auto">
+                  <div class="flex-shrink-0 w-8 h-8 bg-accent-800 rounded-full border-4 border-white shadow md:order-2"></div>
+                  <div class="ml-4 md:mr-4 md:order-1">
+                    <h3 class="text-lg font-bold text-gray-800">2020</h3>
+                    <p class="text-gray-600">Digitalización de servicios y capacitaciones online</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

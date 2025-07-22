@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Award, Search, Download, Shield, CheckCircle } from 'lucide-astro';
+---
+
+<Layout title="Certificados - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Award size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Verificación de Certificados</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Valide la autenticidad de certificados emitidos por CMS Consultores
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buscador de Certificados -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="text-center mb-8">
+            <Search size="48" class="mx-auto mb-4 text-accent-800" />
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Buscar Certificado</h2>
+            <p class="text-gray-600">Ingrese el número de certificado o datos del participante</p>
+          </div>
+
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="numero-certificado" class="block text-sm font-medium text-gray-700 mb-2">Número de Certificado</label>
+                <input type="text" id="numero-certificado" name="numero-certificado" placeholder="Ej: CMS-2024-001234" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+              </div>
+              <div>
+                <label for="rut" class="block text-sm font-medium text-gray-700 mb-2">RUT del Participante</label>
+                <input type="text" id="rut" name="rut" placeholder="12.345.678-9" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="nombre" class="block text-sm font-medium text-gray-700 mb-2">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+              </div>
+              <div>
+                <label for="curso" class="block text-sm font-medium text-gray-700 mb-2">Curso</label>
+                <select id="curso" name="curso" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent">
+                  <option value="">Seleccionar curso</option>
+                  <option value="iso9001-fundamentos">Fundamentos ISO 9001</option>
+                  <option value="iso9001-auditor">Auditor Interno ISO 9001</option>
+                  <option value="iso14001-fundamentos">Fundamentos ISO 14001</option>
+                  <option value="iso45001-fundamentos">Fundamentos ISO 45001</option>
+                  <option value="iso27001-fundamentos">Fundamentos ISO 27001</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="bg-accent-800 hover:bg-accent-900 text-white py-3 px-8 rounded-lg transition-colors font-semibold flex items-center space-x-2 mx-auto">
+                <Search size="20" />
+                <span>Buscar Certificado</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Resultado de búsqueda (oculto por defecto) -->
+          <div id="resultado-busqueda" class="mt-8 p-6 bg-green-50 border border-green-200 rounded-lg hidden">
+            <div class="flex items-start space-x-4">
+              <CheckCircle size="24" class="text-green-600 mt-1" />
+              <div class="flex-1">
+                <h3 class="text-lg font-bold text-green-800 mb-2">Certificado Verificado</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p><strong>Número:</strong> <span id="cert-numero">CMS-2024-001234</span></p>
+                    <p><strong>Participante:</strong> <span id="cert-participante">Juan Pérez González</span></p>
+                    <p><strong>RUT:</strong> <span id="cert-rut">12.345.678-9</span></p>
+                  </div>
+                  <div>
+                    <p><strong>Curso:</strong> <span id="cert-curso">Auditor Interno ISO 9001:2015</span></p>
+                    <p><strong>Fecha:</strong> <span id="cert-fecha">15 de marzo, 2024</span></p>
+                    <p><strong>Duración:</strong> <span id="cert-duracion">24 horas</span></p>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm flex items-center space-x-2">
+                    <Download size="16" />
+                    <span>Descargar Certificado</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tipos de Certificados -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tipos de Certificados</h2>
+          <p class="text-xl text-gray-600">Reconocimientos oficiales que emitimos</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Certificados de Capacitación -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Award size="32" class="text-white" />
+            </div>
+            <h3 class="text-xl font-bold text-blue-800 mb-3">Certificados de Capacitación</h3>
+            <p class="text-gray-700 mb-4">
+              Certificados oficiales emitidos por cursos de capacitación en normas ISO y sistemas de gestión.
+            </p>
+            <ul class="text-sm text-gray-600 text-left space-y-1">
+              <li>• Validez nacional e internacional</li>
+              <li>• Respaldo NCh 2728</li>
+              <li>• Código QR de verificación</li>
+              <li>• Registro digital permanente</li>
+            </ul>
+          </div>
+
+          <!-- Certificados de Competencia -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
+            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield size="32" class="text-white" />
+            </div>
+            <h3 class="text-xl font-bold text-green-800 mb-3">Certificados de Competencia</h3>
+            <p class="text-gray-700 mb-4">
+              Reconocimiento de competencias específicas en auditoría interna y consultoría.
+            </p>
+            <ul class="text-sm text-gray-600 text-left space-y-1">
+              <li>• Evaluación práctica incluida</li>
+              <li>• Renovación periódica</li>
+              <li>• Registro en base nacional</li>
+              <li>• Reconocimiento empresarial</li>
+            </ul>
+          </div>
+
+          <!-- Diplomas Especializados -->
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center">
+            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Award size="32" class="text-white" />
+            </div>
+            <h3 class="text-xl font-bold text-purple-800 mb-3">Diplomas Especializados</h3>
+            <p class="text-gray-700 mb-4">
+              Diplomas para programas extensos y especializaciones avanzadas en gestión.
+            </p>
+            <ul class="text-sm text-gray-600 text-left space-y-1">
+              <li>• Programas de 40+ horas</li>
+              <li>• Múltiples evaluaciones</li>
+              <li>• Proyecto final incluido</li>
+              <li>• Prestigio profesional</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proceso de Verificación -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Proceso de Verificación</h2>
+          <p class="text-xl text-gray-600">Cómo validamos la autenticidad de nuestros certificados</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-8">
+            <!-- Paso 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Código Único</h3>
+                  <p class="text-gray-600">
+                    Cada certificado tiene un código único alfanumérico que permite su identificación inequívoca en nuestro sistema.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Base de Datos Segura</h3>
+                  <p class="text-gray-600">
+                    Mantenemos una base de datos encriptada con todos los certificados emitidos, accesible solo a través de nuestro sistema de verificación.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Código QR</h3>
+                  <p class="text-gray-600">
+                    Los certificados físicos incluyen código QR que redirige directamente a la página de verificación con los datos precargados.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">4</div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Verificación Instantánea</h3>
+                  <p class="text-gray-600">
+                    El sistema proporciona verificación instantánea mostrando todos los detalles del certificado y su vigencia.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto para Dudas -->
+    <section class="py-16 bg-accent-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">¿Dudas sobre un Certificado?</h2>
+        <p class="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+          Si tiene problemas para verificar un certificado o necesita información adicional, contáctenos directamente.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Contactar Soporte
+          </a>
+          <a href="mailto:certificados@cmsconsultores.cl" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            certificados@cmsconsultores.cl
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Simular búsqueda de certificado
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const numeroInput = document.getElementById('numero-certificado');
+      const rutInput = document.getElementById('rut');
+      const nombreInput = document.getElementById('nombre');
+      
+      if (numeroInput.value || (rutInput.value && nombreInput.value)) {
+        document.getElementById('resultado-busqueda').classList.remove('hidden');
+        document.getElementById('resultado-busqueda').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        alert('Por favor ingrese el número de certificado o complete RUT y nombre.');
+      }
+    });
+  </script>
+</Layout>

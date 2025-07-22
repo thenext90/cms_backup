@@ -1,0 +1,309 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { GraduationCap, Users, Clock, Award, CheckCircle, BookOpen } from 'lucide-astro';
+---
+
+<Layout title="Capacitación - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <GraduationCap size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Capacitación Profesional</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Programas de capacitación especializada en sistemas de gestión de calidad y normas ISO
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modalidades de Capacitación -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Modalidades de Capacitación</h2>
+          <p class="text-xl text-gray-600">Flexibilidad para adaptarse a sus necesidades</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Presencial -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Users size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Presencial</h3>
+            <ul class="text-gray-600 text-left space-y-2 mb-6">
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Interacción directa con instructor</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Talleres prácticos grupales</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Networking con profesionales</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Material físico incluido</span>
+              </li>
+            </ul>
+            <div class="text-accent-800 font-bold text-lg">Desde $250.000</div>
+          </div>
+
+          <!-- Online -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center border-2 border-accent-200">
+            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent-800 text-white px-4 py-1 rounded-full text-sm font-bold">
+              Más Popular
+            </div>
+            <BookOpen size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Online</h3>
+            <ul class="text-gray-600 text-left space-y-2 mb-6">
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Acceso 24/7 a la plataforma</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Videos interactivos</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Evaluaciones automáticas</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Certificado digital</span>
+              </li>
+            </ul>
+            <div class="text-accent-800 font-bold text-lg">Desde $150.000</div>
+          </div>
+
+          <!-- In-Company -->
+          <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+            <Clock size="48" class="mx-auto mb-4 text-accent-800" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">In-Company</h3>
+            <ul class="text-gray-600 text-left space-y-2 mb-6">
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Capacitación en sus instalaciones</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Contenido personalizado</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Horarios flexibles</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <CheckCircle size="16" class="text-green-600" />
+                <span>Grupos de hasta 20 personas</span>
+              </li>
+            </ul>
+            <div class="text-accent-800 font-bold text-lg">Consultar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Cursos -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Catálogo de Cursos</h2>
+          <p class="text-xl text-gray-600">Programas especializados por área de conocimiento</p>
+        </div>
+
+        <!-- ISO 9001 -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Sistemas de Gestión de Calidad - ISO 9001</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-blue-800 mb-3">Fundamentos ISO 9001:2015</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 16 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/Online</p>
+                <p><strong>Dirigido a:</strong> Principiantes</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Introducción a los conceptos básicos de la norma ISO 9001 y sistemas de gestión de calidad.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-blue-800 mb-3">Auditor Interno ISO 9001</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 24 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/Online</p>
+                <p><strong>Dirigido a:</strong> Profesionales</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Formación para realizar auditorías internas de sistemas de gestión de calidad.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-blue-800 mb-3">Implementación ISO 9001</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 32 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/In-Company</p>
+                <p><strong>Dirigido a:</strong> Equipos de implementación</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Metodología práctica para implementar sistemas de gestión de calidad.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ISO 14001 -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Gestión Ambiental - ISO 14001</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-green-800 mb-3">Fundamentos ISO 14001:2015</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 16 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/Online</p>
+                <p><strong>Dirigido a:</strong> Principiantes</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Introducción a los sistemas de gestión ambiental y la norma ISO 14001.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-green-800 mb-3">Auditor Interno ISO 14001</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 24 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/Online</p>
+                <p><strong>Dirigido a:</strong> Profesionales</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Capacitación para auditorías internas de sistemas de gestión ambiental.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-green-800 mb-3">Evaluación de Aspectos Ambientales</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 16 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/In-Company</p>
+                <p><strong>Dirigido a:</strong> Especialistas</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Metodologías para identificar y evaluar aspectos e impactos ambientales.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ISO 45001 -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Seguridad y Salud Ocupacional - ISO 45001</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-red-800 mb-3">Fundamentos ISO 45001:2018</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 16 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/Online</p>
+                <p><strong>Dirigido a:</strong> Principiantes</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Introducción a los sistemas de gestión de seguridad y salud ocupacional.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-red-800 mb-3">Identificación de Peligros</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 20 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/In-Company</p>
+                <p><strong>Dirigido a:</strong> Prevencionistas</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Técnicas para identificar peligros y evaluar riesgos laborales.
+              </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6">
+              <h4 class="text-lg font-bold text-red-800 mb-3">Auditor Interno ISO 45001</h4>
+              <div class="text-sm text-gray-600 mb-4">
+                <p><strong>Duración:</strong> 24 horas</p>
+                <p><strong>Modalidad:</strong> Presencial/Online</p>
+                <p><strong>Dirigido a:</strong> Profesionales</p>
+              </div>
+              <p class="text-gray-700 text-sm">
+                Formación para auditorías internas de sistemas de gestión SST.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Beneficios de Nuestros Cursos</h2>
+          <p class="text-xl text-gray-600">¿Por qué elegir CMS Consultores para su capacitación?</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Award size="32" class="text-accent-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Certificación Oficial</h3>
+            <p class="text-gray-600 text-sm">Certificados con validez nacional e internacional</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users size="32" class="text-blue-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Instructores Expertos</h3>
+            <p class="text-gray-600 text-sm">Profesionales con amplia experiencia práctica</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BookOpen size="32" class="text-green-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Material Actualizado</h3>
+            <p class="text-gray-600 text-sm">Contenido basado en las últimas versiones de normas</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Clock size="32" class="text-purple-800" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Flexibilidad Horaria</h3>
+            <p class="text-gray-600 text-sm">Horarios adaptados a sus necesidades</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-accent-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">¿Listo para Capacitarse?</h2>
+        <p class="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+          Contáctenos para conocer más sobre nuestros programas de capacitación y encontrar el curso ideal para sus necesidades.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Solicitar Información
+          </a>
+          <a href="/certificados" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Ver Certificados
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

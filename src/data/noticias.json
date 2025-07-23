@@ -1,0 +1,44 @@
+[
+  {
+    "titulo": "Se da inicio a su plan de certificación en las normas internacionales ISO 9001:2015",
+    "imagen": "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "contexto": "Nueva empresa del sector manufacturero inicia su proceso de certificación en ISO 9001:2015, buscando mejorar sus procesos de calidad y satisfacción del cliente. Este proyecto incluye la revisión completa de procesos, capacitación del personal y implementación de mejores prácticas.",
+    "fecha": "2025-01-15",
+    "categoria": "Certificación"
+  },
+  {
+    "titulo": "Exitosa implementación de Sistema de Gestión de Seguridad y Salud Ocupacional",
+    "imagen": "https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "contexto": "Empresa del sector minero completa con éxito la implementación de ISO 45001, fortaleciendo su compromiso con la seguridad laboral. El proyecto incluyó evaluación de riesgos, capacitación del personal y establecimiento de procedimientos de emergencia.",
+    "fecha": "2025-01-10",
+    "categoria": "Seguridad"
+  },
+  {
+    "titulo": "Capacitación avanzada en Gestión Ambiental ISO 14001:2015",
+    "imagen": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "contexto": "Programa especializado para profesionales que buscan profundizar en sistemas de gestión ambiental y sostenibilidad empresarial. El curso abarca aspectos legales, metodologías de evaluación de impacto ambiental y estrategias de mejora continua.",
+    "fecha": "2024-12-28",
+    "categoria": "Capacitación"
+  },
+  {
+    "titulo": "Nueva metodología para evaluación de riesgos psicosociales",
+    "imagen": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "contexto": "Innovadora aproximación metodológica para identificar y mitigar riesgos psicosociales en el ambiente laboral, cumpliendo con la normativa nacional. La metodología incluye herramientas de diagnóstico, planes de intervención y seguimiento continuo.",
+    "fecha": "2024-12-20",
+    "categoria": "Metodología"
+  },
+  {
+    "titulo": "Seminario Internacional sobre Sistemas Integrados de Gestión",
+    "imagen": "https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "contexto": "Evento que reunió a expertos internacionales para discutir las mejores prácticas en la implementación de sistemas integrados de gestión. Se abordaron temas como la integración de ISO 9001, ISO 14001 e ISO 45001 en una sola estructura organizacional.",
+    "fecha": "2024-12-15",
+    "categoria": "Evento"
+  },
+  {
+    "titulo": "Actualización normativa: Cambios en ISO 27001 para el 2025",
+    "imagen": "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "contexto": "Análisis detallado de las actualizaciones más recientes en la norma de seguridad de la información y su impacto en las organizaciones. Se revisaron los nuevos controles de seguridad, requisitos de documentación y procesos de auditoría.",
+    "fecha": "2024-12-05",
+    "categoria": "Normativa"
+  }
+]

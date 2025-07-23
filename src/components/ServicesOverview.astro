@@ -1,0 +1,62 @@
+---
+import { Calendar, Award, Users } from 'lucide-astro';
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-3 gap-8">
+      
+      <!-- EFEMÉRIDES - Columna Izquierda -->
+      <div class="bg-gray-50 rounded-xl p-8 text-center">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">EFEMÉRIDES</h3>
+        
+        <div class="mb-6">
+          <div class="w-full h-48 bg-gray-200 rounded-lg border-4 border-gray-400 flex items-center justify-center">
+            <!-- Placeholder para la imagen que subirás después -->
+            <span class="text-gray-500 text-sm">Imagen pendiente</span>
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <p class="text-gray-600 text-sm mb-2">
+            Visita de Gerente General CMS Consultores - Coordinación U.K. (CMS-CQS)
+          </p>
+          <p class="text-accent-600 font-medium text-sm">(Londres)</p>
+        </div>
+      </div>
+
+      <!-- SERVICIO DE IMPLEMENTACIÓN DE NORMAS - Columna Central -->
+      <div class="bg-gradient-to-br from-accent-600 to-accent-800 rounded-xl p-8 text-center text-white">
+        <h3 class="text-2xl font-bold mb-6">SERVICIO DE IMPLEMENTACIÓN DE NORMAS</h3>
+        
+        <p class="text-white/90 text-sm mb-6">
+          El servicio de Implementación de normas que desarrolla CMS Consultores se basa en 4 etapas
+        </p>
+        
+        <div class="mb-6">
+          <div class="w-32 h-24 bg-white rounded-lg mx-auto flex items-center justify-center overflow-hidden">
+            <!-- Placeholder para imagen de apretón de manos -->
+            <Award size="48" class="text-accent-600" />
+          </div>
+        </div>
+      </div>
+
+      <!-- CAPACITACIÓN - Columna Derecha -->
+      <div class="bg-gray-50 rounded-xl p-8 text-center">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">CAPACITACIÓN</h3>
+        
+        <div class="mb-6">
+          <div class="w-32 h-24 bg-blue-100 rounded-lg mx-auto flex items-center justify-center overflow-hidden">
+            <!-- Placeholder para imagen de presentación -->
+            <Users size="48" class="text-blue-600" />
+          </div>
+        </div>
+        
+        <p class="text-gray-600 text-sm leading-relaxed">
+          El área de capacitación se orienta a entregar conocimientos y innovación, nuestra empresa no entrega ni vende commodity Entregamos soluciones asociadas a Sistemas Integrados de Gestión y Macrotendencias.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

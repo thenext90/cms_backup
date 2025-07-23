@@ -1,0 +1,247 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, BookOpen, Shield, Star, CheckCircle, MessageSquare } from 'lucide-astro';
+---
+
+<Layout title="Derechos y Deberes de los Alumnos - CMS Consultores">
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Derechos y Deberes de los Alumnos
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100 mb-8 leading-relaxed">
+            Conoce tus derechos como alumno y las responsabilidades que asumimos juntos para garantizar una experiencia de aprendizaje exitosa.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Users class="w-5 h-5" />
+              <span class="text-sm font-medium">Compromiso Mutuo</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <BookOpen class="w-5 h-5" />
+              <span class="text-sm font-medium">Excelencia Educativa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Derechos de los Alumnos -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Derechos de los Alumnos
+            </h2>
+            <p class="text-lg text-gray-600">
+              Como alumno de CMS Consultores, tienes garantizados los siguientes derechos fundamentales.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="bg-blue-50 p-6 rounded-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                  <BookOpen class="w-6 h-6 text-blue-600" />
+                  <h3 class="text-xl font-semibold text-gray-800">Calidad Educativa</h3>
+                </div>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Recibir enseñanza de calidad según estándares ISO</li>
+                  <li>• Acceso a material didáctico actualizado</li>
+                  <li>• Instructores certificados y especializados</li>
+                  <li>• Metodologías de enseñanza probadas</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                  <Shield class="w-6 h-6 text-green-600" />
+                  <h3 class="text-xl font-semibold text-gray-800">Certificación</h3>
+                </div>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Certificado de participación al completar el curso</li>
+                  <li>• Reconocimiento válido según NCh 2728</li>
+                  <li>• Registro en base de datos verificable</li>
+                  <li>• Duplicado de certificado sin costo adicional</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-purple-50 p-6 rounded-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                  <MessageSquare class="w-6 h-6 text-purple-600" />
+                  <h3 class="text-xl font-semibold text-gray-800">Comunicación</h3>
+                </div>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Información clara sobre objetivos del curso</li>
+                  <li>• Retroalimentación constructiva y oportuna</li>
+                  <li>• Canal de comunicación directo con instructores</li>
+                  <li>• Respuesta a consultas en máximo 24 horas</li>
+                </ul>
+              </div>
+
+              <div class="bg-orange-50 p-6 rounded-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                  <Star class="w-6 h-6 text-orange-600" />
+                  <h3 class="text-xl font-semibold text-gray-800">Evaluación Justa</h3>
+                </div>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Criterios de evaluación transparentes</li>
+                  <li>• Oportunidad de revisión de resultados</li>
+                  <li>• Evaluación basada en competencias</li>
+                  <li>• Derecho a segunda oportunidad si es necesario</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deberes de los Alumnos -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Deberes de los Alumnos
+            </h2>
+            <p class="text-lg text-gray-600">
+              Para garantizar un ambiente de aprendizaje óptimo, los alumnos deben cumplir con las siguientes responsabilidades.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <CheckCircle class="w-5 h-5 text-accent-800" />
+                <span>Participación Activa</span>
+              </h3>
+              <ul class="text-gray-600 space-y-2">
+                <li>• Asistir puntualmente a todas las sesiones</li>
+                <li>• Participar activamente en discusiones y ejercicios</li>
+                <li>• Completar las actividades asignadas</li>
+                <li>• Mantener una actitud respetuosa y profesional</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <BookOpen class="w-5 h-5 text-accent-800" />
+                <span>Compromiso Académico</span>
+              </h3>
+              <ul class="text-gray-600 space-y-2">
+                <li>• Dedicar el tiempo necesario al estudio</li>
+                <li>• Realizar las evaluaciones con honestidad</li>
+                <li>• Cumplir con los plazos establecidos</li>
+                <li>• Buscar apoyo cuando sea necesario</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <Users class="w-5 h-5 text-accent-800" />
+                <span>Respeto y Convivencia</span>
+              </h3>
+              <ul class="text-gray-600 space-y-2">
+                <li>• Respetar a compañeros e instructores</li>
+                <li>• Mantener confidencialidad cuando corresponda</li>
+                <li>• Colaborar constructivamente en trabajos grupales</li>
+                <li>• Seguir las normas de comportamiento</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <MessageSquare class="w-5 h-5 text-accent-800" />
+                <span>Comunicación Efectiva</span>
+              </h3>
+              <ul class="text-gray-600 space-y-2">
+                <li>• Informar oportunamente sobre ausencias</li>
+                <li>• Plantear dudas y consultas de manera apropiada</li>
+                <li>• Proporcionar retroalimentación constructiva</li>
+                <li>• Utilizar canales oficiales de comunicación</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Procedimientos y Políticas -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Procedimientos y Políticas
+          </h2>
+
+          <div class="space-y-8">
+            <div class="bg-blue-50 p-6 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Política de Asistencia</h3>
+              <p class="text-gray-600 mb-4">
+                Para obtener la certificación, es obligatorio cumplir con un mínimo de 80% de asistencia a las sesiones programadas.
+              </p>
+              <ul class="text-gray-600 space-y-1">
+                <li>• Justificación de ausencias en un plazo máximo de 48 horas</li>
+                <li>• Posibilidad de recuperación para ausencias justificadas</li>
+                <li>• Material de apoyo disponible para ausencias menores al 20%</li>
+              </ul>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Evaluación y Certificación</h3>
+              <p class="text-gray-600 mb-4">
+                Las evaluaciones se realizan de forma continua y al final del curso, considerando tanto conocimientos teóricos como aplicación práctica.
+              </p>
+              <ul class="text-gray-600 space-y-1">
+                <li>• Evaluación continua: 40% de la calificación final</li>
+                <li>• Evaluación final: 60% de la calificación final</li>
+                <li>• Nota mínima de aprobación: 60%</li>
+                <li>• Oportunidad de evaluación recuperativa</li>
+              </ul>
+            </div>
+
+            <div class="bg-orange-50 p-6 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Proceso de Reclamos</h3>
+              <p class="text-gray-600 mb-4">
+                Garantizamos un proceso justo y transparente para atender cualquier reclamo o sugerencia de mejora.
+              </p>
+              <ul class="text-gray-600 space-y-1">
+                <li>• Presentación formal de reclamo por escrito</li>
+                <li>• Respuesta en un plazo máximo de 5 días hábiles</li>
+                <li>• Revisión por comité académico independiente</li>
+                <li>• Derecho a apelación si fuera necesario</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-accent-800 to-accent-900 text-white">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          ¿Tienes Dudas Sobre Tus Derechos y Deberes?
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Nuestro equipo académico está disponible para resolver cualquier consulta sobre las políticas estudiantiles.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Consultar Ahora
+          </a>
+          <a href="/capacitacion" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Ver Cursos
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

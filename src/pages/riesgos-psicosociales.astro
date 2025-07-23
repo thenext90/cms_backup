@@ -1,0 +1,334 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Brain, Heart, Shield, AlertTriangle, Users, TrendingDown } from 'lucide-astro';
+---
+
+<Layout title="Riesgos Psicosociales en el Trabajo - CMS Consultores">
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Riesgos Psicosociales en el Trabajo
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100 mb-8 leading-relaxed">
+            Protege el bienestar mental y emocional de tu equipo. Implementamos programas integrales para la prevención y gestión de riesgos psicosociales laborales.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Brain class="w-5 h-5" />
+              <span class="text-sm font-medium">Salud Mental</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Shield class="w-5 h-5" />
+              <span class="text-sm font-medium">Prevención Integral</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ¿Qué son los Riesgos Psicosociales? -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              ¿Qué son los Riesgos Psicosociales?
+            </h2>
+            <p class="text-lg text-gray-600">
+              Los riesgos psicosociales son aspectos del diseño, organización y gestión del trabajo que pueden causar daño psicológico o físico.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-red-50 p-6 rounded-xl">
+              <div class="flex items-center space-x-3 mb-4">
+                <AlertTriangle class="w-6 h-6 text-red-600" />
+                <h3 class="text-xl font-semibold text-gray-800">Factores de Riesgo</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Sobrecarga de trabajo y presión temporal</li>
+                <li>• Falta de control sobre las tareas</li>
+                <li>• Ambigüedad en roles y responsabilidades</li>
+                <li>• Conflictos interpersonales</li>
+                <li>• Falta de apoyo social</li>
+                <li>• Inseguridad laboral</li>
+              </ul>
+            </div>
+
+            <div class="bg-blue-50 p-6 rounded-xl">
+              <div class="flex items-center space-x-3 mb-4">
+                <TrendingDown class="w-6 h-6 text-blue-600" />
+                <h3 class="text-xl font-semibold text-gray-800">Consecuencias</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Estrés laboral y burnout</li>
+                <li>• Ansiedad y depresión</li>
+                <li>• Problemas cardiovasculares</li>
+                <li>• Disminución del rendimiento</li>
+                <li>• Ausentismo laboral</li>
+                <li>• Alta rotación de personal</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-xl">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Marco Legal en Chile</h3>
+            <p class="text-gray-600 text-center mb-4">
+              La legislación chilena establece la obligación del empleador de proteger la salud mental de los trabajadores.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+              <span class="bg-white px-4 py-2 rounded-lg text-sm font-medium text-gray-700">Ley 16.744</span>
+              <span class="bg-white px-4 py-2 rounded-lg text-sm font-medium text-gray-700">Decreto 594</span>
+              <span class="bg-white px-4 py-2 rounded-lg text-sm font-medium text-gray-700">Protocolo MINSAL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestro Programa -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Nuestro Programa de Prevención
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Brain class="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3 text-center">Evaluación Inicial</h3>
+              <p class="text-gray-600 text-sm text-center mb-4">
+                Diagnóstico completo de riesgos psicosociales mediante herramientas validadas.
+              </p>
+              <ul class="text-gray-600 space-y-1 text-xs">
+                <li>• Cuestionario SUSESO-ISTAS 21</li>
+                <li>• Entrevistas individuales</li>
+                <li>• Análisis de indicadores</li>
+                <li>• Informe de resultados</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Shield class="w-6 h-6 text-green-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3 text-center">Plan de Acción</h3>
+              <p class="text-gray-600 text-sm text-center mb-4">
+                Diseño de estrategias específicas para abordar los riesgos identificados.
+              </p>
+              <ul class="text-gray-600 space-y-1 text-xs">
+                <li>• Medidas preventivas</li>
+                <li>• Capacitación específica</li>
+                <li>• Protocolos de intervención</li>
+                <li>• Cronograma de implementación</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Heart class="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3 text-center">Seguimiento</h3>
+              <p class="text-gray-600 text-sm text-center mb-4">
+                Monitoreo continuo y ajuste de las medidas implementadas.
+              </p>
+              <ul class="text-gray-600 space-y-1 text-xs">
+                <li>• Evaluaciones periódicas</li>
+                <li>• Indicadores de bienestar</li>
+                <li>• Retroalimentación del equipo</li>
+                <li>• Mejora continua</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Áreas de Intervención -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Áreas de Intervención
+          </h2>
+
+          <div class="space-y-8">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-blue-50 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                  <Users class="w-5 h-5 text-blue-600" />
+                  <span>Gestión del Liderazgo</span>
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Fortalecimiento de competencias directivas para crear ambientes laborales saludables.
+                </p>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Capacitación en liderazgo positivo</li>
+                  <li>• Técnicas de comunicación efectiva</li>
+                  <li>• Gestión de conflictos</li>
+                  <li>• Reconocimiento y retroalimentación</li>
+                </ul>
+              </div>
+
+              <div class="bg-green-50 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                  <Brain class="w-5 h-5 text-green-600" />
+                  <span>Bienestar Mental</span>
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Programas específicos para el cuidado de la salud mental de los trabajadores.
+                </p>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Talleres de manejo del estrés</li>
+                  <li>• Técnicas de mindfulness</li>
+                  <li>• Apoyo psicológico profesional</li>
+                  <li>• Programas de trabajo-vida equilibrada</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-purple-50 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                  <Shield class="w-5 h-5 text-purple-600" />
+                  <span>Organización del Trabajo</span>
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Mejora en el diseño y organización de los puestos de trabajo.
+                </p>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Análisis de cargas de trabajo</li>
+                  <li>• Definición clara de roles</li>
+                  <li>• Flexibilidad laboral</li>
+                  <li>• Autonomía en la toma de decisiones</li>
+                </ul>
+              </div>
+
+              <div class="bg-orange-50 p-6 rounded-xl">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                  <Heart class="w-5 h-5 text-orange-600" />
+                  <span>Clima Organizacional</span>
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Creación de ambientes laborales positivos y colaborativos.
+                </p>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Promoción del trabajo en equipo</li>
+                  <li>• Espacios de participación</li>
+                  <li>• Actividades de integración</li>
+                  <li>• Canales de comunicación abiertos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Herramientas y Metodologías -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Herramientas y Metodologías
+          </h2>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <h3 class="font-semibold text-gray-800 mb-2">SUSESO-ISTAS 21</h3>
+              <p class="text-gray-600 text-sm">Cuestionario oficial para evaluación de riesgos psicosociales</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <h3 class="font-semibold text-gray-800 mb-2">Protocolo MINSAL</h3>
+              <p class="text-gray-600 text-sm">Seguimiento de directrices del Ministerio de Salud</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <h3 class="font-semibold text-gray-800 mb-2">Intervención Multinivel</h3>
+              <p class="text-gray-600 text-sm">Enfoque integral organizacional, grupal e individual</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <h3 class="font-semibold text-gray-800 mb-2">Programas EAP</h3>
+              <p class="text-gray-600 text-sm">Employee Assistance Programs para apoyo psicológico</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <h3 class="font-semibold text-gray-800 mb-2">Mindfulness Laboral</h3>
+              <p class="text-gray-600 text-sm">Técnicas de atención plena aplicadas al trabajo</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+              <h3 class="font-semibold text-gray-800 mb-2">Coaching Grupal</h3>
+              <p class="text-gray-600 text-sm">Desarrollo de habilidades de manejo emocional</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8">
+            Beneficios de Nuestro Programa
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="text-left">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Para la Organización</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Reducción del ausentismo laboral</li>
+                <li>• Disminución de la rotación de personal</li>
+                <li>• Mejora en la productividad</li>
+                <li>• Cumplimiento normativo</li>
+                <li>• Fortalecimiento de la imagen corporativa</li>
+                <li>• Reducción de costos por licencias médicas</li>
+              </ul>
+            </div>
+
+            <div class="text-left">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Para los Trabajadores</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Mejor calidad de vida laboral</li>
+                <li>• Reducción del estrés y ansiedad</li>
+                <li>• Mayor satisfacción laboral</li>
+                <li>• Desarrollo de habilidades de afrontamiento</li>
+                <li>• Ambiente de trabajo más saludable</li>
+                <li>• Mejor equilibrio trabajo-vida personal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-accent-800 to-accent-900 text-white">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          Protege el Bienestar de tu Equipo
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Inicia hoy mismo un programa integral de prevención de riesgos psicosociales en tu organización.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Solicitar Evaluación
+          </a>
+          <a href="/capacitacion" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Ver Capacitaciones
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

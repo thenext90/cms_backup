@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BookOpen, FileText, Users, Target, Star, TrendingUp } from 'lucide-astro';
+---
+
+<Layout title="Editorial CMS - Publicaciones y Recursos - CMS Consultores">
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Editorial CMS
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100 mb-8 leading-relaxed">
+            Publicaciones especializadas en gestión de calidad, recursos didácticos y material educativo de primera calidad para profesionales y organizaciones.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <BookOpen class="w-5 h-5" />
+              <span class="text-sm font-medium">Contenido Especializado</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <FileText class="w-5 h-5" />
+              <span class="text-sm font-medium">Recursos Actualizados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Publicaciones -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Catálogo de Publicaciones
+            </h2>
+            <p class="text-lg text-gray-600">
+              Material educativo especializado desarrollado por nuestros expertos en gestión de calidad.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Manual ISO 9001 -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-16 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg mb-4 flex items-center justify-center">
+                <BookOpen class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Manual ISO 9001:2015</h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                Guía completa para la implementación de sistemas de gestión de calidad según la norma ISO 9001:2015.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-accent-800">$45.000</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+              </div>
+              <button class="w-full bg-accent-800 text-white py-2 rounded-lg hover:bg-accent-900 transition-colors text-sm font-medium">
+                Solicitar Información
+              </button>
+            </div>
+
+            <!-- Guía ISO 45001 -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-16 h-20 bg-gradient-to-br from-red-500 to-red-700 rounded-lg mb-4 flex items-center justify-center">
+                <BookOpen class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Guía ISO 45001:2018</h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                Manual práctico para la gestión de seguridad y salud ocupacional en las organizaciones.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-accent-800">$38.000</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+              </div>
+              <button class="w-full bg-accent-800 text-white py-2 rounded-lg hover:bg-accent-900 transition-colors text-sm font-medium">
+                Solicitar Información
+              </button>
+            </div>
+
+            <!-- Manual Auditorías -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-16 h-20 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg mb-4 flex items-center justify-center">
+                <BookOpen class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Manual de Auditorías</h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                Metodología completa para la planificación, ejecución y seguimiento de auditorías internas.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-accent-800">$32.000</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+              </div>
+              <button class="w-full bg-accent-800 text-white py-2 rounded-lg hover:bg-accent-900 transition-colors text-sm font-medium">
+                Solicitar Información
+              </button>
+            </div>
+
+            <!-- Gestión de Riesgos -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-16 h-20 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg mb-4 flex items-center justify-center">
+                <BookOpen class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Gestión de Riesgos</h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                Herramientas y técnicas para la identificación, evaluación y control de riesgos organizacionales.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-accent-800">$40.000</span>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Próximamente</span>
+              </div>
+              <button class="w-full bg-gray-400 text-white py-2 rounded-lg cursor-not-allowed text-sm font-medium" disabled>
+                En Desarrollo
+              </button>
+            </div>
+
+            <!-- Mejora Continua -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-16 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-lg mb-4 flex items-center justify-center">
+                <BookOpen class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Mejora Continua</h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                Metodologías avanzadas para la implementación de procesos de mejora continua.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-accent-800">$35.000</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+              </div>
+              <button class="w-full bg-accent-800 text-white py-2 rounded-lg hover:bg-accent-900 transition-colors text-sm font-medium">
+                Solicitar Información
+              </button>
+            </div>
+
+            <!-- Kit Documentos ISO -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-16 h-20 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-lg mb-4 flex items-center justify-center">
+                <FileText class="w-8 h-8 text-white" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">Kit Documentos ISO</h3>
+              <p class="text-gray-600 mb-4 text-sm">
+                Plantillas y formatos listos para usar en la implementación de sistemas ISO.
+              </p>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-accent-800">$55.000</span>
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">Digital</span>
+              </div>
+              <button class="w-full bg-accent-800 text-white py-2 rounded-lg hover:bg-accent-900 transition-colors text-sm font-medium">
+                Descargar Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Digitales -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Recursos Digitales
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="flex items-center space-x-3 mb-4">
+                <FileText class="w-6 h-6 text-blue-600" />
+                <h3 class="text-xl font-semibold text-gray-800">E-Books Especializados</h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Biblioteca digital con más de 50 publicaciones especializadas en gestión de calidad y mejores prácticas.
+              </p>
+              <ul class="space-y-2 text-gray-600 mb-6">
+                <li>• Acceso 24/7 desde cualquier dispositivo</li>
+                <li>• Actualizaciones automáticas</li>
+                <li>• Descarga offline disponible</li>
+                <li>• Herramientas de búsqueda avanzada</li>
+              </ul>
+              <a href="#" class="inline-flex items-center text-accent-800 hover:text-accent-900 font-medium">
+                Explorar Biblioteca
+                <TrendingUp class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="flex items-center space-x-3 mb-4">
+                <Target class="w-6 h-6 text-green-600" />
+                <h3 class="text-xl font-semibold text-gray-800">Plantillas y Herramientas</h3>
+              </div>
+              <p class="text-gray-600 mb-4">
+                Conjunto completo de plantillas, formatos y herramientas prácticas para la implementación de sistemas de gestión.
+              </p>
+              <ul class="space-y-2 text-gray-600 mb-6">
+                <li>• Más de 200 plantillas editables</li>
+                <li>• Formatos en Word, Excel y PDF</li>
+                <li>• Guías de uso paso a paso</li>
+                <li>• Ejemplos reales de implementación</li>
+              </ul>
+              <a href="#" class="inline-flex items-center text-accent-800 hover:text-accent-900 font-medium">
+                Ver Catálogo
+                <TrendingUp class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios Editoriales -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Servicios Editoriales
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen class="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Desarrollo de Contenido</h3>
+              <p class="text-gray-600 text-sm">
+                Creación de material educativo personalizado para organizaciones y programas de capacitación específicos.
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FileText class="w-8 h-8 text-green-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Edición y Revisión</h3>
+              <p class="text-gray-600 text-sm">
+                Servicios profesionales de edición, corrección y diseño para documentos técnicos y manuales corporativos.
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users class="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Publicación Corporativa</h3>
+              <p class="text-gray-600 text-sm">
+                Apoyo integral para la publicación de manuales, procedimientos y documentación empresarial.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Distribución y Ventas -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Distribución y Ventas
+          </h2>
+
+          <div class="bg-white rounded-xl p-8 shadow-sm">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Canales de Distribución</h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center space-x-2">
+                    <Star class="w-5 h-5 text-yellow-500" />
+                    <span>Venta directa en nuestras oficinas</span>
+                  </li>
+                  <li class="flex items-center space-x-2">
+                    <Star class="w-5 h-5 text-yellow-500" />
+                    <span>Plataforma digital CMS Editorial</span>
+                  </li>
+                  <li class="flex items-center space-x-2">
+                    <Star class="w-5 h-5 text-yellow-500" />
+                    <span>Distribuidores autorizados</span>
+                  </li>
+                  <li class="flex items-center space-x-2">
+                    <Star class="w-5 h-5 text-yellow-500" />
+                    <span>Librerías especializadas</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Opciones de Compra</h3>
+                <ul class="space-y-3 text-gray-600">
+                  <li>• Compra individual</li>
+                  <li>• Paquetes corporativos con descuento</li>
+                  <li>• Suscripción anual a biblioteca digital</li>
+                  <li>• Licencias institucionales</li>
+                  <li>• Financiamiento para grandes volúmenes</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+              <h4 class="text-lg font-semibold text-gray-800 mb-3">Descuentos Especiales</h4>
+              <div class="grid md:grid-cols-3 gap-4 text-sm">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-blue-600">15%</div>
+                  <div class="text-gray-600">Compras sobre $100.000</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-green-600">25%</div>
+                  <div class="text-gray-600">Instituciones educativas</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-purple-600">30%</div>
+                  <div class="text-gray-600">Clientes corporativos</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-accent-800 to-accent-900 text-white">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          ¿Necesitas Material Especializado?
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Nuestro equipo editorial está listo para ayudarte a encontrar el material perfecto para tu organización.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Solicitar Catálogo
+          </a>
+          <a href="/capacitacion" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Ver Capacitaciones
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

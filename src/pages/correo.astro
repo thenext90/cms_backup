@@ -1,0 +1,338 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Mail, Send, Inbox, Clock, Shield, Users } from 'lucide-astro';
+---
+
+<Layout title="Correo Corporativo - CMS Consultores">
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Correo Corporativo CMS
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100 mb-8 leading-relaxed">
+            Acceso seguro y profesional al sistema de correo corporativo de CMS Consultores. Mantente conectado con tu equipo y clientes.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Mail class="w-5 h-5" />
+              <span class="text-sm font-medium">Acceso Seguro</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Shield class="w-5 h-5" />
+              <span class="text-sm font-medium">Protección Avanzada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acceso al Correo -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-2xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Acceso al Sistema
+            </h2>
+            <p class="text-lg text-gray-600">
+              Ingresa con tus credenciales corporativas para acceder a tu cuenta de correo.
+            </p>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-8 shadow-lg">
+            <form class="space-y-6">
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                  Correo Electrónico
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="usuario@cmsconsultores.cl"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                  Contraseña
+                </label>
+                <input 
+                  type="password" 
+                  id="password" 
+                  name="password" 
+                  placeholder="••••••••"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent"
+                  required
+                />
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="remember" 
+                    name="remember"
+                    class="h-4 w-4 text-accent-800 focus:ring-accent-800 border-gray-300 rounded"
+                  />
+                  <label for="remember" class="ml-2 block text-sm text-gray-700">
+                    Recordar en este dispositivo
+                  </label>
+                </div>
+                <a href="#" class="text-sm text-accent-800 hover:text-accent-900">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
+
+              <button 
+                type="submit"
+                class="w-full bg-accent-800 text-white py-3 px-4 rounded-lg hover:bg-accent-900 transition-colors font-semibold flex items-center justify-center space-x-2"
+              >
+                <Mail class="w-5 h-5" />
+                <span>Acceder al Correo</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="mt-8 text-center">
+            <p class="text-gray-600 mb-4">¿No tienes acceso al correo corporativo?</p>
+            <a href="/contacto" class="text-accent-800 hover:text-accent-900 font-medium">
+              Contacta al Administrador de TI
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Características del Sistema -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Características del Sistema
+          </h2>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Shield class="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">Seguridad Avanzada</h3>
+              <p class="text-gray-600 text-sm">
+                Protección contra malware, phishing y amenazas cibernéticas con filtros de última generación.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <Inbox class="w-6 h-6 text-green-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">Bandeja Organizada</h3>
+              <p class="text-gray-600 text-sm">
+                Sistema inteligente de organización automática con carpetas personalizables y filtros avanzados.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Clock class="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">Disponibilidad 24/7</h3>
+              <p class="text-gray-600 text-sm">
+                Acceso ininterrumpido a tu correo desde cualquier dispositivo y ubicación.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <Send class="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">Envío Masivo</h3>
+              <p class="text-gray-600 text-sm">
+                Herramientas para campañas de correo corporativo y comunicaciones masivas seguras.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <Users class="w-6 h-6 text-red-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">Colaboración</h3>
+              <p class="text-gray-600 text-sm">
+                Integración con herramientas de trabajo colaborativo y gestión de proyectos.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <Mail class="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">Almacenamiento</h3>
+              <p class="text-gray-600 text-sm">
+                Amplio espacio de almacenamiento con respaldo automático y recuperación de datos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configuración y Soporte -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Configuración y Soporte
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-blue-50 p-6 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Configuración en Dispositivos</h3>
+              <p class="text-gray-600 mb-4">
+                Instrucciones paso a paso para configurar tu correo corporativo en diferentes dispositivos.
+              </p>
+              <div class="space-y-3">
+                <details class="bg-white p-4 rounded-lg shadow-sm">
+                  <summary class="font-medium text-gray-800 cursor-pointer">Outlook Desktop</summary>
+                  <div class="mt-3 text-sm text-gray-600">
+                    <p>Servidor IMAP: mail.cmsconsultores.cl</p>
+                    <p>Puerto: 993 (SSL)</p>
+                    <p>Servidor SMTP: mail.cmsconsultores.cl</p>
+                    <p>Puerto: 587 (STARTTLS)</p>
+                  </div>
+                </details>
+                
+                <details class="bg-white p-4 rounded-lg shadow-sm">
+                  <summary class="font-medium text-gray-800 cursor-pointer">Dispositivos Móviles</summary>
+                  <div class="mt-3 text-sm text-gray-600">
+                    <p>Configuración automática disponible</p>
+                    <p>Soporte para iOS Mail y Android Gmail</p>
+                    <p>Sincronización en tiempo real</p>
+                  </div>
+                </details>
+                
+                <details class="bg-white p-4 rounded-lg shadow-sm">
+                  <summary class="font-medium text-gray-800 cursor-pointer">Webmail</summary>
+                  <div class="mt-3 text-sm text-gray-600">
+                    <p>Acceso directo desde navegador</p>
+                    <p>Interfaz moderna y responsive</p>
+                    <p>Todas las funciones disponibles</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Soporte Técnico</h3>
+              <p class="text-gray-600 mb-4">
+                Nuestro equipo de TI está disponible para resolver cualquier problema con tu correo corporativo.
+              </p>
+              <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-medium text-gray-800 mb-2">Contacto Directo</h4>
+                  <p class="text-sm text-gray-600 mb-2">it-support@cmsconsultores.cl</p>
+                  <p class="text-sm text-gray-600">+56 (2) 1234 5678 ext. 101</p>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-medium text-gray-800 mb-2">Horarios de Atención</h4>
+                  <p class="text-sm text-gray-600">Lunes a Viernes: 8:00 - 18:00</p>
+                  <p class="text-sm text-gray-600">Urgencias: 24/7</p>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <h4 class="font-medium text-gray-800 mb-2">Tiempo de Respuesta</h4>
+                  <p class="text-sm text-gray-600">Consultas generales: 2 horas</p>
+                  <p class="text-sm text-gray-600">Problemas críticos: 30 minutos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Políticas de Uso -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Políticas de Uso del Correo Corporativo
+          </h2>
+
+          <div class="bg-white rounded-xl p-8 shadow-sm">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Uso Permitido</h3>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                  <li>• Comunicaciones profesionales relacionadas con el trabajo</li>
+                  <li>• Correspondencia con clientes y proveedores</li>
+                  <li>• Intercambio de documentos de trabajo</li>
+                  <li>• Coordinación de proyectos y reuniones</li>
+                  <li>• Comunicaciones internas del equipo</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Restricciones</h3>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                  <li>• Uso personal excesivo no autorizado</li>
+                  <li>• Envío de contenido inapropiado o ofensivo</li>
+                  <li>• Compartir credenciales con terceros</li>
+                  <li>• Reenvío automático a cuentas personales</li>
+                  <li>• Uso para actividades comerciales personales</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-8 p-4 bg-yellow-50 rounded-lg">
+              <h4 class="font-semibold text-gray-800 mb-2">Importante</h4>
+              <p class="text-sm text-gray-600">
+                El uso del correo corporativo está sujeto a monitoreo de seguridad automático. 
+                Todos los usuarios deben cumplir con las políticas de seguridad de la información de CMS Consultores.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-accent-800 to-accent-900 text-white">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          ¿Necesitas Ayuda con tu Correo?
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Nuestro equipo de soporte técnico está listo para ayudarte con cualquier problema o configuración.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Contactar Soporte
+          </a>
+          <a href="mailto:it-support@cmsconsultores.cl" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Enviar Email
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Simular acceso al correo (solo demo)
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Esta es una página de demostración. En un entorno real, aquí se redirigiría al sistema de correo corporativo.');
+      });
+    }
+  });
+</script>

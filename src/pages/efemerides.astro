@@ -1,0 +1,612 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Calendar, Clock, Star, Globe, Award, Book } from 'lucide-astro';
+---
+
+<Layout title="Efemérides - Fechas Importantes - CMS Consultores">
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Efemérides
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100 mb-8 leading-relaxed">
+            Fechas importantes en el mundo de la calidad, gestión empresarial y desarrollo organizacional que vale la pena recordar y celebrar.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Calendar class="w-5 h-5" />
+              <span class="text-sm font-medium">Fechas Relevantes</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Star class="w-5 h-5" />
+              <span class="text-sm font-medium">Historia de la Calidad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fecha Actual -->
+    <section class="py-8 bg-blue-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+              <Clock class="w-6 h-6 text-blue-600" />
+              <h2 class="text-xl font-semibold text-gray-800">Hoy en la Historia de la Calidad</h2>
+            </div>
+            <div id="fecha-actual" class="text-lg text-gray-600 mb-4"></div>
+            <div id="efemeride-hoy" class="text-gray-700">
+              <!-- Se llena dinámicamente -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Efemérides por Mes -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Calendario de Efemérides
+          </h2>
+
+          <!-- Navegador de Meses -->
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            <button class="mes-button bg-blue-100 hover:bg-blue-200 p-4 rounded-lg text-center transition-colors" data-mes="enero">
+              <div class="font-semibold text-gray-800">Enero</div>
+              <div class="text-sm text-gray-600">3 eventos</div>
+            </button>
+            <button class="mes-button bg-green-100 hover:bg-green-200 p-4 rounded-lg text-center transition-colors" data-mes="febrero">
+              <div class="font-semibold text-gray-800">Febrero</div>
+              <div class="text-sm text-gray-600">2 eventos</div>
+            </button>
+            <button class="mes-button bg-purple-100 hover:bg-purple-200 p-4 rounded-lg text-center transition-colors" data-mes="marzo">
+              <div class="font-semibold text-gray-800">Marzo</div>
+              <div class="text-sm text-gray-600">4 eventos</div>
+            </button>
+            <button class="mes-button bg-orange-100 hover:bg-orange-200 p-4 rounded-lg text-center transition-colors" data-mes="abril">
+              <div class="font-semibold text-gray-800">Abril</div>
+              <div class="text-sm text-gray-600">3 eventos</div>
+            </button>
+            <button class="mes-button bg-red-100 hover:bg-red-200 p-4 rounded-lg text-center transition-colors" data-mes="mayo">
+              <div class="font-semibold text-gray-800">Mayo</div>
+              <div class="text-sm text-gray-600">2 eventos</div>
+            </button>
+            <button class="mes-button bg-indigo-100 hover:bg-indigo-200 p-4 rounded-lg text-center transition-colors" data-mes="junio">
+              <div class="font-semibold text-gray-800">Junio</div>
+              <div class="text-sm text-gray-600">3 eventos</div>
+            </button>
+            <button class="mes-button bg-yellow-100 hover:bg-yellow-200 p-4 rounded-lg text-center transition-colors" data-mes="julio">
+              <div class="font-semibold text-gray-800">Julio</div>
+              <div class="text-sm text-gray-600">1 evento</div>
+            </button>
+            <button class="mes-button bg-pink-100 hover:bg-pink-200 p-4 rounded-lg text-center transition-colors" data-mes="agosto">
+              <div class="font-semibold text-gray-800">Agosto</div>
+              <div class="text-sm text-gray-600">2 eventos</div>
+            </button>
+            <button class="mes-button bg-teal-100 hover:bg-teal-200 p-4 rounded-lg text-center transition-colors" data-mes="septiembre">
+              <div class="font-semibold text-gray-800">Septiembre</div>
+              <div class="text-sm text-gray-600">4 eventos</div>
+            </button>
+            <button class="mes-button bg-cyan-100 hover:bg-cyan-200 p-4 rounded-lg text-center transition-colors" data-mes="octubre">
+              <div class="font-semibold text-gray-800">Octubre</div>
+              <div class="text-sm text-gray-600">3 eventos</div>
+            </button>
+            <button class="mes-button bg-lime-100 hover:bg-lime-200 p-4 rounded-lg text-center transition-colors" data-mes="noviembre">
+              <div class="font-semibold text-gray-800">Noviembre</div>
+              <div class="text-sm text-gray-600">5 eventos</div>
+            </button>
+            <button class="mes-button bg-emerald-100 hover:bg-emerald-200 p-4 rounded-lg text-center transition-colors" data-mes="diciembre">
+              <div class="font-semibold text-gray-800">Diciembre</div>
+              <div class="text-sm text-gray-600">2 eventos</div>
+            </button>
+          </div>
+
+          <!-- Contenido de Efemérides -->
+          <div id="efemerides-content" class="space-y-6">
+            <!-- Se llena dinámicamente según el mes seleccionado -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personajes Destacados -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Personajes Destacados en la Historia de la Calidad
+          </h2>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award class="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">W. Edwards Deming</h3>
+              <p class="text-gray-600 text-sm text-center mb-3">1900-1993</p>
+              <p class="text-gray-600 text-sm">
+                Pionero en el control estadístico de la calidad y los 14 puntos para la gestión de calidad total.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star class="w-8 h-8 text-green-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Joseph Juran</h3>
+              <p class="text-gray-600 text-sm text-center mb-3">1904-2008</p>
+              <p class="text-gray-600 text-sm">
+                Desarrolló la trilogía de la calidad: planificación, control y mejora de la calidad.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Globe class="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Kaoru Ishikawa</h3>
+              <p class="text-gray-600 text-sm text-center mb-3">1915-1989</p>
+              <p class="text-gray-600 text-sm">
+                Creador del diagrama causa-efecto y promotor de los círculos de calidad.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Book class="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Philip Crosby</h3>
+              <p class="text-gray-600 text-sm text-center mb-3">1926-2001</p>
+              <p class="text-gray-600 text-sm">
+                Introdujo el concepto "Cero Defectos" y los costos de la calidad.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star class="w-8 h-8 text-red-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Armand Feigenbaum</h3>
+              <p class="text-gray-600 text-sm text-center mb-3">1922-2014</p>
+              <p class="text-gray-600 text-sm">
+                Desarrolló el concepto de Control Total de Calidad (TQC).
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award class="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Shigeo Shingo</h3>
+              <p class="text-gray-600 text-sm text-center mb-3">1909-1990</p>
+              <p class="text-gray-600 text-sm">
+                Co-creador del Sistema de Producción Toyota y el concepto Poka-Yoke.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Días Internacionales -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Días Internacionales Relacionados con la Calidad
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-blue-50 p-6 rounded-xl">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Noviembre</h3>
+              <div class="space-y-3">
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">9</div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Día Mundial de la Calidad</h4>
+                    <p class="text-sm text-gray-600">Celebración global de la importancia de la calidad en todos los aspectos.</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">14</div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Día Mundial de la Diabetes</h4>
+                    <p class="text-sm text-gray-600">Relacionado con la calidad en servicios de salud.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-xl">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Septiembre</h3>
+              <div class="space-y-3">
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Semana Mundial de la Calidad</h4>
+                    <p class="text-sm text-gray-600">Primera semana de septiembre dedicada a la promoción de la calidad.</p>
+                  </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">28</div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Día Mundial de la Seguridad</h4>
+                    <p class="text-sm text-gray-600">Enfoque en la calidad de los sistemas de seguridad.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-purple-50 p-6 rounded-xl">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Abril</h3>
+              <div class="space-y-3">
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold">28</div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Día Mundial de la Seguridad y Salud en el Trabajo</h4>
+                    <p class="text-sm text-gray-600">Promoción de la cultura preventiva y calidad laboral.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-orange-50 p-6 rounded-xl">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Octubre</h3>
+              <div class="space-y-3">
+                <div class="flex items-start space-x-3">
+                  <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold">14</div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Día Mundial de las Normas</h4>
+                    <p class="text-sm text-gray-600">Celebración de la normalización internacional.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-accent-800 to-accent-900 text-white">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          ¿Quieres Conocer Más sobre la Historia de la Calidad?
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Nuestros cursos incluyen módulos dedicados a la evolución histórica de los conceptos de calidad.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/capacitacion" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Ver Capacitaciones
+          </a>
+          <a href="/contacto" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Contactar
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+// Datos de efemérides por mes
+const efemerides = {
+  enero: [
+    {
+      fecha: "2 de enero",
+      año: "1987",
+      evento: "Publicación de la primera edición de la norma ISO 9000",
+      descripcion: "Se establece el primer estándar internacional para sistemas de gestión de calidad."
+    },
+    {
+      fecha: "15 de enero",
+      año: "1950",
+      evento: "W. Edwards Deming inicia sus conferencias en Japón",
+      descripcion: "Comienza la revolución de la calidad japonesa con las enseñanzas de Deming."
+    },
+    {
+      fecha: "24 de enero",
+      año: "1924",
+      evento: "Walter Shewhart introduce las cartas de control",
+      descripcion: "Nacimiento del control estadístico de procesos en Bell Laboratories."
+    }
+  ],
+  febrero: [
+    {
+      fecha: "3 de febrero",
+      año: "1988",
+      evento: "Premio Nacional de Calidad Malcolm Baldrige",
+      descripcion: "Estados Unidos establece su principal reconocimiento a la excelencia empresarial."
+    },
+    {
+      fecha: "20 de febrero",
+      año: "1926",
+      evento: "Nace Philip Crosby",
+      descripcion: "Pionero del concepto 'Cero Defectos' y los costos de la calidad."
+    }
+  ],
+  marzo: [
+    {
+      fecha: "8 de marzo",
+      año: "1987",
+      evento: "Primera versión ISO 9000",
+      descripcion: "Publicación oficial de la familia de normas ISO 9000."
+    },
+    {
+      fecha: "15 de marzo",
+      año: "1915",
+      evento: "Nace Kaoru Ishikawa",
+      descripcion: "Creador del diagrama causa-efecto y promotor de los círculos de calidad."
+    },
+    {
+      fecha: "23 de marzo",
+      año: "1950",
+      evento: "Primera conferencia de Deming en Japón",
+      descripcion: "Inicio del movimiento de calidad japonés post-guerra."
+    },
+    {
+      fecha: "31 de marzo",
+      año: "2000",
+      evento: "Revisión ISO 9001:2000",
+      descripcion: "Introducción del enfoque basado en procesos."
+    }
+  ],
+  abril: [
+    {
+      fecha: "14 de abril",
+      año: "1969",
+      evento: "Fundación de la American Society for Quality",
+      descripcion: "Establecimiento de una de las organizaciones de calidad más importantes del mundo."
+    },
+    {
+      fecha: "28 de abril",
+      año: "2003",
+      evento: "Día Mundial de la Seguridad y Salud en el Trabajo",
+      descripcion: "La OIT establece este día para promover la prevención de accidentes laborales."
+    },
+    {
+      fecha: "30 de abril",
+      año: "1922",
+      evento: "Nace Armand Feigenbaum",
+      descripcion: "Desarrollador del concepto de Control Total de Calidad."
+    }
+  ],
+  mayo: [
+    {
+      fecha: "12 de mayo",
+      año: "1994",
+      evento: "Primera auditoría ISO 9001 en Chile",
+      descripcion: "Inicio del proceso de certificación ISO en Chile."
+    },
+    {
+      fecha: "24 de mayo",
+      año: "1904",
+      evento: "Nace Joseph Juran",
+      descripcion: "Desarrollador de la trilogía de la calidad y el principio de Pareto."
+    }
+  ],
+  junio: [
+    {
+      fecha: "5 de junio",
+      año: "1986",
+      evento: "Día Mundial del Medio Ambiente",
+      descripcion: "Relacionado con la calidad ambiental y ISO 14001."
+    },
+    {
+      fecha: "18 de junio",
+      año: "1988",
+      evento: "Primer Premio Deming Internacional",
+      descripcion: "Reconocimiento global a la excelencia en calidad."
+    },
+    {
+      fecha: "30 de junio",
+      año: "1995",
+      evento: "Fundación CMS Consultores",
+      descripcion: "Inicio de nuestra empresa de consultoría en calidad."
+    }
+  ],
+  julio: [
+    {
+      fecha: "14 de julio",
+      año: "1996",
+      evento: "Primera certificación ISO 14001",
+      descripcion: "Publicación de la norma de gestión ambiental."
+    }
+  ],
+  agosto: [
+    {
+      fecha: "19 de agosto",
+      año: "1979",
+      evento: "Muere Walter Shewhart",
+      descripcion: "Fallece el padre del control estadístico de calidad."
+    },
+    {
+      fecha: "25 de agosto",
+      año: "2001",
+      evento: "Muere Philip Crosby",
+      descripcion: "Fallece el promotor del concepto 'Cero Defectos'."
+    }
+  ],
+  septiembre: [
+    {
+      fecha: "1-7 de septiembre",
+      año: "1990",
+      evento: "Primera Semana Mundial de la Calidad",
+      descripcion: "Establecimiento de la semana anual dedicada a la calidad."
+    },
+    {
+      fecha: "12 de septiembre",
+      año: "1999",
+      evento: "Publicación ISO 9001:2000 (borrador)",
+      descripcion: "Nueva versión con enfoque en procesos y satisfacción del cliente."
+    },
+    {
+      fecha: "23 de septiembre",
+      año: "2018",
+      evento: "Publicación ISO 45001",
+      descripcion: "Nueva norma internacional de seguridad y salud ocupacional."
+    },
+    {
+      fecha: "28 de septiembre",
+      año: "2008",
+      evento: "Publicación ISO 31000",
+      descripcion: "Primera norma internacional de gestión de riesgos."
+    }
+  ],
+  octubre: [
+    {
+      fecha: "14 de octubre",
+      año: "1946",
+      evento: "Día Mundial de las Normas",
+      descripcion: "Celebración anual de la normalización internacional."
+    },
+    {
+      fecha: "20 de octubre",
+      año: "1993",
+      evento: "Muere W. Edwards Deming",
+      descripcion: "Fallece el gran maestro de la calidad total."
+    },
+    {
+      fecha: "31 de octubre",
+      año: "2008",
+      evento: "Publicación ISO 26000",
+      descripcion: "Guía de responsabilidad social empresarial."
+    }
+  ],
+  noviembre: [
+    {
+      fecha: "2 de noviembre",
+      año: "2004",
+      evento: "Primer Día Mundial de la Calidad en Chile",
+      descripcion: "Chile se suma a la celebración mundial de la calidad."
+    },
+    {
+      fecha: "9 de noviembre",
+      año: "1989",
+      evento: "Establecimiento del Día Mundial de la Calidad",
+      descripcion: "La EOQ y ASQ establecen esta fecha como día mundial."
+    },
+    {
+      fecha: "14 de noviembre",
+      año: "1991",
+      evento: "Día Mundial de la Diabetes",
+      descripcion: "Relacionado con la calidad en servicios de salud."
+    },
+    {
+      fecha: "23 de noviembre",
+      año: "2005",
+      evento: "Primera certificación ISO 22000 en Chile",
+      descripcion: "Implementación de seguridad alimentaria."
+    },
+    {
+      fecha: "30 de noviembre",
+      año: "2015",
+      evento: "Publicación ISO 9001:2015",
+      descripcion: "Última versión de la norma de calidad más importante."
+    }
+  ],
+  diciembre: [
+    {
+      fecha: "20 de diciembre",
+      año: "1993",
+      evento: "Muere W. Edwards Deming",
+      descripcion: "Último día del gran promotor de la gestión de calidad total."
+    },
+    {
+      fecha: "31 de diciembre",
+      año: "1999",
+      evento: "Fin del siglo XX de la calidad",
+      descripcion: "Culminación de 100 años de evolución en gestión de calidad."
+    }
+  ]
+};
+
+// Función para mostrar la fecha actual
+function mostrarFechaActual() {
+  const ahora = new Date();
+  const opciones = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  };
+  const fechaFormateada = ahora.toLocaleDateString('es-ES', opciones);
+  document.getElementById('fecha-actual').textContent = fechaFormateada;
+  
+  // Buscar efeméride de hoy
+  const dia = ahora.getDate();
+  const mes = ahora.toLocaleDateString('es-ES', { month: 'long' }).toLowerCase();
+  
+  let efemeride = "No hay efemérides registradas para el día de hoy.";
+  if (efemerides[mes]) {
+    const eventoHoy = efemerides[mes].find(evento => 
+      evento.fecha.includes(dia.toString())
+    );
+    if (eventoHoy) {
+      efemeride = `${eventoHoy.evento} (${eventoHoy.año}): ${eventoHoy.descripcion}`;
+    }
+  }
+  
+  document.getElementById('efemeride-hoy').textContent = efemeride;
+}
+
+// Función para mostrar efemérides de un mes
+function mostrarEfemerides(mes) {
+  const container = document.getElementById('efemerides-content');
+  const eventos = efemerides[mes] || [];
+  
+  if (eventos.length === 0) {
+    container.innerHTML = '<p class="text-gray-600 text-center">No hay efemérides registradas para este mes.</p>';
+    return;
+  }
+  
+  container.innerHTML = eventos.map(evento => `
+    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-accent-800">
+      <div class="flex items-start space-x-4">
+        <div class="flex-shrink-0">
+          <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+            <span class="text-accent-800 font-bold text-sm">${evento.fecha.split(' ')[0]}</span>
+          </div>
+        </div>
+        <div class="flex-grow">
+          <div class="flex items-center space-x-2 mb-2">
+            <h3 class="text-lg font-semibold text-gray-800">${evento.evento}</h3>
+            <span class="bg-accent-100 text-accent-800 px-2 py-1 rounded-full text-xs font-medium">${evento.año}</span>
+          </div>
+          <p class="text-gray-600">${evento.descripcion}</p>
+          <p class="text-sm text-gray-500 mt-2">${evento.fecha}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Inicializar página
+document.addEventListener('DOMContentLoaded', function() {
+  mostrarFechaActual();
+  mostrarEfemerides('noviembre'); // Mostrar noviembre por defecto (Día Mundial de la Calidad)
+  
+  // Eventos para botones de meses
+  document.querySelectorAll('.mes-button').forEach(button => {
+    button.addEventListener('click', function() {
+      // Remover selección anterior
+      document.querySelectorAll('.mes-button').forEach(b => b.classList.remove('ring-2', 'ring-accent-800'));
+      // Agregar selección actual
+      this.classList.add('ring-2', 'ring-accent-800');
+      
+      const mes = this.getAttribute('data-mes');
+      mostrarEfemerides(mes);
+    });
+  });
+  
+  // Seleccionar noviembre por defecto
+  document.querySelector('[data-mes="noviembre"]').classList.add('ring-2', 'ring-accent-800');
+});
+</script>

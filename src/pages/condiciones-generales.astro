@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Clock, Shield, CheckCircle, FileText, Users, Star } from 'lucide-astro';
+---
+
+<Layout title="Condiciones Generales del Servicio - CMS Consultores">
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            Condiciones Generales del Servicio
+          </h1>
+          <p class="text-lg md:text-xl text-orange-100 mb-8 leading-relaxed">
+            Conoce nuestras políticas, términos y condiciones para garantizar la mejor experiencia en nuestros servicios de consultoría y capacitación.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <Shield class="w-5 h-5" />
+              <span class="text-sm font-medium">Transparencia Total</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
+              <CheckCircle class="w-5 h-5" />
+              <span class="text-sm font-medium">Términos Claros</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Términos Generales -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+              Términos y Condiciones Generales
+            </h2>
+            <p class="text-lg text-gray-600">
+              Estos términos rigen todos nuestros servicios de consultoría, capacitación y certificación.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <div class="flex items-center space-x-3 mb-4">
+                <FileText class="w-6 h-6 text-accent-800" />
+                <h3 class="text-xl font-semibold text-gray-800">Contratación</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Propuesta comercial detallada</li>
+                <li>• Cronograma de actividades definido</li>
+                <li>• Alcance específico del proyecto</li>
+                <li>• Condiciones de pago establecidas</li>
+              </ul>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <div class="flex items-center space-x-3 mb-4">
+                <Users class="w-6 h-6 text-accent-800" />
+                <h3 class="text-xl font-semibold text-gray-800">Obligaciones</h3>
+              </div>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Cumplimiento de estándares ISO</li>
+                <li>• Entrega oportuna de documentación</li>
+                <li>• Confidencialidad garantizada</li>
+                <li>• Soporte post-implementación</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Políticas de Servicio -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Políticas de Servicio
+          </h2>
+
+          <div class="space-y-8">
+            <!-- Calidad -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <Star class="w-5 h-5 text-accent-800" />
+                <span>Política de Calidad</span>
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Nos comprometemos a entregar servicios de consultoría de la más alta calidad, 
+                cumpliendo con los estándares internacionales y superando las expectativas de nuestros clientes.
+              </p>
+              <ul class="text-gray-600 space-y-1">
+                <li>• Metodologías probadas y certificadas</li>
+                <li>• Equipo de consultores especializados</li>
+                <li>• Mejora continua en todos nuestros procesos</li>
+              </ul>
+            </div>
+
+            <!-- Tiempos -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <Clock class="w-5 h-5 text-accent-800" />
+                <span>Política de Tiempos</span>
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Respetamos los cronogramas acordados y mantenemos comunicación constante 
+                sobre el avance de los proyectos.
+              </p>
+              <ul class="text-gray-600 space-y-1">
+                <li>• Cronogramas realistas y cumplibles</li>
+                <li>• Reportes de avance semanales</li>
+                <li>• Gestión proactiva de riesgos</li>
+              </ul>
+            </div>
+
+            <!-- Confidencialidad -->
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                <Shield class="w-5 h-5 text-accent-800" />
+                <span>Política de Confidencialidad</span>
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Toda la información de nuestros clientes es tratada con absoluta confidencialidad 
+                y protegida según las mejores prácticas de seguridad.
+              </p>
+              <ul class="text-gray-600 space-y-1">
+                <li>• Acuerdos de confidencialidad firmados</li>
+                <li>• Acceso restringido a información sensible</li>
+                <li>• Cumplimiento de normativas de protección de datos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Términos Específicos -->
+    <section class="py-16 bg-white">
+      <div class="max-w-container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            Términos Específicos por Servicio
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent-800 pl-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Consultoría ISO</h3>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Diagnóstico inicial incluido</li>
+                  <li>• Documentación según norma</li>
+                  <li>• Acompañamiento hasta auditoría</li>
+                  <li>• Garantía de conformidad</li>
+                </ul>
+              </div>
+
+              <div class="border-l-4 border-accent-800 pl-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Capacitación</h3>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Material didáctico incluido</li>
+                  <li>• Certificado de participación</li>
+                  <li>• Soporte post-capacitación</li>
+                  <li>• Evaluaciones de conocimiento</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="border-l-4 border-accent-800 pl-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Auditorías</h3>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Plan de auditoría detallado</li>
+                  <li>• Informe ejecutivo completo</li>
+                  <li>• Plan de acciones correctivas</li>
+                  <li>• Seguimiento de implementación</li>
+                </ul>
+              </div>
+
+              <div class="border-l-4 border-accent-800 pl-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Certificación</h3>
+                <ul class="text-gray-600 space-y-1 text-sm">
+                  <li>• Proceso NCh 2728 certificado</li>
+                  <li>• Verificación independiente</li>
+                  <li>• Registro en base de datos</li>
+                  <li>• Validez por período establecido</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-accent-800 to-accent-900 text-white">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          ¿Necesitas Más Información?
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Nuestro equipo está disponible para aclarar cualquier duda sobre nuestras condiciones de servicio.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Contactar Ahora
+          </a>
+          <a href="/capacitacion" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Ver Servicios
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

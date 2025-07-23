@@ -3,14 +3,67 @@ import Layout from '../layouts/Layout.astro';
 import { Calendar, ArrowLeft } from 'lucide-astro';
 import noticiasData from '../data/noticias.json';
 
-// Función para formatear fecha
-function formatearFecha(fechaISO) {
-  const fecha = new Date(fechaISO);
+// Función para extraer fecha del texto
+function extraerFecha(texto) {
+  const patronesFecha = [
+    /(\w+)\s+(\d{4})/g,
+    /(\d{4})-(\d{4})/g,
+    /(\w+)\s+(\d{1,2}),?\s+(\d{4})/g
+  ];
+  
+  for (const patron of patronesFecha) {
+    const match = texto.match(patron);
+    if (match) {
+      return match[0];
+    }
+  }
+  
+  const ahora = new Date();
   const meses = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
-  return `${meses[fecha.getMonth()]} ${fecha.getDate()}, ${fecha.getFullYear()}`;
+  return `${meses[ahora.getMonth()]} ${ahora.getFullYear()}`;
+}
+
+// Función para inferir categoría del texto
+function inferirCategoria(texto) {
+  const textoLower = texto.toLowerCase();
+  
+  if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
+    return 'Certificación';
+  }
+  if (textoLower.includes('capacitación') || textoLower.includes('capacitacion')) {
+    return 'Capacitación';
+  }
+  if (textoLower.includes('haccp') || textoLower.includes('iso 22000')) {
+    return 'Seguridad Alimentaria';
+  }
+  if (textoLower.includes('iso 27001') || textoLower.includes('ciberseguridad')) {
+    return 'Seguridad IT';
+  }
+  if (textoLower.includes('iso 45001') || textoLower.includes('seguridad')) {
+    return 'Seguridad Laboral';
+  }
+  if (textoLower.includes('iso 14001') || textoLower.includes('ambiental')) {
+    return 'Gestión Ambiental';
+  }
+  if (textoLower.includes('auditoria')) {
+    return 'Auditoría';
+  }
+  
+  return 'Gestión de Calidad';
+}
+
+function crearTitulo(texto) {
+  let titulo = texto.replace(/\n/g, ' ').substring(0, 80);
+  if (titulo.length === 80) {
+    const ultimoEspacio = titulo.lastIndexOf(' ');
+    if (ultimoEspacio > 50) {
+      titulo = titulo.substring(0, ultimoEspacio) + '...';
+    }
+  }
+  return titulo.charAt(0).toUpperCase() + titulo.slice(1);
 }
 ---
 
@@ -40,17 +93,19 @@ function formatearFecha(fechaISO) {
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {noticiasData.map((noticia, index) => (
+          {noticiasData
+            .filter(noticia => noticia.text && noticia.text.trim() !== '')
+            .map((noticia, index) => (
             <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div class="relative">
                 <img 
-                  src={noticia.imagen} 
-                  alt={noticia.titulo}
+                  src={noticia.image_url} 
+                  alt={crearTitulo(noticia.text)}
                   class="w-full h-48 object-cover"
                 />
                 <div class="absolute top-4 left-4">
                   <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-3 py-2 rounded-full">
-                    {noticia.categoria}
+                    {inferirCategoria(noticia.text)}
                   </span>
                 </div>
               </div>
@@ -58,15 +113,15 @@ function formatearFecha(fechaISO) {
               <div class="p-6">
                 <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
                   <Calendar size="16" />
-                  <time>{formatearFecha(noticia.fecha)}</time>
+                  <time>{extraerFecha(noticia.text)}</time>
                 </div>
                 
                 <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight">
-                  {noticia.titulo}
+                  {crearTitulo(noticia.text)}
                 </h3>
                 
                 <p class="text-gray-600 text-sm leading-relaxed">
-                  {noticia.contexto}
+                  {noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : '')}
                 </p>
               </div>
             </article>

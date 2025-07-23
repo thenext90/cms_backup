@@ -4,26 +4,81 @@ import { Calendar, ArrowLeft, Share2 } from 'lucide-astro';
 import noticiasData from '../../data/noticias.json';
 
 export async function getStaticPaths() {
-  return noticiasData.map((noticia, index) => ({
-    params: { id: (index + 1).toString() },
-    props: { noticia, index }
-  }));
+  return noticiasData
+    .filter(noticia => noticia.text && noticia.text.trim() !== '')
+    .map((noticia, index) => ({
+      params: { id: (index + 1).toString() },
+      props: { noticia, index }
+    }));
 }
 
 const { noticia, index } = Astro.props;
 
-// Función para formatear fecha
-function formatearFecha(fechaISO) {
-  const fecha = new Date(fechaISO);
+// Función para extraer fecha del texto
+function extraerFecha(texto) {
+  const patronesFecha = [
+    /(\w+)\s+(\d{4})/g,
+    /(\d{4})-(\d{4})/g,
+    /(\w+)\s+(\d{1,2}),?\s+(\d{4})/g
+  ];
+  
+  for (const patron of patronesFecha) {
+    const match = texto.match(patron);
+    if (match) {
+      return match[0];
+    }
+  }
+  
+  const ahora = new Date();
   const meses = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
-  return `${meses[fecha.getMonth()]} ${fecha.getDate()}, ${fecha.getFullYear()}`;
+  return `${meses[ahora.getMonth()]} ${ahora.getFullYear()}`;
+}
+
+// Función para inferir categoría del texto
+function inferirCategoria(texto) {
+  const textoLower = texto.toLowerCase();
+  
+  if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
+    return 'Certificación';
+  }
+  if (textoLower.includes('capacitación') || textoLower.includes('capacitacion')) {
+    return 'Capacitación';
+  }
+  if (textoLower.includes('haccp') || textoLower.includes('iso 22000')) {
+    return 'Seguridad Alimentaria';
+  }
+  if (textoLower.includes('iso 27001') || textoLower.includes('ciberseguridad')) {
+    return 'Seguridad IT';
+  }
+  if (textoLower.includes('iso 45001') || textoLower.includes('seguridad')) {
+    return 'Seguridad Laboral';
+  }
+  if (textoLower.includes('iso 14001') || textoLower.includes('ambiental')) {
+    return 'Gestión Ambiental';
+  }
+  if (textoLower.includes('auditoria')) {
+    return 'Auditoría';
+  }
+  
+  return 'Gestión de Calidad';
+}
+
+function crearTitulo(texto) {
+  let titulo = texto.replace(/\n/g, ' ').substring(0, 80);
+  if (titulo.length === 80) {
+    const ultimoEspacio = titulo.lastIndexOf(' ');
+    if (ultimoEspacio > 50) {
+      titulo = titulo.substring(0, ultimoEspacio) + '...';
+    }
+  }
+  return titulo.charAt(0).toUpperCase() + titulo.slice(1);
 }
 ---
 
-<Layout title={`${noticia.titulo} - CMS Consultores`}>
+<Layout title={`${crearTitulo(noticia.text)} - CMS Consultores`}>
   <main class="bg-gray-50">
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
@@ -37,13 +92,13 @@ function formatearFecha(fechaISO) {
         
         <div class="flex items-center space-x-2 text-orange-200 mb-4">
           <Calendar size="16" />
-          <time>{formatearFecha(noticia.fecha)}</time>
+          <time>{extraerFecha(noticia.text)}</time>
           <span>•</span>
-          <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">{noticia.categoria}</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">{inferirCategoria(noticia.text)}</span>
         </div>
         
         <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-          {noticia.titulo}
+          {crearTitulo(noticia.text)}
         </h1>
       </div>
     </section>
@@ -54,16 +109,16 @@ function formatearFecha(fechaISO) {
         <article class="bg-white rounded-xl shadow-lg overflow-hidden">
           <div class="relative">
             <img 
-              src={noticia.imagen} 
-              alt={noticia.titulo}
+              src={noticia.image_url} 
+              alt={crearTitulo(noticia.text)}
               class="w-full h-64 md:h-80 object-cover"
             />
           </div>
           
           <div class="p-8">
             <div class="prose prose-lg max-w-none">
-              <p class="text-gray-700 leading-relaxed text-lg">
-                {noticia.contexto}
+              <p class="text-gray-700 leading-relaxed text-lg whitespace-pre-line">
+                {noticia.text}
               </p>
             </div>
             

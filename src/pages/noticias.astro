@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Calendar, ArrowLeft } from 'lucide-astro';
+import noticiasData from '../data/noticias.json';
+
+// Función para formatear fecha
+function formatearFecha(fechaISO) {
+  const fecha = new Date(fechaISO);
+  const meses = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  return `${meses[fecha.getMonth()]} ${fecha.getDate()}, ${fecha.getFullYear()}`;
+}
+---
+
+<Layout title="Noticias - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Calendar size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Noticias y Actualidad</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Manténgase informado sobre las últimas novedades en gestión de calidad, certificaciones y normativas
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lista de Noticias -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+          <a href="/" class="inline-flex items-center space-x-2 text-accent-800 hover:text-accent-900 font-medium transition-colors">
+            <ArrowLeft size="20" />
+            <span>Volver al inicio</span>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {noticiasData.map((noticia, index) => (
+            <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div class="relative">
+                <img 
+                  src={noticia.imagen} 
+                  alt={noticia.titulo}
+                  class="w-full h-48 object-cover"
+                />
+                <div class="absolute top-4 left-4">
+                  <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-3 py-2 rounded-full">
+                    {noticia.categoria}
+                  </span>
+                </div>
+              </div>
+              
+              <div class="p-6">
+                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                  <Calendar size="16" />
+                  <time>{formatearFecha(noticia.fecha)}</time>
+                </div>
+                
+                <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight">
+                  {noticia.titulo}
+                </h3>
+                
+                <p class="text-gray-600 text-sm leading-relaxed">
+                  {noticia.contexto}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Calendar, ArrowLeft, Share2 } from 'lucide-astro';
+import noticiasData from '../../data/noticias.json';
+
+export async function getStaticPaths() {
+  return noticiasData.map((noticia, index) => ({
+    params: { id: (index + 1).toString() },
+    props: { noticia, index }
+  }));
+}
+
+const { noticia, index } = Astro.props;
+
+// Función para formatear fecha
+function formatearFecha(fechaISO) {
+  const fecha = new Date(fechaISO);
+  const meses = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  return `${meses[fecha.getMonth()]} ${fecha.getDate()}, ${fecha.getFullYear()}`;
+}
+---
+
+<Layout title={`${noticia.titulo} - CMS Consultores`}>
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-6">
+          <a href="/noticias" class="inline-flex items-center space-x-2 text-orange-200 hover:text-white font-medium transition-colors">
+            <ArrowLeft size="20" />
+            <span>Volver a noticias</span>
+          </a>
+        </div>
+        
+        <div class="flex items-center space-x-2 text-orange-200 mb-4">
+          <Calendar size="16" />
+          <time>{formatearFecha(noticia.fecha)}</time>
+          <span>•</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">{noticia.categoria}</span>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+          {noticia.titulo}
+        </h1>
+      </div>
+    </section>
+
+    <!-- Contenido de la Noticia -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="relative">
+            <img 
+              src={noticia.imagen} 
+              alt={noticia.titulo}
+              class="w-full h-64 md:h-80 object-cover"
+            />
+          </div>
+          
+          <div class="p-8">
+            <div class="prose prose-lg max-w-none">
+              <p class="text-gray-700 leading-relaxed text-lg">
+                {noticia.contexto}
+              </p>
+            </div>
+            
+            <!-- Acciones -->
+            <div class="mt-8 pt-8 border-t border-gray-200 flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <span class="text-sm text-gray-500">Compartir:</span>
+                <button class="inline-flex items-center space-x-2 text-accent-800 hover:text-accent-900 transition-colors">
+                  <Share2 size="16" />
+                  <span class="text-sm">Compartir noticia</span>
+                </button>
+              </div>
+              
+              <a 
+                href="/noticias" 
+                class="inline-flex items-center space-x-2 bg-accent-800 hover:bg-accent-900 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+              >
+                <span>Ver más noticias</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</Layout>

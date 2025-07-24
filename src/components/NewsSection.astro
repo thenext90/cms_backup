@@ -97,7 +97,7 @@ const news = noticiasData
       date: fechasPersonalizadas[index] || 'Enero 2025',
       title: crearTitulo(noticia.text),
       excerpt: noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : ''),
-      category: index === 0 ? 'Julio 2025' : inferirCategoria(noticia.text), // Primera noticia muestra "Julio 2025"
+      category: inferirCategoria(noticia.text), // Todas las noticias usan categorización automática
       image: noticia.image_url
     };
   });

@@ -81,7 +81,7 @@ function crearTitulo(texto) {
 // Mapear datos del JSON al formato esperado por el frontend
 const news = noticiasData
   .filter(noticia => noticia.text && noticia.text.trim() !== '') // Filtrar entradas vacías
-  .slice(0, 6) // Mostrar solo las primeras 6 noticias
+  .slice(0, 12) // Mostrar las primeras 12 noticias
   .map((noticia, index) => {
     // Fechas personalizadas para cada noticia
     const fechasPersonalizadas = [
@@ -90,7 +90,13 @@ const news = noticiasData
       'Mayo 2025',       // Noticia 3
       'Abril 2025',      // Noticia 4
       'Marzo 2025',      // Noticia 5
-      'Febrero 2025'     // Noticia 6
+      'Febrero 2025',    // Noticia 6
+      'Enero 2025',      // Noticia 7
+      'Diciembre 2024',  // Noticia 8
+      'Noviembre 2024',  // Noticia 9
+      'Octubre 2024',    // Noticia 10
+      'Septiembre 2024', // Noticia 11
+      'Agosto 2024'      // Noticia 12
     ];
     
     return {
@@ -121,7 +127,7 @@ const news = noticiasData
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       {news.map((article, index) => (
         <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-accent-200 hover:-translate-y-2">
           <div class="relative">

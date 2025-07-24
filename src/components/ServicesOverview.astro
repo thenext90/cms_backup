@@ -7,18 +7,24 @@ import { Calendar, Award, Users } from 'lucide-astro';
     <div class="grid lg:grid-cols-3 gap-8">
       
       <!-- EFEMÉRIDES - Columna Izquierda -->
-      <div class="bg-gray-50 rounded-xl p-8 text-center">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6">EFEMÉRIDES</h3>
+      <div class="bg-gray-50 rounded-xl p-8 text-center border border-gray-300">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 tracking-wide">EFEMÉRIDES</h3>
         
         <div class="mb-6">
-          <div class="w-full h-48 bg-gray-200 rounded-lg border-4 border-gray-400 flex items-center justify-center">
-            <!-- Placeholder para la imagen que subirás después -->
-            <span class="text-gray-500 text-sm">Imagen pendiente</span>
+          <div class="w-full h-40 bg-gray-300 rounded-lg border-4 border-gray-500 flex items-center justify-center overflow-hidden">
+            <!-- Placeholder para la imagen de Londres -->
+            <img 
+              src="/silder2.jpg" 
+              alt="Londres"
+              class="w-full h-full object-cover"
+              onError="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+            />
+            <span class="text-gray-500 text-sm hidden">Welcome to London</span>
           </div>
         </div>
         
         <div class="text-center">
-          <p class="text-gray-600 text-sm mb-2">
+          <p class="text-gray-700 text-sm mb-2 leading-tight">
             Visita de Gerente General CMS Consultores - Coordinación U.K. (CMS-CQS)
           </p>
           <p class="text-accent-600 font-medium text-sm">(Londres)</p>
@@ -26,34 +32,34 @@ import { Calendar, Award, Users } from 'lucide-astro';
       </div>
 
       <!-- SERVICIO DE IMPLEMENTACIÓN DE NORMAS - Columna Central -->
-      <div class="bg-gradient-to-br from-accent-600 to-accent-800 rounded-xl p-8 text-center text-white">
-        <h3 class="text-2xl font-bold mb-6">SERVICIO DE IMPLEMENTACIÓN DE NORMAS</h3>
+      <div class="bg-gradient-to-br from-red-600 to-red-700 rounded-xl p-8 text-center text-white">
+        <h3 class="text-xl font-bold mb-6 tracking-wide leading-tight">SERVICIO DE IMPLEMENTACIÓN DE NORMAS</h3>
         
-        <p class="text-white/90 text-sm mb-6">
+        <p class="text-white text-sm mb-6 leading-relaxed">
           El servicio de Implementación de normas que desarrolla CMS Consultores se basa en 4 etapas
         </p>
         
-        <div class="mb-6">
-          <div class="w-32 h-24 bg-white rounded-lg mx-auto flex items-center justify-center overflow-hidden">
-            <!-- Placeholder para imagen de apretón de manos -->
-            <Award size="48" class="text-accent-600" />
+        <div class="mb-4">
+          <div class="w-28 h-20 bg-white rounded-lg mx-auto flex items-center justify-center overflow-hidden">
+            <!-- Imagen de apretón de manos -->
+            <Award size="40" class="text-red-600" />
           </div>
         </div>
       </div>
 
       <!-- CAPACITACIÓN - Columna Derecha -->
-      <div class="bg-gray-50 rounded-xl p-8 text-center">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6">CAPACITACIÓN</h3>
+      <div class="bg-gray-50 rounded-xl p-8 text-center border border-gray-300">
+        <h3 class="text-xl font-bold text-gray-800 mb-6 tracking-wide">CAPACITACIÓN</h3>
         
         <div class="mb-6">
-          <div class="w-32 h-24 bg-blue-100 rounded-lg mx-auto flex items-center justify-center overflow-hidden">
-            <!-- Placeholder para imagen de presentación -->
-            <Users size="48" class="text-blue-600" />
+          <div class="w-28 h-20 bg-blue-100 rounded-lg mx-auto flex items-center justify-center overflow-hidden">
+            <!-- Imagen de presentación -->
+            <Users size="40" class="text-blue-600" />
           </div>
         </div>
         
-        <p class="text-gray-600 text-sm leading-relaxed">
-          El área de capacitación se orienta a entregar conocimientos y innovación, nuestra empresa no entrega ni vende commodity Entregamos soluciones asociadas a Sistemas Integrados de Gestión y Macrotendencias.
+        <p class="text-gray-700 text-sm leading-relaxed">
+          El área de capacitación se orienta a entregar conocimientos y innovación, nuestra empresa no entrega ni vende commodity. Entregamos soluciones asociadas a Sistemas Integrados de Gestión y Macrotendencias.
         </p>
       </div>
 

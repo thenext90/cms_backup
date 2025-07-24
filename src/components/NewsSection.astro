@@ -82,13 +82,25 @@ function crearTitulo(texto) {
 const news = noticiasData
   .filter(noticia => noticia.text && noticia.text.trim() !== '') // Filtrar entradas vacías
   .slice(0, 6) // Mostrar solo las primeras 6 noticias
-  .map((noticia, index) => ({
-    date: extraerFecha(noticia.text),
-    title: crearTitulo(noticia.text),
-    excerpt: noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : ''),
-    category: index === 0 ? 'Julio 2025' : inferirCategoria(noticia.text), // Primera noticia muestra "Julio 2025"
-    image: noticia.image_url
-  }));
+  .map((noticia, index) => {
+    // Fechas personalizadas para cada noticia
+    const fechasPersonalizadas = [
+      'Julio 2025',      // Noticia 1
+      'Junio 2025',      // Noticia 2
+      'Mayo 2025',       // Noticia 3
+      'Abril 2025',      // Noticia 4
+      'Marzo 2025',      // Noticia 5
+      'Febrero 2025'     // Noticia 6
+    ];
+    
+    return {
+      date: fechasPersonalizadas[index] || 'Enero 2025',
+      title: crearTitulo(noticia.text),
+      excerpt: noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : ''),
+      category: index === 0 ? 'Julio 2025' : inferirCategoria(noticia.text), // Primera noticia muestra "Julio 2025"
+      image: noticia.image_url
+    };
+  });
 ---
 
 <section class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100">

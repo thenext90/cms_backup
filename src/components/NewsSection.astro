@@ -82,11 +82,11 @@ function crearTitulo(texto) {
 const news = noticiasData
   .filter(noticia => noticia.text && noticia.text.trim() !== '') // Filtrar entradas vacías
   .slice(0, 6) // Mostrar solo las primeras 6 noticias
-  .map((noticia) => ({
+  .map((noticia, index) => ({
     date: extraerFecha(noticia.text),
     title: crearTitulo(noticia.text),
     excerpt: noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : ''),
-    category: inferirCategoria(noticia.text),
+    category: index === 0 ? 'Julio 2025' : inferirCategoria(noticia.text), // Primera noticia muestra "Julio 2025"
     image: noticia.image_url
   }));
 ---

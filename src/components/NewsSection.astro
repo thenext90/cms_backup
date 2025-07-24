@@ -141,17 +141,6 @@ const news = noticiasData
             <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
               {article.excerpt}
             </p>
-            
-            <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-              <a 
-                href={`/noticias/${index + 1}`}
-                class="inline-flex items-center space-x-2 text-accent-800 hover:text-accent-900 font-semibold transition-colors group-hover:translate-x-1"
-              >
-                <span>Leer más</span>
-                <ArrowRight size="16" />
-              </a>
-              <div class="w-8 h-1 bg-gradient-to-r from-accent-500 to-accent-700 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
           </div>
         </article>
       ))}

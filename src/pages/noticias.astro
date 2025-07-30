@@ -95,6 +95,7 @@ function crearTitulo(texto) {
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {noticiasData
             .filter(noticia => noticia.text && noticia.text.trim() !== '')
+            .slice(0, 20)
             .map((noticia, index) => (
             <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div class="relative">

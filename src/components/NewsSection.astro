@@ -6,7 +6,49 @@ import noticiasData from '../data/noticias.json';
 
 // Función para extraer fecha del texto
 function extraerFecha(texto) {
-  // Buscar patrones de fecha en el texto
+  // Lista de meses en español e inglés
+  const mesesMap = {
+    'enero': 'Enero', 'january': 'Enero',
+    'febrero': 'Febrero', 'february': 'Febrero',
+    'marzo': 'Marzo', 'march': 'Marzo',
+    'abril': 'Abril', 'april': 'Abril',
+    'mayo': 'Mayo', 'may': 'Mayo',
+    'junio': 'Junio', 'june': 'Junio',
+    'julio': 'Julio', 'july': 'Julio',
+    'agosto': 'Agosto', 'august': 'Agosto',
+    'septiembre': 'Septiembre', 'september': 'Septiembre',
+    'octubre': 'Octubre', 'october': 'Octubre',
+    'noviembre': 'Noviembre', 'november': 'Noviembre',
+    'diciembre': 'Diciembre', 'december': 'Diciembre',
+    'dic': 'Diciembre', 'dec': 'Diciembre',
+    'sept': 'Septiembre', 'sep': 'Septiembre'
+  };
+
+  const textoLower = texto.toLowerCase();
+  
+  // Buscar mes específico en el texto
+  for (const [mesKey, mesNombre] of Object.entries(mesesMap)) {
+    if (textoLower.includes(mesKey)) {
+      // Buscar también el año si está presente
+      const regex = new RegExp(`${mesKey}\\s*(\\d{4})`, 'i');
+      const match = textoLower.match(regex);
+      if (match && match[1]) {
+        return `${mesNombre} ${match[1]}`;
+      }
+      
+      // Si no encuentra año específico, usar año por defecto basado en el contexto
+      // Determinar año basado en otros patrones
+      if (textoLower.includes('2025')) return `${mesNombre} 2025`;
+      if (textoLower.includes('2024')) return `${mesNombre} 2024`;
+      if (textoLower.includes('2023')) return `${mesNombre} 2023`;
+      if (textoLower.includes('2022')) return `${mesNombre} 2022`;
+      
+      // Por defecto, usar año actual para meses encontrados
+      return `${mesNombre} 2024`;
+    }
+  }
+  
+  // Buscar patrones de fecha más específicos como fallback
   const patronesFecha = [
     /(\w+)\s+(\d{4})/g, // "Enero 2025", "Diciembre 2024"
     /(\d{4})-(\d{4})/g, // "2024-2025"
@@ -84,24 +126,8 @@ const news = noticiasData
   .filter(noticia => noticia.text && noticia.text.trim() !== '') // Filtrar entradas vacías
   .slice(0, 12) // Mostrar las primeras 12 noticias
   .map((noticia, index) => {
-    // Fechas personalizadas para cada noticia
-    const fechasPersonalizadas = [
-      'Julio 2025',      // Noticia 1
-      'Junio 2025',      // Noticia 2
-      'Mayo 2025',       // Noticia 3
-      'Abril 2025',      // Noticia 4
-      'Marzo 2025',      // Noticia 5
-      'Febrero 2025',    // Noticia 6
-      'Enero 2025',      // Noticia 7
-      'Diciembre 2024',  // Noticia 8
-      'Noviembre 2024',  // Noticia 9
-      'Octubre 2024',    // Noticia 10
-      'Septiembre 2024', // Noticia 11
-      'Agosto 2024'      // Noticia 12
-    ];
-    
     return {
-      date: fechasPersonalizadas[index] || 'Enero 2025',
+      date: extraerFecha(noticia.text), // Extraer fecha directamente del texto
       title: crearTitulo(noticia.text),
       excerpt: noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : ''),
       category: inferirCategoria(noticia.text), // Todas las noticias usan categorización automática

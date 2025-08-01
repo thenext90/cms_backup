@@ -16,10 +16,53 @@ const { noticia, index } = Astro.props;
 
 // Función para extraer fecha del texto
 function extraerFecha(texto) {
+  // Lista de meses en español e inglés
+  const mesesMap = {
+    'enero': 'Enero', 'january': 'Enero',
+    'febrero': 'Febrero', 'february': 'Febrero',
+    'marzo': 'Marzo', 'march': 'Marzo',
+    'abril': 'Abril', 'april': 'Abril',
+    'mayo': 'Mayo', 'may': 'Mayo',
+    'junio': 'Junio', 'june': 'Junio',
+    'julio': 'Julio', 'july': 'Julio',
+    'agosto': 'Agosto', 'august': 'Agosto',
+    'septiembre': 'Septiembre', 'september': 'Septiembre',
+    'octubre': 'Octubre', 'october': 'Octubre',
+    'noviembre': 'Noviembre', 'november': 'Noviembre',
+    'diciembre': 'Diciembre', 'december': 'Diciembre',
+    'dic': 'Diciembre', 'dec': 'Diciembre',
+    'sept': 'Septiembre', 'sep': 'Septiembre'
+  };
+
+  const textoLower = texto.toLowerCase();
+  
+  // Buscar mes específico en el texto
+  for (const [mesKey, mesNombre] of Object.entries(mesesMap)) {
+    if (textoLower.includes(mesKey)) {
+      // Buscar también el año si está presente
+      const regex = new RegExp(`${mesKey}\\s*(\\d{4})`, 'i');
+      const match = textoLower.match(regex);
+      if (match && match[1]) {
+        return `${mesNombre} ${match[1]}`;
+      }
+      
+      // Si no encuentra año específico, usar año por defecto basado en el contexto
+      // Determinar año basado en otros patrones
+      if (textoLower.includes('2025')) return `${mesNombre} 2025`;
+      if (textoLower.includes('2024')) return `${mesNombre} 2024`;
+      if (textoLower.includes('2023')) return `${mesNombre} 2023`;
+      if (textoLower.includes('2022')) return `${mesNombre} 2022`;
+      
+      // Por defecto, usar año actual para meses encontrados
+      return `${mesNombre} 2024`;
+    }
+  }
+  
+  // Buscar patrones de fecha más específicos como fallback
   const patronesFecha = [
-    /(\w+)\s+(\d{4})/g,
-    /(\d{4})-(\d{4})/g,
-    /(\w+)\s+(\d{1,2}),?\s+(\d{4})/g
+    /(\w+)\s+(\d{4})/g, // "Enero 2025", "Diciembre 2024"
+    /(\d{4})-(\d{4})/g, // "2024-2025"
+    /(\w+)\s+(\d{1,2}),?\s+(\d{4})/g // "Enero 15, 2025"
   ];
   
   for (const patron of patronesFecha) {
@@ -29,6 +72,7 @@ function extraerFecha(texto) {
     }
   }
   
+  // Si no encuentra fecha, usar fecha actual
   const ahora = new Date();
   const meses = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',

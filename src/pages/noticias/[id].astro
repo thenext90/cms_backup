@@ -41,8 +41,9 @@ function extraerFecha(texto) {
 function inferirCategoria(texto) {
   const textoLower = texto.toLowerCase();
   
+  // Verificar primero si contiene certificación
   if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
-    return 'Certificación';
+    return 'Actualizaciones y mejoras para quienes confían en nosotros';
   }
   if (textoLower.includes('capacitación') || textoLower.includes('capacitacion')) {
     return 'Capacitación';
@@ -63,7 +64,7 @@ function inferirCategoria(texto) {
     return 'Auditoría';
   }
   
-  return 'Gestión de Calidad';
+  return 'Actualizaciones y mejoras para quienes confían en nosotros';
 }
 
 function crearTitulo(texto) {

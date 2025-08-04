@@ -3,7 +3,7 @@ declare module '*.json' {
   export default value;
 }
 
-declare module '../data/noticias.json' {
+declare module '../data/cms1.json' {
   interface Noticia {
     text: string;
     image_url: string;
@@ -12,7 +12,7 @@ declare module '../data/noticias.json' {
   export default noticias;
 }
 
-declare module '../../data/noticias.json' {
+declare module '../../data/cms1.json' {
   interface Noticia {
     text: string;
     image_url: string;

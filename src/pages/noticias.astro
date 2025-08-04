@@ -68,6 +68,11 @@ function extraerFecha(texto) {
     return `Enero ${rangoMatch[2]}`; // Usar el segundo año del rango
   }
   
+  // Para noticias específicas conocidas
+  if (textoLower.includes('econativa')) {
+    return 'Julio 2025'; // Fecha específica para Econativa
+  }
+  
   // Para noticias sin fecha específica, asignar fecha basada en contexto de contenido
   if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
     return 'Noviembre 2024'; // Certificaciones recientes
@@ -119,6 +124,35 @@ function inferirCategoria(texto) {
   return 'Actualizaciones y mejoras para quienes confían en nosotros';
 }
 
+// Función para extraer solo el año de una fecha
+function extraerAno(fechaTexto) {
+  const match = fechaTexto.match(/(\d{4})/);
+  return match ? parseInt(match[1]) : new Date().getFullYear();
+}
+
+// Función para agrupar noticias por año
+function agruparPorAno(noticias) {
+  const grupos = {};
+  
+  noticias.forEach(noticia => {
+    const fecha = extraerFecha(noticia.text);
+    const ano = extraerAno(fecha);
+    
+    if (!grupos[ano]) {
+      grupos[ano] = [];
+    }
+    grupos[ano].push(noticia);
+  });
+  
+  // Ordenar años de mayor a menor (más reciente primero)
+  const anosOrdenados = Object.keys(grupos).sort((a, b) => b - a);
+  
+  return anosOrdenados.map(ano => ({
+    ano: parseInt(ano),
+    noticias: grupos[ano]
+  }));
+}
+
 function crearTitulo(texto) {
   let titulo = texto.replace(/\n/g, ' ').substring(0, 80);
   if (titulo.length === 80) {
@@ -157,39 +191,53 @@ function crearTitulo(texto) {
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {noticiasData
-            .filter(noticia => noticia.text && noticia.text.trim() !== '')
-            .slice(0, 20)
-            .map((noticia, index) => (
-            <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div class="relative">
-                <img 
-                  src={noticia.image_url} 
-                  alt={crearTitulo(noticia.text)}
-                  class="w-full h-48 object-cover"
-                />
-                <div class="absolute top-4 left-4">
-                  <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-3 py-2 rounded-full">
-                    {inferirCategoria(noticia.text)}
-                  </span>
-                </div>
+          {agruparPorAno(
+            noticiasData
+              .filter(noticia => noticia.text && noticia.text.trim() !== '')
+              .slice(0, 30)
+          ).map(grupo => (
+            <div class="md:col-span-2 lg:col-span-3 mb-12">
+              <!-- Título del año -->
+              <div class="border-b-2 border-accent-200 pb-4 mb-8">
+                <h2 class="text-3xl font-bold text-accent-800">{grupo.ano}</h2>
+                <p class="text-gray-600 mt-2">{grupo.noticias.length} {grupo.noticias.length === 1 ? 'proyecto' : 'proyectos'} realizados</p>
               </div>
               
-              <div class="p-6">
-                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                  <Calendar size="16" />
-                  <time>{extraerFecha(noticia.text)}</time>
-                </div>
-                
-                <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight">
-                  {crearTitulo(noticia.text)}
-                </h3>
-                
-                <p class="text-gray-600 text-sm leading-relaxed">
-                  {noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : '')}
-                </p>
+              <!-- Grid de noticias para este año -->
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {grupo.noticias.map((noticia, index) => (
+                  <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div class="relative">
+                      <img 
+                        src={noticia.image_url} 
+                        alt={crearTitulo(noticia.text)}
+                        class="w-full h-48 object-cover"
+                      />
+                      <div class="absolute top-4 left-4">
+                        <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-3 py-2 rounded-full">
+                          {inferirCategoria(noticia.text)}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div class="p-6">
+                      <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+                        <Calendar size="16" />
+                        <time>{extraerFecha(noticia.text)}</time>
+                      </div>
+                      
+                      <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight">
+                        {crearTitulo(noticia.text)}
+                      </h3>
+                      
+                      <p class="text-gray-600 text-sm leading-relaxed">
+                        {noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : '')}
+                      </p>
+                    </div>
+                  </article>
+                ))}
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

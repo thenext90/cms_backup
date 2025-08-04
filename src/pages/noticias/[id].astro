@@ -79,6 +79,11 @@ function extraerFecha(texto) {
     return `Enero ${rangoMatch[2]}`; // Usar el segundo año del rango
   }
   
+  // Para noticias específicas conocidas
+  if (textoLower.includes('econativa')) {
+    return 'Julio 2025'; // Fecha específica para Econativa
+  }
+  
   // Para noticias sin fecha específica, asignar fecha basada en contexto de contenido
   if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
     return 'Noviembre 2024'; // Certificaciones recientes

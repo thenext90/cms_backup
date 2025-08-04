@@ -48,21 +48,26 @@ function extraerFecha(texto) {
     }
   }
   
-  // Buscar patrones de fecha más específicos como fallback
+  // Buscar patrones de fecha específicos y extraer solo mes y año
   const patronesFecha = [
     /(\w+)\s+(\d{4})/g, // "Enero 2025", "Diciembre 2024"
     /(\d{4})-(\d{4})/g, // "2024-2025"
-    /(\w+)\s+(\d{1,2}),?\s+(\d{4})/g // "Enero 15, 2025"
   ];
   
   for (const patron of patronesFecha) {
     const match = texto.match(patron);
     if (match) {
+      // Si es formato "2024-2025", usar el primer año
+      if (match[0].includes('-')) {
+        const años = match[0].split('-');
+        return `Enero ${años[1]}`; // Usar el segundo año
+      }
+      // Si es formato "Mes Año", retornarlo tal como está
       return match[0];
     }
   }
   
-  // Si no encuentra fecha, usar fecha actual
+  // Si no encuentra fecha, usar fecha actual (solo mes y año)
   const ahora = new Date();
   const meses = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',

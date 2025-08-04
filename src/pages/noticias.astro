@@ -144,12 +144,25 @@ function agruparPorAno(noticias) {
     grupos[ano].push(noticia);
   });
   
-  // Ordenar años de mayor a menor (más reciente primero)
-  const anosOrdenados = Object.keys(grupos).sort((a, b) => b - a);
+  // Ordenar años de mayor a menor (más reciente primero: 2025 → 2024 → 2023...)
+  const anosOrdenados = Object.keys(grupos).sort((a, b) => parseInt(b) - parseInt(a));
   
   return anosOrdenados.map(ano => ({
     ano: parseInt(ano),
-    noticias: grupos[ano]
+    noticias: grupos[ano].sort((a, b) => {
+      // Dentro de cada año, ordenar por mes (más reciente primero)
+      const fechaA = extraerFecha(a.text);
+      const fechaB = extraerFecha(b.text);
+      const mesesMap = {
+        'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4, 'mayo': 5, 'junio': 6,
+        'julio': 7, 'agosto': 8, 'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12
+      };
+      
+      const mesA = mesesMap[fechaA.split(' ')[0].toLowerCase()] || 12;
+      const mesB = mesesMap[fechaB.split(' ')[0].toLowerCase()] || 12;
+      
+      return mesB - mesA; // Meses más recientes primero
+    })
   }));
 }
 

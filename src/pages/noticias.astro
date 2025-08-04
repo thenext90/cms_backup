@@ -1,96 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Calendar, ArrowLeft } from 'lucide-astro';
-import noticiasData from '../data/cms1.json';
+import cms2Data from '../data/cms2.json';
 
-// Función para extraer fecha del texto - Actualizada para ordenamiento
-function extraerFecha(texto) {
-  // Lista de meses en español e inglés
-  const mesesMap = {
-    'enero': 'Enero', 'january': 'Enero',
-    'febrero': 'Febrero', 'february': 'Febrero',
-    'marzo': 'Marzo', 'march': 'Marzo',
-    'abril': 'Abril', 'april': 'Abril',
-    'mayo': 'Mayo', 'may': 'Mayo',
-    'junio': 'Junio', 'june': 'Junio',
-    'julio': 'Julio', 'july': 'Julio',
-    'agosto': 'Agosto', 'august': 'Agosto',
-    'septiembre': 'Septiembre', 'september': 'Septiembre',
-    'octubre': 'Octubre', 'october': 'Octubre',
-    'noviembre': 'Noviembre', 'november': 'Noviembre',
-    'diciembre': 'Diciembre', 'december': 'Diciembre',
-    'dic': 'Diciembre', 'dec': 'Diciembre',
-    'sept': 'Septiembre', 'sep': 'Septiembre'
-  };
-
-  const textoLower = texto.toLowerCase();
-  
-  // Buscar mes específico en el texto
-  for (const [mesKey, mesNombre] of Object.entries(mesesMap)) {
-    if (textoLower.includes(mesKey)) {
-      // Buscar también el año si está presente
-      const regex = new RegExp(`${mesKey}\\s*(\\d{4})`, 'i');
-      const match = textoLower.match(regex);
-      if (match && match[1]) {
-        return `${mesNombre} ${match[1]}`;
-      }
-      
-      // Si no encuentra año específico, usar año por defecto basado en el contexto
-      // Determinar año basado en otros patrones
-      if (textoLower.includes('2025')) return `${mesNombre} 2025`;
-      if (textoLower.includes('2024')) return `${mesNombre} 2024`;
-      if (textoLower.includes('2023')) return `${mesNombre} 2023`;
-      if (textoLower.includes('2022')) return `${mesNombre} 2022`;
-      
-      // Por defecto, usar año actual para meses encontrados
-      return `${mesNombre} 2024`;
+// Función para formatear fecha del campo fecha del JSON
+function formatearFecha(fechaTexto) {
+  try {
+    // El formato viene como "Julio 02, 2025" o "Mayo 07, 2025"
+    const partes = fechaTexto.split(' ');
+    if (partes.length >= 3) {
+      const mes = partes[0];
+      const ano = partes[2].replace(',', '');
+      return `${mes} ${ano}`;
     }
+    return fechaTexto;
+  } catch (error) {
+    return fechaTexto;
   }
-  
-  // Buscar patrones de año específicos para asignar fechas contextuales
-  if (textoLower.includes('2025')) {
-    return 'Enero 2025'; // Proyectos futuros se asignan a Enero
-  }
-  if (textoLower.includes('2024')) {
-    return 'Diciembre 2024'; // Proyectos de 2024 se asignan a Diciembre
-  }
-  if (textoLower.includes('2023')) {
-    return 'Diciembre 2023';
-  }
-  if (textoLower.includes('2022')) {
-    return 'Diciembre 2022';
-  }
-  
-  // Buscar patrones de rango de años como "2024-2025"
-  const rangoPattern = /(\d{4})-(\d{4})/;
-  const rangoMatch = texto.match(rangoPattern);
-  if (rangoMatch) {
-    return `Enero ${rangoMatch[2]}`; // Usar el segundo año del rango
-  }
-  
-  // Para noticias específicas conocidas
-  if (textoLower.includes('econativa')) {
-    return 'Julio 2025'; // Fecha específica para Econativa
-  }
-  
-  // Para noticias sin fecha específica, asignar fecha basada en contexto de contenido
-  if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
-    return 'Noviembre 2024'; // Certificaciones recientes
-  }
-  if (textoLower.includes('capacitación') || textoLower.includes('capacitacion')) {
-    return 'Octubre 2024'; // Capacitaciones recientes
-  }
-  if (textoLower.includes('iso') && textoLower.includes('proceso')) {
-    return 'Septiembre 2024'; // Procesos ISO en curso
-  }
-  
-  // Si no encuentra nada específico, usar fecha actual
-  const ahora = new Date();
-  const meses = [
-    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-  ];
-  return `${meses[ahora.getMonth()]} ${ahora.getFullYear()}`;
 }
 
 // Función para inferir categoría del texto
@@ -130,13 +56,13 @@ function extraerAno(fechaTexto) {
   return match ? parseInt(match[1]) : new Date().getFullYear();
 }
 
-// Función para agrupar noticias por año
+// Función para agrupar noticias por año usando el campo fecha del JSON
 function agruparPorAno(noticias) {
   const grupos = {};
   
   noticias.forEach(noticia => {
-    const fecha = extraerFecha(noticia.text);
-    const ano = extraerAno(fecha);
+    const fechaFormateada = formatearFecha(noticia.fecha);
+    const ano = extraerAno(fechaFormateada);
     
     if (!grupos[ano]) {
       grupos[ano] = [];
@@ -151,8 +77,8 @@ function agruparPorAno(noticias) {
     ano: parseInt(ano),
     noticias: grupos[ano].sort((a, b) => {
       // Dentro de cada año, ordenar por mes (más reciente primero)
-      const fechaA = extraerFecha(a.text);
-      const fechaB = extraerFecha(b.text);
+      const fechaA = formatearFecha(a.fecha);
+      const fechaB = formatearFecha(b.fecha);
       const mesesMap = {
         'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4, 'mayo': 5, 'junio': 6,
         'julio': 7, 'agosto': 8, 'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12
@@ -205,8 +131,8 @@ function crearTitulo(texto) {
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {agruparPorAno(
-            noticiasData
-              .filter(noticia => noticia.text && noticia.text.trim() !== '')
+            cms2Data.noticias
+              .filter(noticia => noticia.texto && noticia.texto.trim() !== '')
               .slice(0, 30)
           ).map(grupo => (
             <div class="md:col-span-2 lg:col-span-3 mb-12">
@@ -222,13 +148,13 @@ function crearTitulo(texto) {
                   <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                     <div class="relative">
                       <img 
-                        src={noticia.image_url} 
-                        alt={crearTitulo(noticia.text)}
+                        src={noticia.imagen} 
+                        alt={crearTitulo(noticia.texto)}
                         class="w-full h-48 object-cover"
                       />
                       <div class="absolute top-4 left-4">
                         <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-3 py-2 rounded-full">
-                          {inferirCategoria(noticia.text)}
+                          {inferirCategoria(noticia.texto)}
                         </span>
                       </div>
                     </div>
@@ -236,15 +162,15 @@ function crearTitulo(texto) {
                     <div class="p-6">
                       <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
                         <Calendar size="16" />
-                        <time>{extraerFecha(noticia.text)}</time>
+                        <time>{formatearFecha(noticia.fecha)}</time>
                       </div>
                       
                       <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight">
-                        {crearTitulo(noticia.text)}
+                        {crearTitulo(noticia.texto)}
                       </h3>
                       
                       <p class="text-gray-600 text-sm leading-relaxed">
-                        {noticia.text.replace(/\n/g, ' ').substring(0, 150) + (noticia.text.length > 150 ? '...' : '')}
+                        {noticia.texto.replace(/\n/g, ' ').substring(0, 150) + (noticia.texto.length > 150 ? '...' : '')}
                       </p>
                     </div>
                   </article>

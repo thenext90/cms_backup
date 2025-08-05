@@ -1,0 +1,215 @@
+---
+import { Calendar, ArrowRight } from 'lucide-astro';
+
+// Importar datos usando cms2
+import cms2Data from '../data/cms2.json';
+
+// Función para formatear fecha del campo fecha del JSON
+function formatearFecha(fechaTexto) {
+  try {
+    // El formato viene como "Julio 02, 2025" o "Mayo 07, 2025"
+    const partes = fechaTexto.split(' ');
+    if (partes.length >= 3) {
+      const mes = partes[0];
+      const ano = partes[2].replace(',', '');
+      return `${mes} ${ano}`;
+    }
+    return fechaTexto;
+  } catch (error) {
+    return fechaTexto;
+  }
+}
+    if (textoLower.includes(mesKey)) {
+      // Buscar también el año si está presente
+      const regex = new RegExp(`${mesKey}\\s*(\\d{4})`, 'i');
+      const match = textoLower.match(regex);
+      if (match && match[1]) {
+        return `${mesNombre} ${match[1]}`;
+      }
+      
+      // Si no encuentra año específico, usar año por defecto basado en el contexto
+      // Determinar año basado en otros patrones
+      if (textoLower.includes('2025')) return `${mesNombre} 2025`;
+      if (textoLower.includes('2024')) return `${mesNombre} 2024`;
+      if (textoLower.includes('2023')) return `${mesNombre} 2023`;
+      if (textoLower.includes('2022')) return `${mesNombre} 2022`;
+      
+      // Por defecto, usar año actual para meses encontrados
+      return `${mesNombre} 2024`;
+    }
+  }
+  
+  // Buscar patrones de año específicos para asignar fechas contextuales
+  if (textoLower.includes('2025')) {
+    return 'Enero 2025'; // Proyectos futuros se asignan a Enero
+  }
+  if (textoLower.includes('2024')) {
+    return 'Diciembre 2024'; // Proyectos de 2024 se asignan a Diciembre
+  }
+  if (textoLower.includes('2023')) {
+    return 'Diciembre 2023';
+  }
+  if (textoLower.includes('2022')) {
+    return 'Diciembre 2022';
+  }
+  
+  // Buscar patrones de rango de años como "2024-2025"
+  const rangoPattern = /(\d{4})-(\d{4})/;
+  const rangoMatch = texto.match(rangoPattern);
+  if (rangoMatch) {
+    return `Enero ${rangoMatch[2]}`; // Usar el segundo año del rango
+  }
+  
+  // Para noticias específicas conocidas
+  if (textoLower.includes('econativa')) {
+    return 'Julio 2025'; // Fecha específica para Econativa
+  }
+  
+  // Para noticias sin fecha específica, asignar fecha basada en contexto de contenido
+  if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
+    return 'Noviembre 2024'; // Certificaciones recientes
+  }
+  if (textoLower.includes('capacitación') || textoLower.includes('capacitacion')) {
+    return 'Octubre 2024'; // Capacitaciones recientes
+  }
+  if (textoLower.includes('iso') && textoLower.includes('proceso')) {
+    return 'Septiembre 2024'; // Procesos ISO en curso
+  }
+  
+  // Si no encuentra nada específico, usar fecha actual
+  const ahora = new Date();
+  const meses = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  return `${meses[ahora.getMonth()]} ${ahora.getFullYear()}`;
+}
+
+// Función para inferir categoría del texto
+function inferirCategoria(texto) {
+  const textoLower = texto.toLowerCase();
+  
+  // Verificar primero si contiene certificación
+  if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
+    return 'Actualizaciones y mejoras para quienes confían en nosotros';
+  }
+  if (textoLower.includes('capacitación') || textoLower.includes('capacitacion') || textoLower.includes('entrenamiento')) {
+    return 'Capacitación';
+  }
+  if (textoLower.includes('haccp') || textoLower.includes('iso 22000') || textoLower.includes('alimentos')) {
+    return 'Seguridad Alimentaria';
+  }
+  if (textoLower.includes('iso 27001') || textoLower.includes('ciberseguridad') || textoLower.includes('cyberseguridad')) {
+    return 'Seguridad IT';
+  }
+  if (textoLower.includes('iso 45001') || textoLower.includes('seguridad') || textoLower.includes('salud')) {
+    return 'Seguridad Laboral';
+  }
+  if (textoLower.includes('iso 14001') || textoLower.includes('ambiental') || textoLower.includes('medio ambiente')) {
+    return 'Gestión Ambiental';
+  }
+  if (textoLower.includes('auditoria') || textoLower.includes('auditoría')) {
+    return 'Auditoría';
+  }
+  if (textoLower.includes('webinar') || textoLower.includes('seminario') || textoLower.includes('evento')) {
+    return 'Evento';
+  }
+  
+  return 'Actualizaciones y mejoras para quienes confían en nosotros';
+}
+
+// Función para crear título más presentable
+function crearTitulo(texto) {
+  // Tomar las primeras 80 caracteres y limpiar
+  let titulo = texto.replace(/\n/g, ' ').substring(0, 80);
+  
+  // Si termina en el medio de una palabra, cortar en la palabra anterior
+  if (titulo.length === 80) {
+    const ultimoEspacio = titulo.lastIndexOf(' ');
+    if (ultimoEspacio > 50) {
+      titulo = titulo.substring(0, ultimoEspacio) + '...';
+    }
+  }
+  
+  // Capitalizar primera letra
+  return titulo.charAt(0).toUpperCase() + titulo.slice(1);
+}
+
+// Mapear datos del JSON al formato esperado por el frontend
+const news = cms2Data.noticias
+  .filter(noticia => noticia.texto && noticia.texto.trim() !== '') // Filtrar entradas vacías
+  .slice(0, 30) // Mostrar las primeras 30 noticias
+  .map((noticia, index) => {
+    return {
+      date: formatearFecha(noticia.fecha), // Usar fecha directamente del campo fecha
+      title: crearTitulo(noticia.texto),
+      excerpt: noticia.texto.replace(/\n/g, ' ').substring(0, 150) + (noticia.texto.length > 150 ? '...' : ''),
+      category: inferirCategoria(noticia.texto), // Todas las noticias usan categorización automática
+      image: noticia.imagen
+    };
+  });
+---
+
+<section class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100">
+  <div class="max-w-container mx-auto px-4">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+        <Calendar size="16" />
+        <span>Actualidad</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+        Cuadros Noticias
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        Años de trayectoria acompañando a nuestros clientes en sus procesos de certificación, 
+        capacitación y seguimiento. Descubra las historias de éxito y el crecimiento continuo 
+        de las empresas que han confiado en CMS Consultores.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {news.map((article, index) => (
+        <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-accent-200 hover:-translate-y-2">
+          <div class="relative">
+            <img 
+              src={article.image} 
+              alt={article.title}
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute top-3 left-3">
+              <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-medium px-2 py-1 rounded-full shadow-lg backdrop-blur-sm">
+                {article.category}
+              </span>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          
+          <div class="p-5 space-y-3">
+            <div class="flex items-center space-x-2 text-xs text-gray-500 font-medium">
+              <Calendar size="14" />
+              <time>{article.date}</time>
+            </div>
+            
+            <h3 class="text-lg font-semibold text-gray-800 leading-snug group-hover:text-accent-800 transition-colors">
+              <a href={`/noticias/${index + 1}`}>
+                {article.title}
+              </a>
+            </h3>
+            
+            <p class="text-gray-600 text-xs leading-relaxed line-clamp-3">
+              {article.excerpt}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/noticias" class="inline-flex items-center space-x-2 bg-gradient-to-r from-accent-800 to-accent-900 text-white px-10 py-4 rounded-xl hover:from-accent-900 hover:to-accent-800 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105">
+        <span>Ver Todas las Noticias</span>
+        <ArrowRight size="18" />
+      </a>
+    </div>
+  </div>
+</section>

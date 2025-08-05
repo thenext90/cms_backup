@@ -34,7 +34,7 @@ function inferirCategoria(texto) {
   const textoLower = texto.toLowerCase();
   
   if (textoLower.includes('certificación') || textoLower.includes('certificacion')) {
-    return 'Actualizaciones y mejoras para quienes confían en nosotros';
+    return 'Noticias Clientes';
   }
   if (textoLower.includes('capacitación') || textoLower.includes('capacitacion')) {
     return 'Capacitación';
@@ -55,7 +55,7 @@ function inferirCategoria(texto) {
     return 'Auditoría';
   }
   
-  return 'Actualizaciones y mejoras para quienes confían en nosotros';
+  return 'Noticias Clientes';
 }
 
 function crearTitulo(texto) {

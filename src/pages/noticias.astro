@@ -87,7 +87,8 @@ function agruparPorAno(noticias) {
       const mesA = mesesMap[fechaA.split(' ')[0].toLowerCase()] || 12;
       const mesB = mesesMap[fechaB.split(' ')[0].toLowerCase()] || 12;
       
-      return mesB - mesA; // Meses más recientes primero
+      // Para el mismo año, ordenar por mes descendente (diciembre primero, enero último)
+      return mesB - mesA;
     })
   }));
 }

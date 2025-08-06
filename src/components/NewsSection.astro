@@ -1,5 +1,5 @@
 ---
-import { Calendar, ArrowRight } from 'lucide-astro';
+import { Calendar } from 'lucide-astro';
 import cms2Data from '../data/cms2.json';
 
 // Función para formatear fecha del campo fecha del JSON
@@ -122,13 +122,6 @@ const news = cms2Data.noticias
     </div>
 
     <div class="text-center">
-      <a 
-        href="/noticias"
-        class="inline-flex items-center px-8 py-4 bg-accent-700 text-white font-semibold rounded-lg hover:bg-accent-800 transition-colors shadow-lg hover:shadow-xl"
-      >
-        Ver Todas las Noticias
-        <ArrowRight size="20" class="ml-2" />
-      </a>
     </div>
   </div>
 </section>

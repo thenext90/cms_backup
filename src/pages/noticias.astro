@@ -134,7 +134,6 @@ function crearTitulo(texto) {
           {agruparPorAno(
             cms2Data.noticias
               .filter(noticia => noticia.texto && noticia.texto.trim() !== '')
-              .slice(0, 30)
           ).map(grupo => (
             <div class="md:col-span-2 lg:col-span-3 mb-12">
               <!-- Título del año -->

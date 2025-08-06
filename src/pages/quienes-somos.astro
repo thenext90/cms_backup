@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Users, Award, Target, Clock, Globe, Shield } from 'lucide-astro';
+---
+
+<Layout title="Quiénes Somos - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Users size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Quiénes Somos</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Décadas de experiencia en consultoría, auditoría y certificación de sistemas de gestión
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestra Historia -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-accent-800 mb-6">Nuestra Historia</h2>
+            <div class="space-y-4 text-gray-600 leading-relaxed">
+              <p>
+                CMS Consultores nació con la visión de acompañar a las organizaciones en su camino hacia la excelencia operacional y la mejora continua. Desde nuestros inicios, nos hemos especializado en consultoría, auditoría y certificación de sistemas de gestión.
+              </p>
+              <p>
+                Con más de dos décadas de experiencia, hemos sido testigos y partícipes del crecimiento y transformación de cientos de empresas, desde pequeñas organizaciones hasta grandes corporaciones, ayudándolas a alcanzar estándares internacionales de calidad.
+              </p>
+              <p>
+                Nuestro compromiso va más allá de la certificación; nos enfocamos en generar valor real y sostenible para nuestros clientes, construyendo relaciones de confianza duraderas basadas en la transparencia y resultados concretos.
+              </p>
+            </div>
+          </div>
+          <div class="lg:order-first">
+            <img 
+              src="/handshake.jpg" 
+              alt="Equipo CMS Consultores" 
+              class="w-full h-96 object-cover rounded-xl shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Misión, Visión y Valores -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-accent-800 mb-4">Nuestra Esencia</h2>
+          <p class="text-xl text-gray-600">Los principios que guían nuestro trabajo diario</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Misión -->
+          <div class="text-center p-8 bg-gradient-to-br from-accent-50 to-orange-50 rounded-xl">
+            <Target size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-2xl font-bold text-accent-800 mb-4">Misión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Acompañar a las organizaciones en la implementación y mejora de sus sistemas de gestión, proporcionando consultoría especializada y auditorías de alta calidad que generen valor sostenible y contribuyan al crecimiento empresarial.
+            </p>
+          </div>
+
+          <!-- Visión -->
+          <div class="text-center p-8 bg-gradient-to-br from-orange-50 to-accent-50 rounded-xl">
+            <Globe size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-2xl font-bold text-accent-800 mb-4">Visión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ser la firma de consultoría líder en sistemas de gestión, reconocida por nuestra excelencia técnica, integridad profesional y capacidad de transformar organizaciones hacia la excelencia operacional.
+            </p>
+          </div>
+
+          <!-- Valores -->
+          <div class="text-center p-8 bg-gradient-to-br from-accent-50 to-orange-50 rounded-xl">
+            <Shield size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-2xl font-bold text-accent-800 mb-4">Valores</h3>
+            <div class="text-gray-600 leading-relaxed">
+              <ul class="space-y-2">
+                <li>• <strong>Integridad:</strong> Transparencia en cada acción</li>
+                <li>• <strong>Excelencia:</strong> Búsqueda constante de la mejora</li>
+                <li>• <strong>Compromiso:</strong> Dedicación total con nuestros clientes</li>
+                <li>• <strong>Innovación:</strong> Soluciones creativas y eficaces</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestras Fortalezas -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-accent-800 mb-4">Nuestras Fortalezas</h2>
+          <p class="text-xl text-gray-600">Lo que nos distingue en el mercado</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center p-6">
+            <Clock size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-xl font-bold text-accent-800 mb-3">+20 Años</h3>
+            <p class="text-gray-600">De experiencia en consultoría y auditoría</p>
+          </div>
+
+          <div class="text-center p-6">
+            <Users size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-xl font-bold text-accent-800 mb-3">+500 Clientes</h3>
+            <p class="text-gray-600">Organizaciones transformadas exitosamente</p>
+          </div>
+
+          <div class="text-center p-6">
+            <Award size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-xl font-bold text-accent-800 mb-3">Certificaciones</h3>
+            <p class="text-gray-600">Auditores certificados internacionalmente</p>
+          </div>
+
+          <div class="text-center p-6">
+            <Globe size="48" class="mx-auto mb-4 text-accent-700" />
+            <h3 class="text-xl font-bold text-accent-800 mb-3">Alcance Nacional</h3>
+            <p class="text-gray-600">Presencia en todo Chile y proyección regional</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestro Equipo -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-accent-800 mb-4">Nuestro Equipo</h2>
+          <p class="text-xl text-gray-600">Profesionales comprometidos con la excelencia</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-accent-800 mb-6">Profesionales Especializados</h3>
+            <div class="space-y-4 text-gray-600 leading-relaxed">
+              <p>
+                Contamos con un equipo multidisciplinario de consultores y auditores altamente capacitados, con certificaciones internacionales y amplia experiencia en diferentes sectores industriales.
+              </p>
+              <p>
+                Nuestros profesionales se mantienen constantemente actualizados en las últimas tendencias y normativas, garantizando que nuestros clientes reciban el mejor servicio y las soluciones más innovadoras del mercado.
+              </p>
+              <div class="mt-6">
+                <h4 class="font-semibold text-accent-800 mb-3">Especializaciones:</h4>
+                <ul class="space-y-2">
+                  <li>• Sistemas de Gestión de Calidad (ISO 9001)</li>
+                  <li>• Gestión Ambiental (ISO 14001)</li>
+                  <li>• Seguridad y Salud Ocupacional (ISO 45001)</li>
+                  <li>• Seguridad de la Información (ISO 27001)</li>
+                  <li>• Inocuidad Alimentaria (ISO 22000, HACCP)</li>
+                  <li>• Gestión de Riesgos Psicosociales</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img 
+              src="/london_ger.webp" 
+              alt="Equipo profesional CMS Consultores" 
+              class="w-full h-96 object-cover rounded-xl shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compromiso con la Calidad -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-accent-700 to-accent-800 rounded-2xl p-12 text-white text-center">
+          <h2 class="text-3xl font-bold mb-6">Nuestro Compromiso</h2>
+          <p class="text-xl leading-relaxed max-w-4xl mx-auto">
+            "En CMS Consultores, no solo implementamos sistemas de gestión; construimos relaciones duraderas basadas en la confianza mutua y resultados tangibles. Cada proyecto es una oportunidad para demostrar nuestro compromiso con la excelencia y el crecimiento sostenible de nuestros clientes."
+          </p>
+          <div class="mt-8">
+            <p class="text-lg font-semibold">Equipo CMS Consultores</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

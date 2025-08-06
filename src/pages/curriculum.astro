@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { FileText, Calendar, Award, Building } from 'lucide-astro';
+import { Calendar, Award, Building2, Users, Target, TrendingUp, Globe, CheckCircle } from 'lucide-astro';
 ---
 
 <Layout title="Currículum 1995-2006 - CMS Consultores">
@@ -9,200 +9,340 @@ import { FileText, Calendar, Award, Building } from 'lucide-astro';
     <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <FileText size="64" class="mx-auto mb-6 text-orange-200" />
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Currículum 1995-2006</h1>
-          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
-            Nuestra trayectoria y experiencia durante los primeros años de operación
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Currículum Histórico
+            <span class="block text-orange-200 text-2xl md:text-3xl mt-2">1995 - 2006</span>
+          </h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto mb-8">
+            Más de una década construyendo alianzas estratégicas y fortaleciendo procesos de creación de valor empresarial
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resumen Ejecutivo -->
-    <section class="py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Resumen Ejecutivo 1995-2006</h2>
-          <p class="text-lg text-gray-600 leading-relaxed">
-            Durante esta primera década, CMS Consultores estableció las bases sólidas de su operación, 
-            desarrollando expertise en sistemas de gestión de calidad y construyendo una cartera de 
-            clientes diversificada en múltiples sectores industriales.
-          </p>
-        </div>
-
-        <!-- Estadísticas del período -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div class="text-3xl font-bold text-accent-800 mb-2">50+</div>
-            <div class="text-gray-600">Empresas Asesoradas</div>
-          </div>
-          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div class="text-3xl font-bold text-accent-800 mb-2">25+</div>
-            <div class="text-gray-600">Certificaciones ISO</div>
-          </div>
-          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div class="text-3xl font-bold text-accent-800 mb-2">150+</div>
-            <div class="text-gray-600">Profesionales Capacitados</div>
-          </div>
-          <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-            <div class="text-3xl font-bold text-accent-800 mb-2">15</div>
-            <div class="text-gray-600">Sectores Industriales</div>
+          <div class="flex items-center justify-center space-x-2 text-orange-200">
+            <Calendar size="20" />
+            <span>Historia de Excelencia y Crecimiento Sostenido</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Proyectos Destacados -->
+    <!-- Filosofía Empresarial -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Proyectos Destacados</h2>
-          <p class="text-xl text-gray-600">Casos de éxito que marcaron nuestra trayectoria</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestra Filosofía Empresarial</h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            C.M.S. Consultores Asociados se orienta a conformar una alianza con el cliente, 
+            que permita fortalecer los procesos de creación de valor en la empresa, sobre la base de tres pilares fundamentales:
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Proyecto 1 -->
-          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
-            <Calendar size="32" class="text-accent-800 mb-4" />
-            <h3 class="text-xl font-bold text-gray-800 mb-3">1996 - Sector Alimentario</h3>
-            <p class="text-gray-600 mb-4">
-              Implementación del primer sistema de gestión de calidad en empresa procesadora de alimentos.
-            </p>
-            <div class="text-sm text-gray-500">
-              <p><strong>Resultado:</strong> Certificación ISO 9001:1994</p>
-              <p><strong>Duración:</strong> 8 meses</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Pilar 1 -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-8 text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Target size="32" class="text-white" />
             </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Primer Pilar</h3>
+            <p class="text-gray-700">
+              <strong>Innovación Tecnológica:</strong> Desarrollo y aplicación de innovación tecnológica 
+              entregada en forma permanente conforme a nuestra propia investigación.
+            </p>
           </div>
 
-          <!-- Proyecto 2 -->
-          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
-            <Building size="32" class="text-accent-800 mb-4" />
-            <h3 class="text-xl font-bold text-gray-800 mb-3">1998 - Sector Manufacturero</h3>
-            <p class="text-gray-600 mb-4">
-              Desarrollo de sistema integrado de gestión para empresa metalmecánica.
-            </p>
-            <div class="text-sm text-gray-500">
-              <p><strong>Resultado:</strong> Mejora 40% en eficiencia</p>
-              <p><strong>Duración:</strong> 12 meses</p>
+          <!-- Pilar 2 -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-8 text-center">
+            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Users size="32" class="text-white" />
             </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Segundo Pilar</h3>
+            <p class="text-gray-700">
+              <strong>Entrenamiento y Capacitación:</strong> Desarrollo de herramientas que conforman 
+              el instrumental de las macro tendencias conjuntamente con los principios de calidad.
+            </p>
           </div>
 
-          <!-- Proyecto 3 -->
-          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
-            <Award size="32" class="text-accent-800 mb-4" />
-            <h3 class="text-xl font-bold text-gray-800 mb-3">2001 - Sector Servicios</h3>
-            <p class="text-gray-600 mb-4">
-              Implementación de sistema de gestión en empresa de servicios financieros.
-            </p>
-            <div class="text-sm text-gray-500">
-              <p><strong>Resultado:</strong> Premio Nacional Calidad</p>
-              <p><strong>Duración:</strong> 10 meses</p>
+          <!-- Pilar 3 -->
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-8 text-center">
+            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <TrendingUp size="32" class="text-white" />
             </div>
-          </div>
-
-          <!-- Proyecto 4 -->
-          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
-            <Calendar size="32" class="text-accent-800 mb-4" />
-            <h3 class="text-xl font-bold text-gray-800 mb-3">2003 - Sector Químico</h3>
-            <p class="text-gray-600 mb-4">
-              Desarrollo de sistema de gestión ambiental integrado con calidad.
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Tercer Pilar</h3>
+            <p class="text-gray-700">
+              <strong>Consultoría Especializada:</strong> Aplicación de modelos matemáticos y estadísticos 
+              que permitan agregar certeza a las decisiones con incertidumbre.
             </p>
-            <div class="text-sm text-gray-500">
-              <p><strong>Resultado:</strong> ISO 9001 + ISO 14001</p>
-              <p><strong>Duración:</strong> 14 meses</p>
-            </div>
-          </div>
-
-          <!-- Proyecto 5 -->
-          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
-            <Building size="32" class="text-accent-800 mb-4" />
-            <h3 class="text-xl font-bold text-gray-800 mb-3">2005 - Sector Construcción</h3>
-            <p class="text-gray-600 mb-4">
-              Implementación de gestión de calidad en empresa constructora.
-            </p>
-            <div class="text-sm text-gray-500">
-              <p><strong>Resultado:</strong> Reducción 30% reclamos</p>
-              <p><strong>Duración:</strong> 9 meses</p>
-            </div>
-          </div>
-
-          <!-- Proyecto 6 -->
-          <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6">
-            <Award size="32" class="text-accent-800 mb-4" />
-            <h3 class="text-xl font-bold text-gray-800 mb-3">2006 - Sector Minero</h3>
-            <p class="text-gray-600 mb-4">
-              Sistema integrado de gestión de calidad y seguridad minera.
-            </p>
-            <div class="text-sm text-gray-500">
-              <p><strong>Resultado:</strong> Cero accidentes año 1</p>
-              <p><strong>Duración:</strong> 16 meses</p>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Evolución Metodológica -->
+    <!-- Experiencia Ámbito Privado -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Evolución Metodológica</h2>
-          <p class="text-xl text-gray-600">Desarrollo de nuestro enfoque consultivo</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Experiencia en el Ámbito Privado</h2>
+          <div class="flex items-center justify-center space-x-2 text-accent-700 mb-6">
+            <Building2 size="24" />
+            <span class="text-lg font-medium">Destacados Proyectos Empresariales</span>
+          </div>
         </div>
 
-        <div class="max-w-4xl mx-auto">
-          <div class="space-y-8">
-            <!-- Fase 1 -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-              <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">1</div>
-                <div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-2">1995-1997: Establecimiento</h3>
-                  <p class="text-gray-600 mb-4">
-                    Desarrollo de metodología básica de implementación ISO 9001. Enfoque en documentación y procedimientos.
-                  </p>
-                  <ul class="text-sm text-gray-500 space-y-1">
-                    <li>• Metodología de diagnóstico inicial</li>
-                    <li>• Desarrollo de manuales de calidad</li>
-                    <li>• Capacitación en normas ISO</li>
-                  </ul>
+        <div class="space-y-8">
+          <!-- 2006 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-accent-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-accent-100 rounded-full p-2 mr-4">
+                <Calendar size="20" class="text-accent-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">2006</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• Normas ISO integradas:</strong> Implementación de ISO 9001-2000, ISO 14.001 y NCh 2728 en más de 25 empresas.</p>
+              <p><strong>• Certificación Universidad de Santiago:</strong> Proceso completo de certificación desde Septiembre a Diciembre.</p>
+              <p><strong>• Biotecnología:</strong> Plan de capacitación en Biotecnología y Bioremediación con Bacterias Digestoras.</p>
+            </div>
+          </div>
+
+          <!-- 2005 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-blue-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-blue-100 rounded-full p-2 mr-4">
+                <Calendar size="20" class="text-blue-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">2005</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• ISO 9001 en El Teniente:</strong> Desarrollo de sistemas de registro y documentación para certificación en contratos gerencia plantas.</p>
+              <p><strong>• Seis Sigma:</strong> Implementación de modelos matemáticos y estadísticos para escenarios de certeza en mantenimiento.</p>
+            </div>
+          </div>
+
+          <!-- 2004-2005 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-green-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-green-100 rounded-full p-2 mr-4">
+                <Calendar size="20" class="text-green-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">2004-2005</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• ISO Integradas:</strong> Apoyo en certificación ISO 14.001, ISO 9000, ISO 18.018 en El Teniente.</p>
+              <p><strong>• Capacitación masiva:</strong> Entrenamiento de 200 supervisores en auditoria, documentación y control.</p>
+              <p><strong>• Proyectos Internacionales:</strong> Sistema ICP para empresas agroindustriales de Paraguay y Brasil.</p>
+            </div>
+          </div>
+
+          <!-- 2003 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-purple-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-purple-100 rounded-full p-2 mr-4">
+                <Calendar size="20" class="text-purple-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">2003</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• ISO 14.001 Codelco:</strong> Capacitación en División El Teniente para certificación ambiental.</p>
+              <p><strong>• E-Learning:</strong> Programa de capacitación online para SERVIRED en www.rr-hh.cl.</p>
+            </div>
+          </div>
+
+          <!-- 2002 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-red-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-red-100 rounded-full p-2 mr-4">
+                <Calendar size="20" class="text-red-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">2002</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• Knight Consulting:</strong> Contrato de dos años con empresa inglesa para gestión ambiental en El Teniente.</p>
+              <p><strong>• Cierre de Sewell:</strong> Desarrollo de bases del plan de cierre y certificación ISO integradas.</p>
+              <p><strong>• Proyectos web:</strong> Sitios web de control de proyectos ambientales.</p>
+            </div>
+          </div>
+
+          <!-- 2001 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-yellow-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-yellow-100 rounded-full p-2 mr-4">
+                <Calendar size="20" class="text-yellow-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">2001</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• ISO 17.025:</strong> Acreditación de laboratorio A.H. Knight en Minera Pelambres.</p>
+              <p><strong>• Kentucky International:</strong> Proceso integral de cambio y desvinculación de trabajadores.</p>
+              <p><strong>• Capacitaciones especializadas:</strong> Leasing Andino Banco de Chile y A.H. Knight.</p>
+            </div>
+          </div>
+
+          <!-- 1999-2000 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-indigo-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-indigo-100 rounded-full p-2 mr-4">
+                <Globe size="20" class="text-indigo-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">1999-2000</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• Desarrollo Internet:</strong> Lanzamiento de plataforma con Windows NT, Unix y aplicación Gescon 2000.</p>
+              <p><strong>• Cotizando.com:</strong> Desarrollo de tienda virtual y sistema de cotizaciones en línea.</p>
+              <p><strong>• Proyectos Extranet:</strong> Para Mercedes Benz, catálogos americanos y librerías.</p>
+              <p><strong>• ENTEL y CONAF:</strong> Sistemas interactivos y manual de procedimientos.</p>
+            </div>
+          </div>
+
+          <!-- 1998 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-pink-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-pink-100 rounded-full p-2 mr-4">
+                <Globe size="20" class="text-pink-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">1998</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• Islas Canarias:</strong> Gestión ambiental y aseguramiento de RRHH conforme ISO 9000.</p>
+              <p><strong>• Chiquita Brands:</strong> Fusión y desarrollo ISO 14.000 en empresa norteamericana de alimentos.</p>
+              <p><strong>• Proyectos internacionales:</strong> Consorcio Cultural (España, Chile, Ecuador, México) y Siemens.</p>
+            </div>
+          </div>
+
+          <!-- 1997 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-teal-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-teal-100 rounded-full p-2 mr-4">
+                <Award size="20" class="text-teal-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">1997</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• Ready Mix Cemento Bio Bio:</strong> Modelo de procesamiento y servicio de calidad.</p>
+              <p><strong>• General Electric:</strong> Proceso de Calidad Total y Reingeniería de Procesos.</p>
+              <p><strong>• Diversificación:</strong> Proyectos con Agromaule, Madeco, Dimer, Payton y Tecno Aircal.</p>
+            </div>
+          </div>
+
+          <!-- 1996 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-orange-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-orange-100 rounded-full p-2 mr-4">
+                <CheckCircle size="20" class="text-orange-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">1996</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• Desarrollo de software:</strong> NEXCAP 6.0, EVADES 1.0, MOVILPLAN 1.0 y ELAD 1.0.</p>
+              <p><strong>• Grandes tiendas:</strong> Estudios de capacitación y sistemas para SODIMAC y MELÓN.</p>
+              <p><strong>• Conservas Nieto:</strong> Reconversión organizacional con modelo participativo integral.</p>
+            </div>
+          </div>
+
+          <!-- 1995 -->
+          <div class="bg-white rounded-lg shadow-sm border-l-4 border-gray-600 p-6">
+            <div class="flex items-center mb-4">
+              <div class="bg-gray-100 rounded-full p-2 mr-4">
+                <TrendingUp size="20" class="text-gray-600" />
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">1995</h3>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <p><strong>• NEXCAP Network:</strong> Detector de necesidades de capacitación utilizado por las empresas más importantes del país.</p>
+              <p><strong>• Clientes destacados:</strong> CTC, COPEC, SHELL, MASISA, GOOD YEAR, METRO, SODIMAC, ENERSIS, BANCO DE CHILE.</p>
+              <p><strong>• Proyectos integrales:</strong> LUCHETTI, Italpasta, Grupo Payton, Super Pollo, Jumbo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiencia Ámbito Público -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Experiencia en el Ámbito Público</h2>
+          <div class="flex items-center justify-center space-x-2 text-accent-700 mb-6">
+            <Globe size="24" />
+            <span class="text-lg font-medium">Proyectos de Modernización del Estado</span>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Proyectos Destacados -->
+          <div class="space-y-6">
+            <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Proyectos de Modernización</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-blue-600 mt-1 flex-shrink-0" />
+                  <span><strong>Fiscalía Nacional (2006):</strong> Capacitación del Poder Judicial con FLACSO-ONU</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-blue-600 mt-1 flex-shrink-0" />
+                  <span><strong>SENCE (2003):</strong> Certificación ISO NCh. 2728 para capacitación</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-blue-600 mt-1 flex-shrink-0" />
+                  <span><strong>INP (2002):</strong> Mejoramiento y modernización organizacional</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-blue-600 mt-1 flex-shrink-0" />
+                  <span><strong>Dirección del Trabajo (2001):</strong> Cambio organizacional de RRHH</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Sistemas de Información</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-green-600 mt-1 flex-shrink-0" />
+                  <span><strong>Ministerio de Obras Públicas:</strong> Sistema computacional de RRHH</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-green-600 mt-1 flex-shrink-0" />
+                  <span><strong>CORFO:</strong> Sistema de información para gestión regional</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <CheckCircle size="16" class="text-green-600 mt-1 flex-shrink-0" />
+                  <span><strong>Correos de Chile:</strong> Capacitación a 300 personas en modernización</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Cronología -->
+          <div class="space-y-6">
+            <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Hitos Importantes</h3>
+              <div class="space-y-4">
+                <div class="border-l-2 border-purple-300 pl-4">
+                  <div class="text-sm text-purple-600 font-medium">1997</div>
+                  <div class="text-gray-700">Licitación CORFO - Reestructuración organizacional</div>
+                </div>
+                <div class="border-l-2 border-purple-300 pl-4">
+                  <div class="text-sm text-purple-600 font-medium">1995</div>
+                  <div class="text-gray-700">Ministerio de Bienes Nacionales - Detección de necesidades</div>
+                </div>
+                <div class="border-l-2 border-purple-300 pl-4">
+                  <div class="text-sm text-purple-600 font-medium">1994</div>
+                  <div class="text-gray-700">Consejo de Defensa del Estado - Modernización administrativa</div>
+                </div>
+                <div class="border-l-2 border-purple-300 pl-4">
+                  <div class="text-sm text-purple-600 font-medium">1990</div>
+                  <div class="text-gray-700">INP - Proceso de modernización y eficiencia funcionaria</div>
                 </div>
               </div>
             </div>
 
-            <!-- Fase 2 -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-              <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">2</div>
-                <div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-2">1998-2001: Consolidación</h3>
-                  <p class="text-gray-600 mb-4">
-                    Incorporación de herramientas de mejora continua y enfoque por procesos. Especialización sectorial.
-                  </p>
-                  <ul class="text-sm text-gray-500 space-y-1">
-                    <li>• Mapeo de procesos organizacionales</li>
-                    <li>• Indicadores de gestión y seguimiento</li>
-                    <li>• Auditorías internas especializadas</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Fase 3 -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-              <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-12 h-12 bg-accent-800 rounded-full flex items-center justify-center text-white font-bold">3</div>
-                <div>
-                  <h3 class="text-xl font-bold text-gray-800 mb-2">2002-2006: Innovación</h3>
-                  <p class="text-gray-600 mb-4">
-                    Desarrollo de sistemas integrados de gestión. Incorporación de tecnología y automatización.
-                  </p>
-                  <ul class="text-sm text-gray-500 space-y-1">
-                    <li>• Sistemas integrados (Calidad + Ambiente + Seguridad)</li>
-                    <li>• Software de gestión documentaria</li>
-                    <li>• Metodología de implementación acelerada</li>
-                  </ul>
-                </div>
+            <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Impacto y Reconocimiento</h3>
+              <p class="text-gray-700 mb-4">
+                Nuestro trabajo en el sector público ha contribuido significativamente a la modernización 
+                del Estado chileno, implementando sistemas de gestión de calidad y procesos de mejora continua.
+              </p>
+              <div class="text-sm text-yellow-700 font-medium">
+                ✓ Más de 15 años de experiencia en modernización estatal<br>
+                ✓ Capacitación de miles de funcionarios públicos<br>
+                ✓ Implementación de sistemas de gestión modernos
               </div>
             </div>
           </div>
@@ -210,40 +350,25 @@ import { FileText, Calendar, Award, Building } from 'lucide-astro';
       </div>
     </section>
 
-    <!-- Reconocimientos -->
-    <section class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Reconocimientos</h2>
-          <p class="text-xl text-gray-600">Logros obtenidos durante el período</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 text-center">
-            <Award size="48" class="mx-auto mb-4 text-yellow-600" />
-            <h3 class="text-lg font-bold text-gray-800 mb-2">2002</h3>
-            <p class="text-gray-600">Reconocimiento como "Consultora del Año" por Asociación de Consultores</p>
-          </div>
-          
-          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
-            <Award size="48" class="mx-auto mb-4 text-blue-600" />
-            <h3 class="text-lg font-bold text-gray-800 mb-2">2004</h3>
-            <p class="text-gray-600">Premio "Excelencia en Implementación ISO" por organismo certificador</p>
-          </div>
-          
-          <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
-            <Award size="48" class="mx-auto mb-4 text-green-600" />
-            <h3 class="text-lg font-bold text-gray-800 mb-2">2005</h3>
-            <p class="text-gray-600">Certificación NCh 2728 como organismo técnico de capacitación</p>
-          </div>
-          
-          <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center">
-            <Award size="48" class="mx-auto mb-4 text-purple-600" />
-            <h3 class="text-lg font-bold text-gray-800 mb-2">2006</h3>
-            <p class="text-gray-600">Reconocimiento por "Contribución al Desarrollo Industrial Nacional"</p>
-          </div>
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-accent-800 to-accent-900 py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">
+          Una Historia de Excelencia y Compromiso
+        </h2>
+        <p class="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
+          Más de una década de experiencia nos respalda. Construyamos juntos el futuro de su organización.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto.html" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+            Contactar Ahora
+          </a>
+          <a href="/quienes-somos.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
+            Conocer Más
+          </a>
         </div>
       </div>
     </section>
   </main>
 </Layout>
+

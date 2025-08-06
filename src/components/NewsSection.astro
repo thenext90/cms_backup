@@ -63,7 +63,6 @@ function crearTitulo(texto) {
 // Mapear datos del JSON al formato esperado por el frontend
 const news = cms2Data.noticias
   .filter(noticia => noticia.texto && noticia.texto.trim() !== '') // Filtrar entradas vacías
-  .slice(0, 30) // Mostrar las primeras 30 noticias
   .map((noticia, index) => {
     return {
       date: formatearFecha(noticia.fecha), // Usar fecha directamente del campo fecha
@@ -85,35 +84,42 @@ const news = cms2Data.noticias
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
         Décadas de experiencia documentando el crecimiento y éxito de nuestros clientes en sus procesos de certificación y mejora continua
       </p>
+      
+      <!-- Debug: Mostrar total de noticias en página principal -->
+      <div class="mt-6 p-3 bg-green-100 rounded-lg inline-block">
+        <p class="text-green-800 font-semibold text-sm">
+          📊 Mostrando {news.length} noticias en página principal
+        </p>
+      </div>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-12">
       {news.map((item, index) => (
-        <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
           <div class="relative">
             <img 
               src={item.image} 
               alt={item.title}
-              class="w-full h-48 object-cover"
+              class="w-full h-32 object-cover"
             />
-            <div class="absolute top-4 left-4">
-              <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-3 py-2 rounded-full">
+            <div class="absolute top-2 left-2">
+              <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-2 py-1 rounded-full">
                 {item.category}
               </span>
             </div>
           </div>
           
-          <div class="p-6">
-            <div class="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-              <Calendar size="16" />
+          <div class="p-4">
+            <div class="flex items-center space-x-2 text-xs text-gray-500 mb-2">
+              <Calendar size="14" />
               <time>{item.date}</time>
             </div>
             
-            <h3 class="text-xl font-bold text-gray-800 mb-3 leading-tight">
+            <h3 class="text-lg font-bold text-gray-800 mb-2 leading-tight">
               {item.title}
             </h3>
             
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            <p class="text-gray-600 text-xs leading-relaxed mb-3">
               {item.excerpt}
             </p>
           </div>

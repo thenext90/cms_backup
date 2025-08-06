@@ -129,12 +129,23 @@ function crearTitulo(texto) {
             <span>Volver al inicio</span>
           </a>
         </div>
+        
+        <!-- Debug: Mostrar total de noticias -->
+        <div class="mb-6 p-4 bg-blue-100 rounded-lg">
+          <p class="text-blue-800 font-semibold">
+            📊 Mostrando {cms2Data.noticias.filter(noticia => noticia.texto && noticia.texto.trim() !== '').length} noticias en total
+          </p>
+        </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {agruparPorAno(
-            cms2Data.noticias
-              .filter(noticia => noticia.texto && noticia.texto.trim() !== '')
-          ).map(grupo => (
+          {(() => {
+            const noticiasCompletas = cms2Data.noticias
+              .filter(noticia => noticia.texto && noticia.texto.trim() !== '');
+            
+            console.log(`Total de noticias procesadas: ${noticiasCompletas.length}`);
+            
+            return agruparPorAno(noticiasCompletas);
+          })().map(grupo => (
             <div class="md:col-span-2 lg:col-span-3 mb-12">
               <!-- Título del año -->
               <div class="border-b-2 border-accent-200 pb-4 mb-8">

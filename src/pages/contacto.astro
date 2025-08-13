@@ -113,7 +113,8 @@ import { Phone, Mail, MapPin, Clock, Send } from 'lucide-astro';
                   <div>
                     <h4 class="font-semibold text-gray-800">Dirección</h4>
                     <p class="text-gray-600">Loreley #1506</p>
-                    <p class="text-gray-600">La Reina, Santiago, Chile                    <p class=\"text-gray-600\">7850601</p></p>
+                    <p class="text-gray-600">La Reina, Santiago, Chile</p>
+                    <p class="text-gray-600">7850601</p>
                   </div>
                 </div>
 
@@ -133,8 +134,15 @@ import { Phone, Mail, MapPin, Clock, Send } from 'lucide-astro';
             <!-- Mapa -->
             <div class="bg-white rounded-xl shadow-lg p-8">
               <h3 class="text-xl font-bold text-gray-800 mb-6">Ubicación</h3>
-              <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                <p class="text-gray-500">Mapa de Google Maps</p>
+              <div class="w-full h-64 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://maps.google.com/maps?q=Loreley%201506,%20La%20Reina,%20Santiago,%20Chile&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  class="w-full h-full"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
               </div>
             </div>
           </div>

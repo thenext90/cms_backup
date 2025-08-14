@@ -17,6 +17,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "astro": "^5.12.3",
     "lucide-astro": "^0.525.0",
+    "node-fetch": "^2.7.0",
     "rss-parser": "^3.13.0",
     "swiper": "^11.2.10",
     "tailwind": "^2.3.1"

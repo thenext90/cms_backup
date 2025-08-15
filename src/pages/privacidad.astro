@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Shield } from 'lucide-astro';
+---
+
+<Layout title="Política de Privacidad - CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <Shield size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Política de Privacidad</h1>
+          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
+            Tu privacidad es importante para nosotros.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Información que recopilamos</h2>
+          <p class="text-gray-600 mb-4">
+            Recopilamos información para proporcionar y mejorar nuestros servicios. Esta información puede incluir:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>Información de contacto que nos proporcionas, como tu nombre y dirección de correo electrónico.</li>
+            <li>Información sobre cómo utilizas nuestros servicios.</li>
+            <li>Información técnica, como tu dirección IP y tipo de navegador.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Cómo usamos la información</h2>
+          <p class="text-gray-600 mb-4">
+            Utilizamos la información que recopilamos para varios propósitos, que incluyen:
+          </p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>Proporcionar, operar y mantener nuestros servicios.</li>
+            <li>Mejorar, personalizar y expandir nuestros servicios.</li>
+            <li>Entender y analizar cómo utilizas nuestros servicios.</li>
+            <li>Comunicarnos contigo, ya sea directamente o a través de uno de nuestros socios, incluso para servicio al cliente, para proporcionarte actualizaciones y otra información relacionada con el servicio, y con fines de marketing y promoción.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Contáctanos</h2>
+          <p class="text-gray-600">
+            Si tienes alguna pregunta sobre esta Política de Privacidad, puedes contactarnos a <a href="mailto:info@cmsconsultores.cl" class="text-accent-800 hover:underline">info@cmsconsultores.cl</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

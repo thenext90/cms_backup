@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { FileText } from 'lucide-astro';
+---
+
+<Layout title="Más Información sobre ISO 27001:2022 - CMS Consultores">
+  <main class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="flex items-center mb-6">
+          <FileText size="48" class="text-accent-800" />
+          <h1 class="text-3xl font-bold text-gray-800 ml-4">Información Detallada: ISO 27001:2022</h1>
+        </div>
+        <div class="prose max-w-none text-gray-700">
+          <p>La norma ISO/IEC 27001:2022 es la versión más reciente del estándar internacional para la gestión de la seguridad de la información. Publicada en octubre de 2022, esta actualización refleja el panorama cambiante de la tecnología y la seguridad de la información. Aunque mantiene los principios fundamentales de la versión de 2013, introduce cambios significativos, especialmente en los controles del Anexo A.</p>
+          <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Principales Novedades en ISO 27001:2022</h2>
+          <ul>
+            <li><strong>Anexo A Reestructurado:</strong> Los controles de seguridad del Anexo A se han actualizado y reorganizado para alinearse con la norma ISO 27002:2022. El número de controles se ha reducido de 114 a 93, que se agrupan en 4 temas en lugar de 14 dominios.</li>
+            <li><strong>Nuevos Controles:</strong> Se han añadido 11 nuevos controles para abordar amenazas y tecnologías emergentes, como la inteligencia de amenazas, la seguridad en la nube y la prevención de la fuga de datos.</li>
+            <li><strong>Controles Fusionados y Revisados:</strong> 24 controles de la versión anterior se han fusionado y 58 se han revisado para reflejar el entorno actual de ciberseguridad y seguridad de la información.</li>
+            <li><strong>Mayor Énfasis en la Ciberseguridad y la Privacidad:</strong> La nueva versión pone un mayor énfasis en la protección de la privacidad y la ciberseguridad.</li>
+          </ul>
+          <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Beneficios de la Actualización</h2>
+          <p>La transición a la norma ISO 27001:2022 ayuda a las organizaciones a:</p>
+          <ul>
+            <li>Abordar de forma más eficaz las amenazas de seguridad modernas.</li>
+            <li>Mejorar la resiliencia frente a los ciberataques.</li>
+            <li>Alinear su SGSI con las mejores prácticas actuales.</li>
+            <li>Demostrar un compromiso proactivo con la seguridad de la información y la privacidad.</li>
+          </ul>
+          <div class="mt-8 text-center">
+            <a href="/contacto" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
+              Contacte con nosotros para más detalles
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

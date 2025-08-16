@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { FileText } from 'lucide-astro';
+---
+
+<Layout title="Más Información sobre ISO 22000 - CMS Consultores">
+  <main class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <div class="flex items-center mb-6">
+          <FileText size="48" class="text-accent-800" />
+          <h1 class="text-3xl font-bold text-gray-800 ml-4">Información Detallada: ISO 22000</h1>
+        </div>
+        <div class="prose max-w-none text-gray-700">
+          <p>ISO 22000 es una norma internacional de la Organización Internacional de Normalización (ISO) que define los requisitos para un sistema de gestión de la seguridad alimentaria (SGSA). Está diseñada para ayudar a las organizaciones de cualquier tamaño en la cadena alimentaria a mejorar su rendimiento general en materia de seguridad alimentaria.</p>
+          <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Principios del SGSA según ISO 22000</h2>
+          <ul>
+            <li><strong>Gestión del sistema:</strong> Establece un marco de gestión claro y estructurado.</li>
+            <li><strong>Programas de prerrequisitos (PPR):</strong> Implementación de condiciones y actividades básicas necesarias para mantener un entorno higiénico.</li>
+            <li><strong>Principios HACCP (Análisis de Peligros y Puntos Críticos de Control):</strong> Aplicación de los principios HACCP para identificar, prevenir y eliminar los peligros para la seguridad alimentaria.</li>
+            <li><strong>Comunicación interactiva:</strong> Comunicación eficaz a lo largo de toda la cadena alimentaria para garantizar que todos los peligros pertinentes sean identificados y controlados.</li>
+          </ul>
+          <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Beneficios de la Norma</h2>
+          <p>La implementación de ISO 22000 puede proporcionar los siguientes beneficios:</p>
+          <ul>
+            <li>Garantiza la seguridad en la cadena de suministro de alimentos a nivel mundial.</li>
+            <li>Mejora el rendimiento general en materia de seguridad alimentaria.</li>
+            <li>Facilita la conformidad con los requisitos legales y reglamentarios.</li>
+            <li>Aumenta la confianza de los consumidores y las partes interesadas.</li>
+          </ul>
+          <div class="mt-8 text-center">
+            <a href="/contacto" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
+              Contacte con nosotros para más detalles
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Debug Page - CMS Consultores" description="Página de debug">
+  <main class="min-h-screen bg-gray-50">
+    <section class="py-16">
+      <div class="max-w-container mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-8">
+          Debug Page - Vercel Test
+        </h1>
+        <p class="text-lg text-gray-600">
+          Esta página se creó para probar el deployment en Vercel.
+        </p>
+        <p class="text-sm text-gray-500 mt-4">
+          Generado el: {{ new Date().toISOString() }}
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>

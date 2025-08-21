@@ -1,1 +1,1 @@
-Build triggered: 2025-08-21 07:15:00 - Force deploy for Noticias Pyme page
+Build triggered: 2025-08-21 08:30:00 - Production deploy for cmsconsultores.cl domain

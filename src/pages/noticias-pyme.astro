@@ -1,6 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import noticias from '../data/emol_pyme_noticias.json';
+
+// Importar datos de forma más explícita para Vercel
+const noticias = [
+  {
+    "titulo": "Encuesta refleja que el crecimiento profesional es el principal factor de interés al postular a un nuevo trabajo",
+    "fecha": "19 de Agosto de 2025",
+    "link_noticia": "https://www.emol.com/noticias/Economia/2025/08/19/1175396/encuesta-crecimiento-laboral.html",
+    "link_imagen": "https://static.emol.cl/emol50/img/logo_txt_esocial.png",
+    "fecha_scraping": "2025-08-21 06:45:30"
+  },
+  {
+    "titulo": "Pymes en los próximos 10 años: ¿Cómo adaptarse a los cambios del mundo laboral y seguir siendo competitivo?",
+    "fecha": "19 de Agosto de 2025",
+    "link_noticia": "https://www.emol.com/noticias/Economia/2025/08/19/1175447/pymes-mundo-laboral-futuro.html",
+    "link_imagen": "https://static.emol.cl/emol50/img/logo_txt_esocial.png",
+    "fecha_scraping": "2025-08-21 06:45:32"
+  },
+  {
+    "titulo": "\"Hazlo con IA\": el programa que acerca la inteligencia artificial a las pymes y al sector público",
+    "fecha": "18 de Agosto de 2025",
+    "link_noticia": "https://www.emol.com/noticias/Economia/2025/08/18/1175262/hazlo-con-ia-pymes.html",
+    "link_imagen": "https://static.emol.cl/emol50/img/logo_txt_esocial.png",
+    "fecha_scraping": "2025-08-21 06:45:33"
+  },
+  {
+    "titulo": "¿Para qué sirve la Clave Tributaria? Guía práctica para entender un aspecto clave de tu negocio",
+    "fecha": "18 de Agosto de 2025",
+    "link_noticia": "https://www.emol.com/noticias/Economia/2025/08/18/1175277/infografia-clave-tributaria.html",
+    "link_imagen": "https://static.emol.cl/emol50/img/logo_txt_esocial.png",
+    "fecha_scraping": "2025-08-21 06:45:35"
+  },
+  {
+    "titulo": "Conoce 7 habilidades clave que debe tener un líder para conducir una empresa",
+    "fecha": "20 de Agosto de 2025",
+    "link_noticia": "https://www.emol.com/noticias/Economia/2025/08/20/1175509/habilidades-clave-lider-empresa.html",
+    "link_imagen": "https://static.emol.cl/emol50/img/logo_txt_esocial.png",
+    "fecha_scraping": "2025-08-21 06:45:36"
+  },
+  {
+    "titulo": "Estudio revela que los emprendedores no cuentan con formación financiera: 74% no ha recibido capacitación",
+    "fecha": "13 de Agosto de 2025",
+    "link_noticia": "https://www.emol.com/noticias/Economia/2025/08/13/1174940/estudio-pymes-capacitacion-financiera.html",
+    "link_imagen": "https://static.emol.cl/emol50/img/logo_txt_esocial.png",
+    "fecha_scraping": "2025-08-21 06:45:38"
+  }
+];
 ---
 
 <Layout title="Noticias Pyme - CMS Consultores" description="Últimas noticias sobre pymes y emprendimiento por emol.com">

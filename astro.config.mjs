@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   build: {
-    format: 'file'
+    format: 'directory'
   },
   vite: {
     build: {

@@ -1,35 +1,22 @@
-import { put, head, del } from '@vercel/blob';
+import { put, get } from '@vercel/blob';
 
 export const POST = async ({ request }) => {
   try {
     const newContact = await request.json();
-
-    let contacts = [];
     const blobName = 'contactos.json';
+    let contacts = [];
 
-    let blobInfo = null;
-    try {
-      blobInfo = await head(blobName);
-    } catch (error) {
-      if (error.status !== 404) {
-        // Re-throw if it's not a 'not found' error
-        throw error;
-      }
+    // Get the existing contacts blob and parse it as JSON
+    const existingContacts = await get(blobName, { type: 'json' });
+
+    if (existingContacts && Array.isArray(existingContacts)) {
+      contacts = existingContacts;
     }
 
-    if (blobInfo) {
-      // If blob exists, get its content
-      const response = await fetch(blobInfo.url);
-      if (response.ok) {
-        const text = await response.text();
-        // It might be an empty file, so we check
-        if (text) {
-          contacts = JSON.parse(text);
-        }
-      }
-    }
+    // Add a timestamp to the new contact
+    newContact.timestamp = new Date().toISOString();
 
-    // Add new contact
+    // Add new contact to the list
     contacts.push(newContact);
 
     // Upload the updated list to Vercel Blob
@@ -44,7 +31,8 @@ export const POST = async ({ request }) => {
     });
   } catch (error) {
     console.error('Error in API route:', error);
-    return new Response(JSON.stringify({ message: 'Error saving contact', error: error.message }), {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    return new Response(JSON.stringify({ message: 'Error saving contact', error: errorMessage }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });

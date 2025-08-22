@@ -25,7 +25,7 @@ import { Phone, Mail, MapPin, Clock, Send } from 'lucide-astro';
           <!-- Formulario de Contacto -->
           <div class="bg-white rounded-xl shadow-lg p-8">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Envíanos un Mensaje</h2>
-            <form class="space-y-6">
+            <form action="https://formspree.io/f/xnnzejer" method="POST" class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label for="nombre" class="block text-sm font-medium text-gray-700 mb-2">Nombre *</label>
@@ -183,71 +183,5 @@ import { Phone, Mail, MapPin, Clock, Send } from 'lucide-astro';
     </section>
   </main>
 
-  <script>
-    const form = document.querySelector('form');
-    const submitButton = form.querySelector('button[type="submit"]');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const originalButtonContent = submitButton.innerHTML;
-      submitButton.disabled = true;
-      submitButton.innerHTML = `
-        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        <span>Enviando...</span>
-      `;
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      // Add a timestamp
-      data.timestamp = new Date().toISOString();
-
-      let responseMessageContainer = document.querySelector('#response-message');
-      if (!responseMessageContainer) {
-          responseMessageContainer = document.createElement('div');
-          responseMessageContainer.id = 'response-message';
-          // Insert it before the first element in the form
-          form.insertBefore(responseMessageContainer, form.firstChild);
-      }
-
-      try {
-        const response = await fetch('/api/contacto', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          responseMessageContainer.innerHTML = `
-              <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
-                <strong class="font-bold">¡Éxito!</strong>
-                <span class="block sm:inline">Su mensaje ha sido enviado correctamente. Nos pondremos en contacto con usted pronto.</span>
-              </div>
-          `;
-          form.reset();
-        } else {
-          throw new Error(result.message || 'Ocurrió un error al enviar el mensaje.');
-        }
-      } catch (error) {
-          responseMessageContainer.innerHTML = `
-              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6" role="alert">
-                <strong class="font-bold">Error:</strong>
-                <span class="block sm:inline">${error.message}</span>
-              </div>
-          `;
-      } finally {
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonContent;
-      }
-    });
-  </script>
 </Layout>
 

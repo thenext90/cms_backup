@@ -1,4 +1,4 @@
-import { put, get } from '@vercel/blob';
+import { list, put, del } from '@vercel/blob';
 
 export const POST = async ({ request }) => {
   try {
@@ -6,20 +6,35 @@ export const POST = async ({ request }) => {
     const blobName = 'contactos.json';
     let contacts = [];
 
-    // Get the existing contacts blob and parse it as JSON
-    const existingContacts = await get(blobName, { type: 'json' });
+    // List blobs with a prefix to find our specific file
+    const { blobs } = await list({ prefix: blobName, limit: 1 });
+    const contactBlob = blobs.find(b => b.pathname === blobName);
 
-    if (existingContacts && Array.isArray(existingContacts)) {
-      contacts = existingContacts;
+    if (contactBlob) {
+      // If the blob exists, fetch its content
+      const response = await fetch(contactBlob.url);
+      if (response.ok) {
+        const text = await response.text();
+        if (text) {
+          try {
+            const parsed = JSON.parse(text);
+            if(Array.isArray(parsed)) {
+                contacts = parsed;
+            }
+          } catch (parseError) {
+            // The blob is not valid JSON, maybe it was corrupted.
+            // We can decide to overwrite it.
+            console.error('Failed to parse existing contacts.json, will overwrite.', parseError);
+          }
+        }
+      }
     }
 
     // Add a timestamp to the new contact
     newContact.timestamp = new Date().toISOString();
-
-    // Add new contact to the list
     contacts.push(newContact);
 
-    // Upload the updated list to Vercel Blob
+    // Upload the updated list, overwriting the old one
     await put(blobName, JSON.stringify(contacts, null, 2), {
       access: 'public',
       contentType: 'application/json',

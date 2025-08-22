@@ -6,12 +6,7 @@ import { Calendar, Clock, Star, Globe, Award, Book } from 'lucide-astro';
 <Layout title="Efemérides - Fechas Importantes - CMS Consultores">
   <main>
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-acc          <a href="/capacitacion.html" class="bg-white text-accent-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            Ver Capacitaciones
-          </a>
-          <a href="/contacto.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-accent-800 transition-colors">
-            Contacto
-          </a>0 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
+    <section class="bg-gradient-to-br from-accent-800 via-accent-700 to-accent-900 text-white py-16 lg:py-20">
       <div class="max-w-container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
           <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
@@ -473,12 +468,6 @@ const efemerides = {
       descripcion: "Celebración anual de la normalización internacional."
     },
     {
-      fecha: "20 de octubre",
-      año: "1993",
-      evento: "Muere W. Edwards Deming",
-      descripcion: "Fallece el gran maestro de la calidad total."
-    },
-    {
       fecha: "31 de octubre",
       año: "2008",
       evento: "Publicación ISO 26000",
@@ -546,14 +535,18 @@ function mostrarFechaActual() {
   document.getElementById('fecha-actual').textContent = fechaFormateada;
   
   // Buscar efeméride de hoy
-  const dia = ahora.getDate();
-  const mes = ahora.toLocaleDateString('es-ES', { month: 'long' }).toLowerCase();
+  const diaActual = ahora.getDate();
+  const mesActual = ahora.toLocaleDateString('es-ES', { month: 'long' }).toLowerCase();
   
   let efemeride = "No hay efemérides registradas para el día de hoy.";
-  if (efemerides[mes]) {
-    const eventoHoy = efemerides[mes].find(evento => 
-      evento.fecha.includes(dia.toString())
-    );
+  if (efemerides[mesActual]) {
+    const eventoHoy = efemerides[mesActual].find(evento => {
+      const partesFecha = evento.fecha.split(' ')[0].split('-');
+      const diaInicio = parseInt(partesFecha[0], 10);
+      const diaFin = parseInt(partesFecha[1] || partesFecha[0], 10);
+      return diaActual >= diaInicio && diaActual <= diaFin;
+    });
+
     if (eventoHoy) {
       efemeride = `${eventoHoy.evento} (${eventoHoy.año}): ${eventoHoy.descripcion}`;
     }
@@ -596,6 +589,17 @@ function mostrarEfemerides(mes) {
 // Inicializar página
 document.addEventListener('DOMContentLoaded', function() {
   mostrarFechaActual();
+
+  // Actualizar contadores de eventos en los botones
+  document.querySelectorAll('.mes-button').forEach(button => {
+    const mes = button.getAttribute('data-mes');
+    const count = efemerides[mes] ? efemerides[mes].length : 0;
+    const countElement = button.querySelector('.text-sm');
+    if (countElement) {
+      countElement.textContent = count === 1 ? '1 evento' : `${count} eventos`;
+    }
+  });
+
   mostrarEfemerides('noviembre'); // Mostrar noviembre por defecto (Día Mundial de la Calidad)
   
   // Eventos para botones de meses

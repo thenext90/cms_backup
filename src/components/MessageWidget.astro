@@ -176,7 +176,8 @@ import { MessageCircle, X } from 'lucide-astro';
             })
           }
         } catch (error) {
-          status.innerHTML = `<p class="text-red-700 text-xs sm:text-sm mb-2">Error de red. Inténtelo de nuevo.</p>`;
+          const errorMessage = error instanceof Error ? error.message : String(error);
+          status.innerHTML = `<p class="text-red-700 text-xs sm:text-sm mb-2">Error: ${errorMessage}</p>`;
         } finally {
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonText;

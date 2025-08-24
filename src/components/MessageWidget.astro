@@ -138,7 +138,9 @@ import { MessageCircle, X } from 'lucide-astro';
       messageForm.addEventListener('submit', async function(event) {
         event.preventDefault();
         const form = event.target as HTMLFormElement;
-        const data = new FormData(form);
+        const formData = new FormData(form);
+        const plainObject = Object.fromEntries(formData.entries());
+        const jsonString = JSON.stringify(plainObject);
 
         let status = document.querySelector('#message-form-status');
         if (!status) {
@@ -156,9 +158,10 @@ import { MessageCircle, X } from 'lucide-astro';
         try {
           const response = await fetch(form.action, {
             method: form.method,
-            body: data,
+            body: jsonString,
             headers: {
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
           });
 

@@ -25,6 +25,7 @@ import { MessageCircle, X } from 'lucide-astro';
     <!-- Content más compacto en móvil -->
     <div class="p-4 sm:p-5">
       <form id="message-form" action="https://formspree.io/f/xnnzejer" method="POST" class="space-y-3 sm:space-y-4">
+        <input type="hidden" name="_subject" value="Nuevo Mensaje desde Widget de Chat">
         <div>
           <label for="msg-name" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Nombre</label>
           <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-xs sm:text-sm">

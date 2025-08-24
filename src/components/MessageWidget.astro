@@ -24,7 +24,8 @@ import { MessageCircle, X } from 'lucide-astro';
     
     <!-- Content más compacto en móvil -->
     <div class="p-4 sm:p-5">
-      <form id="message-form" class="space-y-3 sm:space-y-4">
+      <form id="message-form" action="https://formspree.io/f/xnnzejer" method="POST" class="space-y-3 sm:space-y-4">
+        <input type="hidden" name="_subject" value="Nuevo Mensaje desde Widget de Chat">
         <div>
           <label for="msg-name" class="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Nombre</label>
           <input type="text" id="msg-name" name="name" required class="w-full px-3 py-2 sm:py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-800 focus:border-transparent text-xs sm:text-sm">
@@ -132,25 +133,59 @@ import { MessageCircle, X } from 'lucide-astro';
       }
     });
 
-    // Manejar envío del formulario
+    // Manejar envío del formulario con AJAX
     if (messageForm) {
-      messageForm.addEventListener('submit', function(event) {
+      messageForm.addEventListener('submit', async function(event) {
         event.preventDefault();
-        console.log('Formulario enviado');
-        
-        const form = messageForm as HTMLFormElement;
+        const form = event.target as HTMLFormElement;
         const formData = new FormData(form);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        console.log('Datos del formulario:', { name, email, message });
-        
-        alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-        
-        // Reset form usando el casting correcto
-        (messageForm as HTMLFormElement).reset();
-        hidePanel();
+        const plainObject = Object.fromEntries(formData.entries());
+        const jsonString = JSON.stringify(plainObject);
+
+        let status = document.querySelector('#message-form-status');
+        if (!status) {
+            status = document.createElement('div');
+            status.id = 'message-form-status';
+            form.prepend(status);
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (!submitButton) return;
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Enviando...';
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: jsonString,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            status.innerHTML = `<p class="text-green-700 text-xs sm:text-sm mb-2">¡Gracias! Mensaje enviado.</p>`;
+            form.reset();
+            setTimeout(() => {
+              hidePanel();
+              // Clear status after hiding
+              if (status) status.innerHTML = '';
+            }, 2000); // Hide panel after 2 seconds
+          } else {
+            response.json().then(data => {
+              const errorMessage = data && data.errors ? data.errors.map(e => e.message).join(', ') : 'Ocurrió un error.';
+              status.innerHTML = `<p class="text-red-700 text-xs sm:text-sm mb-2">${errorMessage}</p>`;
+            })
+          }
+        } catch (error) {
+          const errorMessage = error instanceof Error ? error.message : String(error);
+          status.innerHTML = `<p class="text-red-700 text-xs sm:text-sm mb-2">Error: ${errorMessage}</p>`;
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        }
       });
     }
   }

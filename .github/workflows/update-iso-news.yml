@@ -1,0 +1,107 @@
+﻿name: 🔄 Auto-Update ISO News Data
+
+on:
+  schedule:
+    # Ejecutar diariamente a las 6:00 AM UTC (2:00 AM Chile)
+    - cron: '0 6 * * *'
+  
+  # Permitir ejecución manual
+  workflow_dispatch:
+    inputs:
+      days_back:
+        description: 'Días hacia atrás para buscar'
+        required: false
+        default: '45'
+        type: string
+
+env:
+  NODE_VERSION: '18'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  update-iso-news:
+    name: 📊 Actualizar datos ISO Chile
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+    
+    - name: 📦 Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 lxml
+    
+    - name: 🔍 Run ISO News Scraper
+      run: |
+        echo "🚀 Iniciando scraper de noticias ISO..."
+        cd scripts
+        python iso_news_scraper_enhanced.py
+        echo "✅ Scraper completado"
+        
+        # Verificar archivos generados
+        echo "📊 Archivos generados:"
+        ls -la ../src/data/iso_news/
+    
+    - name: 🏗️ Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: 📦 Install Node dependencies
+      run: npm ci
+    
+    - name: 🚀 Build Astro site
+      run: npm run build
+    
+    - name: 🔧 Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "ISO News Bot"
+        git config --local core.autocrlf false
+    
+    - name: 📤 Commit and push changes
+      run: |
+        # Agregar archivos nuevos/modificados
+        git add src/data/iso_news/
+        git add dist/ || true
+        
+        # Verificar si hay cambios
+        if git diff --staged --quiet; then
+          echo "⚠️ No hay cambios para commitear"
+          exit 0
+        fi
+        
+        # Crear commit
+        TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S UTC')
+        FILE_COUNT=$(find src/data/iso_news -name "*.json" | wc -l)
+        
+        git commit -m "🤖 Auto-update: ISO news data - $TIMESTAMP
+
+        📊 Archivos JSON: $FILE_COUNT
+        🕒 Timestamp: $TIMESTAMP
+        🔄 Workflow: #${{ github.run_number }}
+        
+        Datos actualizados automáticamente"
+        
+        git push origin HEAD:main
+        echo "✅ Cambios enviados exitosamente"
+    
+    - name: 🎉 Success notification
+      if: success()
+      run: |
+        echo "✅ ¡Actualización ISO completada!"
+        echo "📁 Datos disponibles en: src/data/iso_news/"
+        echo "🌐 Sitio Astro actualizado automáticamente"
+        echo "🔄 Próxima ejecución: mañana 6:00 AM UTC"

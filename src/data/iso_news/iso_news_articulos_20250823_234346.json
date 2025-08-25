@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "generated_at": "2025-08-23T23:43:46.688178",
+    "search_period": "Julio 2025",
+    "data_source": "Direct scraping + Manual research",
+    "total_articles": 4,
+    "successful_scrapes": 3,
+    "failed_scrapes": 1
+  },
+  "articles": [
+    {
+      "title": "Normas Aprobadas Julio 2025",
+      "url": "https://www.inn.cl/normas-aprobadas-julio-2025",
+      "source": "Instituto Nacional de Normalización (INN)",
+      "date": "30 de julio de 2025",
+      "iso_standards": [
+        "NCh3033/11 - ISO 6887/1",
+        "NCh3443/1 - ISO 16745-1",
+        "NCh3443/2 - ISO 16745-2",
+        "NCh3557 - ISO 37161",
+        "NCh-ISO 16140/4"
+      ],
+      "summary": "8 nuevas normas ISO aprobadas por el INN en julio 2025, incluyendo microbiología alimentaria, sostenibilidad en edificios y transporte inteligente",
+      "relevance_score": 10
+    },
+    {
+      "title": "CMP certifica su Modelo GRP con tres normas internacionales ISO",
+      "url": "https://www.mch.cl/negocios-industria/cmp-certifica-su-modelo-grp-con-tres-normas-internacionales-iso/",
+      "source": "Minería Chilena",
+      "date": "30 de julio de 2025",
+      "iso_standards": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001"
+      ],
+      "summary": "CMP logra certificación triple ISO tras auditoría a 69 procesos en el Valle de Copiapó",
+      "relevance_score": 9
+    },
+    {
+      "title": "San Antonio Terminal Internacional renueva certificaciones ISO 9001 e ISO 14001",
+      "url": "https://www.empresaoceano.cl/san-antonio-terminal-internacional-renueva-certificaciones-iso-9001-e",
+      "source": "Empresa Océano",
+      "date": "25 de julio de 2025",
+      "iso_standards": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001",
+        "ISO 50001"
+      ],
+      "summary": "STI renueva certificaciones ISO 9001 e ISO 14001, manteniendo también ISO 45001 e ISO 50001",
+      "relevance_score": 8
+    },
+    {
+      "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+      "url": "https://www.ispch.gob.cl/noticia/isp-recibe-al-instituto-nacional-de-normalizacion-inn-para-verificar-capacidades-tecnicas-del-laboratorio-de-metrologia/",
+      "source": "Instituto de Salud Pública",
+      "date": "25 de julio de 2025",
+      "iso_standards": [
+        "ISO/IEC 17043",
+        "ISO/IEC 17025",
+        "ISO 17034",
+        "ISO/IEC 17045"
+      ],
+      "summary": "Visita técnica del INN al ISP para verificar capacidades de la Red Nacional de Metrología",
+      "relevance_score": 8
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+
+// Función para cargar los datos ISO más recientes
+async function loadISONewsData() {
+  try {
+    // Buscar el archivo JSON más reciente
+    const files = import.meta.glob('../data/iso_news/*.json');
+    const fileEntries = Object.entries(files);
+    
+    if (fileEntries.length === 0) {
+      return { articles: [], metadata: { total_articles: 0 } };
+    }
+    
+    // Cargar el primer archivo encontrado (en producción buscarías el más reciente)
+    const [, loadFile] = fileEntries[0];
+    const data = await loadFile();
+    
+    return data.default || data;
+  } catch (error) {
+    console.error('Error cargando datos ISO:', error);
+    return { articles: [], metadata: { total_articles: 0 } };
+  }
+}
+
+const isoData = await loadISONewsData();
+const articles = isoData.articles || [];
+const metadata = isoData.metadata || {};
+---
+
+<Layout 
+  title="Noticias ISO Chile - Normativas y Certificaciones"
+  description="Últimas noticias sobre normativas ISO, certificaciones y estándares de calidad en Chile."
+>
+  <main class="container mx-auto px-4 py-8">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">
+        📊 Noticias ISO Chile
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Mantente actualizado con las últimas normativas ISO, certificaciones 
+        y estándares de calidad en Chile.
+      </p>
+      
+      {metadata.scraping_date && (
+        <div class="mt-4 text-sm text-gray-500">
+          📅 Última actualización: {new Date(metadata.scraping_date).toLocaleDateString('es-CL')}
+        </div>
+      )}
+    </div>
+
+    <!-- Stats Section -->
+    {metadata.total_articles && (
+      <div class="bg-blue-50 rounded-lg p-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          <div>
+            <div class="text-3xl font-bold text-blue-600">{metadata.total_articles}</div>
+            <div class="text-sm text-gray-600">Artículos Analizados</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-green-600">{metadata.detailed_articles || 0}</div>
+            <div class="text-sm text-gray-600">Análisis Detallados</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-purple-600">{metadata.days_back || 45}</div>
+            <div class="text-sm text-gray-600">Días de Búsqueda</div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Articles Grid -->
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {articles.length > 0 ? articles.map(article => (
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+          <div class="mb-4">
+            <h2 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-3">
+              {article.title}
+            </h2>
+            
+            {article.description && (
+              <p class="text-gray-600 text-sm line-clamp-3 mb-3">
+                {article.description}
+              </p>
+            )}
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mb-4">
+            {article.relevance_score && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                ⭐ Score: {article.relevance_score}
+              </span>
+            )}
+            
+            {article.source && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                🌐 {article.source}
+              </span>
+            )}
+          </div>
+          
+          <div class="flex justify-between items-center">
+            {article.date && (
+              <span class="text-xs text-gray-500">
+                📅 {article.date}
+              </span>
+            )}
+            
+            {article.url && (
+              <a 
+                href={article.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-blue-600 hover:text-blue-800 text-sm font-medium"
+              >
+                Ver más →
+              </a>
+            )}
+          </div>
+        </article>
+      )) : (
+        <div class="col-span-full text-center py-12">
+          <div class="text-gray-500 text-lg">
+            📊 No hay datos disponibles
+          </div>
+          <p class="text-gray-400 mt-2">
+            Los datos se actualizarán automáticamente pronto.
+          </p>
+        </div>
+      )}
+    </div>
+
+    <!-- Info Section -->
+    <div class="mt-12 bg-gray-50 rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-gray-900 mb-3">
+        ℹ️ Acerca de estos datos
+      </h3>
+      <p class="text-gray-600 text-sm">
+        Los datos se actualizan automáticamente cada día a las 6:00 AM UTC mediante 
+        un sistema de scraping que analiza fuentes oficiales como INN, ISP, Bureau Veritas 
+        y otros organismos relevantes en Chile.
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

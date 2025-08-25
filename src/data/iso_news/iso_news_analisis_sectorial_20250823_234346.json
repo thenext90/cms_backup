@@ -1,0 +1,130 @@
+{
+  "mineria": {
+    "articles_count": 1,
+    "iso_standards": [
+      "ISO 14001",
+      "ISO 45001",
+      "ISO 9001"
+    ],
+    "iso_standards_count": 3,
+    "articles": [
+      {
+        "title": "CMP certifica su Modelo GRP con tres normas internacionales ISO",
+        "company": "Compañía Minera del Pacífico (CMP)",
+        "iso_standards": [
+          "ISO 9001",
+          "ISO 14001",
+          "ISO 45001"
+        ],
+        "date": "30 de julio de 2025",
+        "relevance_score": 9
+      }
+    ]
+  },
+  "portuario": {
+    "articles_count": 2,
+    "iso_standards": [
+      "ISO 14001",
+      "ISO 17034",
+      "ISO 45001",
+      "ISO 50001",
+      "ISO 9001",
+      "ISO/IEC 17025",
+      "ISO/IEC 17043",
+      "ISO/IEC 17045"
+    ],
+    "iso_standards_count": 8,
+    "articles": [
+      {
+        "title": "San Antonio Terminal Internacional renueva certificaciones ISO 9001 e ISO 14001",
+        "company": "San Antonio Terminal Internacional (STI)",
+        "iso_standards": [
+          "ISO 9001",
+          "ISO 14001",
+          "ISO 45001",
+          "ISO 50001"
+        ],
+        "date": "25 de julio de 2025",
+        "relevance_score": 8
+      },
+      {
+        "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+        "company": "",
+        "iso_standards": [
+          "ISO/IEC 17043",
+          "ISO/IEC 17025",
+          "ISO 17034",
+          "ISO/IEC 17045"
+        ],
+        "date": "25 de julio de 2025",
+        "relevance_score": 8
+      }
+    ]
+  },
+  "salud": {
+    "articles_count": 1,
+    "iso_standards": [
+      "ISO 17034",
+      "ISO/IEC 17025",
+      "ISO/IEC 17043",
+      "ISO/IEC 17045"
+    ],
+    "iso_standards_count": 4,
+    "articles": [
+      {
+        "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+        "company": "",
+        "iso_standards": [
+          "ISO/IEC 17043",
+          "ISO/IEC 17025",
+          "ISO 17034",
+          "ISO/IEC 17045"
+        ],
+        "date": "25 de julio de 2025",
+        "relevance_score": 8
+      }
+    ]
+  },
+  "normalizacion": {
+    "articles_count": 2,
+    "iso_standards": [
+      "ISO 17034",
+      "ISO/IEC 17025",
+      "ISO/IEC 17043",
+      "ISO/IEC 17045",
+      "NCh-ISO 16140/4",
+      "NCh3033/11 - ISO 6887/1",
+      "NCh3443/1 - ISO 16745-1",
+      "NCh3443/2 - ISO 16745-2",
+      "NCh3557 - ISO 37161"
+    ],
+    "iso_standards_count": 9,
+    "articles": [
+      {
+        "title": "Normas Aprobadas Julio 2025",
+        "company": "",
+        "iso_standards": [
+          "NCh3033/11 - ISO 6887/1",
+          "NCh3443/1 - ISO 16745-1",
+          "NCh3443/2 - ISO 16745-2",
+          "NCh3557 - ISO 37161",
+          "NCh-ISO 16140/4"
+        ],
+        "date": "30 de julio de 2025",
+        "relevance_score": 10
+      },
+      {
+        "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+        "company": "",
+        "iso_standards": [
+          "ISO/IEC 17043",
+          "ISO/IEC 17025",
+          "ISO 17034",
+          "ISO/IEC 17045"
+        ],
+        "date": "25 de julio de 2025",
+        "relevance_score": 8
+      }
+    ]
+  }
+}

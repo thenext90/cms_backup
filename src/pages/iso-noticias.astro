@@ -104,38 +104,80 @@ function getImageByDomain(url: string): string | null {
   }
 }
 
-// Función para cargar datos con múltiples fallbacks
-async function loadIsoData() {
-  // Intentar cargar datos de múltiples fuentes
-  const dataSources = [
-    '../data/iso_news/iso_news_dataset_completo_20250823_234346.json',
-    '../data/iso_news/iso_news_articulos_20250823_234346.json'
-  ];
-
-  for (const source of dataSources) {
-    try {
-      const module = await import(source);
-      const data = module.default || module;
-      
-      // Verificar que tenga la estructura esperada
-      if (data && (data.articles || Array.isArray(data))) {
-        return {
-          articles: data.articles || data,
-          metadata: data.metadata || {
-            generated_at: '2025-08-23T23:43:46',
-            total_articles: Array.isArray(data.articles) ? data.articles.length : (Array.isArray(data) ? data.length : 0),
-            successful_scrapes: 3,
-            failed_scrapes: 1
-          }
-        };
-      }
-    } catch (error) {
-      console.warn(`Error cargando ${source}:`, (error as Error).message);
-      continue;
+// Helper para parsear fechas en formatos variados para poder ordenarlas
+const parseDateForSort = (dateString: string): Date => {
+  if (!dateString) return new Date(0); // Epoch for invalid dates
+  try {
+    // Formato: "30 de julio de 2025"
+    const esMonths: { [key: string]: number } = {
+      'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3, 'mayo': 4, 'junio': 5,
+      'julio': 6, 'agosto': 7, 'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
+    };
+    const parts = dateString.toLowerCase().split(' de ');
+    if (parts.length === 3 && esMonths[parts[1]] !== undefined) {
+      const day = parseInt(parts[0], 10);
+      const month = esMonths[parts[1]];
+      const year = parseInt(parts[2], 10);
+      return new Date(year, month, day);
     }
+
+    // Formato ISO: "2025-07-30" o "2025-07-30T..."
+    return new Date(dateString);
+  } catch {
+    return new Date(0);
+  }
+};
+
+// Función para cargar, agregar y ordenar todos los datos de noticias
+async function loadIsoData() {
+  try {
+    const newsFiles = import.meta.glob('../data/iso_news/iso_news_*.json');
+    const filePaths = Object.keys(newsFiles);
+
+    if (filePaths.length === 0) {
+      throw new Error("No data files found.");
+    }
+
+    const allDataPromises = filePaths.map(path => newsFiles[path]());
+    const allModules = await Promise.all(allDataPromises);
+
+    const allArticlesMap = new Map<string, any>();
+    allModules.forEach(module => {
+      const data = module.default || module;
+      const articles = data.articles || (Array.isArray(data) ? data : []);
+      articles.forEach((article: any) => {
+        if (article && article.url && !allArticlesMap.has(article.url)) {
+          allArticlesMap.set(article.url, article);
+        }
+      });
+    });
+
+    const aggregatedArticles = Array.from(allArticlesMap.values());
+
+    aggregatedArticles.sort((a, b) => {
+      const dateA = parseDateForSort(a.date).getTime();
+      const dateB = parseDateForSort(b.date).getTime();
+      return dateB - dateA;
+    });
+
+    const finalMetadata = {
+      generated_at: new Date().toISOString(),
+      total_articles: aggregatedArticles.length,
+      data_source: 'Aggregated historical data'
+    };
+
+    if (aggregatedArticles.length > 0) {
+      return {
+        articles: aggregatedArticles,
+        metadata: finalMetadata
+      };
+    }
+  } catch (error) {
+    console.error("Error cargando datos agregados:", (error as Error).message);
   }
 
-  // Si todo falla, usar datos de fallback
+  // Fallback
+  console.warn("No se encontraron datos dinámicos o hubo un error. Usando datos de fallback.");
   return {
     metadata: {
       generated_at: '2025-08-23T23:43:46',
@@ -311,18 +353,10 @@ const formatDate = (dateString: string): string => {
     <!-- Stats Section -->
     {metadata.total_articles && (
       <div class="bg-blue-50 rounded-lg p-6 mb-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        <div class="flex justify-center text-center">
           <div>
             <div class="text-3xl font-bold text-blue-600">{metadata.total_articles}</div>
             <div class="text-sm text-gray-600">Artículos Encontrados</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-green-600">{metadata.successful_scrapes || 0}</div>
-            <div class="text-sm text-gray-600">Scraping Exitoso</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-purple-600">{metadata.failed_scrapes || 0}</div>
-            <div class="text-sm text-gray-600">Fallos de Scraping</div>
           </div>
         </div>
       </div>
@@ -434,19 +468,11 @@ const formatDate = (dateString: string): string => {
         ℹ️ Acerca de estos datos
       </h3>
       <p class="text-gray-600 text-sm mb-4">
-        Los datos se actualizan automáticamente cada día a las 6:00 AM UTC mediante 
-        un sistema de scraping que analiza fuentes oficiales como INN, ISP, Bureau Veritas 
-        y otros organismos relevantes en Chile.
-      </p>
-      
-      <p class="text-gray-600 text-sm mb-4">
-        🖼️ Las imágenes se extraen automáticamente de cada artículo original. En desarrollo, 
-        se realiza scraping en tiempo real; en producción se usan imágenes predefinidas por fuente 
-        para optimizar el rendimiento.
+        Los datos se actualizan automáticamente cada día a las 6:00 AM UTC , analiza fuentes oficiales y otros organismos relevantes en Chile.
       </p>
       
       <div class="mt-4 text-xs text-gray-500">
-        🤖 Sistema automatizado | 🔄 Próxima actualización: mañana 6:00 AM UTC | 📊 Scraping inteligente de imágenes
+        Sistema automatizado | 🔄 Próxima actualización: 6:00 AM UTC
       </div>
     </div>
   </main>

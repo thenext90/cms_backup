@@ -334,18 +334,10 @@ const formatDate = (dateString: string): string => {
     <!-- Stats Section -->
     {metadata.total_articles && (
       <div class="bg-blue-50 rounded-lg p-6 mb-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        <div class="flex justify-center text-center">
           <div>
             <div class="text-3xl font-bold text-blue-600">{metadata.total_articles}</div>
             <div class="text-sm text-gray-600">Artículos Encontrados</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-green-600">{metadata.successful_scrapes || 0}</div>
-            <div class="text-sm text-gray-600">Scraping Exitoso</div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold text-purple-600">{metadata.failed_scrapes || 0}</div>
-            <div class="text-sm text-gray-600">Fallos de Scraping</div>
           </div>
         </div>
       </div>

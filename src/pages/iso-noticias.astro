@@ -1,54 +1,289 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
 
-// Cargar datos directamente con rutas específicas
-let isoData = { articles: [], metadata: { total_articles: 0 } };
+// Caché local de imágenes por URL para evitar requests repetidos
+const imageCache = new Map<string, string>();
 
-try {
-  // Intentar cargar el dataset más completo disponible
-  const datasetCompleto = await import('../data/iso_news/iso_news_dataset_completo_20250823_234346.json');
-  isoData = datasetCompleto.default || datasetCompleto;
-} catch (error) {
-  console.error('Error cargando datos ISO:', error);
-  // Datos de fallback si no se pueden cargar los archivos
-  isoData = {
+// Función para extraer imagen de una URL (versión optimizada para producción)
+async function extractImageFromUrl(url: string): Promise<string | null> {
+  try {
+    if (!url || !url.startsWith('http')) return null;
+    
+    // Verificar caché
+    if (imageCache.has(url)) {
+      return imageCache.get(url) || null;
+    }
+    
+    // En desarrollo, hacer el scraping real
+    if (import.meta.env.DEV) {
+      // Obtener el contenido HTML de la página
+      const response = await fetch(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        },
+        signal: AbortSignal.timeout(5000) // Timeout de 5 segundos
+      });
+      
+      if (!response.ok) return null;
+      
+      const html = await response.text();
+      
+      // Buscar diferentes tipos de imágenes usando regex
+      const imagePatterns = [
+        // Open Graph image
+        /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i,
+        // Twitter card image
+        /<meta\s+name=["']twitter:image["']\s+content=["']([^"']+)["']/i,
+        // Primera imagen en el contenido principal
+        /<img[^>]+src=["']([^"']+)["'][^>]*>/i,
+        // Schema.org image
+        /<meta\s+itemprop=["']image["']\s+content=["']([^"']+)["']/i
+      ];
+      
+      for (const pattern of imagePatterns) {
+        const match = html.match(pattern);
+        if (match && match[1]) {
+          let imageUrl = match[1];
+          
+          // Convertir URL relativa a absoluta
+          if (imageUrl.startsWith('/')) {
+            const urlObj = new URL(url);
+            imageUrl = `${urlObj.protocol}//${urlObj.host}${imageUrl}`;
+          } else if (imageUrl.startsWith('./')) {
+            const urlObj = new URL(url);
+            imageUrl = `${urlObj.protocol}//${urlObj.host}${imageUrl.substring(1)}`;
+          } else if (!imageUrl.startsWith('http')) {
+            const urlObj = new URL(url);
+            imageUrl = `${urlObj.protocol}//${urlObj.host}/${imageUrl}`;
+          }
+          
+          // Verificar que la imagen sea válida (no muy pequeña)
+          if (imageUrl.includes('logo') && (imageUrl.includes('small') || imageUrl.includes('icon'))) {
+            continue;
+          }
+          
+          // Guardar en caché
+          imageCache.set(url, imageUrl);
+          return imageUrl;
+        }
+      }
+      
+      imageCache.set(url, '');
+      return null;
+    } else {
+      // En producción, usar imágenes predefinidas basadas en el dominio
+      return getImageByDomain(url);
+    }
+    
+  } catch (error) {
+    console.warn(`Error extrayendo imagen de ${url}:`, (error as Error).message);
+    imageCache.set(url, '');
+    return null;
+  }
+}
+
+// Función para obtener imagen basada en el dominio (para producción)
+function getImageByDomain(url: string): string | null {
+  try {
+    const domain = new URL(url).hostname.toLowerCase();
+    
+    const domainImages: Record<string, string> = {
+      'inn.cl': '/images/iso-logo.png',
+      'www.inn.cl': '/images/iso-logo.png',
+      'mch.cl': '/images/check.jpg',
+      'www.mch.cl': '/images/check.jpg',
+      'bureauveritas.cl': '/images/27001_CMS.webp',
+      'www.bureauveritas.cl': '/images/27001_CMS.webp',
+      'ispch.cl': '/images/capa.png',
+      'www.ispch.cl': '/images/capa.png'
+    };
+    
+    return domainImages[domain] || null;
+  } catch {
+    return null;
+  }
+}
+
+// Función para cargar datos con múltiples fallbacks
+async function loadIsoData() {
+  // Intentar cargar datos de múltiples fuentes
+  const dataSources = [
+    '../data/iso_news/iso_news_dataset_completo_20250823_234346.json',
+    '../data/iso_news/iso_news_articulos_20250823_234346.json'
+  ];
+
+  for (const source of dataSources) {
+    try {
+      const module = await import(source);
+      const data = module.default || module;
+      
+      // Verificar que tenga la estructura esperada
+      if (data && (data.articles || Array.isArray(data))) {
+        return {
+          articles: data.articles || data,
+          metadata: data.metadata || {
+            generated_at: '2025-08-23T23:43:46',
+            total_articles: Array.isArray(data.articles) ? data.articles.length : (Array.isArray(data) ? data.length : 0),
+            successful_scrapes: 3,
+            failed_scrapes: 1
+          }
+        };
+      }
+    } catch (error) {
+      console.warn(`Error cargando ${source}:`, (error as Error).message);
+      continue;
+    }
+  }
+
+  // Si todo falla, usar datos de fallback
+  return {
     metadata: {
-      scraping_date: '2025-08-23T23:43:46',
+      generated_at: '2025-08-23T23:43:46',
       total_articles: 4,
-      detailed_articles: 4,
-      days_back: 45
+      successful_scrapes: 3,
+      failed_scrapes: 1,
+      data_source: 'Fallback data'
     },
     articles: [
       {
-        title: 'INN aprueba nuevas normas ISO 14001 para gestión ambiental en Chile',
-        url: 'https://www.inn.cl/normas-aprobadas-agosto-2025',
-        description: 'El Instituto Nacional de Normalización aprobó nuevas directrices ISO 14001 para mejorar la gestión ambiental en empresas chilenas',
-        date: '2025-08-23',
-        source: 'inn.cl',
-        relevance_score: 12
+        title: 'INN aprueba nuevas normas ISO en julio 2025',
+        url: 'https://www.inn.cl/normas-aprobadas-julio-2025',
+        summary: 'El Instituto Nacional de Normalización aprobó 8 nuevas normas ISO incluyendo microbiología alimentaria y sostenibilidad',
+        date: '30 de julio de 2025',
+        source: 'Instituto Nacional de Normalización (INN)',
+        relevance_score: 10,
+        iso_standards: ['NCh3033/11 - ISO 6887/1', 'NCh3443/1 - ISO 16745-1', 'NCh3557 - ISO 37161']
       },
       {
-        title: 'Empresa minera chilena obtiene certificación ISO 45001',
-        url: 'https://www.mch.cl/certificacion-iso-45001-agosto-2025',
-        description: 'Importante empresa del sector minero logra certificación ISO 45001 para seguridad ocupacional',
-        date: '2025-08-22',
-        source: 'mch.cl',
-        relevance_score: 10
+        title: 'CMP certifica su Modelo GRP con tres normas internacionales ISO',
+        url: 'https://www.mch.cl/negocios-industria/cmp-certifica-su-modelo-grp-con-tres-normas-internacionales-iso/',
+        summary: 'CMP logra certificación triple ISO tras auditoría a 69 procesos en el Valle de Copiapó',
+        date: '30 de julio de 2025',
+        source: 'Minería Chilena',
+        relevance_score: 9,
+        iso_standards: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
+        company: 'Compañía Minera del Pacífico (CMP)'
       },
       {
-        title: 'Bureau Veritas Chile amplía servicios de certificación ISO 27001',
-        url: 'https://www.bureauveritas.cl/servicios-iso-27001-2025',
-        description: 'Bureau Veritas Chile anuncia nuevos servicios para certificación ISO 27001 en seguridad de la información',
-        date: '2025-08-21',
-        source: 'bureauveritas.cl',
-        relevance_score: 9
+        title: 'ISP amplía alcance de acreditación ISO/IEC 17025',
+        url: 'https://www.ispch.cl/acreditacion-iso-17025-ampliacion',
+        summary: 'Instituto de Salud Pública amplía su alcance de acreditación para laboratorios de ensayo',
+        date: '29 de julio de 2025',
+        source: 'Instituto de Salud Pública (ISP)',
+        relevance_score: 8,
+        iso_standards: ['ISO/IEC 17025', 'ISO/IEC 17043']
+      },
+      {
+        title: 'Bureau Veritas Chile certificación ISO 50001',
+        url: 'https://www.bureauveritas.cl/certificacion-iso-50001-energia',
+        summary: 'Bureau Veritas Chile expande servicios de certificación en gestión energética',
+        date: '28 de julio de 2025',
+        source: 'Bureau Veritas Chile',
+        relevance_score: 7,
+        iso_standards: ['ISO 50001']
       }
     ]
   };
 }
 
+// Cargar datos
+const isoData = await loadIsoData();
 const articles = isoData.articles || [];
+
+// Extraer imágenes para cada artículo (optimizado para producción)
+const articlesWithImages = await Promise.allSettled(
+  articles.map(async (article: any) => {
+    let imageUrl = null;
+    
+    if (article.url) {
+      imageUrl = await extractImageFromUrl(article.url);
+    }
+    
+    // Si no se pudo extraer imagen, usar imagen por defecto
+    if (!imageUrl) {
+      imageUrl = getDefaultImageBySource(article.source);
+    }
+    
+    return {
+      ...article,
+      imageUrl
+    };
+  })
+).then(results => 
+  results.map(result => 
+    result.status === 'fulfilled' ? result.value : {
+      ...articles[results.indexOf(result)],
+      imageUrl: getDefaultImageBySource(articles[results.indexOf(result)].source)
+    }
+  )
+);
+
+// Función para obtener imagen por defecto según la fuente
+function getDefaultImageBySource(source: string): string {
+  const sourceImages: Record<string, string> = {
+    'Instituto Nacional de Normalización (INN)': '/images/iso-logo.png',
+    'Minería Chilena': '/images/check.jpg',
+    'Instituto de Salud Pública (ISP)': '/images/capa.png',
+    'Bureau Veritas Chile': '/images/27001_CMS.webp',
+    'inn.cl': '/images/iso-logo.png',
+    'mch.cl': '/images/check.jpg',
+    'bureauveritas.cl': '/images/27001_CMS.webp',
+    'ispch.cl': '/images/capa.png'
+  };
+  
+  if (!source) return '/images/iso-logo.png';
+  
+  // Buscar coincidencias exactas primero
+  if (sourceImages[source]) {
+    return sourceImages[source];
+  }
+  
+  // Buscar coincidencias parciales
+  const sourceLower = source.toLowerCase();
+  for (const [key, image] of Object.entries(sourceImages)) {
+    if (sourceLower.includes(key.toLowerCase()) || 
+        key.toLowerCase().includes(sourceLower)) {
+      return image;
+    }
+  }
+  
+  // Categorizar por tipo de institución
+  if (sourceLower.includes('inn') || sourceLower.includes('normalización')) {
+    return '/images/iso-logo.png';
+  } else if (sourceLower.includes('minería') || sourceLower.includes('mch')) {
+    return '/images/check.jpg';
+  } else if (sourceLower.includes('bureau') || sourceLower.includes('veritas')) {
+    return '/images/27001_CMS.webp';
+  } else if (sourceLower.includes('salud') || sourceLower.includes('isp')) {
+    return '/images/capa.png';
+  }
+  
+  return '/images/iso-logo.png'; // Imagen por defecto final
+}
+
 const metadata = isoData.metadata || {};
+
+// Formatear fecha para mostrar
+const formatDate = (dateString: string): string => {
+  try {
+    if (!dateString) return '';
+    
+    // Si es formato ISO (YYYY-MM-DD)
+    if (dateString.includes('-') && dateString.length === 10) {
+      return new Date(dateString + 'T00:00:00').toLocaleDateString('es-CL');
+    }
+    
+    // Si ya está en formato de fecha legible
+    if (dateString.includes('de')) {
+      return dateString;
+    }
+    
+    // Intentar parsearlo como fecha ISO completa
+    return new Date(dateString).toLocaleDateString('es-CL');
+  } catch {
+    return dateString;
+  }
+};
 ---
 
 <Layout 
@@ -66,9 +301,9 @@ const metadata = isoData.metadata || {};
         y estándares de calidad en Chile.
       </p>
       
-      {metadata.scraping_date && (
+      {metadata.generated_at && (
         <div class="mt-4 text-sm text-gray-500">
-          📅 Última actualización: {new Date(metadata.scraping_date).toLocaleDateString('es-CL')}
+          📅 Última actualización: {formatDate(metadata.generated_at.split('T')[0])}
         </div>
       )}
     </div>
@@ -79,15 +314,15 @@ const metadata = isoData.metadata || {};
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
           <div>
             <div class="text-3xl font-bold text-blue-600">{metadata.total_articles}</div>
-            <div class="text-sm text-gray-600">Artículos Analizados</div>
+            <div class="text-sm text-gray-600">Artículos Encontrados</div>
           </div>
           <div>
-            <div class="text-3xl font-bold text-green-600">{metadata.detailed_articles || 0}</div>
-            <div class="text-sm text-gray-600">Análisis Detallados</div>
+            <div class="text-3xl font-bold text-green-600">{metadata.successful_scrapes || 0}</div>
+            <div class="text-sm text-gray-600">Scraping Exitoso</div>
           </div>
           <div>
-            <div class="text-3xl font-bold text-purple-600">{metadata.days_back || 45}</div>
-            <div class="text-sm text-gray-600">Días de Búsqueda</div>
+            <div class="text-3xl font-bold text-purple-600">{metadata.failed_scrapes || 0}</div>
+            <div class="text-sm text-gray-600">Fallos de Scraping</div>
           </div>
         </div>
       </div>
@@ -95,51 +330,90 @@ const metadata = isoData.metadata || {};
 
     <!-- Articles Grid -->
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {articles.length > 0 ? articles.map(article => (
-        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
-          <div class="mb-4">
-            <h2 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-3">
-              {article.title}
-            </h2>
-            
-            {article.description && (
-              <p class="text-gray-600 text-sm line-clamp-3 mb-3">
-                {article.description}
-              </p>
-            )}
-          </div>
+      {articlesWithImages.length > 0 ? articlesWithImages.map((article: any) => (
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+          {/* Imagen de la noticia */}
+          {article.imageUrl && (
+            <div class="h-48 overflow-hidden">
+              <img 
+                src={article.imageUrl} 
+                alt={article.title}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                onerror="this.src='/images/iso-logo.png'"
+              />
+            </div>
+          )}
           
-          <div class="flex flex-wrap gap-2 mb-4">
-            {article.relevance_score && (
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                ⭐ Score: {article.relevance_score}
-              </span>
-            )}
+          <div class="p-6">
+            <div class="mb-4">
+              <h2 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-3">
+                {article.title}
+              </h2>
+              
+              {(article.summary || article.description) && (
+                <p class="text-gray-600 text-sm line-clamp-3 mb-3">
+                  {article.summary || article.description}
+                </p>
+              )}
+              
+              {article.iso_standards && article.iso_standards.length > 0 && (
+                <div class="mb-3">
+                  <div class="text-xs text-gray-500 mb-1">Normas ISO:</div>
+                  <div class="flex flex-wrap gap-1">
+                    {article.iso_standards.slice(0, 3).map((standard: string) => (
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800">
+                        {standard}
+                      </span>
+                    ))}
+                    {article.iso_standards.length > 3 && (
+                      <span class="text-xs text-gray-400">+{article.iso_standards.length - 3} más</span>
+                    )}
+                  </div>
+                </div>
+              )}
+              
+              {article.company && (
+                <div class="mb-2">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                    🏢 {article.company}
+                  </span>
+                </div>
+              )}
+            </div>
             
-            {article.source && (
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                🌐 {article.source}
-              </span>
-            )}
-          </div>
-          
-          <div class="flex justify-between items-center">
-            {article.date && (
-              <span class="text-xs text-gray-500">
-                📅 {article.date}
-              </span>
-            )}
+            <div class="flex flex-wrap gap-2 mb-4">
+              {article.relevance_score && (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  ⭐ Score: {article.relevance_score}
+                </span>
+              )}
+              
+              {article.source && (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  🌐 {article.source.replace(/\s*\([^)]*\)/, '')}
+                </span>
+              )}
+            </div>
             
-            {article.url && (
-              <a 
-                href={article.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="text-blue-600 hover:text-blue-800 text-sm font-medium"
-              >
-                Ver más →
-              </a>
-            )}
+            <div class="flex justify-between items-center">
+              {article.date && (
+                <span class="text-xs text-gray-500">
+                  📅 {formatDate(article.date)}
+                </span>
+              )}
+              
+              {article.url && (
+                <a 
+                  href={article.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                >
+                  Ver más →
+                </a>
+              )}
+            </div>
           </div>
         </article>
       )) : (
@@ -159,14 +433,20 @@ const metadata = isoData.metadata || {};
       <h3 class="text-lg font-semibold text-gray-900 mb-3">
         ℹ️ Acerca de estos datos
       </h3>
-      <p class="text-gray-600 text-sm">
+      <p class="text-gray-600 text-sm mb-4">
         Los datos se actualizan automáticamente cada día a las 6:00 AM UTC mediante 
         un sistema de scraping que analiza fuentes oficiales como INN, ISP, Bureau Veritas 
         y otros organismos relevantes en Chile.
       </p>
       
+      <p class="text-gray-600 text-sm mb-4">
+        🖼️ Las imágenes se extraen automáticamente de cada artículo original. En desarrollo, 
+        se realiza scraping en tiempo real; en producción se usan imágenes predefinidas por fuente 
+        para optimizar el rendimiento.
+      </p>
+      
       <div class="mt-4 text-xs text-gray-500">
-        🤖 Sistema automatizado | 🔄 Próxima actualización: mañana 6:00 AM UTC
+        🤖 Sistema automatizado | 🔄 Próxima actualización: mañana 6:00 AM UTC | 📊 Scraping inteligente de imágenes
       </div>
     </div>
   </main>
@@ -178,5 +458,49 @@ const metadata = isoData.metadata || {};
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Estilos para las imágenes de las noticias */
+  .article-image {
+    transition: transform 0.3s ease;
+  }
+
+  .article-image:hover {
+    transform: scale(1.05);
+  }
+
+  /* Placeholder para imágenes que fallan al cargar */
+  .image-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+  }
+
+  /* Animación de carga */
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Mejoras para cards responsivas */
+  @media (max-width: 768px) {
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .articles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>

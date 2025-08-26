@@ -104,38 +104,61 @@ function getImageByDomain(url: string): string | null {
   }
 }
 
-// Función para cargar datos con múltiples fallbacks
+// Función para cargar datos dinámicamente
 async function loadIsoData() {
-  // Intentar cargar datos de múltiples fuentes
-  const dataSources = [
-    '../data/iso_news/iso_news_dataset_completo_20250823_234346.json',
-    '../data/iso_news/iso_news_articulos_20250823_234346.json'
-  ];
+  try {
+    // 1. Encontrar el archivo de datos más reciente
+    const newsFiles = import.meta.glob('../data/iso_news/iso_news_*.json');
 
-  for (const source of dataSources) {
-    try {
-      const module = await import(source);
+    let latestFile = null;
+    let latestTimestamp = 0;
+
+    const timestampRegex = /(\d{8}_\d{6})/;
+
+    for (const path in newsFiles) {
+      const match = path.match(timestampRegex);
+      if (match) {
+        const timestampStr = match[1];
+        const currentTimestamp = new Date(
+          `${timestampStr.substring(0, 4)}-${timestampStr.substring(4, 6)}-${timestampStr.substring(6, 8)}T` +
+          `${timestampStr.substring(9, 11)}:${timestampStr.substring(11, 13)}:${timestampStr.substring(13, 15)}Z`
+        ).getTime();
+
+        // Priorizar 'dataset_completo' o simplemente el más nuevo
+        if (currentTimestamp > latestTimestamp) {
+          latestTimestamp = currentTimestamp;
+          latestFile = path;
+        } else if (currentTimestamp === latestTimestamp && path.includes('dataset_completo')) {
+          // Si tienen el mismo timestamp, preferir 'dataset_completo'
+          latestFile = path;
+        }
+      }
+    }
+
+    // 2. Cargar los datos del archivo más reciente
+    if (latestFile) {
+      console.log(`Cargando datos desde: ${latestFile}`);
+      const module = await newsFiles[latestFile]();
       const data = module.default || module;
-      
-      // Verificar que tenga la estructura esperada
+
       if (data && (data.articles || Array.isArray(data))) {
         return {
           articles: data.articles || data,
           metadata: data.metadata || {
-            generated_at: '2025-08-23T23:43:46',
+            generated_at: new Date(latestTimestamp).toISOString(),
             total_articles: Array.isArray(data.articles) ? data.articles.length : (Array.isArray(data) ? data.length : 0),
-            successful_scrapes: 3,
-            failed_scrapes: 1
+            data_source: 'Dynamic loading'
           }
         };
       }
-    } catch (error) {
-      console.warn(`Error cargando ${source}:`, (error as Error).message);
-      continue;
     }
+  } catch (error) {
+    console.error("Error cargando datos dinámicamente:", (error as Error).message);
+    // No hacer nada aquí, se usará el fallback
   }
 
-  // Si todo falla, usar datos de fallback
+  // 3. Si todo falla, usar datos de fallback
+  console.warn("No se encontraron datos dinámicos o hubo un error. Usando datos de fallback.");
   return {
     metadata: {
       generated_at: '2025-08-23T23:43:46',

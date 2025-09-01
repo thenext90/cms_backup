@@ -35,6 +35,36 @@ class ISONewsScraperEnhanced:
         
         self.news_data = []
         self.inn_news_url = "https://www.inn.cl/noticias"
+        self.hardcoded_articles = [
+            {
+                "title": "Normas Aprobadas Julio 2025",
+                "url": "https://www.inn.cl/normas-aprobadas-julio-2025",
+                "source": "Instituto Nacional de Normalización (INN)",
+                "date": "30/07/2025",
+                "summary": "8 nuevas normas ISO aprobadas por el INN en julio 2025, incluyendo microbiología alimentaria, sostenibilidad en edificios y transporte inteligente"
+            },
+            {
+                "title": "CMP certifica su Modelo GRP con tres normas internacionales ISO",
+                "url": "https://www.mch.cl/negocios-industria/cmp-certifica-su-modelo-grp-con-tres-normas-internacionales-iso/",
+                "source": "Minería Chilena",
+                "date": "30/07/2025",
+                "summary": "CMP logra certificación triple ISO tras auditoría a 69 procesos en el Valle de Copiapó"
+            },
+            {
+                "title": "San Antonio Terminal Internacional renueva certificaciones ISO 9001 e ISO 14001",
+                "url": "https://www.empresaoceano.cl/san-antonio-terminal-internacional-renueva-certificaciones-iso-9001-e",
+                "source": "Empresa Océano",
+                "date": "25/07/2025",
+                "summary": "STI renueva certificaciones ISO 9001 e ISO 14001, manteniendo también ISO 45001 e ISO 50001"
+            },
+            {
+                "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+                "url": "https://www.ispch.gob.cl/noticia/isp-recibe-al-instituto-nacional-de-normalizacion-inn-para-verificar-capacidades-tecnicas-del-laboratorio-de-metrologia/",
+                "source": "Instituto de Salud Pública",
+                "date": "25/07/2025",
+                "summary": "Visita técnica del INN al ISP para verificar capacidades de la Red Nacional de Metrología"
+            }
+        ]
 
     def scrape_inn_news(self) -> List[Dict[str, str]]:
         """
@@ -165,18 +195,29 @@ class ISONewsScraperEnhanced:
     
     def run_complete_analysis(self) -> Dict[str, str]:
         """
-        Ejecuta el scraping y genera el archivo JSON
+        Ejecuta el scraping, lo combina con artículos hardcodeados y genera el archivo JSON
         """
         self.logger.info("Iniciando el scraping de noticias ISO Chile desde INN")
         
         scraped_articles = self.scrape_direct_urls()
         
+        # Combinar y de-duplicar artículos
+        all_articles = {}
+        for article in scraped_articles:
+            all_articles[article['url']] = article
+
+        for article in self.hardcoded_articles:
+            if article['url'] not in all_articles:
+                all_articles[article['url']] = article
+
+        final_articles = list(all_articles.values())
+
         files_generated = {}
         
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
         files_generated['articles'] = self.save_results_json(
-            scraped_articles, f'iso_news_articulos_{timestamp}.json'
+            final_articles, f'iso_news_articulos_{timestamp}.json'
         )
         
         return files_generated

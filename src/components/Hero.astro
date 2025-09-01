@@ -13,7 +13,7 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
     poster="/images/capa-cms-banner.webp"
   >
   </video>
-  <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-0 hero-overlay"></div>
+  <div class="absolute top-0 left-0 w-full h-full bg-black/40 z-0 hero-overlay"></div>
 
   <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0">
@@ -23,28 +23,27 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   </div>
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <!-- Layout balanceado: contenido compacto, slider prominente -->
-    <div class="flex flex-col lg:flex-row gap-4 lg:gap-16 items-center lg:items-start pt-4 lg:pt-6">
-      <div class="lg:w-[420px] xl:w-[480px] lg:flex-shrink-0 space-y-2 sm:space-y-3 relative z-10 w-full">
-        <div class="space-y-2 text-center lg:text-left">
+    <!-- Layout de una sola columna, centrado -->
+    <div class="flex flex-col items-center justify-center min-h-[50vh] text-center">
+      <div class="max-w-2xl space-y-2 sm:space-y-3 relative z-10 w-full">
+        <div class="space-y-2">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
-            <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
+            <span class="text-xs sm:text-sm font-bold tracking-wide text-white">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight text-center lg:text-left text-shadow">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-shadow">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Camino a la Calidad</span>
-            
           </h1>
           
-          <p class="text-sm sm:text-base lg:text-lg text-orange-100 leading-relaxed max-w-md text-center lg:text-left text-shadow">
+          <p class="text-base sm:text-lg lg:text-xl text-orange-100 leading-relaxed max-w-md mx-auto text-shadow">
             Sistemas de Gestión de Calidad y Capacitación en Control y Gestion de Procesos. 
             25+ años transformando organizaciones hacia la excelencia.
           </p>
         </div>
 
-                <div class="flex flex-col sm:flex-row gap-2 lg:gap-3 justify-center lg:justify-start pt-1">
+        <div class="flex flex-col sm:flex-row gap-2 lg:gap-3 justify-center pt-1">
           <a href="/capacitacion" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 lg:px-6 py-2.5 lg:py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
@@ -56,172 +55,23 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 border-t border-white/20">
-          <div class="flex items-center justify-center lg:justify-start space-x-2">
+          <div class="flex items-center justify-center space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Certificaciones ISO</span>
           </div>
-          <div class="flex items-center justify-center lg:justify-start space-x-2">
+          <div class="flex items-center justify-center space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Capacitación</span>
           </div>
-          <div class="flex items-center justify-center lg:justify-start space-x-2">
+          <div class="flex items-center justify-center space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Consultoría Integral</span>
           </div>
         </div>
       </div>
-
-      <!-- Slider más largo y prominente -->
-      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:min-w-0 relative z-10 lg:ml-16 xl:ml-20">
-        <div class="relative z-10 lg:pl-4 xl:pl-5">
-          <!-- Slider Container -->
-          <div class="slider-container">
-            <div class="slider" id="hero-slider">
-              <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Equipo de Consultores Profesionales" class="rounded-2xl shadow-2xl w-full h-auto" />
-                <div class="slide-overlay">
-                  <div class="slide-content">
-                    <h2 class="slide-title">Equipo de Consultores Expertos</h2>
-                    <p class="slide-description">Más de 25 años transformando organizaciones a través de la excelencia operacional</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Reunión de Negocios Corporativa" class="rounded-2xl shadow-2xl w-full h-auto" />
-                <div class="slide-overlay">
-                  <div class="slide-content">
-                    <h2 class="slide-title">Consultoría Estratégica</h2>
-                    <p class="slide-description">Implementamos sistemas de gestión de calidad que impulsan el crecimiento sostenible</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Consultores Analizando Datos" class="rounded-2xl shadow-2xl w-full h-auto" />
-                <div class="slide-overlay">
-                  <div class="slide-content">
-                    <h2 class="slide-title">Certificaciones ISO</h2>
-                    <p class="slide-description">Acompañamos a tu empresa hacia la certificación ISO y la mejora continua</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Navigation buttons -->
-            <button class="nav-btn prev-btn" id="hero-prev-btn">&#10094;</button>
-            <button class="nav-btn next-btn" id="hero-next-btn">&#10095;</button>
-            
-            <!-- Dots indicator -->
-            <div class="dots-container">
-              <span class="dot active" data-slide="1"></span>
-              <span class="dot" data-slide="2"></span>
-              <span class="dot" data-slide="3"></span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Elementos decorativos -->
-        <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full opacity-20 blur-xl"></div>
-        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-orange-300 to-red-300 rounded-full opacity-15 blur-2xl"></div>
-      </div>
     </div>
   </div>
 </section>
-
-<script>
-(function() {
-  'use strict';
-  
-  let heroSlideIndex = 1;
-  let autoSlideInterval: number;
-
-  function changeHeroSlide(n: number) {
-    showHeroSlide(heroSlideIndex += n);
-  }
-
-  function currentHeroSlide(n: number) {
-    showHeroSlide(heroSlideIndex = n);
-  }
-
-  function showHeroSlide(n: number) {
-    const slides = document.querySelectorAll('#hero-slider .slide') as NodeListOf<HTMLElement>;
-    const dots = document.querySelectorAll('.dots-container .dot') as NodeListOf<HTMLElement>;
-    
-    if (n > slides.length) { heroSlideIndex = 1; }
-    if (n < 1) { heroSlideIndex = slides.length; }
-    
-    // Remove active class from all slides and dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Add active class to current slide and dot
-    if (slides[heroSlideIndex - 1]) {
-      slides[heroSlideIndex - 1].classList.add('active');
-    }
-    if (dots[heroSlideIndex - 1]) {
-      dots[heroSlideIndex - 1].classList.add('active');
-    }
-    
-    console.log('Showing slide:', heroSlideIndex);
-  }
-
-  function initSlider() {
-    // Navigation buttons
-    const prevBtn = document.getElementById('hero-prev-btn');
-    const nextBtn = document.getElementById('hero-next-btn');
-    
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        changeHeroSlide(-1);
-        console.log('Previous button clicked');
-      });
-    }
-    
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        changeHeroSlide(1);
-        console.log('Next button clicked');
-      });
-    }
-    
-    // Dot indicators
-    const dots = document.querySelectorAll('.dots-container .dot');
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        const slideNumber = parseInt((dot as HTMLElement).getAttribute('data-slide') || '1');
-        currentHeroSlide(slideNumber);
-        console.log('Dot clicked:', slideNumber);
-      });
-    });
-    
-    // Initialize first slide
-    showHeroSlide(heroSlideIndex);
-    
-    // Auto-slide every 5 seconds
-    autoSlideInterval = setInterval(() => {
-      changeHeroSlide(1);
-    }, 5000) as unknown as number;
-    
-    console.log('Hero slider initialized');
-  }
-
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlider);
-  } else {
-    initSlider();
-  }
-
-  // Clean up interval when page unloads
-  window.addEventListener('beforeunload', () => {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-    }
-  });
-})();
-</script>
 
 <style>
 .slider-container {

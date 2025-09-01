@@ -2,7 +2,19 @@
 import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 ---
 
-<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-6 sm:py-8 lg:py-12 overflow-hidden">
+<section class="relative text-white py-6 sm:py-8 lg:py-12 overflow-hidden hero-section">
+  <video
+    class="absolute top-0 left-0 w-full h-full object-cover -z-10 hero-video"
+    src="https://media.publit.io/file/Generated-File-August-27-2025-12-26AM.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+    poster="/images/capa-cms-banner.webp"
+  >
+  </video>
+  <div class="absolute top-0 left-0 w-full h-full bg-black/60 z-0 hero-overlay"></div>
+
   <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0">
     <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
@@ -20,13 +32,13 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
             <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight text-center lg:text-left">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight text-center lg:text-left text-shadow">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Camino a la Calidad</span>
             
           </h1>
           
-          <p class="text-sm sm:text-base lg:text-lg text-orange-100 leading-relaxed max-w-md text-center lg:text-left">
+          <p class="text-sm sm:text-base lg:text-lg text-orange-100 leading-relaxed max-w-md text-center lg:text-left text-shadow">
             Sistemas de Gestión de Calidad y Capacitación en Control y Gestion de Procesos. 
             25+ años transformando organizaciones hacia la excelencia.
           </p>
@@ -504,6 +516,19 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
     height: 8px;
     width: 8px;
     margin: 0 2px;
+  }
+}
+.text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 768px) {
+  .hero-video, .hero-overlay {
+    display: none;
+  }
+  .hero-section {
+    background-image: url('/images/capa-cms-banner.webp');
+    background-size: cover;
+    background-position: center;
   }
 }
 </style>

@@ -1,0 +1,215 @@
+{
+  "metadata": {
+    "generated_at": "2025-08-23T23:43:46.688178",
+    "search_period": "Julio 2025",
+    "data_source": "Direct scraping + Manual research",
+    "total_articles": 4,
+    "successful_scrapes": 3,
+    "failed_scrapes": 1
+  },
+  "statistics": {
+    "iso_standards_count": 13,
+    "companies_count": 2,
+    "sources_count": 4,
+    "categories_count": 4
+  },
+  "iso_standards_found": [
+    "ISO 14001",
+    "ISO 17034",
+    "ISO 45001",
+    "ISO 50001",
+    "ISO 9001",
+    "ISO/IEC 17025",
+    "ISO/IEC 17043",
+    "ISO/IEC 17045",
+    "NCh-ISO 16140/4",
+    "NCh3033/11 - ISO 6887/1",
+    "NCh3443/1 - ISO 16745-1",
+    "NCh3443/2 - ISO 16745-2",
+    "NCh3557 - ISO 37161"
+  ],
+  "companies_found": [
+    "Compañía Minera del Pacífico (CMP)",
+    "San Antonio Terminal Internacional (STI)"
+  ],
+  "sources_found": [
+    "Empresa Océano",
+    "Instituto Nacional de Normalización (INN)",
+    "Instituto de Salud Pública",
+    "Minería Chilena"
+  ],
+  "category_analysis": {
+    "normas_aprobadas": {
+      "count": 1,
+      "articles": [
+        {
+          "title": "Normas Aprobadas Julio 2025",
+          "source": "Instituto Nacional de Normalización (INN)",
+          "date": "30 de julio de 2025"
+        }
+      ],
+      "iso_standards": [
+        "NCh3033/11 - ISO 6887/1",
+        "NCh3557 - ISO 37161",
+        "NCh-ISO 16140/4",
+        "NCh3443/2 - ISO 16745-2",
+        "NCh3443/1 - ISO 16745-1"
+      ]
+    },
+    "certificacion_empresarial": {
+      "count": 1,
+      "articles": [
+        {
+          "title": "CMP certifica su Modelo GRP con tres normas internacionales ISO",
+          "source": "Minería Chilena",
+          "date": "30 de julio de 2025"
+        }
+      ],
+      "iso_standards": [
+        "ISO 9001",
+        "ISO 45001",
+        "ISO 14001"
+      ]
+    },
+    "renovacion_certificacion": {
+      "count": 1,
+      "articles": [
+        {
+          "title": "San Antonio Terminal Internacional renueva certificaciones ISO 9001 e ISO 14001",
+          "source": "Empresa Océano",
+          "date": "25 de julio de 2025"
+        }
+      ],
+      "iso_standards": [
+        "ISO 50001",
+        "ISO 9001",
+        "ISO 45001",
+        "ISO 14001"
+      ]
+    },
+    "verificacion_tecnica": {
+      "count": 1,
+      "articles": [
+        {
+          "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+          "source": "Instituto de Salud Pública",
+          "date": "25 de julio de 2025"
+        }
+      ],
+      "iso_standards": [
+        "ISO/IEC 17045",
+        "ISO/IEC 17043",
+        "ISO/IEC 17025",
+        "ISO 17034"
+      ]
+    }
+  },
+  "articles": [
+    {
+      "title": "Normas Aprobadas Julio 2025",
+      "url": "https://www.inn.cl/normas-aprobadas-julio-2025",
+      "source": "Instituto Nacional de Normalización (INN)",
+      "date": "30 de julio de 2025",
+      "category": "normas_aprobadas",
+      "iso_standards": [
+        "NCh3033/11 - ISO 6887/1",
+        "NCh3443/1 - ISO 16745-1",
+        "NCh3443/2 - ISO 16745-2",
+        "NCh3557 - ISO 37161",
+        "NCh-ISO 16140/4"
+      ],
+      "summary": "8 nuevas normas ISO aprobadas por el INN en julio 2025, incluyendo microbiología alimentaria, sostenibilidad en edificios y transporte inteligente",
+      "relevance_score": 10,
+      "matched_keywords": [
+        "norma ISO",
+        "INN",
+        "normalización",
+        "certificación"
+      ],
+      "full_content": "Venta en Línea de Normas Programa de Estudio de Normas Servicio de Acreditación Documentos de Acreditación Ensayos de Aptitud de EPTIS Servicio de Normalización Normas en Consulta Pública INN Colección Capacitación",
+      "content_length": 214,
+      "scraped_at": "2025-08-23T23:43:39.882753",
+      "scraping_success": true
+    },
+    {
+      "title": "CMP certifica su Modelo GRP con tres normas internacionales ISO",
+      "url": "https://www.mch.cl/negocios-industria/cmp-certifica-su-modelo-grp-con-tres-normas-internacionales-iso/",
+      "source": "Minería Chilena",
+      "date": "30 de julio de 2025",
+      "category": "certificacion_empresarial",
+      "iso_standards": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001"
+      ],
+      "company": "Compañía Minera del Pacífico (CMP)",
+      "certifier": "Bureau Veritas",
+      "summary": "CMP logra certificación triple ISO tras auditoría a 69 procesos en el Valle de Copiapó",
+      "relevance_score": 9,
+      "matched_keywords": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001",
+        "Bureau Veritas",
+        "certificación ISO"
+      ],
+      "full_content": "En este marco, la Ministra de Minería destacó el logro y el espíritu colaborativo del proceso que hizo posible afianzar este paso.",
+      "content_length": 130,
+      "scraped_at": "2025-08-23T23:43:42.231700",
+      "scraping_success": true
+    },
+    {
+      "title": "San Antonio Terminal Internacional renueva certificaciones ISO 9001 e ISO 14001",
+      "url": "https://www.empresaoceano.cl/san-antonio-terminal-internacional-renueva-certificaciones-iso-9001-e",
+      "source": "Empresa Océano",
+      "date": "25 de julio de 2025",
+      "category": "renovacion_certificacion",
+      "iso_standards": [
+        "ISO 9001",
+        "ISO 14001",
+        "ISO 45001",
+        "ISO 50001"
+      ],
+      "company": "San Antonio Terminal Internacional (STI)",
+      "summary": "STI renueva certificaciones ISO 9001 e ISO 14001, manteniendo también ISO 45001 e ISO 50001",
+      "relevance_score": 8,
+      "matched_keywords": [
+        "ISO 9001",
+        "ISO 14001",
+        "certificación ISO",
+        "sistema de gestión"
+      ],
+      "full_content": "PUBLICIDAD",
+      "content_length": 10,
+      "scraped_at": "2025-08-23T23:43:44.537402",
+      "scraping_success": true
+    },
+    {
+      "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
+      "url": "https://www.ispch.gob.cl/noticia/isp-recibe-al-instituto-nacional-de-normalizacion-inn-para-verificar-capacidades-tecnicas-del-laboratorio-de-metrologia/",
+      "source": "Instituto de Salud Pública",
+      "date": "25 de julio de 2025",
+      "category": "verificacion_tecnica",
+      "iso_standards": [
+        "ISO/IEC 17043",
+        "ISO/IEC 17025",
+        "ISO 17034",
+        "ISO/IEC 17045"
+      ],
+      "summary": "Visita técnica del INN al ISP para verificar capacidades de la Red Nacional de Metrología",
+      "relevance_score": 8,
+      "matched_keywords": [
+        "INN",
+        "ISO/IEC 17043",
+        "acreditación",
+        "metrología",
+        "normalización"
+      ],
+      "full_content": "",
+      "content_length": 0,
+      "scraped_at": "2025-08-23T23:43:46.687983",
+      "scraping_success": false,
+      "error": "HTTPSConnectionPool(host='www.ispch.gob.cl', port=443): Max retries exceeded with url: /noticia/isp-recibe-al-instituto-nacional-de-normalizacion-inn-para-verificar-capacidades-tecnicas-del-laboratorio-de-metrologia/ (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)')))"
+    }
+  ]
+}

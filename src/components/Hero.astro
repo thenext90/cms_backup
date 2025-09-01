@@ -2,7 +2,18 @@
 import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
 ---
 
-<section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-6 sm:py-8 lg:py-12 overflow-hidden">
+<section class="relative text-white py-6 sm:py-8 lg:py-12 overflow-hidden hero-section">
+  <video
+    class="absolute top-0 left-0 w-full h-full object-cover object-top -z-10 hero-video"
+    src="https://media.publit.io/file/Generated-File-August-27-2025-12-26AM.mp4"
+    autoplay
+    loop
+    muted
+    playsinline
+  >
+  </video>
+  <div class="absolute top-0 left-0 w-full h-full bg-black/20 z-0 hero-overlay"></div>
+
   <!-- Elementos decorativos de fondo -->
   <div class="absolute inset-0">
     <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
@@ -11,28 +22,27 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
   </div>
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <!-- Layout balanceado: contenido compacto, slider prominente -->
-    <div class="flex flex-col lg:flex-row gap-4 lg:gap-16 items-center lg:items-start pt-4 lg:pt-6">
-      <div class="lg:w-[420px] xl:w-[480px] lg:flex-shrink-0 space-y-2 sm:space-y-3 relative z-10 w-full">
-        <div class="space-y-2 text-center lg:text-left">
+    <!-- Layout de una sola columna, centrado -->
+    <div class="flex flex-col items-center justify-center min-h-[50vh] text-center">
+      <div class="max-w-2xl space-y-2 sm:space-y-3 relative z-10 w-full">
+        <div class="space-y-2">
           <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 backdrop-blur-sm border border-orange-300/30 rounded-full px-3 sm:px-4 py-2">
             <Star size="16" class="sm:w-5 sm:h-5 fill-current text-yellow-300 flex-shrink-0" />
-            <span class="text-xs sm:text-sm font-bold tracking-wide text-white text-center">Excelencia desde 1995 • 25+ años</span>
+            <span class="text-xs sm:text-sm font-bold tracking-wide text-white">Excelencia desde 1995 • 25+ años</span>
           </div>
           
-          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight text-center lg:text-left">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-shadow">
             CMS Consultores
             <span class="block text-orange-200 bg-gradient-to-r from-orange-200 to-yellow-200 bg-clip-text text-transparent">Camino a la Calidad</span>
-            
           </h1>
           
-          <p class="text-sm sm:text-base lg:text-lg text-orange-100 leading-relaxed max-w-md text-center lg:text-left">
+          <p class="text-base sm:text-lg lg:text-xl text-orange-100 leading-relaxed max-w-md mx-auto text-shadow">
             Sistemas de Gestión de Calidad y Capacitación en Control y Gestion de Procesos. 
             25+ años transformando organizaciones hacia la excelencia.
           </p>
         </div>
 
-                <div class="flex flex-col sm:flex-row gap-2 lg:gap-3 justify-center lg:justify-start pt-1">
+        <div class="flex flex-col sm:flex-row gap-2 lg:gap-3 justify-center pt-1">
           <a href="/capacitacion" class="flex items-center justify-center space-x-2 bg-white text-accent-800 px-4 sm:px-6 lg:px-6 py-2.5 lg:py-3 rounded-xl hover:bg-red-50 transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl hover:scale-105 text-sm">
             <span>Conocer Servicios</span>
             <ArrowRight size="16" />
@@ -44,466 +54,36 @@ import { ArrowRight, CheckCircle, Star } from 'lucide-astro';
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 border-t border-white/20">
-          <div class="flex items-center justify-center lg:justify-start space-x-2">
+          <div class="flex items-center justify-center space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Certificaciones ISO</span>
           </div>
-          <div class="flex items-center justify-center lg:justify-start space-x-2">
+          <div class="flex items-center justify-center space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Capacitación</span>
           </div>
-          <div class="flex items-center justify-center lg:justify-start space-x-2">
+          <div class="flex items-center justify-center space-x-2">
             <CheckCircle size="16" class="sm:w-[18px] sm:h-[18px] text-green-300 flex-shrink-0" />
             <span class="text-xs sm:text-xs font-medium">Consultoría Integral</span>
           </div>
         </div>
       </div>
-
-      <!-- Slider más largo y prominente -->
-      <div class="w-full max-w-sm sm:max-w-md lg:flex-1 lg:min-w-0 relative z-10 lg:ml-16 xl:ml-20">
-        <div class="relative z-10 lg:pl-4 xl:pl-5">
-          <!-- Slider Container -->
-          <div class="slider-container">
-            <div class="slider" id="hero-slider">
-              <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Equipo de Consultores Profesionales" class="rounded-2xl shadow-2xl w-full h-auto" />
-                <div class="slide-overlay">
-                  <div class="slide-content">
-                    <h2 class="slide-title">Equipo de Consultores Expertos</h2>
-                    <p class="slide-description">Más de 25 años transformando organizaciones a través de la excelencia operacional</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Reunión de Negocios Corporativa" class="rounded-2xl shadow-2xl w-full h-auto" />
-                <div class="slide-overlay">
-                  <div class="slide-content">
-                    <h2 class="slide-title">Consultoría Estratégica</h2>
-                    <p class="slide-description">Implementamos sistemas de gestión de calidad que impulsan el crecimiento sostenible</p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Consultores Analizando Datos" class="rounded-2xl shadow-2xl w-full h-auto" />
-                <div class="slide-overlay">
-                  <div class="slide-content">
-                    <h2 class="slide-title">Certificaciones ISO</h2>
-                    <p class="slide-description">Acompañamos a tu empresa hacia la certificación ISO y la mejora continua</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Navigation buttons -->
-            <button class="nav-btn prev-btn" id="hero-prev-btn">&#10094;</button>
-            <button class="nav-btn next-btn" id="hero-next-btn">&#10095;</button>
-            
-            <!-- Dots indicator -->
-            <div class="dots-container">
-              <span class="dot active" data-slide="1"></span>
-              <span class="dot" data-slide="2"></span>
-              <span class="dot" data-slide="3"></span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Elementos decorativos -->
-        <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full opacity-20 blur-xl"></div>
-        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-br from-orange-300 to-red-300 rounded-full opacity-15 blur-2xl"></div>
-      </div>
     </div>
   </div>
 </section>
 
-<script>
-(function() {
-  'use strict';
-  
-  let heroSlideIndex = 1;
-  let autoSlideInterval: number;
-
-  function changeHeroSlide(n: number) {
-    showHeroSlide(heroSlideIndex += n);
-  }
-
-  function currentHeroSlide(n: number) {
-    showHeroSlide(heroSlideIndex = n);
-  }
-
-  function showHeroSlide(n: number) {
-    const slides = document.querySelectorAll('#hero-slider .slide') as NodeListOf<HTMLElement>;
-    const dots = document.querySelectorAll('.dots-container .dot') as NodeListOf<HTMLElement>;
-    
-    if (n > slides.length) { heroSlideIndex = 1; }
-    if (n < 1) { heroSlideIndex = slides.length; }
-    
-    // Remove active class from all slides and dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Add active class to current slide and dot
-    if (slides[heroSlideIndex - 1]) {
-      slides[heroSlideIndex - 1].classList.add('active');
-    }
-    if (dots[heroSlideIndex - 1]) {
-      dots[heroSlideIndex - 1].classList.add('active');
-    }
-    
-    console.log('Showing slide:', heroSlideIndex);
-  }
-
-  function initSlider() {
-    // Navigation buttons
-    const prevBtn = document.getElementById('hero-prev-btn');
-    const nextBtn = document.getElementById('hero-next-btn');
-    
-    if (prevBtn) {
-      prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        changeHeroSlide(-1);
-        console.log('Previous button clicked');
-      });
-    }
-    
-    if (nextBtn) {
-      nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        changeHeroSlide(1);
-        console.log('Next button clicked');
-      });
-    }
-    
-    // Dot indicators
-    const dots = document.querySelectorAll('.dots-container .dot');
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        const slideNumber = parseInt((dot as HTMLElement).getAttribute('data-slide') || '1');
-        currentHeroSlide(slideNumber);
-        console.log('Dot clicked:', slideNumber);
-      });
-    });
-    
-    // Initialize first slide
-    showHeroSlide(heroSlideIndex);
-    
-    // Auto-slide every 5 seconds
-    autoSlideInterval = setInterval(() => {
-      changeHeroSlide(1);
-    }, 5000) as unknown as number;
-    
-    console.log('Hero slider initialized');
-  }
-
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlider);
-  } else {
-    initSlider();
-  }
-
-  // Clean up interval when page unloads
-  window.addEventListener('beforeunload', () => {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-    }
-  });
-})();
-</script>
-
 <style>
-.slider-container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
+.text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
-
-.slider {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.slide {
-  display: none;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.slide.active {
-  display: block;
-}
-
-.slide img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  padding: 14px 18px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 6px;
-  user-select: none;
-  z-index: 20;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-}
-
-.nav-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prev-btn {
-  left: 15px;
-}
-
-.next-btn {
-  right: 15px;
-}
-
-.dots-container {
-  text-align: center;
-  margin-top: 12px;
-  position: relative;
-  z-index: 20;
-}
-
-.dot {
-  cursor: pointer;
-  height: 12px;
-  width: 12px;
-  margin: 0 5px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  display: inline-block;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-}
-
-.dot.active,
-.dot:hover {
-  background-color: rgba(255, 255, 255, 0.95);
-  transform: scale(1.1);
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-/* Fade animation */
-.slide {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-}
-
-/* Slide overlay and text */
-.slide {
-  position: relative;
-}
-
-.slide-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg,
-    rgba(139, 69, 19, 0.8) 0%,
-    rgba(160, 82, 45, 0.6) 50%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  z-index: 10;
-}
-
-.slide-content {
-  text-align: center;
-  padding: 2.5rem 2rem;
-  max-width: 85%;
-}
-
-.slide-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  line-height: 1.2;
-}
-
-.slide-description {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  line-height: 1.5;
-  font-weight: 400;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* Responsive text sizing - Layout más simétrico */
-@media (min-width: 1024px) {
-  .slider-container {
-    max-width: none;
-    width: calc(100% + 240px); /* Aumentar 120px por cada lado = 240px total */
-    min-width: 670px; /* 550px + 120px */
-    margin-left: -120px; /* Centrar el contenido expandido */
-  }
-  
-  .slide img {
-    height: 340px; /* 420px - 80px = 340px */
-    object-fit: cover;
-    width: 100%;
-  }
-  
-  .slide-title {
-    font-size: 2rem;
-  }
-  
-  .slide-description {
-    font-size: 1.1rem;
-  }
-  
-  .slide-content {
-    padding: 2rem 1.5rem;
-    max-width: 80%;
-  }
-}
-
-/* Optimización para pantallas extra grandes */
-@media (min-width: 1280px) {
-  .slider-container {
-    min-width: 720px; /* 600px + 120px */
-    width: calc(100% + 240px); /* Mantener el aumento de 120px por lado */
-    margin-left: -120px;
-  }
-  
-  .slide img {
-    height: 360px; /* 440px - 80px = 360px */
-  }
-  
-  .slide-title {
-    font-size: 2.3rem;
-  }
-  
-  .slide-description {
-    font-size: 1.2rem;
-    max-width: 520px;
-  }
-  
-  .slide-content {
-    padding: 2.5rem 2rem;
-  }
-}
-
-/* Mejoras para tablet */
-@media (max-width: 1023px) and (min-width: 769px) {
-  .slider-container {
-    max-width: 570px; /* 450px + 120px */
-    width: calc(100% + 120px); /* Aumento proporcional para tablets */
-    margin-left: -60px; /* Centrar el contenido expandido */
-  }
-  
-  .slide img {
-    height: 280px; /* 360px - 80px = 280px */
-    object-fit: cover;
-  }
-  
-  .slide-title {
-    font-size: 1.5rem;
-  }
-  
-  .slide-description {
-    font-size: 1rem;
-  }
-  
-  .slide-content {
-    padding: 2rem;
-  }
-}
-
-/* Mejoras para móvil */
 @media (max-width: 768px) {
-  .slider-container {
-    max-width: 100%;
+  .hero-video, .hero-overlay {
+    display: none;
   }
-  
-  .slide img {
-    height: 190px; /* 250px - 60px (proportional reduction) */
-    object-fit: cover;
-  }
-  
-  .slide-title {
-    font-size: 1.3rem;
-  }
-  
-  .slide-description {
-    font-size: 0.9rem;
-  }
-  
-  .slide-content {
-    padding: 1.5rem;
-  }
-  
-  /* Botones de navegación más pequeños en móvil */
-  .nav-btn {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-  
-  /* Dots más pequeños en móvil */
-  .dot {
-    height: 10px;
-    width: 10px;
-    margin: 0 3px;
-  }
-}
-
-/* Mejoras para móviles pequeños */
-@media (max-width: 480px) {
-  .slide img {
-    height: 150px; /* 200px - 50px (proportional reduction) */
-    object-fit: cover;
-  }
-  
-  .slide-title {
-    font-size: 1.1rem;
-  }
-  
-  .slide-description {
-    font-size: 0.8rem;
-  }
-  
-  .slide-content {
-    padding: 1rem;
-  }
-  
-  .nav-btn {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-  
-  .dot {
-    height: 8px;
-    width: 8px;
-    margin: 0 2px;
+  .hero-section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/sobre_nosotros.jpeg');
+    background-size: cover;
+    background-position: center;
   }
 }
 </style>

@@ -108,6 +108,16 @@ const formatDate = (dateString: string): string => {
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {articles.length > 0 ? articles.map((article: any) => (
         <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
+          {article.imageUrl && (
+            <div class="h-40 overflow-hidden">
+              <img
+                src={article.imageUrl}
+                alt={`Imagen para ${article.title}`}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          )}
           <div class="p-6 flex-grow">
             <div class="mb-4">
               <h2 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-3">

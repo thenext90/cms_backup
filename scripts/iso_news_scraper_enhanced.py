@@ -92,6 +92,36 @@ class ISONewsScraperEnhanced:
 
         return articles
 
+    def _extract_image_url(self, soup: BeautifulSoup, base_url: str) -> Optional[str]:
+        """
+        Extrae la URL de una imagen representativa de la página.
+        """
+        image_url = None
+
+        # Prioridad 1: Open Graph image
+        og_image = soup.select_one('meta[property="og:image"]')
+        if og_image and og_image.get('content'):
+            image_url = og_image['content']
+
+        # Prioridad 2: Twitter card image
+        if not image_url:
+            twitter_image = soup.select_one('meta[name="twitter:image"]')
+            if twitter_image and twitter_image.get('content'):
+                image_url = twitter_image['content']
+
+        # Prioridad 3: Primera imagen en el contenido principal
+        if not image_url:
+            main_content = soup.select_one('div.field-item')
+            if main_content:
+                first_img = main_content.find('img')
+                if first_img and first_img.get('src'):
+                    image_url = first_img['src']
+
+        if image_url:
+            return urljoin(base_url, image_url)
+
+        return None
+
     def scrape_direct_urls(self) -> List[Dict[str, Any]]:
         """
         Extrae contenido directamente de las URLs encontradas.
@@ -130,6 +160,9 @@ class ISONewsScraperEnhanced:
                 if not content_text:
                     content_text = soup.get_text(strip=True, separator=' ')
                 
+                # Extraer imagen
+                image_url = self._extract_image_url(soup, news_item['url'])
+
                 # Crear artÃ­culo completo
                 summary = content_text[:200] + '...' if len(content_text) > 200 else content_text
                 complete_article = {
@@ -138,6 +171,7 @@ class ISONewsScraperEnhanced:
                     'source': news_item['source'],
                     'date': news_item['date'],
                     'summary': summary,
+                    'imageUrl': image_url,
                     'full_content': content_text[:10000],  # Limitar a 10k caracteres
                     'content_length': len(content_text),
                     'scraped_at': datetime.now().isoformat(),
@@ -155,6 +189,7 @@ class ISONewsScraperEnhanced:
                     'url': news_item['url'],
                     'source': news_item['source'],
                     'date': news_item['date'],
+                    'imageUrl': None,
                     'full_content': '',
                     'content_length': 0,
                     'scraped_at': datetime.now().isoformat(),

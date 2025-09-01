@@ -101,11 +101,13 @@ class ISONewsScraperEnhanced:
                     content_text = soup.get_text(strip=True, separator=' ')
                 
                 # Crear artÃ­culo completo
+                summary = content_text[:200] + '...' if len(content_text) > 200 else content_text
                 complete_article = {
                     'title': news_item['title'],
                     'url': news_item['url'],
                     'source': news_item['source'],
                     'date': news_item['date'],
+                    'summary': summary,
                     'full_content': content_text[:10000],  # Limitar a 10k caracteres
                     'content_length': len(content_text),
                     'scraped_at': datetime.now().isoformat(),

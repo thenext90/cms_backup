@@ -1,330 +1,72 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
 
-// Caché local de imágenes por URL para evitar requests repetidos
-const imageCache = new Map<string, string>();
-
-// Función para extraer imagen de una URL (versión optimizada para producción)
-async function extractImageFromUrl(url: string): Promise<string | null> {
-  try {
-    if (!url || !url.startsWith('http')) return null;
-    
-    // Verificar caché
-    if (imageCache.has(url)) {
-      return imageCache.get(url) || null;
-    }
-    
-    // En desarrollo, hacer el scraping real
-    if (import.meta.env.DEV) {
-      // Obtener el contenido HTML de la página
-      const response = await fetch(url, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        },
-        signal: AbortSignal.timeout(5000) // Timeout de 5 segundos
-      });
-      
-      if (!response.ok) return null;
-      
-      const html = await response.text();
-      
-      // Buscar diferentes tipos de imágenes usando regex
-      const imagePatterns = [
-        // Open Graph image
-        /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i,
-        // Twitter card image
-        /<meta\s+name=["']twitter:image["']\s+content=["']([^"']+)["']/i,
-        // Primera imagen en el contenido principal
-        /<img[^>]+src=["']([^"']+)["'][^>]*>/i,
-        // Schema.org image
-        /<meta\s+itemprop=["']image["']\s+content=["']([^"']+)["']/i
-      ];
-      
-      for (const pattern of imagePatterns) {
-        const match = html.match(pattern);
-        if (match && match[1]) {
-          let imageUrl = match[1];
-          
-          // Convertir URL relativa a absoluta
-          if (imageUrl.startsWith('/')) {
-            const urlObj = new URL(url);
-            imageUrl = `${urlObj.protocol}//${urlObj.host}${imageUrl}`;
-          } else if (imageUrl.startsWith('./')) {
-            const urlObj = new URL(url);
-            imageUrl = `${urlObj.protocol}//${urlObj.host}${imageUrl.substring(1)}`;
-          } else if (!imageUrl.startsWith('http')) {
-            const urlObj = new URL(url);
-            imageUrl = `${urlObj.protocol}//${urlObj.host}/${imageUrl}`;
-          }
-          
-          // Verificar que la imagen sea válida (no muy pequeña)
-          if (imageUrl.includes('logo') && (imageUrl.includes('small') || imageUrl.includes('icon'))) {
-            continue;
-          }
-          
-          // Guardar en caché
-          imageCache.set(url, imageUrl);
-          return imageUrl;
-        }
-      }
-      
-      imageCache.set(url, '');
-      return null;
-    } else {
-      // En producción, usar imágenes predefinidas basadas en el dominio
-      return getImageByDomain(url);
-    }
-    
-  } catch (error) {
-    console.warn(`Error extrayendo imagen de ${url}:`, (error as Error).message);
-    imageCache.set(url, '');
-    return null;
-  }
-}
-
-// Función para obtener imagen basada en el dominio (para producción)
-function getImageByDomain(url: string): string | null {
-  try {
-    const domain = new URL(url).hostname.toLowerCase();
-    
-    const domainImages: Record<string, string> = {
-      'inn.cl': '/images/iso-logo.png',
-      'www.inn.cl': '/images/iso-logo.png',
-      'mch.cl': '/images/check.jpg',
-      'www.mch.cl': '/images/check.jpg',
-      'bureauveritas.cl': '/images/27001_CMS.webp',
-      'www.bureauveritas.cl': '/images/27001_CMS.webp',
-      'ispch.cl': '/images/capa.png',
-      'www.ispch.cl': '/images/capa.png'
-    };
-    
-    return domainImages[domain] || null;
-  } catch {
-    return null;
-  }
-}
-
-// Helper para parsear fechas en formatos variados para poder ordenarlas
-const parseDateForSort = (dateString: string): Date => {
-  if (!dateString) return new Date(0); // Epoch for invalid dates
-  try {
-    // Formato: "30 de julio de 2025"
-    const esMonths: { [key: string]: number } = {
-      'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3, 'mayo': 4, 'junio': 5,
-      'julio': 6, 'agosto': 7, 'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
-    };
-    const parts = dateString.toLowerCase().split(' de ');
-    if (parts.length === 3 && esMonths[parts[1]] !== undefined) {
-      const day = parseInt(parts[0], 10);
-      const month = esMonths[parts[1]];
-      const year = parseInt(parts[2], 10);
-      return new Date(year, month, day);
-    }
-
-    // Formato ISO: "2025-07-30" o "2025-07-30T..."
-    return new Date(dateString);
-  } catch {
-    return new Date(0);
-  }
-};
-
-// Función para cargar, agregar y ordenar todos los datos de noticias
+// Función para cargar los datos de noticias desde el JSON más reciente
 async function loadIsoData() {
   try {
-    const newsFiles = import.meta.glob('../data/iso_news/iso_news_*.json');
+    const newsFiles = import.meta.glob('../data/iso_news/iso_news_articulos_*.json');
     const filePaths = Object.keys(newsFiles);
 
     if (filePaths.length === 0) {
-      throw new Error("No data files found.");
+      console.warn("No data files found. Returning empty array.");
+      return { articles: [], metadata: { total_articles: 0, generated_at: new Date().toISOString() } };
     }
 
-    const allDataPromises = filePaths.map(path => newsFiles[path]());
-    const allModules = await Promise.all(allDataPromises);
-
-    const allArticlesMap = new Map<string, any>();
-    allModules.forEach(module => {
-      const data = module.default || module;
-      const articles = data.articles || (Array.isArray(data) ? data : []);
-      articles.forEach((article: any) => {
-        if (article && article.url && !allArticlesMap.has(article.url)) {
-          allArticlesMap.set(article.url, article);
-        }
-      });
-    });
-
-    const aggregatedArticles = Array.from(allArticlesMap.values());
-
-    aggregatedArticles.sort((a, b) => {
-      const dateA = parseDateForSort(a.date).getTime();
-      const dateB = parseDateForSort(b.date).getTime();
-      return dateB - dateA;
-    });
-
-    const finalMetadata = {
-      generated_at: new Date().toISOString(),
-      total_articles: aggregatedArticles.length,
-      data_source: 'Aggregated historical data'
-    };
-
-    if (aggregatedArticles.length > 0) {
-      return {
-        articles: aggregatedArticles,
-        metadata: finalMetadata
-      };
-    }
-  } catch (error) {
-    console.error("Error cargando datos agregados:", (error as Error).message);
-  }
-
-  // Fallback
-  console.warn("No se encontraron datos dinámicos o hubo un error. Usando datos de fallback.");
-  return {
-    metadata: {
-      generated_at: '2025-08-23T23:43:46',
-      total_articles: 4,
-      successful_scrapes: 3,
-      failed_scrapes: 1,
-      data_source: 'Fallback data'
-    },
-    articles: [
-      {
-        title: 'INN aprueba nuevas normas ISO en julio 2025',
-        url: 'https://www.inn.cl/normas-aprobadas-julio-2025',
-        summary: 'El Instituto Nacional de Normalización aprobó 8 nuevas normas ISO incluyendo microbiología alimentaria y sostenibilidad',
-        date: '30 de julio de 2025',
-        source: 'Instituto Nacional de Normalización (INN)',
-        relevance_score: 10,
-        iso_standards: ['NCh3033/11 - ISO 6887/1', 'NCh3443/1 - ISO 16745-1', 'NCh3557 - ISO 37161']
-      },
-      {
-        title: 'CMP certifica su Modelo GRP con tres normas internacionales ISO',
-        url: 'https://www.mch.cl/negocios-industria/cmp-certifica-su-modelo-grp-con-tres-normas-internacionales-iso/',
-        summary: 'CMP logra certificación triple ISO tras auditoría a 69 procesos en el Valle de Copiapó',
-        date: '30 de julio de 2025',
-        source: 'Minería Chilena',
-        relevance_score: 9,
-        iso_standards: ['ISO 9001', 'ISO 14001', 'ISO 45001'],
-        company: 'Compañía Minera del Pacífico (CMP)'
-      },
-      {
-        title: 'ISP amplía alcance de acreditación ISO/IEC 17025',
-        url: 'https://www.ispch.cl/acreditacion-iso-17025-ampliacion',
-        summary: 'Instituto de Salud Pública amplía su alcance de acreditación para laboratorios de ensayo',
-        date: '29 de julio de 2025',
-        source: 'Instituto de Salud Pública (ISP)',
-        relevance_score: 8,
-        iso_standards: ['ISO/IEC 17025', 'ISO/IEC 17043']
-      },
-      {
-        title: 'Bureau Veritas Chile certificación ISO 50001',
-        url: 'https://www.bureauveritas.cl/certificacion-iso-50001-energia',
-        summary: 'Bureau Veritas Chile expande servicios de certificación en gestión energética',
-        date: '28 de julio de 2025',
-        source: 'Bureau Veritas Chile',
-        relevance_score: 7,
-        iso_standards: ['ISO 50001']
+    // Encuentra el archivo más reciente basándose en el timestamp del nombre
+    const latestFile = filePaths.reduce((latest, current) => {
+      const latestTimestamp = latest.match(/_(\d{8}_\d{6})\.json$/)?.[1];
+      const currentTimestamp = current.match(/_(\d{8}_\d{6})\.json$/)?.[1];
+      if (latestTimestamp && currentTimestamp) {
+        return currentTimestamp > latestTimestamp ? current : latest;
       }
-    ]
-  };
+      return latest;
+    });
+
+    const module = await newsFiles[latestFile]();
+    const data = module.default || module;
+
+    // Ordenar artículos por fecha (usando scraped_at para mayor precisión)
+    if (data.articles && Array.isArray(data.articles)) {
+      data.articles.sort((a, b) => {
+        const dateA = new Date(a.scraped_at || 0).getTime();
+        const dateB = new Date(b.scraped_at || 0).getTime();
+        return dateB - dateA;
+      });
+    }
+
+    return data;
+
+  } catch (error) {
+    console.error("Error cargando datos de noticias:", (error as Error).message);
+    return { articles: [], metadata: { total_articles: 0, generated_at: new Date().toISOString() } };
+  }
 }
 
 // Cargar datos
 const isoData = await loadIsoData();
 const articles = isoData.articles || [];
-
-// Extraer imágenes para cada artículo (optimizado para producción)
-const articlesWithImages = await Promise.allSettled(
-  articles.map(async (article: any) => {
-    let imageUrl = null;
-    
-    if (article.url) {
-      imageUrl = await extractImageFromUrl(article.url);
-    }
-    
-    // Si no se pudo extraer imagen, usar imagen por defecto
-    if (!imageUrl) {
-      imageUrl = getDefaultImageBySource(article.source);
-    }
-    
-    return {
-      ...article,
-      imageUrl
-    };
-  })
-).then(results => 
-  results.map(result => 
-    result.status === 'fulfilled' ? result.value : {
-      ...articles[results.indexOf(result)],
-      imageUrl: getDefaultImageBySource(articles[results.indexOf(result)].source)
-    }
-  )
-);
-
-// Función para obtener imagen por defecto según la fuente
-function getDefaultImageBySource(source: string): string {
-  const sourceImages: Record<string, string> = {
-    'Instituto Nacional de Normalización (INN)': '/images/iso-logo.png',
-    'Minería Chilena': '/images/check.jpg',
-    'Instituto de Salud Pública (ISP)': '/images/capa.png',
-    'Bureau Veritas Chile': '/images/27001_CMS.webp',
-    'inn.cl': '/images/iso-logo.png',
-    'mch.cl': '/images/check.jpg',
-    'bureauveritas.cl': '/images/27001_CMS.webp',
-    'ispch.cl': '/images/capa.png'
-  };
-  
-  if (!source) return '/images/iso-logo.png';
-  
-  // Buscar coincidencias exactas primero
-  if (sourceImages[source]) {
-    return sourceImages[source];
-  }
-  
-  // Buscar coincidencias parciales
-  const sourceLower = source.toLowerCase();
-  for (const [key, image] of Object.entries(sourceImages)) {
-    if (sourceLower.includes(key.toLowerCase()) || 
-        key.toLowerCase().includes(sourceLower)) {
-      return image;
-    }
-  }
-  
-  // Categorizar por tipo de institución
-  if (sourceLower.includes('inn') || sourceLower.includes('normalización')) {
-    return '/images/iso-logo.png';
-  } else if (sourceLower.includes('minería') || sourceLower.includes('mch')) {
-    return '/images/check.jpg';
-  } else if (sourceLower.includes('bureau') || sourceLower.includes('veritas')) {
-    return '/images/27001_CMS.webp';
-  } else if (sourceLower.includes('salud') || sourceLower.includes('isp')) {
-    return '/images/capa.png';
-  }
-  
-  return '/images/iso-logo.png'; // Imagen por defecto final
-}
-
 const metadata = isoData.metadata || {};
 
 // Formatear fecha para mostrar
 const formatDate = (dateString: string): string => {
-  try {
-    if (!dateString) return '';
-    
-    // Si es formato ISO (YYYY-MM-DD)
-    if (dateString.includes('-') && dateString.length === 10) {
-      return new Date(dateString + 'T00:00:00').toLocaleDateString('es-CL');
-    }
-    
-    // Si ya está en formato de fecha legible
-    if (dateString.includes('de')) {
-      return dateString;
-    }
-    
-    // Intentar parsearlo como fecha ISO completa
-    return new Date(dateString).toLocaleDateString('es-CL');
-  } catch {
-    return dateString;
+  if (!dateString) return '';
+  // El formato de fecha del scraper es DD/MM/YYYY
+  const parts = dateString.split('/');
+  if (parts.length === 3) {
+    // Reordenar a YYYY-MM-DD para un parseo consistente
+    const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    return new Date(isoDate).toLocaleDateString('es-CL', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   }
+  // Fallback para fechas en formato ISO
+  return new Date(dateString).toLocaleDateString('es-CL', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 };
 ---
 
@@ -345,7 +87,7 @@ const formatDate = (dateString: string): string => {
       
       {metadata.generated_at && (
         <div class="mt-4 text-sm text-gray-500">
-          📅 Última actualización: {formatDate(metadata.generated_at.split('T')[0])}
+          📅 Última actualización: {new Date(metadata.generated_at).toLocaleString('es-CL')}
         </div>
       )}
     </div>
@@ -364,72 +106,31 @@ const formatDate = (dateString: string): string => {
 
     <!-- Articles Grid -->
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {articlesWithImages.length > 0 ? articlesWithImages.map((article: any) => (
-        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
-          {/* Imagen de la noticia */}
-          {article.imageUrl && (
-            <div class="h-48 overflow-hidden">
-              <img 
-                src={article.imageUrl} 
-                alt={article.title}
-                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-                onerror="this.src='/images/iso-logo.png'"
-              />
-            </div>
-          )}
-          
-          <div class="p-6">
+      {articles.length > 0 ? articles.map((article: any) => (
+        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex flex-col">
+          <div class="p-6 flex-grow">
             <div class="mb-4">
               <h2 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-3">
                 {article.title}
               </h2>
               
-              {(article.summary || article.description) && (
-                <p class="text-gray-600 text-sm line-clamp-3 mb-3">
-                  {article.summary || article.description}
+              {article.summary && (
+                <p class="text-gray-600 text-sm line-clamp-4 mb-3">
+                  {article.summary}
                 </p>
-              )}
-              
-              {article.iso_standards && article.iso_standards.length > 0 && (
-                <div class="mb-3">
-                  <div class="text-xs text-gray-500 mb-1">Normas ISO:</div>
-                  <div class="flex flex-wrap gap-1">
-                    {article.iso_standards.slice(0, 3).map((standard: string) => (
-                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800">
-                        {standard}
-                      </span>
-                    ))}
-                    {article.iso_standards.length > 3 && (
-                      <span class="text-xs text-gray-400">+{article.iso_standards.length - 3} más</span>
-                    )}
-                  </div>
-                </div>
-              )}
-              
-              {article.company && (
-                <div class="mb-2">
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                    🏢 {article.company}
-                  </span>
-                </div>
               )}
             </div>
             
             <div class="flex flex-wrap gap-2 mb-4">
-              {article.relevance_score && (
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  ⭐ Score: {article.relevance_score}
-                </span>
-              )}
-              
               {article.source && (
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  🌐 {article.source.replace(/\s*\([^)]*\)/, '')}
+                  🌐 {article.source}
                 </span>
               )}
             </div>
-            
+          </div>
+
+          <div class="p-6 pt-0 border-t border-gray-200 mt-auto">
             <div class="flex justify-between items-center">
               {article.date && (
                 <span class="text-xs text-gray-500">
@@ -457,7 +158,7 @@ const formatDate = (dateString: string): string => {
           </div>
           <p class="text-gray-400 mt-2">
             Los datos se actualizarán automáticamente pronto.
-          </p>
+          </div>
         </div>
       )}
     </div>

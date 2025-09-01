@@ -66,6 +66,64 @@ class ISONewsScraperEnhanced:
             }
         ]
 
+    def _scrape_hardcoded_articles(self) -> List[Dict[str, Any]]:
+        """
+        Extrae contenido completo para los artículos hardcodeados.
+        """
+        processed_articles = []
+        for news_item in self.hardcoded_articles:
+            try:
+                self.logger.info(f"Procesando artículo hardcodeado: {news_item['title'][:50]}...")
+                response = self.session.get(news_item['url'], timeout=15)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.content, 'html.parser')
+
+                content_text = ''
+                content_selectors = [
+                    'div.field-item', '.content', '.article-content', '.entry-content',
+                    '.post-content', '.main-content', 'article',
+                    '.article-body', '.story-body'
+                ]
+                for selector in content_selectors:
+                    content_elem = soup.select_one(selector)
+                    if content_elem:
+                        for script in content_elem(["script", "style"]):
+                            script.decompose()
+                        content_text = content_elem.get_text(strip=True, separator=' ')
+                        break
+
+                if not content_text:
+                    content_text = soup.get_text(strip=True, separator=' ')
+
+                image_url = self._extract_image_url(soup, news_item['url'])
+                summary = content_text[:200] + '...' if len(content_text) > 200 else content_text
+
+                complete_article = {
+                    **news_item,
+                    'summary': summary,
+                    'imageUrl': image_url,
+                    'full_content': content_text[:10000],
+                    'content_length': len(content_text),
+                    'scraped_at': datetime.now().isoformat(),
+                    'scraping_success': True
+                }
+                processed_articles.append(complete_article)
+                time.sleep(1)
+
+            except Exception as e:
+                self.logger.warning(f"Error procesando artículo hardcodeado {news_item['url']}: {str(e)}")
+                error_article = {
+                    **news_item,
+                    'imageUrl': None,
+                    'full_content': '',
+                    'content_length': 0,
+                    'scraped_at': datetime.now().isoformat(),
+                    'scraping_success': False,
+                    'error': str(e)
+                }
+                processed_articles.append(error_article)
+        return processed_articles
+
     def scrape_inn_news(self) -> List[Dict[str, str]]:
         """
         Extrae las noticias directamente de la página de noticias del INN.
@@ -235,13 +293,14 @@ class ISONewsScraperEnhanced:
         self.logger.info("Iniciando el scraping de noticias ISO Chile desde INN")
         
         scraped_articles = self.scrape_direct_urls()
+        hardcoded_articles_full = self._scrape_hardcoded_articles()
         
         # Combinar y de-duplicar artículos
         all_articles = {}
         for article in scraped_articles:
             all_articles[article['url']] = article
 
-        for article in self.hardcoded_articles:
+        for article in hardcoded_articles_full:
             if article['url'] not in all_articles:
                 all_articles[article['url']] = article
 

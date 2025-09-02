@@ -130,6 +130,17 @@ class ISONewsScraperEnhanced:
                 if not content_text:
                     content_text = soup.get_text(strip=True, separator=' ')
                 
+                # Extraer imagen principal (og:image o primera imagen relevante)
+                image_url = None
+                og_image = soup.select_one('meta[property="og:image"]')
+                if og_image:
+                    image_url = urljoin(news_item['url'], og_image['content'])
+                else:
+                    # Fallback a buscar una imagen en el contenido
+                    content_img = soup.select_one('.content img, .entry-content img, .article-body img')
+                    if content_img and content_img.get('src'):
+                        image_url = urljoin(news_item['url'], content_img['src'])
+
                 # Crear artÃ­culo completo
                 summary = content_text[:200] + '...' if len(content_text) > 200 else content_text
                 complete_article = {
@@ -138,6 +149,7 @@ class ISONewsScraperEnhanced:
                     'source': news_item['source'],
                     'date': news_item['date'],
                     'summary': summary,
+                    'image_url': image_url,
                     'full_content': content_text[:10000],  # Limitar a 10k caracteres
                     'content_length': len(content_text),
                     'scraped_at': datetime.now().isoformat(),

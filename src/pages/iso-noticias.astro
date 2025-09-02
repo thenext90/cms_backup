@@ -25,11 +25,24 @@ async function loadIsoData() {
     const module = await newsFiles[latestFile]();
     const data = module.default || module;
 
-    // Ordenar artículos por fecha (usando scraped_at para mayor precisión)
+    // Ordenar artÃ­culos por fecha de publicaciÃ³n
     if (data.articles && Array.isArray(data.articles)) {
       data.articles.sort((a, b) => {
-        const dateA = new Date(a.scraped_at || 0).getTime();
-        const dateB = new Date(b.scraped_at || 0).getTime();
+        const parseDate = (dateStr: string) => {
+          if (!dateStr || typeof dateStr !== 'string') return 0;
+          const parts = dateStr.split('/');
+          if (parts.length === 3) {
+            // Formato DD/MM/YYYY
+            return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).getTime();
+          }
+          // Fallback para otros formatos de fecha que Date.parse pueda entender
+          const date = new Date(dateStr).getTime();
+          return isNaN(date) ? 0 : date;
+        };
+
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+
         return dateB - dateA;
       });
     }

@@ -92,19 +92,18 @@ class ISONewsScraperEnhanced:
 
         return articles
 
-    def scrape_direct_urls(self) -> List[Dict[str, Any]]:
+    def scrape_direct_urls(self, articles_to_scrape: List[Dict[str, str]]) -> List[Dict[str, Any]]:
         """
-        Extrae contenido directamente de las URLs encontradas.
+        Extrae contenido directamente de una lista de URLs de artÃ­culos.
         """
         scraped_articles = []
-        
-        self.news_data = self.scrape_inn_news()
 
-        for news_item in self.news_data:
+        for news_item in articles_to_scrape:
             try:
                 self.logger.info(f"Extrayendo contenido de: {news_item['title'][:50]}...")
-                
-                response = self.session.get(news_item['url'], timeout=15)
+
+                # Nota: verify=False se aÃ±ade para omitir errores de SSL en sitios con certificados mal configurados (ej. ispch.gob.cl)
+                response = self.session.get(news_item['url'], timeout=15, verify=False)
                 response.raise_for_status()
                 
                 soup = BeautifulSoup(response.content, 'html.parser')
@@ -209,20 +208,22 @@ class ISONewsScraperEnhanced:
         """
         Ejecuta el scraping, lo combina con artículos hardcodeados y genera el archivo JSON
         """
-        self.logger.info("Iniciando el scraping de noticias ISO Chile desde INN")
+        self.logger.info("Iniciando el scraping de noticias ISO Chile")
         
-        scraped_articles = self.scrape_direct_urls()
+        # 1. Obtener la lista de artÃ­culos de INN
+        inn_articles = self.scrape_inn_news()
         
-        # Combinar y de-duplicar artículos
-        all_articles = {}
-        for article in scraped_articles:
-            all_articles[article['url']] = article
-
+        # 2. Combinar con artÃ­culos hardcodeados y de-duplicar
+        combined_articles = {article['url']: article for article in inn_articles}
         for article in self.hardcoded_articles:
-            if article['url'] not in all_articles:
-                all_articles[article['url']] = article
+            if article['url'] not in combined_articles:
+                combined_articles[article['url']] = article
 
-        final_articles = list(all_articles.values())
+        articles_to_scrape = list(combined_articles.values())
+
+        # 3. Extraer contenido para todos los artÃ­culos
+        self.logger.info(f"Se procesarÃ¡n {len(articles_to_scrape)} artÃ­culos Ãºnicos.")
+        final_articles = self.scrape_direct_urls(articles_to_scrape)
 
         files_generated = {}
         

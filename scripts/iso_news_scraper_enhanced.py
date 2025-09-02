@@ -63,6 +63,13 @@ class ISONewsScraperEnhanced:
                 "source": "Instituto de Salud Pública",
                 "date": "25/07/2025",
                 "summary": "Visita técnica del INN al ISP para verificar capacidades de la Red Nacional de Metrología"
+            },
+            {
+                "title": "AdClean obtiene la certificación ISO 9001 otorgada por Bureau Veritas",
+                "url": "https://www.adclean.cl/blogs/noticias/certificacion-iso-9001",
+                "source": "Bureau Veritas",
+                "date": "21/11/2023",
+                "summary": "AdClean obtiene la certificación ISO 9001 otorgada por Bureau Veritas, reflejando el compromiso con la calidad y la excelencia."
             }
         ]
 

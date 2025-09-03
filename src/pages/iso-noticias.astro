@@ -1,31 +1,14 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
 
-// Función para cargar los datos de noticias desde el JSON más reciente
+// Función para cargar los datos de noticias desde el JSON
 async function loadIsoData() {
   try {
-    const newsFiles = import.meta.glob('../data/iso_news/iso_news_articulos_*.json');
-    const filePaths = Object.keys(newsFiles);
-
-    if (filePaths.length === 0) {
-      console.warn("No data files found. Returning empty array.");
-      return { articles: [], metadata: { total_articles: 0, generated_at: new Date().toISOString() } };
-    }
-
-    // Encuentra el archivo más reciente basándose en el timestamp del nombre
-    const latestFile = filePaths.reduce((latest, current) => {
-      const latestTimestamp = latest.match(/_(\d{8}_\d{6})\.json$/)?.[1];
-      const currentTimestamp = current.match(/_(\d{8}_\d{6})\.json$/)?.[1];
-      if (latestTimestamp && currentTimestamp) {
-        return currentTimestamp > latestTimestamp ? current : latest;
-      }
-      return latest;
-    });
-
-    const module = await newsFiles[latestFile]();
+    // Importa directamente el archivo JSON canónico
+    const module = await import('../data/iso_news.json');
     const data = module.default || module;
 
-    // Ordenar artÃ­culos por fecha de publicaciÃ³n
+    // Ordenar artículos por fecha de publicación
     if (data.articles && Array.isArray(data.articles)) {
       data.articles.sort((a, b) => {
         const parseDate = (dateStr: string) => {
@@ -51,6 +34,7 @@ async function loadIsoData() {
 
   } catch (error) {
     console.error("Error cargando datos de noticias:", (error as Error).message);
+    // Si el archivo no existe o hay un error, devuelve una estructura vacía
     return { articles: [], metadata: { total_articles: 0, generated_at: new Date().toISOString() } };
   }
 }

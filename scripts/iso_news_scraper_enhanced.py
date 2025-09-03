@@ -16,7 +16,7 @@ from urllib.parse import urljoin, urlparse
 import logging
 
 class ISONewsScraperEnhanced:
-    def __init__(self, output_dir: str = r"src/data/iso_news"):
+    def __init__(self, output_dir: str = r"src/data"):
         """
         Inicializa el scraper mejorado de noticias ISO para Chile
         """
@@ -234,10 +234,11 @@ class ISONewsScraperEnhanced:
 
         files_generated = {}
         
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        # Use a canonical filename instead of a timestamped one
+        canonical_filename = 'iso_news.json'
         
         files_generated['articles'] = self.save_results_json(
-            final_articles, f'iso_news_articulos_{timestamp}.json'
+            final_articles, canonical_filename
         )
         
         return files_generated

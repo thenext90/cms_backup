@@ -1,5 +1,5 @@
 // @ts-check
-// Last updated: 2025-09-04 - Navbar reorganization deployment
+// Last updated: 2025-09-04 10:20 - FINAL DEPLOYMENT: Navbar reorganization complete
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 

@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "deploymentTrigger": "2025-09-04T07:51:40Z",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build --force",

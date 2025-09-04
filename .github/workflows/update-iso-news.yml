@@ -1,9 +1,9 @@
 ﻿name: 🔄 Auto-Update ISO News Data
 
 on:
-  schedule:
-    # Ejecutar diariamente a las 6:00 AM UTC (2:00 AM Chile)
-    - cron: '0 6 * * *'
+  # schedule:
+  #   # Ejecutar diariamente a las 6:00 AM UTC (2:00 AM Chile) - TEMPORALMENTE DESHABILITADO
+  #   - cron: '0 6 * * *'
   
   # Permitir ejecución manual
   workflow_dispatch:

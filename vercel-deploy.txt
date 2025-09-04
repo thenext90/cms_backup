@@ -1,0 +1,5 @@
+<!-- Force Vercel deployment - September 4, 2025 -->
+<!-- Navbar changes in commit f8bfe99 need to be deployed -->
+<!-- CMSDOC, CMSCloud, Correos CMS, Intranet reorganized under Services dropdown -->
+
+DEPLOYMENT_TRIGGER=$(date)

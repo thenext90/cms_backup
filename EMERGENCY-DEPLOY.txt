@@ -1,0 +1,16 @@
+EMERGENCY VERCEL DEPLOYMENT
+==========================
+This is an emergency deployment to force Vercel recognition.
+
+NAVBAR CHANGES INCLUDED:
+- CMSDOC moved to Services dropdown
+- CMSCloud moved to Services dropdown  
+- Correos CMS moved to Services dropdown
+- Intranet moved to Services dropdown
+- Categories: "Consultoría" and "Servicios Digitales"
+
+Date: September 4, 2025
+Time: 10:29 AM
+Branch: emergency-deployment-0904-1029
+
+If you see this file in production, the navbar reorganization is deployed.

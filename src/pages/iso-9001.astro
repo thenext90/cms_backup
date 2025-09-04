@@ -1,34 +1,181 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { BookCheck } from 'lucide-astro';
+import { BookCheck, CheckCircle, Target, Users, TrendingUp, Award } from 'lucide-astro';
 ---
 
-<Layout title="Demo ISO 9001:2015 - CMS Consultores">
+<Layout title="ISO 9001:2015 - Sistema de Gestión de Calidad | CMS Consultores">
   <main class="bg-gray-50">
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <BookCheck size="64" class="mx-auto mb-6 text-orange-200" />
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Demo ISO 9001:2015</h1>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">ISO 9001:2015</h1>
           <p class="text-xl text-orange-100 max-w-3xl mx-auto">
-            Explora una demostración de nuestro sistema de gestión de calidad.
+            Sistema de Gestión de la Calidad - El estándar internacional más reconocido para la gestión de calidad
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- Introducción -->
     <section class="py-16">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">Introducción a la Norma ISO 9001:2015</h2>
-          <p class="text-gray-600 mb-8">
-            La norma ISO 9001:2015 es el estándar internacional para Sistemas de Gestión de la Calidad (SGC). Ayuda a las organizaciones a desarrollar y mejorar su rendimiento, así como a demostrar altos niveles de calidad de servicio. Descubra cómo podemos ayudarle a implementar un SGC eficaz que le permita mejorar la satisfacción del cliente y alcanzar sus objetivos de negocio.
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Qué es ISO 9001:2015?</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            La norma <strong>ISO 9001:2015</strong> es el estándar internacional para Sistemas de Gestión de la Calidad (SGC). 
+            Esta versión actualizada, publicada en septiembre de 2015, establece los criterios para un sistema de gestión de 
+            calidad que puede ser utilizado por cualquier organización, grande o pequeña, independientemente de su campo de actividad.
           </p>
-          <a href="/info-iso-9001" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
-            Más información
-          </a>
+          <p class="text-lg text-gray-600">
+            La norma se basa en el enfoque de procesos e incluye el ciclo planificar-hacer-verificar-actuar (PHVA) 
+            y el pensamiento basado en riesgos. Más de un millón de organizaciones en todo el mundo están certificadas en ISO 9001.
+          </p>
+        </div>
+
+        <!-- Cambios principales en 2015 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Principales Cambios en la Versión 2015</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-accent-800 mb-4 flex items-center">
+                <TrendingUp size="24" class="mr-3" />
+                Enfoque Basado en Riesgos
+              </h3>
+              <p class="text-gray-600">
+                Integración del pensamiento basado en riesgos a lo largo de toda la norma, 
+                eliminando la necesidad de acciones preventivas como un proceso separado.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-accent-800 mb-4 flex items-center">
+                <Users size="24" class="mr-3" />
+                Liderazgo y Compromiso
+              </h3>
+              <p class="text-gray-600">
+                Mayor énfasis en el liderazgo y compromiso de la alta dirección 
+                en el sistema de gestión de calidad.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 Principios de Gestión de Calidad -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Los 7 Principios de Gestión de Calidad</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-accent-50 p-6 rounded-lg">
+              <Target size="32" class="text-accent-800 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">1. Enfoque al Cliente</h3>
+              <p class="text-sm text-gray-600">El foco principal debe estar en cumplir y exceder las expectativas del cliente.</p>
+            </div>
+            <div class="bg-accent-50 p-6 rounded-lg">
+              <Award size="32" class="text-accent-800 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">2. Liderazgo</h3>
+              <p class="text-sm text-gray-600">Los líderes establecen la unidad de propósito y dirección de la organización.</p>
+            </div>
+            <div class="bg-accent-50 p-6 rounded-lg">
+              <Users size="32" class="text-accent-800 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">3. Compromiso de las Personas</h3>
+              <p class="text-sm text-gray-600">Las personas competentes, empoderadas y comprometidas son esenciales.</p>
+            </div>
+            <div class="bg-accent-50 p-6 rounded-lg">
+              <CheckCircle size="32" class="text-accent-800 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">4. Enfoque a Procesos</h3>
+              <p class="text-sm text-gray-600">Los resultados se alcanzan de manera más eficiente cuando las actividades se gestionan como procesos.</p>
+            </div>
+            <div class="bg-accent-50 p-6 rounded-lg">
+              <TrendingUp size="32" class="text-accent-800 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">5. Mejora</h3>
+              <p class="text-sm text-gray-600">Las organizaciones exitosas tienen un foco continuo en la mejora.</p>
+            </div>
+            <div class="bg-accent-50 p-6 rounded-lg">
+              <BookCheck size="32" class="text-accent-800 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">6. Toma de Decisiones Basada en Evidencia</h3>
+              <p class="text-sm text-gray-600">Las decisiones basadas en el análisis de datos tienen mayor probabilidad de producir los resultados deseados.</p>
+            </div>
+          </div>
+          <div class="mt-6 bg-accent-50 p-6 rounded-lg">
+            <Users size="32" class="text-accent-800 mb-4" />
+            <h3 class="font-semibold text-gray-800 mb-2">7. Gestión de las Relaciones</h3>
+            <p class="text-sm text-gray-600">Para el éxito sostenido, las organizaciones gestionan sus relaciones con las partes interesadas relevantes.</p>
+          </div>
+        </div>
+
+        <!-- Estructura de Alto Nivel -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Estructura de Alto Nivel (HLS)</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-semibold text-accent-800 mb-4">Cláusulas 1-3: Fundamentos</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Objeto y campo de aplicación</li>
+                <li>• Referencias normativas</li>
+                <li>• Términos y definiciones</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-accent-800 mb-4">Cláusulas 4-10: Requisitos</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Contexto de la organización</li>
+                <li>• Liderazgo</li>
+                <li>• Planificación</li>
+                <li>• Apoyo</li>
+                <li>• Operación</li>
+                <li>• Evaluación del desempeño</li>
+                <li>• Mejora</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Beneficios de Implementar ISO 9001:2015</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="border-l-4 border-accent-800 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Mejora de la Eficiencia</h3>
+              <p class="text-gray-600 text-sm">Procesos más eficientes y reducción de desperdicios.</p>
+            </div>
+            <div class="border-l-4 border-accent-800 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Satisfacción del Cliente</h3>
+              <p class="text-gray-600 text-sm">Mayor satisfacción y fidelización de clientes.</p>
+            </div>
+            <div class="border-l-4 border-accent-800 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Acceso a Mercados</h3>
+              <p class="text-gray-600 text-sm">Apertura de nuevos mercados y oportunidades de negocio.</p>
+            </div>
+            <div class="border-l-4 border-accent-800 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Gestión de Riesgos</h3>
+              <p class="text-gray-600 text-sm">Mejor identificación y gestión de riesgos organizacionales.</p>
+            </div>
+            <div class="border-l-4 border-accent-800 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Mejora Continua</h3>
+              <p class="text-gray-600 text-sm">Cultura de mejora continua en toda la organización.</p>
+            </div>
+            <div class="border-l-4 border-accent-800 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Competitividad</h3>
+              <p class="text-gray-600 text-sm">Mayor competitividad en el mercado global.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Implementar ISO 9001:2015?</h2>
+          <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Nuestro equipo de expertos puede ayudarle a implementar y certificar su sistema de gestión de calidad 
+            bajo la norma ISO 9001:2015. Contacte con nosotros para una consulta personalizada.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contacto" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
+              Solicitar Consultoría
+            </a>
+            <a href="/info-iso-9001" class="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+              Información Detallada
+            </a>
+          </div>
         </div>
       </div>
     </section>

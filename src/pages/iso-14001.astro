@@ -1,34 +1,202 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { BookCheck } from 'lucide-astro';
+import { Leaf, Recycle, TreePine, Globe, Shield, TrendingDown, Award, CheckCircle } from 'lucide-astro';
 ---
 
-<Layout title="Demo ISO 14001:2015 - CMS Consultores">
+<Layout title="ISO 14001:2015 - Sistema de Gestión Ambiental | CMS Consultores">
   <main class="bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+    <section class="bg-gradient-to-br from-green-900 via-green-800 to-green-700 text-white py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <BookCheck size="64" class="mx-auto mb-6 text-orange-200" />
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Demo ISO 14001:2015</h1>
-          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
-            Explora una demostración de nuestro sistema de gestión ambiental.
+          <Leaf size="64" class="mx-auto mb-6 text-green-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">ISO 14001:2015</h1>
+          <p class="text-xl text-green-100 max-w-3xl mx-auto">
+            Sistema de Gestión Ambiental - Compromiso con la sostenibilidad y la responsabilidad ambiental
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- Introducción -->
     <section class="py-16">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">Introducción a la Norma ISO 14001:2015</h2>
-          <p class="text-gray-600 mb-8">
-            La norma ISO 14001:2015 es el estándar internacional para Sistemas de Gestión Ambiental (SGA). Permite a las organizaciones mejorar su desempeño ambiental a través de un uso más eficiente de los recursos y la reducción de residuos. Descubra cómo podemos ayudarle a implementar un SGA que no solo beneficie al planeta, sino que también mejore su reputación y reduzca sus costos operativos.
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Qué es ISO 14001:2015?</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            La norma <strong>ISO 14001:2015</strong> es el estándar internacional para Sistemas de Gestión Ambiental (SGA). 
+            Esta norma proporciona un marco que una organización puede seguir para establecer un sistema de gestión ambiental eficaz. 
+            Está diseñada para ser utilizada por organizaciones de cualquier tamaño, tipo y naturaleza.
           </p>
-          <a href="/info-iso-14001" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
-            Más información
-          </a>
+          <p class="text-lg text-gray-600">
+            ISO 14001:2015 ayuda a las organizaciones a mejorar su desempeño ambiental a través del uso más eficiente de recursos 
+            y la reducción de residuos, obteniendo una ventaja competitiva y la confianza de las partes interesadas.
+          </p>
+        </div>
+
+        <!-- Cambios principales en 2015 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Principales Cambios en la Versión 2015</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <Globe size="24" class="mr-3" />
+                Perspectiva del Ciclo de Vida
+              </h3>
+              <p class="text-gray-600">
+                Mayor énfasis en proteger el medio ambiente, prevenir la contaminación 
+                y considerar los aspectos ambientales en una perspectiva de ciclo de vida.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <Shield size="24" class="mr-3" />
+                Liderazgo Estratégico
+              </h3>
+              <p class="text-gray-600">
+                Mayor responsabilidad de la alta dirección y mayor alineación 
+                del SGA con la dirección estratégica de la organización.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ciclo PHVA -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">El Ciclo PHVA en ISO 14001</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+              <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">P</div>
+              <h3 class="font-semibold text-gray-800 mb-2">PLANIFICAR</h3>
+              <p class="text-sm text-gray-600">Establecer objetivos ambientales y procesos necesarios</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+              <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">H</div>
+              <h3 class="font-semibold text-gray-800 mb-2">HACER</h3>
+              <p class="text-sm text-gray-600">Implementar los procesos según lo planificado</p>
+            </div>
+            <div class="bg-yellow-50 p-6 rounded-lg text-center">
+              <div class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">V</div>
+              <h3 class="font-semibold text-gray-800 mb-2">VERIFICAR</h3>
+              <p class="text-sm text-gray-600">Monitorear y medir los procesos</p>
+            </div>
+            <div class="bg-red-50 p-6 rounded-lg text-center">
+              <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">A</div>
+              <h3 class="font-semibold text-gray-800 mb-2">ACTUAR</h3>
+              <p class="text-sm text-gray-600">Emprender acciones para mejorar continuamente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estructura de la Norma -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Estructura de Alto Nivel</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4">Cláusulas Principales</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>4.</strong> Contexto de la organización</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>5.</strong> Liderazgo</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>6.</strong> Planificación</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>7.</strong> Apoyo</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4">Implementación y Control</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>8.</strong> Operación</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>9.</strong> Evaluación del desempeño</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-green-600 mr-2" /> <strong>10.</strong> Mejora</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beneficios Ambientales y Empresariales -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Beneficios de Implementar ISO 14001:2015</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <TreePine size="24" class="mr-3" />
+                Beneficios Ambientales
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Reducción del impacto ambiental</li>
+                <li>• Uso más eficiente de recursos naturales</li>
+                <li>• Menor generación de residuos</li>
+                <li>• Reducción de emisiones contaminantes</li>
+                <li>• Conservación de energía y agua</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <TrendingDown size="24" class="mr-3" />
+                Beneficios Empresariales
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Reducción de costos operativos</li>
+                <li>• Mejora de la imagen corporativa</li>
+                <li>• Cumplimiento legal garantizado</li>
+                <li>• Acceso a nuevos mercados</li>
+                <li>• Ventaja competitiva sostenible</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aspectos Ambientales Clave -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Aspectos Ambientales a Considerar</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-green-50 p-6 rounded-lg">
+              <Recycle size="32" class="text-green-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Gestión de Residuos</h3>
+              <p class="text-sm text-gray-600">Reducción, reutilización y reciclaje de materiales</p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <Globe size="32" class="text-blue-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Emisiones al Aire</h3>
+              <p class="text-sm text-gray-600">Control de gases de efecto invernadero y contaminantes</p>
+            </div>
+            <div class="bg-cyan-50 p-6 rounded-lg">
+              <Leaf size="32" class="text-cyan-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Uso del Agua</h3>
+              <p class="text-sm text-gray-600">Conservación y tratamiento de aguas residuales</p>
+            </div>
+            <div class="bg-amber-50 p-6 rounded-lg">
+              <TreePine size="32" class="text-amber-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Uso del Suelo</h3>
+              <p class="text-sm text-gray-600">Prevención de contaminación del suelo</p>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg">
+              <Award size="32" class="text-purple-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Energía</h3>
+              <p class="text-sm text-gray-600">Eficiencia energética y energías renovables</p>
+            </div>
+            <div class="bg-rose-50 p-6 rounded-lg">
+              <Shield size="32" class="text-rose-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Biodiversidad</h3>
+              <p class="text-sm text-gray-600">Protección de ecosistemas y especies</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Comprometerse con el Medio Ambiente?</h2>
+          <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Implemente ISO 14001:2015 y demuestre su compromiso con la sostenibilidad ambiental. 
+            Nuestros especialistas le ayudarán a desarrollar un sistema de gestión ambiental efectivo.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contacto" class="inline-block bg-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors">
+              Solicitar Consultoría
+            </a>
+            <a href="/info-iso-14001" class="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+              Información Detallada
+            </a>
+          </div>
         </div>
       </div>
     </section>

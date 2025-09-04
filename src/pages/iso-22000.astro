@@ -1,34 +1,220 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { BookCheck } from 'lucide-astro';
+import { ShieldCheck, Utensils, Truck, Store, AlertTriangle, CheckCircle, Users, Target } from 'lucide-astro';
 ---
 
-<Layout title="Demo ISO 22000 - CMS Consultores">
+<Layout title="ISO 22000:2018 - Sistema de Gestión de Seguridad Alimentaria | CMS Consultores">
   <main class="bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+    <section class="bg-gradient-to-br from-orange-900 via-orange-800 to-orange-700 text-white py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <BookCheck size="64" class="mx-auto mb-6 text-orange-200" />
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Demo ISO 22000</h1>
+          <ShieldCheck size="64" class="mx-auto mb-6 text-orange-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">ISO 22000:2018</h1>
           <p class="text-xl text-orange-100 max-w-3xl mx-auto">
-            Explora una demostración de nuestro sistema de gestión de seguridad alimentaria.
+            Sistema de Gestión de Seguridad Alimentaria - Garantizando alimentos seguros en toda la cadena
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- Introducción -->
     <section class="py-16">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">Introducción a la Norma ISO 22000</h2>
-          <p class="text-gray-600 mb-8">
-            La norma ISO 22000 es el estándar internacional para Sistemas de Gestión de la Seguridad Alimentaria (SGSA). Es aplicable a cualquier organización en la cadena alimentaria y ayuda a garantizar que los alimentos sean seguros para el consumo. Descubra cómo podemos ayudarle a implementar un SGSA que proteja a sus consumidores y su reputación.
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Qué es ISO 22000:2018?</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            La norma <strong>ISO 22000:2018</strong> es el estándar internacional para Sistemas de Gestión de la Seguridad Alimentaria (SGSA). 
+            Esta norma especifica los requisitos para un sistema de gestión de la seguridad de los alimentos cuando una organización 
+            en la cadena alimentaria necesita demostrar su capacidad para controlar los peligros de la seguridad alimentaria.
           </p>
-          <a href="/info-iso-22000" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
-            Más información
-          </a>
+          <p class="text-lg text-gray-600">
+            ISO 22000:2018 es aplicable a todas las organizaciones, independientemente de su tamaño, que estén involucradas 
+            en cualquier aspecto de la cadena alimentaria y que deseen implementar sistemas que proporcionen productos seguros de manera consistente.
+          </p>
+        </div>
+
+        <!-- Cambios en 2018 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Principales Cambios en la Versión 2018</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-orange-700 mb-4 flex items-center">
+                <AlertTriangle size="24" class="mr-3" />
+                Enfoque Basado en Riesgos
+              </h3>
+              <p class="text-gray-600">
+                Mayor énfasis en el pensamiento basado en riesgos para identificar 
+                y abordar los riesgos y oportunidades del sistema de gestión.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-orange-700 mb-4 flex items-center">
+                <Target size="24" class="mr-3" />
+                Estructura de Alto Nivel
+              </h3>
+              <p class="text-gray-600">
+                Adopción de la estructura de alto nivel común a todas las normas ISO de sistemas de gestión, 
+                facilitando la integración con otras normas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cadena Alimentaria -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Aplicabilidad en la Cadena Alimentaria</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+              <Utensils size="48" class="text-green-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Producción Primaria</h3>
+              <p class="text-sm text-gray-600">Agricultura, ganadería, pesca y silvicultura</p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+              <Store size="48" class="text-blue-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Procesamiento</h3>
+              <p class="text-sm text-gray-600">Manufactura y procesamiento de alimentos</p>
+            </div>
+            <div class="bg-yellow-50 p-6 rounded-lg text-center">
+              <Truck size="48" class="text-yellow-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Transporte y Distribución</h3>
+              <p class="text-sm text-gray-600">Logística y almacenamiento</p>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg text-center">
+              <Users size="48" class="text-purple-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Venta al Consumidor</h3>
+              <p class="text-sm text-gray-600">Retail, restaurantes y servicios de alimentación</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Principios de HACCP -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Los 7 Principios de HACCP Integrados</h2>
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">1</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Análisis de Peligros</h3>
+                <p class="text-gray-600 text-sm">Identificar y evaluar peligros biológicos, químicos y físicos</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">2</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Puntos Críticos de Control (PCC)</h3>
+                <p class="text-gray-600 text-sm">Determinar los puntos donde se pueden controlar los peligros</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">3</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Límites Críticos</h3>
+                <p class="text-gray-600 text-sm">Establecer criterios que separen lo aceptable de lo inaceptable</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">4</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Monitoreo</h3>
+                <p class="text-gray-600 text-sm">Vigilar los PCC para asegurar que están bajo control</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">5</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Acciones Correctivas</h3>
+                <p class="text-gray-600 text-sm">Definir medidas cuando el monitoreo indica desviación</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">6</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Verificación</h3>
+                <p class="text-gray-600 text-sm">Confirmar que el sistema HACCP funciona eficazmente</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">7</div>
+              <div>
+                <h3 class="font-semibold text-gray-800 mb-1">Documentación y Registros</h3>
+                <p class="text-gray-600 text-sm">Mantener registros que demuestren el funcionamiento del sistema</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Beneficios de Implementar ISO 22000:2018</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="border-l-4 border-orange-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Seguridad Alimentaria</h3>
+              <p class="text-gray-600 text-sm">Garantiza la producción de alimentos seguros para el consumo</p>
+            </div>
+            <div class="border-l-4 border-orange-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Cumplimiento Legal</h3>
+              <p class="text-gray-600 text-sm">Facilita el cumplimiento de regulaciones alimentarias</p>
+            </div>
+            <div class="border-l-4 border-orange-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Confianza del Consumidor</h3>
+              <p class="text-gray-600 text-sm">Aumenta la confianza y protege la marca</p>
+            </div>
+            <div class="border-l-4 border-orange-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Acceso a Mercados</h3>
+              <p class="text-gray-600 text-sm">Facilita el acceso a mercados internacionales</p>
+            </div>
+            <div class="border-l-4 border-orange-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Reducción de Costos</h3>
+              <p class="text-gray-600 text-sm">Previene retiros de productos y pérdidas financieras</p>
+            </div>
+            <div class="border-l-4 border-orange-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Mejora Continua</h3>
+              <p class="text-gray-600 text-sm">Fomenta la mejora continua de procesos</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integración con otras normas -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Integración con Otras Normas</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 p-6 rounded-lg text-center">
+              <CheckCircle size="48" class="text-gray-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">ISO 9001</h3>
+              <p class="text-sm text-gray-600">Sistema de Gestión de Calidad</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+              <CheckCircle size="48" class="text-green-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">ISO 14001</h3>
+              <p class="text-sm text-gray-600">Sistema de Gestión Ambiental</p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+              <CheckCircle size="48" class="text-blue-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">ISO 45001</h3>
+              <p class="text-sm text-gray-600">Sistema de Gestión de SST</p>
+            </div>
+          </div>
+          <p class="text-center text-gray-600 mt-6">
+            La estructura de alto nivel permite una integración eficiente con otros sistemas de gestión
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Garantizar la Seguridad Alimentaria?</h2>
+          <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Implemente ISO 22000:2018 y asegure que sus productos alimentarios cumplan con los más altos estándares de seguridad. 
+            Nuestros expertos en seguridad alimentaria le guiarán en todo el proceso.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contacto" class="inline-block bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-800 transition-colors">
+              Solicitar Consultoría
+            </a>
+            <a href="/info-iso-22000" class="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+              Información Detallada
+            </a>
+          </div>
         </div>
       </div>
     </section>

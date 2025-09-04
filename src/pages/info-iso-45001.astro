@@ -1,40 +1,262 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { FileText } from 'lucide-astro';
+import { HardHat, Heart, Shield, AlertTriangle, CheckCircle, Users, Target, TrendingUp } from 'lucide-astro';
 ---
 
-<Layout title="Más Información sobre ISO 45001 - CMS Consultores">
-  <main class="bg-gray-50 py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-xl shadow-lg p-8">
-        <div class="flex items-center mb-6">
-          <FileText size="48" class="text-accent-800" />
-          <h1 class="text-3xl font-bold text-gray-800 ml-4">Información Detallada: ISO 45001</h1>
+<Layout title="ISO 45001:2018 - Sistema de Gestión de Seguridad y Salud en el Trabajo | CMS Consultores">
+  <main class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-red-900 via-red-800 to-red-700 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <HardHat size="64" class="mx-auto mb-6 text-red-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">ISO 45001:2018</h1>
+          <p class="text-xl text-red-100 max-w-3xl mx-auto">
+            Sistema de Gestión de Seguridad y Salud en el Trabajo - Protegiendo lo más valioso: su equipo
+          </p>
         </div>
-        <div class="prose max-w-none text-gray-700">
-          <p>La norma ISO 45001 es el estándar internacional para sistemas de gestión de la salud y la seguridad en el trabajo (SST). Su objetivo es proporcionar un marco para gestionar los riesgos y oportunidades relacionados con la SST, con el fin de prevenir lesiones y problemas de salud relacionados con el trabajo y proporcionar lugares de trabajo seguros y saludables.</p>
-          <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Características Principales de ISO 45001</h2>
-          <ul>
-            <li><strong>Liderazgo y participación de los trabajadores:</strong> Fomenta la implicación activa de todos los niveles de la organización.</li>
-            <li><strong>Enfoque basado en riesgos:</strong> Identifica y controla los riesgos para la SST en lugar de reaccionar a los incidentes.</li>
-            <li><strong>Estructura de alto nivel (HLS):</strong> Comparte la misma estructura que otras normas de sistemas de gestión como ISO 9001 e ISO 14001, facilitando la integración.</li>
-            <li><strong>Mejora continua:</strong> Impulsa a las organizaciones a mejorar continuamente su desempeño en materia de SST.</li>
-          </ul>
-          <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Beneficios de la Implementación</h2>
-          <p>Adoptar la norma ISO 45001 puede aportar los siguientes beneficios a su organización:</p>
-          <ul>
-            <li>Reducción de incidentes, lesiones y enfermedades laborales.</li>
-            <li>Mejora del cumplimiento de la legislación en materia de seguridad y salud.</li>
-            <li>Aumento de la productividad al reducir el ausentismo y la rotación de personal.</li>
-            <li>Mejora de la reputación y la confianza de las partes interesadas.</li>
-          </ul>
-          <div class="mt-8 text-center">
-            <a href="/contacto" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
-              Contacte con nosotros para más detalles
+      </div>
+    </section>
+
+    <!-- Introducción -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Qué es ISO 45001:2018?</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            La norma <strong>ISO 45001:2018</strong> es el primer estándar internacional para Sistemas de Gestión de Seguridad 
+            y Salud en el Trabajo (SST). Reemplaza al estándar OHSAS 18001 y proporciona un marco robusto para que las organizaciones 
+            mejoren la seguridad de los empleados, reduzcan los riesgos laborales y creen condiciones de trabajo más seguras.
+          </p>
+          <p class="text-lg text-gray-600">
+            La norma puede ser utilizada por organizaciones de cualquier tamaño, sector o ubicación geográfica. 
+            Se basa en el enfoque de "estructura de alto nivel" común a todas las normas ISO de sistemas de gestión.
+          </p>
+        </div>
+
+        <!-- Estadísticas Importantes -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">¿Por Qué es Importante la SST?</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-red-600 mb-2">2.78M</div>
+              <p class="text-gray-600">Muertes relacionadas con el trabajo anualmente a nivel mundial</p>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-red-600 mb-2">374M</div>
+              <p class="text-gray-600">Lesiones y enfermedades ocupacionales no mortales por año</p>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-red-600 mb-2">4%</div>
+              <p class="text-gray-600">Del PIB global se pierde debido a enfermedades y lesiones ocupacionales</p>
+            </div>
+          </div>
+          <p class="text-center text-gray-600 mt-6 italic">
+            Fuente: Organización Internacional del Trabajo (OIT)
+          </p>
+        </div>
+
+        <!-- Principios Clave -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Principios Fundamentales de ISO 45001</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-red-50 p-6 rounded-lg">
+              <Users size="32" class="text-red-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Liderazgo y Participación</h3>
+              <p class="text-sm text-gray-600">Compromiso visible de la alta dirección y participación activa de los trabajadores</p>
+            </div>
+            <div class="bg-orange-50 p-6 rounded-lg">
+              <AlertTriangle size="32" class="text-orange-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Prevención de Lesiones</h3>
+              <p class="text-sm text-gray-600">Enfoque proactivo para prevenir lesiones y deterioro de la salud</p>
+            </div>
+            <div class="bg-yellow-50 p-6 rounded-lg">
+              <Target size="32" class="text-yellow-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Enfoque Basado en Riesgos</h3>
+              <p class="text-sm text-gray-600">Identificación y control sistemático de riesgos de SST</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+              <TrendingUp size="32" class="text-green-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Mejora Continua</h3>
+              <p class="text-sm text-gray-600">Mejora continua del desempeño en SST</p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <Heart size="32" class="text-blue-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Bienestar de los Trabajadores</h3>
+              <p class="text-sm text-gray-600">Promoción del bienestar físico y mental</p>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg">
+              <CheckCircle size="32" class="text-purple-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Cumplimiento Legal</h3>
+              <p class="text-sm text-gray-600">Cumplimiento de requisitos legales y reglamentarios</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diferencias con OHSAS 18001 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Principales Diferencias con OHSAS 18001</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-red-700 mb-4">ISO 45001:2018</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>✅ Estándar internacional oficial ISO</li>
+                <li>✅ Estructura de Alto Nivel (HLS)</li>
+                <li>✅ Mayor énfasis en el contexto organizacional</li>
+                <li>✅ Liderazgo más fuerte requerido</li>
+                <li>✅ Participación y consulta ampliada</li>
+                <li>✅ Enfoque basado en riesgos integrado</li>
+                <li>✅ Mejor integración con otros sistemas</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-600 mb-4">OHSAS 18001:2007</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>❌ Especificación BSI (no ISO)</li>
+                <li>❌ Estructura propia</li>
+                <li>❌ Enfoque más limitado</li>
+                <li>❌ Liderazgo menos definido</li>
+                <li>❌ Participación básica</li>
+                <li>❌ Acciones preventivas separadas</li>
+                <li>❌ Integración más compleja</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-6 bg-amber-50 border-l-4 border-amber-400 p-4">
+            <p class="text-amber-800">
+              <strong>Importante:</strong> OHSAS 18001 fue retirado en marzo de 2021. 
+              Las organizaciones deben migrar a ISO 45001:2018.
+            </p>
+          </div>
+        </div>
+
+        <!-- Estructura de la Norma -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Estructura de Alto Nivel (HLS)</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-semibold text-red-700 mb-4">Cláusulas 1-3: Fundamentos</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Objeto y campo de aplicación</li>
+                <li>• Referencias normativas</li>
+                <li>• Términos y definiciones</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-red-700 mb-4">Cláusulas 4-10: Requisitos</h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Contexto de la organización</li>
+                <li>• Liderazgo y participación de los trabajadores</li>
+                <li>• Planificación</li>
+                <li>• Apoyo</li>
+                <li>• Operación</li>
+                <li>• Evaluación del desempeño</li>
+                <li>• Mejora</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proceso de Gestión de Riesgos -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Proceso de Gestión de Riesgos de SST</h2>
+          <div class="grid md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Identificación</h3>
+              <p class="text-sm text-gray-600">Identificar peligros y evaluar riesgos</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Evaluación</h3>
+              <p class="text-sm text-gray-600">Determinar significancia y prioridades</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Control</h3>
+              <p class="text-sm text-gray-600">Implementar medidas de control</p>
+            </div>
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Monitoreo</h3>
+              <p class="text-sm text-gray-600">Supervisar y revisar eficacia</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Beneficios de Implementar ISO 45001:2018</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="border-l-4 border-red-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Reducción de Accidentes</h3>
+              <p class="text-gray-600 text-sm">Disminución significativa de lesiones y enfermedades laborales</p>
+            </div>
+            <div class="border-l-4 border-red-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Cumplimiento Legal</h3>
+              <p class="text-gray-600 text-sm">Garantía de cumplimiento de normativas de SST</p>
+            </div>
+            <div class="border-l-4 border-red-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Mejora de Productividad</h3>
+              <p class="text-gray-600 text-sm">Reducción del ausentismo y mayor motivación</p>
+            </div>
+            <div class="border-l-4 border-red-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Reducción de Costos</h3>
+              <p class="text-gray-600 text-sm">Menor costo de seguros y compensaciones</p>
+            </div>
+            <div class="border-l-4 border-red-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Reputación Corporativa</h3>
+              <p class="text-gray-600 text-sm">Mejora de la imagen como empleador responsable</p>
+            </div>
+            <div class="border-l-4 border-red-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Retención de Talento</h3>
+              <p class="text-gray-600 text-sm">Mayor satisfacción y retención de empleados</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integración -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Integración con Otros Sistemas</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+              <CheckCircle size="48" class="text-blue-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">ISO 9001</h3>
+              <p class="text-sm text-gray-600">Sistema de Gestión de Calidad</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+              <CheckCircle size="48" class="text-green-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">ISO 14001</h3>
+              <p class="text-sm text-gray-600">Sistema de Gestión Ambiental</p>
+            </div>
+            <div class="bg-orange-50 p-6 rounded-lg text-center">
+              <CheckCircle size="48" class="text-orange-700 mx-auto mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">ISO 22000</h3>
+              <p class="text-sm text-gray-600">Sistema de Gestión de Seguridad Alimentaria</p>
+            </div>
+          </div>
+          <p class="text-center text-gray-600 mt-6">
+            La estructura de alto nivel permite una integración eficiente con otros sistemas de gestión
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Proteger a su Equipo?</h2>
+          <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Implemente ISO 45001:2018 y demuestre su compromiso con la seguridad y salud de sus trabajadores. 
+            Nuestros especialistas en SST le ayudarán a crear un ambiente de trabajo más seguro y productivo.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contacto" class="inline-block bg-red-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-800 transition-colors">
+              Solicitar Consultoría SST
+            </a>
+            <a href="/iso-45001" class="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+              Ver Más Información
             </a>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </Layout>

@@ -1,34 +1,268 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { BookCheck } from 'lucide-astro';
+import { Shield, Lock, Eye, AlertTriangle, CheckCircle, Cloud, Smartphone, Wifi } from 'lucide-astro';
 ---
 
-<Layout title="Demo ISO 27001:2022 - CMS Consultores">
+<Layout title="ISO 27001:2022 - Sistema de Gestión de Seguridad de la Información | CMS Consultores">
   <main class="bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-16">
+    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <BookCheck size="64" class="mx-auto mb-6 text-orange-200" />
-          <h1 class="text-4xl md:text-5xl font-bold mb-4">Demo ISO 27001:2022</h1>
-          <p class="text-xl text-orange-100 max-w-3xl mx-auto">
-            Explora una demostración de nuestro sistema de gestión de seguridad de la información.
+          <Shield size="64" class="mx-auto mb-6 text-blue-200" />
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">ISO 27001:2022</h1>
+          <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+            Sistema de Gestión de Seguridad de la Información - La versión más actualizada para el panorama digital moderno
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- Introducción -->
     <section class="py-16">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-          <h2 class="text-2xl font-bold text-gray-800 mb-6">Introducción a la Norma ISO 27001:2022</h2>
-          <p class="text-gray-600 mb-8">
-            La norma ISO/IEC 27001:2022 es la versión más reciente del estándar de seguridad de la información. Actualizada para abordar el panorama de amenazas moderno, esta versión introduce nuevos controles y un enfoque más ágil. Descubra cómo la adopción de la última norma puede ayudar a su organización a fortalecer su postura de seguridad y a prepararse para los desafíos futuros.
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Qué es ISO 27001:2022?</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            La norma <strong>ISO/IEC 27001:2022</strong> es la versión más reciente del estándar internacional para Sistemas de Gestión 
+            de Seguridad de la Información (SGSI). Publicada en octubre de 2022, esta actualización introduce cambios significativos 
+            para abordar las amenazas de ciberseguridad modernas y las nuevas tecnologías.
           </p>
-          <a href="/info-iso-27001-2022" class="inline-block bg-accent-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-900 transition-colors">
-            Más información
-          </a>
+          <p class="text-lg text-gray-600">
+            La nueva versión incluye 11 nuevos controles de seguridad y actualizaciones importantes que reflejan el panorama 
+            actual de amenazas digitales, incluyendo la computación en la nube, el trabajo remoto y las nuevas tecnologías emergentes.
+          </p>
+        </div>
+
+        <!-- Principales Cambios en 2022 -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Principales Cambios en la Versión 2022</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
+                <Cloud size="24" class="mr-3" />
+                Nuevos Controles
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Inteligencia sobre amenazas</li>
+                <li>• Seguridad en la nube</li>
+                <li>• Continuidad de TIC</li>
+                <li>• Seguridad física y monitoreo</li>
+                <li>• Filtrado web</li>
+                <li>• Codificación segura</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
+                <Smartphone size="24" class="mr-3" />
+                Controles Modernizados
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>• Gestión de configuración</li>
+                <li>• Eliminación de información</li>
+                <li>• Enmascaramiento de datos</li>
+                <li>• Prevención de pérdida de datos</li>
+                <li>• Monitoreo de actividades</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nuevos Controles Detallados -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Los 11 Nuevos Controles de Seguridad</h2>
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">5.7 Inteligencia sobre Amenazas</h3>
+                <p class="text-sm text-gray-600">Recopilación y análisis de información sobre amenazas de seguridad</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">5.23 Filtrado de Información</h3>
+                <p class="text-sm text-gray-600">Control de acceso a información basado en políticas de filtrado</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">5.30 Continuidad de TIC</h3>
+                <p class="text-sm text-gray-600">Planificación para la continuidad de servicios de TIC</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">7.4 Monitoreo de Seguridad Física</h3>
+                <p class="text-sm text-gray-600">Vigilancia y monitoreo de instalaciones físicas</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.9 Gestión de Configuración</h3>
+                <p class="text-sm text-gray-600">Control de configuraciones de sistemas y software</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.10 Eliminación de Información</h3>
+                <p class="text-sm text-gray-600">Procedimientos seguros para eliminar información sensible</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.11 Enmascaramiento de Datos</h3>
+                <p class="text-sm text-gray-600">Técnicas para ocultar datos sensibles en entornos de desarrollo</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.12 Prevención de Pérdida de Datos</h3>
+                <p class="text-sm text-gray-600">Medidas para prevenir la fuga no autorizada de información</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.16 Monitoreo de Actividades</h3>
+                <p class="text-sm text-gray-600">Supervisión continua de actividades en sistemas</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.23 Filtrado Web</h3>
+                <p class="text-sm text-gray-600">Control de acceso a sitios web y contenido en línea</p>
+              </div>
+              <div class="border-l-4 border-blue-600 pl-4">
+                <h3 class="font-semibold text-gray-800">8.28 Codificación Segura</h3>
+                <p class="text-sm text-gray-600">Principios y prácticas de desarrollo seguro de software</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Temas de Seguridad Modernos -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8">Abordando Amenazas Modernas</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <Cloud size="32" class="text-blue-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Seguridad en la Nube</h3>
+              <p class="text-sm text-gray-600">Controles específicos para servicios cloud y computación distribuida</p>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg">
+              <Wifi size="32" class="text-purple-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Trabajo Remoto</h3>
+              <p class="text-sm text-gray-600">Seguridad para entornos de trabajo híbridos y remotos</p>
+            </div>
+            <div class="bg-red-50 p-6 rounded-lg">
+              <AlertTriangle size="32" class="text-red-700 mb-4" />
+              <h3 class="font-semibent text-gray-800 mb-2">Amenazas Avanzadas</h3>
+              <p class="text-sm text-gray-600">Protección contra ataques sofisticados y persistentes</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+              <Lock size="32" class="text-green-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Zero Trust</h3>
+              <p class="text-sm text-gray-600">Principios de confianza cero y verificación continua</p>
+            </div>
+            <div class="bg-yellow-50 p-6 rounded-lg">
+              <Eye size="32" class="text-yellow-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">Monitoreo Continuo</h3>
+              <p class="text-sm text-gray-600">Vigilancia y detección de amenazas en tiempo real</p>
+            </div>
+            <div class="bg-indigo-50 p-6 rounded-lg">
+              <Smartphone size="32" class="text-indigo-700 mb-4" />
+              <h3 class="font-semibold text-gray-800 mb-2">IoT y Móviles</h3>
+              <p class="text-sm text-gray-600">Seguridad para dispositivos conectados y móviles</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estructura de la Norma -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Estructura de Controles</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-semibold text-blue-700 mb-4">4 Temas Principales</h3>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-center"><CheckCircle size="16" class="text-blue-600 mr-2" /> <strong>5.</strong> Controles Organizacionales (37 controles)</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-blue-600 mr-2" /> <strong>6.</strong> Controles de Personas (8 controles)</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-blue-600 mr-2" /> <strong>7.</strong> Controles Físicos (14 controles)</li>
+                <li class="flex items-center"><CheckCircle size="16" class="text-blue-600 mr-2" /> <strong>8.</strong> Controles Tecnológicos (34 controles)</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-blue-700 mb-4">Total: 93 Controles</h3>
+              <p class="text-gray-600 mb-4">
+                La nueva estructura reorganiza los controles en categorías más lógicas y fáciles de implementar.
+              </p>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm text-blue-800">
+                  <strong>Nota:</strong> 58 controles de la versión 2013 se mantuvieron, 24 se fusionaron o renombraron, 
+                  y 11 son completamente nuevos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beneficios -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Beneficios de Migrar a ISO 27001:2022</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Protección Actualizada</h3>
+              <p class="text-gray-600 text-sm">Defensa contra amenazas cibernéticas modernas</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Cumplimiento Regulatorio</h3>
+              <p class="text-gray-600 text-sm">Alineación con regulaciones de protección de datos</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Confianza del Cliente</h3>
+              <p class="text-gray-600 text-sm">Mayor confianza en la seguridad de la información</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Ventaja Competitiva</h3>
+              <p class="text-gray-600 text-sm">Diferenciación en el mercado digital</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Gestión de Riesgos</h3>
+              <p class="text-gray-600 text-sm">Identificación y mitigación proactiva de riesgos</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-semibold text-gray-800 mb-2">Continuidad del Negocio</h3>
+              <p class="text-gray-600 text-sm">Resiliencia ante incidentes de seguridad</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Migración -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">Proceso de Migración</h2>
+          <div class="bg-amber-50 border-l-4 border-amber-400 p-6 mb-6">
+            <h3 class="font-semibold text-amber-800 mb-2">⚠️ Período de Transición</h3>
+            <p class="text-amber-700">
+              Las organizaciones certificadas en ISO 27001:2013 tienen hasta <strong>octubre de 2025</strong> 
+              para migrar a la nueva versión 2022.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Evaluación Gap</h3>
+              <p class="text-sm text-gray-600">Análisis de diferencias entre versiones</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Implementación</h3>
+              <p class="text-sm text-gray-600">Adopción de nuevos controles y actualizaciones</p>
+            </div>
+            <div class="text-center">
+              <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+              <h3 class="font-semibold text-gray-800 mb-2">Certificación</h3>
+              <p class="text-sm text-gray-600">Auditoría de migración a la nueva versión</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">¿Listo para Migrar a ISO 27001:2022?</h2>
+          <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+            No espere hasta el último momento. Comience su migración a ISO 27001:2022 ahora y fortalezca 
+            su seguridad de la información con los controles más modernos y efectivos.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contacto" class="inline-block bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors">
+              Solicitar Consultoría de Migración
+            </a>
+            <a href="/info-iso-27001-2022" class="inline-block bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+              Información Detallada
+            </a>
+          </div>
         </div>
       </div>
     </section>

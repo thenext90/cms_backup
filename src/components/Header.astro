@@ -117,6 +117,7 @@ import DateTimeWidget from './DateTimeWidget.astro';
         </a>
 
         <!-- Norma ISO Dropdown -->
+        <!-- Normas ISO Dropdown -->
         <div class="relative group">
           <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
             <span>Norma ISO</span>
@@ -131,6 +132,43 @@ import DateTimeWidget from './DateTimeWidget.astro';
               <a href="/iso-27001-2013" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-accent-800">ISO 27001:2013</a>
               <a href="/iso-27001-2022" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-accent-800">ISO 27001:2022</a>
               <a href="/iso-27001-2024" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-accent-800">ISO 27001:2024</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Futuras Normas Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
+            <span>Futuras Normas</span>
+            <ChevronDown size="16" />
+          </button>
+          <div class="absolute right-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <div class="py-2">
+              <div class="px-4 py-2 text-xs text-gray-500 font-semibold uppercase tracking-wide border-b border-gray-100">En Desarrollo</div>
+              <a href="/iso-9001-2026" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-accent-800">
+                <span class="flex items-center">
+                  ISO 9001:2026
+                  <span class="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Próximo</span>
+                </span>
+              </a>
+              <a href="/iso-14001-2026" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-accent-800">
+                <span class="flex items-center">
+                  ISO 14001:2026
+                  <span class="ml-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">2026</span>
+                </span>
+              </a>
+              <a href="/iso-45001-2025" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-accent-800">
+                <span class="flex items-center">
+                  ISO 45001:2025
+                  <span class="ml-2 px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">Q4 2025</span>
+                </span>
+              </a>
+              <a href="/futuras-normas" class="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-accent-800 border-t border-gray-100">
+                <span class="flex items-center">
+                  Ver Todas las Futuras Normas
+                  <span class="ml-2 text-purple-600">→</span>
+                </span>
+              </a>
             </div>
           </div>
         </div>
@@ -199,6 +237,28 @@ import DateTimeWidget from './DateTimeWidget.astro';
           <a href="/iso-27001-2013" class="block text-sm text-gray-600">ISO 27001:2013</a>
           <a href="/iso-27001-2022" class="block text-sm text-gray-600">ISO 27001:2022</a>
           <a href="/iso-27001-2024" class="block text-sm text-gray-600">ISO 27001:2024</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-medium text-gray-800 mb-2">Futuras Normas</p>
+        <div class="pl-4 space-y-2">
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">En Desarrollo</p>
+          <a href="/iso-9001-2026" class="block text-sm text-gray-600 flex items-center">
+            ISO 9001:2026
+            <span class="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Próximo</span>
+          </a>
+          <a href="/iso-14001-2026" class="block text-sm text-gray-600 flex items-center">
+            ISO 14001:2026
+            <span class="ml-2 px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">2026</span>
+          </a>
+          <a href="/iso-45001-2025" class="block text-sm text-gray-600 flex items-center">
+            ISO 45001:2025
+            <span class="ml-2 px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">Q4 2025</span>
+          </a>
+          <a href="/futuras-normas" class="block text-sm text-gray-600 mt-2 pt-2 border-t border-gray-200">
+            Ver Todas las Futuras Normas →
+          </a>
         </div>
       </div>
     </div>

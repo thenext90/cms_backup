@@ -1,0 +1,398 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Calendar, TrendingUp, Lightbulb, Target, Users, ArrowRight, AlertCircle, CheckCircle, Clock, Star } from 'lucide-astro';
+---
+
+<Layout title="ISO 9001:2026 - Próxima Revisión | CMS Consultores">
+  <div class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <div class="mb-6">
+            <span class="inline-flex items-center px-4 py-2 bg-blue-500 bg-opacity-20 rounded-full text-sm font-medium">
+              <Calendar class="w-4 h-4 mr-2" />
+              Lanzamiento Esperado: 2026
+            </span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            ISO 9001:2026
+            <span class="block text-blue-300 text-2xl md:text-3xl mt-2">La Próxima Evolución en Calidad</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+            Prepárese para el futuro de la gestión de calidad con los cambios anticipados que transformarán la norma más utilizada del mundo
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center">
+              <AlertCircle class="w-5 h-5 mr-2" />
+              Manténgase Informado
+            </button>
+            <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all flex items-center">
+              Consulta de Preparación
+              <ArrowRight class="w-5 h-5 ml-2" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alert Banner -->
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center">
+          <AlertCircle class="h-5 w-5 text-yellow-400 mr-3" />
+          <div>
+            <p class="text-sm text-yellow-700">
+              <strong>Información Preliminar:</strong> El contenido de esta página se basa en análisis de tendencias, documentos preliminares de ISO y expectativas del mercado. Los detalles finales se confirmarán cuando ISO publique la norma oficialmente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Cronograma de Desarrollo</h2>
+          <p class="text-lg text-gray-600">El proceso de revisión de ISO 9001:2026 sigue un cronograma estructurado</p>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-blue-300"></div>
+          
+          <div class="space-y-8">
+            <!-- 2023 -->
+            <div class="relative flex items-center md:justify-center">
+              <div class="flex items-center w-full md:w-1/2 md:pr-8">
+                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center relative z-10">
+                  <CheckCircle class="w-5 h-5 text-white" />
+                </div>
+                <div class="ml-4 md:ml-0 md:text-right flex-1">
+                  <h3 class="text-lg font-semibold text-gray-900">2023 - Inicio del Proceso</h3>
+                  <p class="text-gray-600">Encuesta sistemática de revisión completada</p>
+                  <span class="text-sm text-green-600 font-medium">✓ Completado</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="relative flex items-center md:justify-center">
+              <div class="flex items-center w-full md:w-1/2 md:pl-8 md:ml-auto">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center relative z-10">
+                  <Clock class="w-5 h-5 text-white" />
+                </div>
+                <div class="ml-4 flex-1">
+                  <h3 class="text-lg font-semibold text-gray-900">2024 - Desarrollo Activo</h3>
+                  <p class="text-gray-600">Comité técnico ISO/TC 176 trabajando en borradores</p>
+                  <span class="text-sm text-blue-600 font-medium">En Progreso</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2025 -->
+            <div class="relative flex items-center md:justify-center">
+              <div class="flex items-center w-full md:w-1/2 md:pr-8">
+                <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center relative z-10">
+                  <Star class="w-5 h-5 text-white" />
+                </div>
+                <div class="ml-4 md:ml-0 md:text-right flex-1">
+                  <h3 class="text-lg font-semibold text-gray-900">2025 - Consulta Pública</h3>
+                  <p class="text-gray-600">Borrador para comentarios públicos (DIS/FDIS)</p>
+                  <span class="text-sm text-yellow-600 font-medium">Programado</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="relative flex items-center md:justify-center">
+              <div class="flex items-center w-full md:w-1/2 md:pl-8 md:ml-auto">
+                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center relative z-10">
+                  <Target class="w-5 h-5 text-white" />
+                </div>
+                <div class="ml-4 flex-1">
+                  <h3 class="text-lg font-semibold text-gray-900">2026 - Publicación Final</h3>
+                  <p class="text-gray-600">Lanzamiento oficial de ISO 9001:2026</p>
+                  <span class="text-sm text-purple-600 font-medium">Objetivo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expected Changes Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Cambios Anticipados</h2>
+          <p class="text-lg text-gray-600">Basado en tendencias del mercado y feedback de la industria</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Digitalización -->
+          <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <TrendingUp class="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-4">Transformación Digital</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Mayor énfasis en tecnologías digitales, automatización de procesos y gestión de datos
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Gestión digital de documentos
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Análisis de datos en tiempo real
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Automatización de procesos
+              </li>
+            </ul>
+          </div>
+
+          <!-- Sostenibilidad -->
+          <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-green-500">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <Lightbulb class="w-6 h-6 text-green-600" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-4">Sostenibilidad</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Integración de principios de sostenibilidad y responsabilidad ambiental
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Economía circular
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Reducción de residuos
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Eficiencia energética
+              </li>
+            </ul>
+          </div>
+
+          <!-- Experiencia del Cliente -->
+          <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-purple-500">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Users class="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-4">Experiencia del Cliente</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Mayor enfoque en la experiencia completa del cliente y personalización
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Customer journey mapping
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Feedback en tiempo real
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Personalización de servicios
+              </li>
+            </ul>
+          </div>
+
+          <!-- Agilidad Organizacional -->
+          <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-red-500">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                <TrendingUp class="w-6 h-6 text-red-600" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-4">Agilidad Organizacional</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Estructuras más flexibles y capacidad de adaptación rápida
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Metodologías ágiles
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Equipos multifuncionales
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Toma de decisiones rápida
+              </li>
+            </ul>
+          </div>
+
+          <!-- Gestión de Riesgos -->
+          <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-yellow-500">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <AlertCircle class="w-6 h-6 text-yellow-600" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-4">Gestión de Riesgos</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Enfoque más robusto en identificación y mitigación de riesgos
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Análisis predictivo
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Planes de contingencia
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Monitoreo continuo
+              </li>
+            </ul>
+          </div>
+
+          <!-- Inteligencia Artificial -->
+          <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-indigo-500">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <Lightbulb class="w-6 h-6 text-indigo-600" />
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 ml-4">IA y Machine Learning</h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Integración de inteligencia artificial para optimización de procesos
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Análisis predictivo
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Optimización automática
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-green-500 mr-2" />
+                Detección de anomalías
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preparation Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Cómo Prepararse</h2>
+          <p class="text-lg text-gray-600">Pasos recomendados para estar listo para la transición</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-6">Para Organizaciones Actuales</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-blue-600 font-semibold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900">Evaluación Gap</h4>
+                  <p class="text-gray-600">Analice su sistema actual contra los cambios anticipados</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-blue-600 font-semibold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900">Capacitación Continua</h4>
+                  <p class="text-gray-600">Mantenga al equipo actualizado sobre las nuevas tendencias</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-blue-600 font-semibold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900">Modernización Gradual</h4>
+                  <p class="text-gray-600">Implemente mejoras tecnológicas de forma progresiva</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-6">Para Nuevas Implementaciones</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-green-600 font-semibold">1</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900">Planificación Estratégica</h4>
+                  <p class="text-gray-600">Diseñe su sistema considerando los futuros requisitos</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-green-600 font-semibold">2</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900">Tecnología Flexible</h4>
+                  <p class="text-gray-600">Elija plataformas que se adapten a cambios futuros</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                  <span class="text-green-600 font-semibold">3</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900">Cultura de Innovación</h4>
+                  <p class="text-gray-600">Fomente una mentalidad de mejora continua y adaptación</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-4">Manténgase Adelante de la Curva</h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+          CMS Consultores está monitoreando activamente el desarrollo de ISO 9001:2026. 
+          Contáctenos para desarrollar una estrategia de preparación personalizada.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center">
+            <Users class="w-5 h-5 mr-2" />
+            Consulta Estratégica
+          </a>
+          <a href="/iso-noticias" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all inline-flex items-center">
+            Seguir Actualizaciones
+            <ArrowRight class="w-5 h-5 ml-2" />
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

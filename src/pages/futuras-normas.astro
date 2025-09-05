@@ -1,0 +1,350 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Calendar, TrendingUp, Lightbulb, Target, Users, ArrowRight, AlertCircle, CheckCircle, Clock, Star, Globe, Shield, Leaf } from 'lucide-astro';
+---
+
+<Layout title="Futuras Normas ISO - Preparándose para el Mañana | CMS Consultores">
+  <div class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <div class="mb-6">
+            <span class="inline-flex items-center px-4 py-2 bg-purple-500 bg-opacity-20 rounded-full text-sm font-medium">
+              <Star class="w-4 h-4 mr-2" />
+              Visión Estratégica 2025-2030
+            </span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            Futuras Normas ISO
+            <span class="block text-purple-300 text-2xl md:text-3xl mt-2">Preparándose para el Mañana</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-4xl mx-auto">
+            Manténgase adelante de la competencia con información privilegiada sobre las próximas revisiones y nuevas normas ISO que transformarán su industria
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="bg-white text-purple-900 px-8 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors flex items-center">
+              <AlertCircle class="w-5 h-5 mr-2" />
+              Alertas Personalizadas
+            </button>
+            <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-900 transition-all flex items-center">
+              Estrategia de Preparación
+              <ArrowRight class="w-5 h-5 ml-2" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximas Revisiones Principales -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Próximas Revisiones Principales</h2>
+          <p class="text-lg text-gray-600">Las normas ISO más importantes que se actualizarán en los próximos años</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- ISO 9001:2026 -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg shadow-lg border-l-4 border-blue-500">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-blue-900">ISO 9001:2026</h3>
+              <span class="px-3 py-1 bg-blue-500 text-white text-sm rounded-full">Próximo</span>
+            </div>
+            <p class="text-blue-800 mb-4">Gestión de Calidad - Próxima Generación</p>
+            <ul class="space-y-2 text-sm text-blue-700 mb-6">
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-blue-500 mr-2" />
+                Transformación digital integral
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-blue-500 mr-2" />
+                Inteligencia artificial y ML
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-blue-500 mr-2" />
+                Sostenibilidad incorporada
+              </li>
+              <li class="flex items-center">
+                <CheckCircle class="w-4 h-4 text-blue-500 mr-2" />
+                Experiencia del cliente 360°
+              </li>
+            </ul>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-blue-600 font-medium">Lanzamiento: Q2 2026</span>
+              <a href="/iso-9001-2026" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                Ver Detalles <ArrowRight class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          </div>
+
+          <!-- ISO 14001:2026 -->
+          <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-lg shadow-lg border-l-4 border-green-500">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-green-900">ISO 14001:2026</h3>
+              <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">2026</span>
+            </div>
+            <p class="text-green-800 mb-4">Gestión Ambiental - Era del Carbono Neutral</p>
+            <ul class="space-y-2 text-sm text-green-700 mb-6">
+              <li class="flex items-center">
+                <Leaf class="w-4 h-4 text-green-500 mr-2" />
+                Carbono neutralidad obligatoria
+              </li>
+              <li class="flex items-center">
+                <Leaf class="w-4 h-4 text-green-500 mr-2" />
+                Economía circular avanzada
+              </li>
+              <li class="flex items-center">
+                <Leaf class="w-4 h-4 text-green-500 mr-2" />
+                Biodiversidad y ecosistemas
+              </li>
+              <li class="flex items-center">
+                <Leaf class="w-4 h-4 text-green-500 mr-2" />
+                Reporte ESG integrado
+              </li>
+            </ul>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-green-600 font-medium">Lanzamiento: Q4 2026</span>
+              <a href="/iso-14001-2026" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+                Ver Detalles <ArrowRight class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          </div>
+
+          <!-- ISO 45001:2025 -->
+          <div class="bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-lg shadow-lg border-l-4 border-red-500">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-red-900">ISO 45001:2025</h3>
+              <span class="px-3 py-1 bg-red-500 text-white text-sm rounded-full">Q4 2025</span>
+            </div>
+            <p class="text-red-800 mb-4">Seguridad y Salud - Era Post-Pandemia</p>
+            <ul class="space-y-2 text-sm text-red-700 mb-6">
+              <li class="flex items-center">
+                <Shield class="w-4 h-4 text-red-500 mr-2" />
+                Salud mental integral
+              </li>
+              <li class="flex items-center">
+                <Shield class="w-4 h-4 text-red-500 mr-2" />
+                Trabajo híbrido seguro
+              </li>
+              <li class="flex items-center">
+                <Shield class="w-4 h-4 text-red-500 mr-2" />
+                Tecnología wearable
+              </li>
+              <li class="flex items-center">
+                <Shield class="w-4 h-4 text-red-500 mr-2" />
+                Bienestar holístico
+              </li>
+            </ul>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-red-600 font-medium">Lanzamiento: Q4 2025</span>
+              <a href="/iso-45001-2025" class="text-red-600 hover:text-red-800 font-medium flex items-center">
+                Ver Detalles <ArrowRight class="w-4 h-4 ml-1" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuevas Normas Emergentes -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuevas Normas Emergentes</h2>
+          <p class="text-lg text-gray-600">Normas completamente nuevas que responden a los desafíos del siglo XXI</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- ISO 56000 Series - Innovation Management -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Lightbulb class="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">ISO 56000+</h3>
+            <p class="text-sm text-gray-600 mb-3">Gestión de Innovación Avanzada</p>
+            <div class="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded">2025-2027</div>
+          </div>
+
+          <!-- ISO 37000 Series - Governance -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <Target class="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">ISO 37000+</h3>
+            <p class="text-sm text-gray-600 mb-3">Governance Corporativo</p>
+            <div class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">2025</div>
+          </div>
+
+          <!-- ISO AI Series -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+              <TrendingUp class="w-6 h-6 text-indigo-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">ISO AI Series</h3>
+            <p class="text-sm text-gray-600 mb-3">Inteligencia Artificial Ética</p>
+            <div class="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded">2026</div>
+          </div>
+
+          <!-- ISO Cyber Resilience -->
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+              <Shield class="w-6 h-6 text-red-600" />
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">ISO 27500+</h3>
+            <p class="text-sm text-gray-600 mb-3">Ciber-Resiliencia</p>
+            <div class="text-xs text-red-600 bg-red-50 px-2 py-1 rounded">2027</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Integrado -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Cronograma de Lanzamientos</h2>
+          <p class="text-lg text-gray-600">Planifique su estrategia de certificación con nuestro cronograma proyectado</p>
+        </div>
+
+        <div class="relative overflow-hidden">
+          <div class="flex space-x-8 overflow-x-auto pb-4">
+            <!-- 2025 -->
+            <div class="flex-shrink-0 w-80">
+              <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-lg border-l-4 border-yellow-500">
+                <h3 class="text-2xl font-bold text-yellow-900 mb-4">2025</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 45001:2025</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Q4</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 37001:2025</span>
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Q3</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 56002:2025</span>
+                    <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Q2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2026 -->
+            <div class="flex-shrink-0 w-80">
+              <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">2026</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 9001:2026</span>
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Q2</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 14001:2026</span>
+                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Q4</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO AI:30000</span>
+                    <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">Q3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2027 -->
+            <div class="flex-shrink-0 w-80">
+              <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border-l-4 border-purple-500">
+                <h3 class="text-2xl font-bold text-purple-900 mb-4">2027</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 27500:2027</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Q1</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 22000:2027</span>
+                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Q3</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-white p-3 rounded">
+                    <span class="text-sm font-medium">ISO 31000:2027</span>
+                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Q4</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicio de Monitoreo -->
+    <section class="py-16 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Servicio de Monitoreo ISO Future Watch</h2>
+          <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            Manténgase informado con nuestro servicio exclusivo de monitoreo de futuras normas ISO
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg">
+            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+              <AlertCircle class="w-6 h-6 text-white" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Alertas Tempranas</h3>
+            <p class="text-blue-100">Reciba notificaciones inmediatas sobre nuevos desarrollos y fechas de lanzamiento</p>
+          </div>
+
+          <div class="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg">
+            <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <TrendingUp class="w-6 h-6 text-white" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Análisis de Impacto</h3>
+            <p class="text-blue-100">Evaluaciones personalizadas de cómo los cambios afectarán su organización</p>
+          </div>
+
+          <div class="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg">
+            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+              <Target class="w-6 h-6 text-white" />
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Plan de Transición</h3>
+            <p class="text-blue-100">Estrategias detalladas para una transición exitosa a las nuevas normas</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="/contacto" class="bg-white text-indigo-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center">
+            <Users class="w-5 h-5 mr-2" />
+            Suscribirse a ISO Future Watch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Preguntas Frecuentes</h2>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">¿Qué tan confiable es esta información?</h3>
+            <p class="text-gray-600">Nuestra información se basa en documentos oficiales de ISO, participación en comités técnicos y análisis de tendencias de la industria. Sin embargo, las fechas y contenidos específicos pueden cambiar durante el proceso de desarrollo.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">¿Cuándo debo comenzar a prepararme?</h3>
+            <p class="text-gray-600">Recomendamos comenzar la preparación 12-18 meses antes del lanzamiento esperado. Esto permite una transición gradual y reduce los costos de implementación.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">¿Mis certificaciones actuales seguirán siendo válidas?</h3>
+            <p class="text-gray-600">Sí, las certificaciones actuales tendrán un período de transición (típicamente 3 años) durante el cual ambas versiones serán válidas. Ofrecemos servicios de migración para asegurar continuidad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

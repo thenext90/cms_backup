@@ -2,15 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 
 // Función para cargar los datos de noticias desde el JSON
-async function loadIsoData() {
+async function loadIsoData(): Promise<any> {
   try {
     // Importa directamente el archivo JSON canónico
     const module = await import('../data/iso_news.json');
-    const data = module.default || module;
+    const data: any = module.default || module;
 
     // Ordenar artículos por fecha de publicación
     if (data.articles && Array.isArray(data.articles)) {
-      data.articles.sort((a, b) => {
+      data.articles.sort((a: any, b: any) => {
         const parseDate = (dateStr: string) => {
           if (!dateStr || typeof dateStr !== 'string') return 0;
           const parts = dateStr.split('/');
@@ -40,9 +40,9 @@ async function loadIsoData() {
 }
 
 // Cargar datos
-const isoData = await loadIsoData();
-const articles = isoData.articles || [];
-const metadata = isoData.metadata || {};
+const isoData: any = await loadIsoData();
+const articles: any[] = isoData.articles || [];
+const metadata: any = isoData.metadata || {};
 
 // Formatear fecha para mostrar
 const formatDate = (dateString: string): string => {

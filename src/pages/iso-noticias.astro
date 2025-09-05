@@ -11,20 +11,23 @@ async function loadIsoData() {
     // Ordenar artículos por fecha de publicación
     if (data.articles && Array.isArray(data.articles)) {
       data.articles.sort((a, b) => {
-        const parseDate = (dateStr: string) => {
-          if (!dateStr || typeof dateStr !== 'string') return 0;
-          const parts = dateStr.split('/');
-          if (parts.length === 3) {
-            // Formato DD/MM/YYYY
-            return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).getTime();
+        const parseDate = (article: any) => {
+          // Primero intentar con publishedAt (formato ISO)
+          if (article.publishedAt) {
+            return new Date(article.publishedAt).getTime();
           }
-          // Fallback para otros formatos de fecha que Date.parse pueda entender
-          const date = new Date(dateStr).getTime();
-          return isNaN(date) ? 0 : date;
+          // Fallback para date en formato DD/MM/YYYY
+          if (article.date && typeof article.date === 'string') {
+            const parts = article.date.split('/');
+            if (parts.length === 3) {
+              return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).getTime();
+            }
+          }
+          return 0;
         };
 
-        const dateA = parseDate(a.date);
-        const dateB = parseDate(b.date);
+        const dateA = parseDate(a);
+        const dateB = parseDate(b);
 
         return dateB - dateA;
       });
@@ -40,30 +43,33 @@ async function loadIsoData() {
 }
 
 // Cargar datos
-const isoData = await loadIsoData();
+const isoData: any = await loadIsoData();
 const articles = isoData.articles || [];
 const metadata = isoData.metadata || {};
 
 // Formatear fecha para mostrar
-const formatDate = (dateString: string): string => {
-  if (!dateString) return '';
-  // El formato de fecha del scraper es DD/MM/YYYY
-  const parts = dateString.split('/');
-  if (parts.length === 3) {
-    // Reordenar a YYYY-MM-DD para un parseo consistente
-    const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-    return new Date(isoDate).toLocaleDateString('es-CL', {
+const formatDate = (article: any): string => {
+  // Primero intentar con publishedAt (formato ISO)
+  if (article.publishedAt) {
+    return new Date(article.publishedAt).toLocaleDateString('es-CL', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   }
-  // Fallback para fechas en formato ISO
-  return new Date(dateString).toLocaleDateString('es-CL', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+  // Fallback para date en formato DD/MM/YYYY
+  if (article.date && typeof article.date === 'string') {
+    const parts = article.date.split('/');
+    if (parts.length === 3) {
+      const isoDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+      return new Date(isoDate).toLocaleDateString('es-CL', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+  }
+  return '';
 };
 ---
 
@@ -82,19 +88,23 @@ const formatDate = (dateString: string): string => {
         y estándares de calidad en Chile.
       </p>
       
-      {metadata.generated_at && (
+      {(metadata.lastUpdated || metadata.generated_at) && (
         <div class="mt-4 text-sm text-gray-500">
-          📅 Última actualización: {new Date(metadata.generated_at).toLocaleString('es-CL')}
+          📅 Última actualización: {
+            metadata.lastUpdated 
+              ? new Date(metadata.lastUpdated).toLocaleString('es-CL')
+              : new Date(metadata.generated_at).toLocaleString('es-CL')
+          }
         </div>
       )}
     </div>
 
     <!-- Stats Section -->
-    {metadata.total_articles && (
+    {(metadata.totalArticles || metadata.total_articles) && (
       <div class="bg-blue-50 rounded-lg p-6 mb-8">
         <div class="flex justify-center text-center">
           <div>
-            <div class="text-3xl font-bold text-blue-600">{metadata.total_articles}</div>
+            <div class="text-3xl font-bold text-blue-600">{metadata.totalArticles || metadata.total_articles}</div>
             <div class="text-sm text-gray-600">Artículos Encontrados</div>
           </div>
         </div>
@@ -113,11 +123,26 @@ const formatDate = (dateString: string): string => {
           )}
           <div class="p-6 flex-grow">
             <div class="mb-4">
+              {/* Mostrar bandera de país */}
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">{article.flag}</span>
+                <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                  {article.category || 'ISO'}
+                </span>
+              </div>
+              
               <h2 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-3">
                 {article.title}
               </h2>
               
-              {article.summary && (
+              {article.description && (
+                <p class="text-gray-600 text-sm line-clamp-4 mb-3">
+                  {article.description}
+                </p>
+              )}
+              
+              {/* Fallback para campo summary si no hay description */}
+              {!article.description && article.summary && (
                 <p class="text-gray-600 text-sm line-clamp-4 mb-3">
                   {article.summary}
                 </p>
@@ -125,21 +150,33 @@ const formatDate = (dateString: string): string => {
             </div>
             
             <div class="flex flex-wrap gap-2 mb-4">
-              {article.source && (
+              {/* Nuevo formato de source */}
+              {article.source && typeof article.source === 'object' && (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  🌐 {article.source.name}
+                </span>
+              )}
+              {/* Fallback para source como string */}
+              {article.source && typeof article.source === 'string' && (
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                   🌐 {article.source}
                 </span>
               )}
+              
+              {/* Tags */}
+              {article.tags && Array.isArray(article.tags) && article.tags.slice(0, 2).map((tag: string) => (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
 
           <div class="p-6 pt-0 border-t border-gray-200 mt-auto">
             <div class="flex justify-between items-center">
-              {article.date && (
-                <span class="text-xs text-gray-500">
-                  📅 {formatDate(article.date)}
-                </span>
-              )}
+              <span class="text-xs text-gray-500">
+                📅 {formatDate(article)}
+              </span>
               
               {article.url && (
                 <a 

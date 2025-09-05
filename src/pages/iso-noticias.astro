@@ -1,51 +1,44 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
 
-// Función para cargar los datos de noticias desde el JSON
-async function loadIsoData() {
-  try {
-    // Importa directamente el archivo JSON canónico
-    const module = await import('../data/iso_news.json');
-    const data = module.default || module;
+// Importar directamente el JSON
+import isoNewsData from '../data/iso_news.json';
 
-    // Ordenar artículos por fecha de publicación
-    if (data.articles && Array.isArray(data.articles)) {
-      data.articles.sort((a, b) => {
-        const parseDate = (article: any) => {
-          // Primero intentar con publishedAt (formato ISO)
-          if (article.publishedAt) {
-            return new Date(article.publishedAt).getTime();
+// Procesar y ordenar los datos
+const processedData = (() => {
+  const data = isoNewsData as any;
+  
+  // Ordenar artículos por fecha de publicación
+  if (data.articles && Array.isArray(data.articles)) {
+    data.articles.sort((a: any, b: any) => {
+      const parseDate = (article: any) => {
+        // Primero intentar con publishedAt (formato ISO)
+        if (article.publishedAt) {
+          return new Date(article.publishedAt).getTime();
+        }
+        // Fallback para date en formato DD/MM/YYYY
+        if (article.date && typeof article.date === 'string') {
+          const parts = article.date.split('/');
+          if (parts.length === 3) {
+            return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).getTime();
           }
-          // Fallback para date en formato DD/MM/YYYY
-          if (article.date && typeof article.date === 'string') {
-            const parts = article.date.split('/');
-            if (parts.length === 3) {
-              return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).getTime();
-            }
-          }
-          return 0;
-        };
+        }
+        return 0;
+      };
 
-        const dateA = parseDate(a);
-        const dateB = parseDate(b);
+      const dateA = parseDate(a);
+      const dateB = parseDate(b);
 
-        return dateB - dateA;
-      });
-    }
-
-    return data;
-
-  } catch (error) {
-    console.error("Error cargando datos de noticias:", (error as Error).message);
-    // Si el archivo no existe o hay un error, devuelve una estructura vacía
-    return { articles: [], metadata: { total_articles: 0, generated_at: new Date().toISOString() } };
+      return dateB - dateA;
+    });
   }
-}
+
+  return data;
+})();
 
 // Cargar datos
-const isoData: any = await loadIsoData();
-const articles = isoData.articles || [];
-const metadata = isoData.metadata || {};
+const articles = processedData.articles || [];
+const metadata = processedData.metadata || {};
 
 // Formatear fecha para mostrar
 const formatDate = (article: any): string => {

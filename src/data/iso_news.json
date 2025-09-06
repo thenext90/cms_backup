@@ -1,0 +1,47 @@
+﻿{
+  "metadata": {
+    "generated_at": "2025-09-05T10:15:00.000Z",
+    "data_source": "Noticias ISO Internacionales en Español",
+    "total_articles": 5,
+    "international_articles": 5,
+    "countries_covered": ["España", "México", "Argentina", "Colombia", "Ecuador"],
+    "coverage": "internacional_español"
+  },
+  "articles": [
+    {
+      "title": "AENOR España actualiza certificaciones ISO 9001:2025 con enfoque en sostenibilidad",
+      "url": "https://www.aenor.com/noticias/iso-9001-2025-sostenibilidad",
+      "source": "AENOR España 🇪🇸",
+      "date": "04/09/2025",
+      "summary": "La Asociación Española de Normalización y Certificación anuncia nuevas directrices para ISO 9001:2025 que integran criterios de sostenibilidad y responsabilidad social empresarial."
+    },
+    {
+      "title": "México implementa ISO 14001:2024 en sector automotriz con resultados exitosos",
+      "url": "https://www.ema.org.mx/noticias/iso-14001-automotriz-mexico",
+      "source": "Entidad Mexicana de Acreditación 🇲🇽",
+      "date": "03/09/2025",
+      "summary": "Las principales empresas automotrices en México reportan una reducción del 30% en emisiones tras implementar la norma ISO 14001:2024 para gestión ambiental."
+    },
+    {
+      "title": "Argentina pionera en ISO 27001:2024 para protección de datos financieros",
+      "url": "https://www.iram.org.ar/noticias/iso-27001-2024-sector-financiero",
+      "source": "IRAM Argentina 🇦🇷",
+      "date": "02/09/2025",
+      "summary": "El Instituto Argentino de Normalización y Certificación reporta que los bancos argentinos lideran la región en adopción de ISO 27001:2024 para ciberseguridad."
+    },
+    {
+      "title": "Colombia certifica hospitales con ISO 45001:2025 para seguridad del personal sanitario",
+      "url": "https://www.icontec.org/noticias/iso-45001-hospitales-colombia",
+      "source": "ICONTEC Colombia 🇨🇴",
+      "date": "01/09/2025",
+      "summary": "El Instituto Colombiano de Normas Técnicas certifica los primeros hospitales del país con la nueva norma ISO 45001:2025 para seguridad y salud ocupacional."
+    },
+    {
+      "title": "Ecuador implementa ISO 37001 contra corrupción en sector petrolero",
+      "url": "https://www.inen.gob.ec/noticias/iso-37001-anticorrupcion-petroleo",
+      "source": "INEN Ecuador 🇪🇨",
+      "date": "26/08/2025",
+      "summary": "El Instituto Ecuatoriano de Normalización implementa ISO 37001 en empresas petroleras estatales para fortalecer sistemas de gestión antisoborno."
+    }
+  ]
+}

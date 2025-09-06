@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/env python3
 """
-Script mejorado para bÃºsqueda de noticias sobre normativas ISO en Chile
-Incluye datos reales encontrados y capacidad de scraping directo
+Script para búsqueda de noticias sobre normativas ISO en español usando NewsAPI
+Busca noticias del mundo en español, con prioridad en Chile
 """
 
 import requests
@@ -10,21 +10,19 @@ import os
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 import time
-from bs4 import BeautifulSoup
-import re
-from urllib.parse import urljoin, urlparse
 import logging
 
 class ISONewsScraperEnhanced:
     def __init__(self, output_dir: str = r"src/data"):
         """
-        Inicializa el scraper mejorado de noticias ISO para Chile
+        Inicializa el scraper de noticias ISO usando NewsAPI
         """
         self.output_dir = output_dir
         self.session = requests.Session()
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        })
+        
+        # NewsAPI Configuration
+        self.newsapi_key = os.getenv('NEWSAPI_KEY', 'a5b0b5d5ed814c2b9b1f8a8c8e8f8e8f')  # Placeholder
+        self.newsapi_base_url = "https://newsapi.org/v2"
         
         # Configurar logging
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -33,155 +31,177 @@ class ISONewsScraperEnhanced:
         # Crear directorio de salida
         os.makedirs(output_dir, exist_ok=True)
         
-        self.news_data = []
-        self.inn_news_url = "https://www.inn.cl/noticias"
-        self.hardcoded_articles = [
-            {
-                "title": "Normas Aprobadas Julio 2025",
-                "url": "https://www.inn.cl/normas-aprobadas-julio-2025",
-                "source": "Instituto Nacional de Normalización (INN)",
-                "date": "30/07/2025",
-                "summary": "8 nuevas normas ISO aprobadas por el INN en julio 2025, incluyendo microbiología alimentaria, sostenibilidad en edificios y transporte inteligente"
-            },
-            {
-                "title": "CMP certifica su Modelo GRP con tres normas internacionales ISO",
-                "url": "https://www.mch.cl/negocios-industria/cmp-certifica-su-modelo-grp-con-tres-normas-internacionales-iso/",
-                "source": "Minería Chilena",
-                "date": "30/07/2025",
-                "summary": "CMP logra certificación triple ISO tras auditoría a 69 procesos en el Valle de Copiapó"
-            },
-            {
-                "title": "San Antonio Terminal Internacional renueva certificaciones ISO 9001 e ISO 14001",
-                "url": "https://www.empresaoceano.cl/san-antonio-terminal-internacional-renueva-certificaciones-iso-9001-e",
-                "source": "Empresa Océano",
-                "date": "25/07/2025",
-                "summary": "STI renueva certificaciones ISO 9001 e ISO 14001, manteniendo también ISO 45001 e ISO 50001"
-            },
-            {
-                "title": "ISP recibe al Instituto Nacional de Normalización (INN) para verificar capacidades técnicas del Laboratorio de Metrología",
-                "url": "https://www.ispch.gob.cl/noticia/isp-recibe-al-instituto-nacional-de-normalizacion-inn-para-verificar-capacidades-tecnicas-del-laboratorio-de-metrologia/",
-                "source": "Instituto de Salud Pública",
-                "date": "25/07/2025",
-                "summary": "Visita técnica del INN al ISP para verificar capacidades de la Red Nacional de Metrología"
-            },
-            {
-                "title": "AdClean obtiene la certificación ISO 9001 otorgada por Bureau Veritas",
-                "url": "https://www.adclean.cl/blogs/noticias/certificacion-iso-9001",
-                "source": "Bureau Veritas",
-                "date": "21/11/2023",
-                "summary": "AdClean obtiene la certificación ISO 9001 otorgada por Bureau Veritas, reflejando el compromiso con la calidad y la excelencia."
-            }
+        # Términos de búsqueda para normas ISO en español
+        self.search_terms = [
+            "ISO 9001", "ISO 14001", "ISO 45001", "ISO 27001", 
+            "ISO 22000", "normas ISO", "certificación ISO",
+            "calidad ISO", "gestión ISO", "sistema ISO"
+        ]
+        
+        # Fuentes en español preferidas
+        self.spanish_sources = [
+            'el-mundo', 'el-pais', 'abc-es', 'marca', 'la-nacion',
+            'clarin', 'infobae', 'ole', 'pagina12'
+        ]
+        
+        # Dominios chilenos específicos para filtrar
+        self.chilean_domains = [
+            'emol.com', 'latercera.com', 'lun.com', 'df.cl',
+            'cooperativa.cl', 'biobiochile.cl', 'adnradio.cl',
+            'cnnchile.com', 't13.cl', 'meganoticias.cl'
         ]
 
-    def scrape_inn_news(self) -> List[Dict[str, str]]:
+    def search_newsapi(self, query: str, language: str = 'es', days_back: int = 30) -> List[Dict[str, Any]]:
         """
-        Extrae las noticias directamente de la página de noticias del INN.
+        Busca noticias usando NewsAPI
         """
-        self.logger.info(f"Extrayendo noticias de: {self.inn_news_url}")
         articles = []
+        
+        # Fecha desde hace X días
+        from_date = (datetime.now() - timedelta(days=days_back)).strftime('%Y-%m-%d')
+        
+        # Parámetros de búsqueda
+        params = {
+            'q': query,
+            'language': language,
+            'from': from_date,
+            'sortBy': 'publishedAt',
+            'pageSize': 20,
+            'apiKey': self.newsapi_key
+        }
+        
         try:
-            response = self.session.get(self.inn_news_url, timeout=15)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            news_rows = soup.select('table.views-table tbody tr')
-            for row in news_rows:
-                date_cell = row.select_one('td.views-field-created')
-                title_cell = row.select_one('td.views-field-title a')
-
-                if date_cell and title_cell:
-                    date = date_cell.get_text(strip=True)
-                    title = title_cell.get_text(strip=True)
-                    url = urljoin(self.inn_news_url, title_cell['href'])
-                    articles.append({'title': title, 'url': url, 'date': date, 'source': 'INN'})
+            # Buscar en everything endpoint (más amplio)
+            response = self.session.get(f"{self.newsapi_base_url}/everything", params=params)
+            
+            if response.status_code == 200:
+                data = response.json()
+                articles.extend(data.get('articles', []))
+                self.logger.info(f"Encontradas {len(articles)} noticias para '{query}'")
+            else:
+                self.logger.warning(f"Error en NewsAPI para '{query}': {response.status_code}")
+                
         except Exception as e:
-            self.logger.error(f"Error extrayendo noticias del INN: {e}")
-
+            self.logger.error(f"Error buscando '{query}': {str(e)}")
+        
         return articles
 
-    def scrape_direct_urls(self, articles_to_scrape: List[Dict[str, str]]) -> List[Dict[str, Any]]:
+    def search_chilean_sources(self, query: str) -> List[Dict[str, Any]]:
         """
-        Extrae contenido directamente de una lista de URLs de artÃ­culos.
+        Busca específicamente en fuentes chilenas usando NewsAPI
         """
-        scraped_articles = []
+        articles = []
+        
+        # Términos específicos para Chile
+        chilean_query = f"{query} Chile OR Chile {query}"
+        
+        # Buscar en fuentes generales con filtro de Chile
+        general_articles = self.search_newsapi(chilean_query)
+        
+        # Filtrar artículos que mencionen Chile o tengan dominios chilenos
+        for article in general_articles:
+            url = article.get('url', '')
+            title = article.get('title', '').lower()
+            description = article.get('description', '').lower()
+            
+            # Verificar si es relevante para Chile
+            is_chilean = (
+                any(domain in url for domain in self.chilean_domains) or
+                'chile' in title or 'chile' in description or
+                'chileno' in title or 'chileno' in description or
+                'chilena' in title or 'chilena' in description
+            )
+            
+            if is_chilean:
+                articles.append(article)
+        
+        return articles
 
-        for news_item in articles_to_scrape:
+    def get_iso_news_from_api(self) -> List[Dict[str, Any]]:
+        """
+        Obtiene noticias ISO de múltiples fuentes usando NewsAPI
+        """
+        all_articles = []
+        
+        # Buscar por cada término
+        for term in self.search_terms:
+            self.logger.info(f"Buscando noticias para: {term}")
+            
+            # Búsqueda general en español
+            general_articles = self.search_newsapi(term)
+            all_articles.extend(general_articles)
+            
+            # Búsqueda específica en fuentes chilenas
+            chilean_articles = self.search_chilean_sources(term)
+            all_articles.extend(chilean_articles)
+            
+            # Pausa entre búsquedas para respetar límites de API
+            time.sleep(1)
+        
+        # Eliminar duplicados basándose en URL
+        unique_articles = {}
+        for article in all_articles:
+            url = article.get('url')
+            if url and url not in unique_articles:
+                unique_articles[url] = article
+        
+        return list(unique_articles.values())
+
+    def process_newsapi_articles(self, articles: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Procesa artículos de NewsAPI al formato esperado
+        """
+        processed_articles = []
+        
+        for article in articles:
             try:
-                self.logger.info(f"Extrayendo contenido de: {news_item['title'][:50]}...")
-
-                # Nota: verify=False se aÃ±ade para omitir errores de SSL en sitios con certificados mal configurados (ej. ispch.gob.cl)
-                response = self.session.get(news_item['url'], timeout=15, verify=False)
-                response.raise_for_status()
+                # Extraer información básica
+                title = article.get('title', 'Sin título')
+                url = article.get('url', '')
+                source_name = article.get('source', {}).get('name', 'Fuente desconocida')
+                published_at = article.get('publishedAt', '')
+                description = article.get('description', '')
+                image_url = article.get('urlToImage', '')
+                content = article.get('content', '')
                 
-                soup = BeautifulSoup(response.content, 'html.parser')
+                # Formatear fecha
+                try:
+                    if published_at:
+                        date_obj = datetime.strptime(published_at, '%Y-%m-%dT%H:%M:%SZ')
+                        formatted_date = date_obj.strftime('%d/%m/%Y')
+                    else:
+                        formatted_date = datetime.now().strftime('%d/%m/%Y')
+                except:
+                    formatted_date = datetime.now().strftime('%d/%m/%Y')
                 
-                # Extraer contenido completo
-                content_text = ''
-                content_selectors = [
-                    'div.field-item', '.content', '.article-content', '.entry-content',
-                    '.post-content', '.main-content', 'article',
-                    '.article-body', '.story-body'
-                ]
+                # Crear resumen
+                summary = description if description else (content[:200] + '...' if content and len(content) > 200 else content)
                 
-                for selector in content_selectors:
-                    content_elem = soup.select_one(selector)
-                    if content_elem:
-                        # Remover scripts y estilos
-                        for script in content_elem(["script", "style"]):
-                            script.decompose()
-                        content_text = content_elem.get_text(strip=True, separator=' ')
-                        break
+                # Determinar si es de Chile
+                is_chilean = any(domain in url for domain in self.chilean_domains)
                 
-                # Si no encontramos contenido especÃ­fico, usar todo el texto
-                if not content_text:
-                    content_text = soup.get_text(strip=True, separator=' ')
-                
-                # Extraer imagen principal (og:image o primera imagen relevante)
-                image_url = None
-                og_image = soup.select_one('meta[property="og:image"]')
-                if og_image:
-                    image_url = urljoin(news_item['url'], og_image['content'])
-                else:
-                    # Fallback a buscar una imagen en el contenido
-                    content_img = soup.select_one('.content img, .entry-content img, .article-body img')
-                    if content_img and content_img.get('src'):
-                        image_url = urljoin(news_item['url'], content_img['src'])
-
-                # Crear artÃ­culo completo
-                summary = content_text[:200] + '...' if len(content_text) > 200 else content_text
-                complete_article = {
-                    'title': news_item['title'],
-                    'url': news_item['url'],
-                    'source': news_item['source'],
-                    'date': news_item['date'],
+                processed_article = {
+                    'title': title,
+                    'url': url,
+                    'source': f"{source_name}{'🇨🇱' if is_chilean else '🌍'}",
+                    'date': formatted_date,
                     'summary': summary,
                     'image_url': image_url,
-                    'full_content': content_text[:10000],  # Limitar a 10k caracteres
-                    'content_length': len(content_text),
+                    'full_content': content,
+                    'content_length': len(content) if content else 0,
                     'scraped_at': datetime.now().isoformat(),
-                    'scraping_success': True
+                    'scraping_success': True,
+                    'is_chilean_source': is_chilean,
+                    'published_at': published_at
                 }
                 
-                scraped_articles.append(complete_article)
-                time.sleep(1)  # Pausa entre requests
+                processed_articles.append(processed_article)
                 
             except Exception as e:
-                self.logger.warning(f"Error extrayendo {news_item['url']}: {str(e)}")
-                # Agregar artÃ­culo sin contenido completo
-                error_article = {
-                    'title': news_item['title'],
-                    'url': news_item['url'],
-                    'source': news_item['source'],
-                    'date': news_item['date'],
-                    'full_content': '',
-                    'content_length': 0,
-                    'scraped_at': datetime.now().isoformat(),
-                    'scraping_success': False,
-                    'error': str(e)
-                }
-                scraped_articles.append(error_article)
+                self.logger.warning(f"Error procesando artículo: {str(e)}")
+                continue
         
-        return scraped_articles
+        return processed_articles
     
     def save_results_json(self, data: List[Dict[str, Any]], filename: str) -> str:
         """

@@ -56,6 +56,15 @@ const fallbackData = {
 // Usar datos reales o fallback y filtrar la noticia específica
 let displayData = isoData || fallbackData;
 
+// Adaptar estructura del nuevo JSON (daily_news vs data)
+if (displayData && displayData.daily_news) {
+  // Nuevo formato: usar daily_news
+  displayData.data = displayData.daily_news;
+} else if (displayData && !displayData.data) {
+  // Si no hay datos, usar fallback
+  displayData = fallbackData;
+}
+
 // Filtrar las noticias específicas que no queremos mostrar
 if (displayData && displayData.data) {
   displayData.data = displayData.data.filter(article => 

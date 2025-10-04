@@ -65,13 +65,9 @@ if (displayData && displayData.daily_news) {
   displayData = fallbackData;
 }
 
-// Filtrar las noticias específicas que no queremos mostrar y limitar a 3 artículos
+// Limitar a 3 artículos (sin filtros adicionales)
 if (displayData && displayData.data) {
-  displayData.data = displayData.data.filter(article => 
-    !article.title.includes("Calidad 5.0: cómo la inteligencia artificial y el factor humano transforman la excelencia operativa") &&
-    !article.title.includes("Software de gestión medioambiental: 7 requisitos clave para elegir la mejor solución para tu empresa") &&
-    !article.title.includes("¿Cómo decidir si la certificación del estándar ISO 42001 es la opción adecuada para su organización?")
-  ).slice(0, 3); // Limitar a solo 3 artículos
+  displayData.data = displayData.data.slice(0, 3);
 }
 
 // Función para obtener el ícono de categoría

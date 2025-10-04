@@ -65,10 +65,8 @@ if (displayData && displayData.daily_news) {
   displayData = fallbackData;
 }
 
-// Limitar a 3 artículos (sin filtros adicionales)
-if (displayData && displayData.data) {
-  displayData.data = displayData.data.slice(0, 3);
-}
+// Mostrar todos los artículos disponibles
+// (sin límites ni filtros)
 
 // Función para obtener el ícono de categoría
 function getCategoryIcon(category) {

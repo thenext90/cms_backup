@@ -1,5 +1,5 @@
 ---
-import { Clock, TrendingUp, ExternalLink, Sparkles, Users, AlertCircle } from 'lucide-astro';
+import { Clock, TrendingUp, Sparkles, Users, AlertCircle } from 'lucide-astro';
 
 // Función para obtener datos de ISOTools
 async function getISOToolsData() {
@@ -152,16 +152,6 @@ function truncateText(text, maxLength = 999999) {
                     ✨ Resumen IA
                   </span>
                 </div>
-                
-                <a 
-                  href={article.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center text-accent-800 hover:text-accent-900 font-medium text-sm transition-colors group"
-                >
-                  Leer más
-                  <ExternalLink size="14" class="ml-1 group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
             </div>
           </article>

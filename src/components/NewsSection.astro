@@ -18,6 +18,32 @@ function formatearFecha(fechaTexto) {
   }
 }
 
+// Función para extraer solo el mes de la fecha
+function extraerMes(fechaTexto) {
+  try {
+    const partes = fechaTexto.split(' ');
+    if (partes.length >= 1) {
+      return partes[0]; // Solo el mes
+    }
+    return fechaTexto;
+  } catch (error) {
+    return fechaTexto;
+  }
+}
+
+// Función para extraer el año de la fecha
+function extraerAno(fechaTexto) {
+  try {
+    const partes = fechaTexto.split(' ');
+    if (partes.length >= 3) {
+      return partes[2].replace(',', '');
+    }
+    return new Date().getFullYear().toString();
+  } catch (error) {
+    return new Date().getFullYear().toString();
+  }
+}
+
 // Función para inferir categoría del texto
 function inferirCategoria(texto) {
   const textoLower = texto.toLowerCase();
@@ -61,63 +87,89 @@ function crearTitulo(texto) {
 }
 
 // Mapear datos del JSON al formato esperado por el frontend
-const news = cms2Data.noticias
+const allNews = cms2Data.noticias
   .filter(noticia => noticia.texto && noticia.texto.trim() !== '') // Filtrar entradas vacías
   .map((noticia, index) => {
     return {
-      date: formatearFecha(noticia.fecha), // Usar fecha directamente del campo fecha
+      date: formatearFecha(noticia.fecha), // Fecha completa para referencia
+      monthOnly: extraerMes(noticia.fecha), // Solo el mes para mostrar
+      year: extraerAno(noticia.fecha), // Año para agrupar
       title: crearTitulo(noticia.texto),
       excerpt: noticia.texto.replace(/\n/g, ' ').substring(0, 150) + (noticia.texto.length > 150 ? '...' : ''),
-      category: inferirCategoria(noticia.texto), // Todas las noticias usan categorización automática
+      category: inferirCategoria(noticia.texto),
       image: noticia.imagen
     };
   });
+
+// Agrupar noticias por año
+const newsByYear = allNews.reduce((acc, noticia) => {
+  const year = noticia.year;
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(noticia);
+  return acc;
+}, {});
+
+// Ordenar años de más reciente a más antiguo
+const sortedYears = Object.keys(newsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+
+// Calcular rango de años para el titular
+const yearRange = sortedYears.length > 0 ? `${sortedYears[0]} - ${sortedYears[sortedYears.length - 1]}` : '2025';
 ---
 
 <section class="py-8 bg-gradient-to-br from-gray-50 via-white to-gray-100">
   <div class="max-w-container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-        Noticias Clientes
-      </h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Experiencias reales de nuestros clientes en sus procesos de certificación y mejora continua
-      </p>
-    </div>
-
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 mb-12">
-      {news.map((item, index) => (
-        <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 font-sans">
-          <div class="relative">
-            <img 
-              src={item.image} 
-              alt={item.title}
-              class="w-full h-32 object-cover"
-            />
-            <div class="absolute top-2 left-2">
-              <span class="bg-gradient-to-r from-accent-600 to-accent-800 text-white text-xs font-semibold px-2 py-1 rounded-full">
-                {item.category}
-              </span>
-            </div>
-          </div>
-          
-          <div class="p-5">
-            <div class="flex items-center space-x-2 text-xs text-gray-900 font-bold mb-2 bg-gray-100 rounded-md px-2 py-1">
-              <Calendar size="14" />
-              <time>{item.date}</time>
-            </div>
-            
-            <h3 class="text-base font-bold text-gray-800 mb-2 leading-tight">
-              {item.title}
-            </h3>
-            
-            <p class="text-gray-600 text-xs leading-normal mb-3">
-              {item.excerpt}
-            </p>
-          </div>
-        </article>
-      ))}
-    </div>
+    
+    <!-- Noticias agrupadas por año -->
+    {sortedYears.map((year) => (
+      <div class="mb-16">
+        <!-- Título del año -->
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-accent-800 bg-accent-50 inline-block px-6 py-3 rounded-full border-2 border-accent-200">
+            {year}
+          </h3>
+        </div>
+        
+        <!-- Tarjetas del año -->
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+          {newsByYear[year].map((item, index) => (
+            <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 font-sans">
+              <!-- Fecha prominente - Solo mes - Compacta -->
+              <div class="bg-gradient-to-r from-accent-600 to-accent-800 text-white py-1.5 text-center">
+                <div class="flex items-center justify-center space-x-2">
+                  <Calendar size="14" class="text-white" />
+                  <time class="font-bold text-sm">{item.monthOnly}</time>
+                </div>
+              </div>
+              
+              <div class="relative">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  class="w-full h-28 object-cover"
+                />
+                <div class="absolute top-2 right-2">
+                  <span class="bg-gray-900/90 text-white text-xs font-semibold px-2 py-1 rounded-full shadow-lg">
+                    {item.category}
+                  </span>
+                </div>
+              </div>
+              
+              <div class="p-4">
+                <h3 class="text-sm font-bold text-gray-800 mb-2 leading-tight">
+                  {item.title}
+                </h3>
+                
+                <p class="text-gray-600 text-xs leading-normal">
+                  {item.excerpt}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
 
     <div class="text-center">
     </div>

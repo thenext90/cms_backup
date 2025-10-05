@@ -138,7 +138,12 @@ function getDefaultImage(category) {
 function getArticleImage(article) {
   // Priorizar image_url de los datos reales
   if (article.image_url) {
-    return article.image_url;
+    // Corregir URLs HTTP a HTTPS para evitar problemas de seguridad
+    let imageUrl = article.image_url;
+    if (imageUrl.startsWith('http://')) {
+      imageUrl = imageUrl.replace('http://', 'https://');
+    }
+    return imageUrl;
   }
   // Fallback a image si existe
   if (article.image) {
@@ -165,12 +170,14 @@ function getArticleImage(article) {
         {displayData.data.map((article) => (
           <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
             <!-- Imagen del artículo -->
-            <div class="relative h-48 overflow-hidden">
+            <div class="relative h-48 overflow-hidden bg-gray-200">
               <img 
                 src={getArticleImage(article)} 
                 alt={article.title}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 loading="lazy"
+                data-isotools-img
+                data-fallback={getDefaultImage(article.category)}
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
@@ -222,3 +229,20 @@ function getArticleImage(article) {
     )}
   </div>
 </section>
+
+<script>
+  // Manejo de fallback de imágenes del lado del cliente
+  document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('[data-isotools-img]');
+    
+    images.forEach(img => {
+      img.addEventListener('error', function() {
+        // Si la imagen falla, usar la imagen por defecto
+        const fallbackSrc = this.getAttribute('data-fallback');
+        if (fallbackSrc && this.src !== fallbackSrc) {
+          this.src = fallbackSrc;
+        }
+      });
+    });
+  });
+</script>

@@ -5,14 +5,16 @@ import { Clock, TrendingUp, Sparkles, Users, AlertCircle } from 'lucide-astro';
 async function getISOToolsData() {
   try {
     const timestamp = Date.now();
-    // Usar GitHub API en lugar de RAW para actualizaciones más rápidas
-    const response = await fetch(`https://api.github.com/repos/thenext90/noticias_isotools_cms/contents/isotools-daily-news.json?t=${timestamp}`, {
+    const randomParam = Math.random().toString(36).substring(7);
+    // Usar GitHub API con múltiples parámetros para evitar cache
+    const response = await fetch(`https://api.github.com/repos/thenext90/noticias_isotools_cms/contents/isotools-daily-news.json?t=${timestamp}&r=${randomParam}&nocache=true`, {
       cache: 'no-cache',
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache',
         'Expires': '0',
-        'Accept': 'application/vnd.github.v3+json'
+        'Accept': 'application/vnd.github.v3+json',
+        'If-None-Match': '*'
       }
     });
     
@@ -60,11 +62,24 @@ async function getISOToolsData() {
 let isoData = null;
 try {
   isoData = await getISOToolsData();
-  console.log('Datos de ISOTools cargados via API:', isoData ? 'Éxito' : 'Falló');
+  console.log('=== DEBUG ISOTOOLS DATA ===');
+  console.log('Datos cargados:', isoData ? 'Éxito' : 'Falló');
   if (isoData) {
-    console.log('Estructura de datos:', Object.keys(isoData));
-    console.log('Artículos encontrados:', isoData.daily_news ? isoData.daily_news.length : 'No hay daily_news');
+    console.log('Estructura completa:', Object.keys(isoData));
+    if (isoData.metadata) {
+      console.log('Metadata fecha generación:', isoData.metadata.generated_date);
+      console.log('Metadata generated_at:', isoData.metadata.generated_at);
+    }
+    if (isoData.daily_news) {
+      console.log('Daily news count:', isoData.daily_news.length);
+      console.log('Títulos de artículos:');
+      isoData.daily_news.forEach((article, index) => {
+        console.log(`  ${index + 1}. ${article.title}`);
+      });
+    }
+    console.log('Datos completos:', JSON.stringify(isoData, null, 2));
   }
+  console.log('=== FIN DEBUG ===');
 } catch (error) {
   console.error('Error fetching ISOTools data via API:', error);
 }

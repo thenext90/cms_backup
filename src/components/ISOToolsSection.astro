@@ -42,7 +42,6 @@ const fallbackData = {
       url: "https://www.cmsconsultores.cl/riesgos-psicosociales",
       ai_summary: "La evaluación avanzada de riesgos psicosociales se posiciona como elemento crítico en los sistemas de gestión de seguridad laboral. Las organizaciones deben implementar metodologías de detección temprana de burnout, análisis de clima organizacional, gestión del estrés laboral y protocolos de bienestar mental. Esta evolución incluye herramientas de monitoreo continuo y programas preventivos que protegen la salud mental como componente esencial de la seguridad ocupacional.",
       category: "ISO_45001_Riesgos_Psicosociales",
-      image: "/images/capital-humano-ciberseguridad.jpg",
       extracted_at: "2025-10-03T01:48:36.651Z"
     },
 
@@ -52,7 +51,6 @@ const fallbackData = {
       url: "https://www.isotools.us/",
       ai_summary: "El cumplimiento de la norma ISO 27001 es crucial para garantizar la seguridad de la información en las organizaciones.",
       category: "ISO_27001_Seguridad_Informacion",
-      image: "/images/27001_CMS.webp",
       extracted_at: "2025-10-03T01:48:36.651Z"
     }
   ],
@@ -73,35 +71,6 @@ if (displayData && displayData.daily_news) {
   displayData = fallbackData;
 }
 
-// Mostrar todos los artículos disponibles
-// (sin límites ni filtros)
-
-// Función para obtener el ícono de categoría
-function getCategoryIcon(category) {
-  if (category.includes('42001') || category.includes('Inteligencia')) {
-    return 'sparkles';
-  } else if (category.includes('9001') || category.includes('Calidad')) {
-    return 'trending-up';
-  } else if (category.includes('14001') || category.includes('Ambiental')) {
-    return 'users';
-  }
-  return 'trending-up';
-}
-
-// Función para obtener color de categoría
-function getCategoryColor(category) {
-  if (category.includes('42001') || category.includes('Inteligencia')) {
-    return 'bg-purple-100 text-purple-800 border-purple-200';
-  } else if (category.includes('9001') || category.includes('Calidad')) {
-    return 'bg-blue-100 text-blue-800 border-blue-200';
-  } else if (category.includes('14001') || category.includes('Ambiental')) {
-    return 'bg-green-100 text-green-800 border-green-200';
-  } else if (category.includes('27001') || category.includes('Seguridad')) {
-    return 'bg-red-100 text-red-800 border-red-200';
-  }
-  return 'bg-gray-100 text-gray-800 border-gray-200';
-}
-
 // Función para formatear la fecha
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -116,37 +85,6 @@ function formatDate(dateString) {
 function truncateText(text, maxLength = 999999) {
   // Mostrar texto completo sin límite
   return text;
-}
-
-// Función para obtener imagen por defecto según categoría
-function getDefaultImage(category) {
-  if (category.includes('42001') || category.includes('Inteligencia')) {
-    return '/images/CMS_IA_Banner.png';
-  } else if (category.includes('9001') || category.includes('Calidad')) {
-    return '/images/cms-iso9001-2015-equipo.webp';
-  } else if (category.includes('14001') || category.includes('Ambiental')) {
-    return '/images/mejora-cms.webp';
-  } else if (category.includes('27001') || category.includes('Seguridad')) {
-    return '/images/27001_CMS.webp';
-  } else if (category.includes('45001') || category.includes('Psicosociales')) {
-    return '/images/capital-humano-ciberseguridad.jpg';
-  }
-  return '/images/capa-cms-banner.webp'; // Imagen por defecto
-}
-
-// Función para obtener la imagen del artículo (solo del JSON externo)
-function getArticleImage(article) {
-  // Solo usar image_url de los datos reales del JSON
-  if (article.image_url) {
-    // Corregir URLs HTTP a HTTPS para evitar problemas de seguridad
-    let imageUrl = article.image_url;
-    if (imageUrl.startsWith('http://')) {
-      imageUrl = imageUrl.replace('http://', 'https://');
-    }
-    return imageUrl;
-  }
-  // Si no hay image_url, retornar null para mostrar placeholder
-  return null;
 }
 ---
 
@@ -165,30 +103,6 @@ function getArticleImage(article) {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {displayData.data.map((article) => (
           <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-            <!-- Imagen del artículo -->
-            <div class="relative h-48 overflow-hidden bg-gray-100">
-              {getArticleImage(article) ? (
-                <img 
-                  src={getArticleImage(article)} 
-                  alt={article.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                  data-isotools-img
-                />
-              ) : (
-                <!-- Placeholder cuando no hay imagen -->
-                <div class="w-full h-full flex items-center justify-center bg-gray-200 text-gray-500">
-                  <div class="text-center">
-                    <svg class="w-12 h-12 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                    <p class="text-sm font-medium">Imagen no encontrada</p>
-                  </div>
-                </div>
-              )}
-              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
-            
             <!-- Header del artículo -->
             <div class="p-6 border-b border-gray-100">
               <div class="flex items-start justify-between mb-3">
@@ -236,33 +150,3 @@ function getArticleImage(article) {
     )}
   </div>
 </section>
-
-<script>
-  // Manejo de errores de imagen del lado del cliente
-  document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('[data-isotools-img]');
-    
-    images.forEach(img => {
-      img.addEventListener('error', function() {
-        // Si la imagen falla, ocultar la imagen y mostrar el placeholder del contenedor padre
-        const container = this.parentElement;
-        this.style.display = 'none';
-        
-        // Crear placeholder si no existe
-        if (!container.querySelector('.image-placeholder')) {
-          const placeholder = document.createElement('div');
-          placeholder.className = 'image-placeholder w-full h-full flex items-center justify-center bg-gray-200 text-gray-500';
-          placeholder.innerHTML = `
-            <div class="text-center">
-              <svg class="w-12 h-12 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
-              <p class="text-sm font-medium">Imagen no encontrada</p>
-            </div>
-          `;
-          container.insertBefore(placeholder, container.firstChild);
-        }
-      });
-    });
-  });
-</script>

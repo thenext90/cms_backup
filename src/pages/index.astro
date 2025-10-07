@@ -9,19 +9,83 @@ import ServicesOverview from '../components/ServicesOverview.astro';
 ---
 
 <Layout title="CMS Consultores - Calidad y Gestión">
-  <main>
-    <section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-20 flex flex-col items-center justify-center">
-      <img src="/images/LOGO-cms.png" alt="Logo CMS" class="h-24 mb-6 drop-shadow-xl" />
-      <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gold">Camino hacia la Calidad</h1>
-      <p class="text-xl md:text-2xl mb-8 max-w-2xl text-center text-accent-100">Confianza, vanguardia, accesibilidad y compromiso con las Normas ISO.</p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center">
-        <a href="/servicios" class="bg-gold text-accent-900 font-bold px-8 py-3 rounded-lg shadow hover:bg-lime transition-colors focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" aria-label="Nuestros Servicios">Nuestros Servicios</a>
-        <a href="/iso-day" class="bg-white text-accent-800 font-semibold px-8 py-3 rounded-lg shadow hover:bg-accent-100 transition-colors focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" aria-label="Día Mundial de la ISO">Día Mundial de la ISO</a>
+  <main class="bg-gradient-to-br from-gold via-accent-50 to-white min-h-screen flex flex-col items-center justify-center relative overflow-x-hidden">
+    <!-- Fondo SVG festivo -->
+    <div class="absolute inset-0 pointer-events-none z-0">
+      <svg class="absolute top-0 left-0 w-full h-40 opacity-30" viewBox="0 0 1440 320"><path fill="#FFD700" fill-opacity="1" d="M0,64L48,74.7C96,85,192,107,288,128C384,149,480,171,576,154.7C672,139,768,85,864,80C960,75,1056,117,1152,133.3C1248,149,1344,139,1392,133.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+      <svg class="absolute bottom-0 right-0 w-full h-40 opacity-20" viewBox="0 0 1440 320"><path fill="#003366" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,154.7C672,160,768,192,864,197.3C960,203,1056,181,1152,154.7C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </div>
+
+    <section class="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center py-16 px-4">
+      <img src="/images/LOGO-cms.png" alt="Logo CMS" class="mx-auto h-24 mb-6 drop-shadow-2xl animate-bounce-slow" />
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-gold drop-shadow-lg text-center animate-fade-in">¡Día Mundial de las Normas ISO!</h1>
+      <p class="text-2xl text-accent-900 font-semibold mb-6 animate-fade-in delay-200 text-center">14 de octubre</p>
+      <p class="text-lg text-accent-800 mb-8 max-w-2xl mx-auto animate-fade-in delay-300 text-center">
+        Celebramos la estandarización, la calidad y la mejora continua.<br />
+        <span class="font-bold text-accent-900">#WorldStandardsDay</span>
+      </p>
+      <div class="flex flex-col md:flex-row gap-4 justify-center animate-fade-in delay-400">
+        <a href="/iso-day" class="bg-gold text-accent-900 font-bold px-8 py-3 rounded-lg shadow hover:bg-white hover:text-accent-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" aria-label="Ver Celebración">Ver Celebración</a>
+        <a href="/certificados" class="bg-accent-800 text-white font-semibold px-8 py-3 rounded-lg shadow hover:bg-gold hover:text-accent-900 transition-colors focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" aria-label="Ver Certificaciones">Ver Certificaciones</a>
       </div>
     </section>
-    <ServicesOverview />
-    <ISOToolsSection />
-    <NewsSection />
-    <ServicesImplementation />
+
+    <!-- Galería visual y testimonios -->
+    <section class="relative z-10 w-full max-w-5xl mx-auto py-12 px-4 animate-fade-in delay-500">
+      <h2 class="text-2xl font-bold text-accent-700 mb-6 text-center">Un Viaje por la Historia y el Impacto de las Normas ISO</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <img src="/images/diagrama.png" alt="Primeros diagramas de normas ISO" class="rounded-xl shadow-lg object-cover w-full h-44 border-4 border-gold" loading="lazy" />
+        <img src="/images/27001_CMS_portada.png" alt="Portada histórica ISO 27001" class="rounded-xl shadow-lg object-cover w-full h-44 border-4 border-gold" loading="lazy" />
+        <img src="/images/cms-iso9001-2015-equipo.webp" alt="Equipo CMS en certificación ISO 9001:2015" class="rounded-xl shadow-lg object-cover w-full h-44 border-4 border-gold" loading="lazy" />
+        <img src="/images/consejo-cms.webp" alt="Consejo CMS celebrando la calidad" class="rounded-xl shadow-lg object-cover w-full h-44 border-4 border-gold" loading="lazy" />
+      </div>
+      <blockquote class="bg-white/80 border-l-4 border-gold p-6 rounded-xl shadow text-accent-900 text-lg italic text-center max-w-3xl mx-auto mb-6">“Las normas ISO son el lenguaje universal de la confianza, la calidad y la mejora continua.”</blockquote>
+      <div class="flex flex-col md:flex-row gap-6 justify-center">
+        <div class="bg-gradient-to-br from-accent-100 to-gold/30 rounded-xl p-6 shadow flex-1">
+          <h3 class="font-bold text-accent-800 mb-2">¿Por qué celebramos?</h3>
+          <ul class="list-disc list-inside text-accent-900 space-y-1 text-base">
+            <li>Garantizan calidad y seguridad global.</li>
+            <li>Facilitan el comercio y la confianza.</li>
+            <li>Impulsan la innovación y la mejora continua.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-gold/30 to-accent-100 rounded-xl p-6 shadow flex-1">
+          <h3 class="font-bold text-accent-800 mb-2">Nuestro Compromiso</h3>
+          <p class="text-accent-900">En <strong>CMS Consultores</strong> vivimos la calidad y la estandarización cada día. Descubre nuestras certificaciones y cómo impactan en el sector.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA y evento especial -->
+    <section class="relative z-10 w-full max-w-3xl mx-auto py-8 px-4 animate-fade-in delay-700">
+      <div class="bg-accent-50 rounded-2xl p-6 text-accent-900 shadow-lg border-2 border-gold flex flex-col items-center">
+        <strong class="text-xl font-bold mb-2">Evento especial:</strong>
+        <p class="mb-2">Únete a nuestro <span class="font-semibold text-accent-800">webinar</span> el 14 de octubre para conocer más sobre la gestión de calidad y las normas ISO.</p>
+        <span class="inline-block bg-gold text-accent-900 font-semibold px-6 py-2 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200 mt-2" tabindex="0">¡Inscríbete y celebra con nosotros!</span>
+      </div>
+    </section>
+
+    <!-- Animaciones -->
+    <style is:global>
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 1s ease both;
+      }
+      .delay-200 { animation-delay: 0.2s; }
+      .delay-300 { animation-delay: 0.3s; }
+      .delay-400 { animation-delay: 0.4s; }
+      .delay-500 { animation-delay: 0.5s; }
+      .delay-700 { animation-delay: 0.7s; }
+      @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-16px); }
+      }
+      .animate-bounce-slow {
+        animation: bounce-slow 2.5s infinite;
+      }
+    </style>
   </main>
 </Layout>

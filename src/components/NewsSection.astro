@@ -134,7 +134,7 @@ const yearRange = sortedYears.length > 0 ? `${sortedYears[0]} - ${sortedYears[so
         <!-- Tarjetas del año -->
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
           {newsByYear[year].map((item, index) => (
-            <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 font-sans">
+            <article class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 font-sans focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" tabindex="0" role="article" aria-label={item.title}>
               <!-- Fecha prominente - Solo mes - Compacta -->
               <div class="bg-gradient-to-r from-accent-600 to-accent-800 text-white py-1.5 text-center">
                 <div class="flex items-center justify-center space-x-2">

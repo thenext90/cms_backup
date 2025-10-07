@@ -1,0 +1,41 @@
+---
+// Banner para el Día Mundial de las Normas ISO
+const isoDay = {
+  title: "Día Mundial de la Calidad: Celebrando las Normas ISO",
+  date: "14 de octubre",
+  cta: "¡14 de octubre! Celebramos el Día Mundial de las Normas ISO. Descubre cómo la calidad nos impulsa hacia el futuro.",
+  link: "/iso-day",
+  image: "/images/LOGO-cms.png" // Puedes cambiar por un gráfico especial
+};
+---
+
+<div 
+  class="w-full bg-gradient-to-r from-accent-800 to-accent-600 text-white py-4 px-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg animate-fade-in"
+  role="region"
+  aria-label="Banner Día Mundial de las Normas ISO"
+>
+  <div class="flex items-center gap-4">
+    <img src={isoDay.image} alt="Logo CMS e ISO" class="h-12 w-12 rounded-full border-2 border-white shadow-md" />
+    <div>
+      <div class="font-bold text-lg" tabindex="0">{isoDay.title}</div>
+      <div class="text-sm" tabindex="0">{isoDay.cta}</div>
+    </div>
+  </div>
+  <a 
+    href={isoDay.link} 
+    class="mt-2 md:mt-0 bg-white text-accent-800 font-semibold px-4 py-2 rounded-lg shadow hover:bg-accent-100 transition-colors focus:outline-none focus:ring-2 focus:ring-gold"
+    aria-label="Más información sobre el Día Mundial de las Normas ISO"
+  >
+    Más información
+  </a>
+</div>
+
+<style is:global>
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 1s ease;
+}
+</style>

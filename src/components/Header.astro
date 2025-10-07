@@ -4,7 +4,7 @@ import { Menu, ChevronDown, MessageCircle } from 'lucide-astro';
 import DateTimeWidget from './DateTimeWidget.astro';
 ---
 
-<header class="bg-white shadow-md sticky top-0 z-50">
+<header class="bg-white shadow-md sticky top-0 z-50" role="banner" aria-label="Encabezado CMS Consultores">
   <!-- Top bar with date/time - Solo visible en desktop -->
   <div class="hidden sm:block bg-gradient-to-r from-accent-800 to-accent-900 text-white py-1.5">
     <div class="max-w-container mx-auto px-4">
@@ -41,14 +41,12 @@ import DateTimeWidget from './DateTimeWidget.astro';
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center space-x-2">
-        <a href="/" class="text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
-          Inicio
-        </a>
+  <nav class="hidden lg:flex items-center space-x-2" role="navigation" aria-label="Navegación principal">
+        <a href="/" class="text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gold" aria-label="Inicio">Inicio</a>
         
         <!-- Quienes Somos Dropdown -->
         <div class="relative group">
-          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
+          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gold" aria-haspopup="true" aria-expanded="false" aria-label="Menú Quienes Somos">
             <span>Quienes Somos</span>
             <ChevronDown size="16" />
           </button>
@@ -64,7 +62,7 @@ import DateTimeWidget from './DateTimeWidget.astro';
 
         <!-- Servicios Dropdown -->
         <div class="relative group">
-          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
+          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gold" aria-haspopup="true" aria-expanded="false" aria-label="Menú Servicios">
             <span>Servicios</span>
             <ChevronDown size="16" />
           </button>
@@ -95,7 +93,7 @@ import DateTimeWidget from './DateTimeWidget.astro';
 
         <!-- Actualidad Dropdown -->
         <div class="relative group">
-          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
+          <button class="flex items-center space-x-1 text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gold" aria-haspopup="true" aria-expanded="false" aria-label="Menú Actualidad">
             <span>Actualidad</span>
             <ChevronDown size="16" />
           </button>
@@ -108,13 +106,9 @@ import DateTimeWidget from './DateTimeWidget.astro';
           </div>
         </div>
 
-        <a href="/contacto" class="text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
-          Contacto
-        </a>
+        <a href="/contacto" class="text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gold" aria-label="Contacto">Contacto</a>
         
-        <a href="https://certificate.cqs-cms.co.uk/" class="text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors">
-          Certificados UK
-        </a>
+        <a href="https://certificate.cqs-cms.co.uk/" class="text-sm px-2 py-1 text-gray-700 hover:text-accent-800 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gold" aria-label="Certificados UK">Certificados UK</a>
 
         <!-- Norma ISO Dropdown -->
         <!-- Normas ISO Dropdown -->

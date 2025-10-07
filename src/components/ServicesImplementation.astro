@@ -49,7 +49,7 @@ const services = [
 
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       {services.map((service, index) => (
-        <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-accent-200 hover:-translate-y-2 relative overflow-hidden">
+  <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-accent-200 hover:-translate-y-2 relative overflow-hidden focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" tabindex="0" role="region" aria-label={service.title}>
           <!-- Elemento decorativo de fondo -->
           <div class={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
           

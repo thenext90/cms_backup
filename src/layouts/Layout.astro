@@ -1,5 +1,7 @@
 ---
+
 import Header from '../components/Header.astro';
+import BannerISODay from '../components/BannerISODay.astro';
 import Footer from '../components/Footer.astro';
 import MessageWidget from '../components/MessageWidget.astro';
 
@@ -22,7 +24,7 @@ const { title, description = "CMS Consultores - Tu socio estratégico en calidad
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -34,8 +36,9 @@ const { title, description = "CMS Consultores - Tu socio estratégico en calidad
       }
     </script>
   </head>
-  <body class="font-sans bg-white">
+  <body class="font-[Montserrat,Open_Sans,sans-serif] bg-white">
     <Header />
+    <BannerISODay />
     <slot />
     <Footer />
     <MessageWidget />
@@ -46,10 +49,21 @@ const { title, description = "CMS Consultores - Tu socio estratégico en calidad
   html {
     scroll-behavior: smooth;
   }
-  
   body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background: #f8fafc;
+    color: #1a2233;
+  }
+  :root {
+    --accent-50: #e6f6ff;
+    --accent-100: #b3e6ff;
+    --accent-600: #1e90ff;
+    --accent-700: #1565c0;
+    --accent-800: #003366;
+    --accent-900: #001a33;
+    --gold: #ffd700;
+    --lime: #bfff00;
   }
 </style>

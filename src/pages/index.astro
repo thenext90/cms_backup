@@ -10,7 +10,15 @@ import ServicesOverview from '../components/ServicesOverview.astro';
 
 <Layout title="CMS Consultores - Calidad y Gestión">
   <main>
-    <Hero />
+    <section class="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-700 text-white py-20 flex flex-col items-center justify-center">
+      <img src="/images/LOGO-cms.png" alt="Logo CMS" class="h-24 mb-6 drop-shadow-xl" />
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gold">Camino hacia la Calidad</h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl text-center text-accent-100">Confianza, vanguardia, accesibilidad y compromiso con las Normas ISO.</p>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="/servicios" class="bg-gold text-accent-900 font-bold px-8 py-3 rounded-lg shadow hover:bg-lime transition-colors focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" aria-label="Nuestros Servicios">Nuestros Servicios</a>
+        <a href="/iso-day" class="bg-white text-accent-800 font-semibold px-8 py-3 rounded-lg shadow hover:bg-accent-100 transition-colors focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" aria-label="Día Mundial de la ISO">Día Mundial de la ISO</a>
+      </div>
+    </section>
     <ServicesOverview />
     <ISOToolsSection />
     <NewsSection />

@@ -111,7 +111,7 @@ function truncateText(text, maxLength = 999999) {
       <!-- Grid de artículos -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {displayData.data.map((article) => (
-          <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+          <article class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-gold transform hover:scale-105 transition-transform duration-200" tabindex="0" role="article" aria-label={article.title}>
             <!-- Header del artículo -->
             <div class="p-6 border-b border-gray-100">
               <div class="flex items-start justify-between mb-3">
